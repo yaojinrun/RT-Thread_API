@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-Thread RTOS: udp服务端</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-Thread RTOS
+   &#160;<span id="projectnumber">3.0.3</span>
+   </div>
+   <div id="projectbrief">An open source embedded real-time operating system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.10 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">udp服务端<div class="ingroups"><a class="el" href="group___n_e_t.html">网络框架</a> &raquo; <a class="el" href="group__network__sample.html">网络例程</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+<p>这是一个 udp 服务端的例程 导出 udpserv 命令到控制终端 命令调用格式：udpserv 无参数 程序功能：作为一个服务端，接收并显示客户端发来的数据 ，接收到 exit 退出程序</p>
+<p><b>源码</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;rtthread.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;sys/socket.h&gt;</span> <span class="comment">/* 使用BSD socket，需要包含socket.h头文件 */</span></div>
+<div class="line"><span class="preprocessor">#include &lt;netdb.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;finsh.h&gt;</span></div>
+<div class="line"></div>
+<div class="line"><span class="preprocessor">#define BUFSZ   1024</span></div>
+<div class="line"></div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span> udpserv(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordtype">int</span> sock;</div>
+<div class="line">    <span class="keywordtype">int</span> bytes_read;</div>
+<div class="line">    <span class="keywordtype">char</span> *recv_data;</div>
+<div class="line">    socklen_t addr_len;</div>
+<div class="line">    <span class="keyword">struct </span>sockaddr_in server_addr, client_addr;</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 分配接收用的数据缓冲 */</span></div>
+<div class="line">    recv_data = <a class="code" href="group___m_m.html#ga27d0e5bc7d083dae44480a281fe47ae3" title="分配内存块 ">rt_malloc</a>(BUFSZ);</div>
+<div class="line">    <span class="keywordflow">if</span> (recv_data == <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="comment">/* 分配内存失败，返回 */</span></div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;No memory\n&quot;</span>);</div>
+<div class="line">        <span class="keywordflow">return</span>;</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 创建一个socket，类型是SOCK_DGRAM，UDP类型 */</span></div>
+<div class="line">    <span class="keywordflow">if</span> ((sock = <a class="code" href="group___s_o_c.html#gaf4e0711877c45a41168ac677b0670ccd" title="创建套接字（socket） ">socket</a>(AF_INET, SOCK_DGRAM, 0)) == -1)</div>
+<div class="line">    {</div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;Socket error\n&quot;</span>);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* 释放接收用的数据缓冲 */</span></div>
+<div class="line">        <a class="code" href="group___m_m.html#gae5d286642b49be193200d11d6729ca66" title="释放内存块 ">rt_free</a>(recv_data);</div>
+<div class="line">        <span class="keywordflow">return</span>;</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 初始化服务端地址 */</span></div>
+<div class="line">    server_addr.sin_family = AF_INET;</div>
+<div class="line">    server_addr.sin_port = htons(5000);</div>
+<div class="line">    server_addr.sin_addr.s_addr = INADDR_ANY;</div>
+<div class="line">    <a class="code" href="group__mem.html#gabc97dec741ce959a15bdfbfb799d80d6">rt_memset</a>(&amp;(server_addr.sin_zero), 0, <span class="keyword">sizeof</span>(server_addr.sin_zero));</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 绑定socket到服务端地址 */</span></div>
+<div class="line">    <span class="keywordflow">if</span> (<a class="code" href="group___s_o_c.html#ga8dca0ad474f0bb98c58283c151d6e2e2" title="绑定套接字 ">bind</a>(sock, (<span class="keyword">struct</span> sockaddr *)&amp;server_addr,</div>
+<div class="line">             <span class="keyword">sizeof</span>(<span class="keyword">struct</span> sockaddr)) == -1)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="comment">/* 绑定地址失败 */</span></div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;Bind error\n&quot;</span>);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* 释放接收用的数据缓冲 */</span></div>
+<div class="line">        <a class="code" href="group___m_m.html#gae5d286642b49be193200d11d6729ca66" title="释放内存块 ">rt_free</a>(recv_data);</div>
+<div class="line">        <span class="keywordflow">return</span>;</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    addr_len = <span class="keyword">sizeof</span>(<span class="keyword">struct </span>sockaddr);</div>
+<div class="line">    rt_kprintf(<span class="stringliteral">&quot;UDPServer Waiting for client on port 5000...\n&quot;</span>);</div>
+<div class="line"></div>
+<div class="line">    <span class="keywordflow">while</span> (1)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="comment">/* 从sock中收取最大BUFSZ - 1字节数据 */</span></div>
+<div class="line">        bytes_read = <a class="code" href="group___s_o_c.html#ga0add4d77d9f1142e0256df85c5c4d992" title="UDP 数据接收 ">recvfrom</a>(sock, recv_data, BUFSZ - 1, 0,</div>
+<div class="line">                              (<span class="keyword">struct</span> sockaddr *)&amp;client_addr, &amp;addr_len);</div>
+<div class="line">        <span class="comment">/* UDP不同于TCP，它基本不会出现收取的数据失败的情况，除非设置了超时等待 */</span></div>
+<div class="line"></div>
+<div class="line">        recv_data[bytes_read] = <span class="charliteral">&#39;\0&#39;</span>; <span class="comment">/* 把末端清零 */</span></div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* 输出接收的数据 */</span></div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;\n(%s , %d) said : &quot;</span>, inet_ntoa(client_addr.sin_addr),</div>
+<div class="line">                   ntohs(client_addr.sin_port));</div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;%s&quot;</span>, recv_data);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* 如果接收数据是exit，退出 */</span></div>
+<div class="line">        <span class="keywordflow">if</span> (strcmp(recv_data, <span class="stringliteral">&quot;exit&quot;</span>) == 0)</div>
+<div class="line">        {</div>
+<div class="line">            <a class="code" href="group___s_o_c.html#gacb704989306fb22b3586d14661a3f990" title="关闭套接字 ">closesocket</a>(sock);</div>
+<div class="line"></div>
+<div class="line">            <span class="comment">/* 释放接收用的数据缓冲 */</span></div>
+<div class="line">            <a class="code" href="group___m_m.html#gae5d286642b49be193200d11d6729ca66" title="释放内存块 ">rt_free</a>(recv_data);</div>
+<div class="line">            <span class="keywordflow">break</span>;</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    <span class="keywordflow">return</span>;</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line">MSH_CMD_EXPORT(udpserv, a udp server sample);</div>
+</div><!-- fragment --> </div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2018年 九月 22日 星期六 00:27:23 , 为 RT-Thread RTOS使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>

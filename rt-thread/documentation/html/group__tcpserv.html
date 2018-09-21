@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-Thread RTOS: tcp服务端</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-Thread RTOS
+   &#160;<span id="projectnumber">3.0.3</span>
+   </div>
+   <div id="projectbrief">An open source embedded real-time operating system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.10 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">tcp服务端<div class="ingroups"><a class="el" href="group___n_e_t.html">网络框架</a> &raquo; <a class="el" href="group__network__sample.html">网络例程</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+<p>这是一个 tcp 服务端的例程 导出 tcpserv 命令到控制终端 命令调用格式：tcpserv 无参数 程序功能：作为一个服务端，接收并显示客户端发来的数据 ，接收到 exit 退出程序</p>
+<p><b>源码</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;rtthread.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;sys/socket.h&gt;</span> <span class="comment">/* 使用BSD socket，需要包含socket.h头文件 */</span></div>
+<div class="line"><span class="preprocessor">#include &lt;netdb.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;finsh.h&gt;</span></div>
+<div class="line"></div>
+<div class="line"><span class="preprocessor">#define BUFSZ       (1024)</span></div>
+<div class="line"></div>
+<div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> send_data[] = <span class="stringliteral">&quot;This is TCP Server from RT-Thread.&quot;</span>; <span class="comment">/* 发送用到的数据 */</span></div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span> tcpserv(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordtype">char</span> *recv_data; <span class="comment">/* 用于接收的指针，后面会做一次动态分配以请求可用内存 */</span></div>
+<div class="line">    socklen_t sin_size;</div>
+<div class="line">    <span class="keywordtype">int</span> sock, connected, bytes_received;</div>
+<div class="line">    <span class="keyword">struct </span>sockaddr_in server_addr, client_addr;</div>
+<div class="line">    <a class="code" href="group___basic_def.html#ga3e03a3519ef7e33d13ebd34c482db49c" title="布尔类型 ">rt_bool_t</a> stop = <a class="code" href="group___basic_def.html#gaad465603954df66df7791befd55ff325" title="布尔值 假 ">RT_FALSE</a>; <span class="comment">/* 停止标志 */</span></div>
+<div class="line">    <span class="keywordtype">int</span> ret;</div>
+<div class="line"></div>
+<div class="line">    recv_data = <a class="code" href="group___m_m.html#ga27d0e5bc7d083dae44480a281fe47ae3" title="分配内存块 ">rt_malloc</a>(BUFSZ + 1); <span class="comment">/* 分配接收用的数据缓冲 */</span></div>
+<div class="line">    <span class="keywordflow">if</span> (recv_data == <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>)</div>
+<div class="line">    {</div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;No memory\n&quot;</span>);</div>
+<div class="line">        <span class="keywordflow">return</span>;</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 一个socket在使用前，需要预先创建出来，指定SOCK_STREAM为TCP的socket */</span></div>
+<div class="line">    <span class="keywordflow">if</span> ((sock = <a class="code" href="group___s_o_c.html#gaf4e0711877c45a41168ac677b0670ccd" title="创建套接字（socket） ">socket</a>(AF_INET, SOCK_STREAM, 0)) == -1)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="comment">/* 创建失败的错误处理 */</span></div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;Socket error\n&quot;</span>);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* 释放已分配的接收缓冲 */</span></div>
+<div class="line">        <a class="code" href="group___m_m.html#gae5d286642b49be193200d11d6729ca66" title="释放内存块 ">rt_free</a>(recv_data);</div>
+<div class="line">        <span class="keywordflow">return</span>;</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 初始化服务端地址 */</span></div>
+<div class="line">    server_addr.sin_family = AF_INET;</div>
+<div class="line">    server_addr.sin_port = htons(5000); <span class="comment">/* 服务端工作的端口 */</span></div>
+<div class="line">    server_addr.sin_addr.s_addr = INADDR_ANY;</div>
+<div class="line">    <a class="code" href="group__mem.html#gabc97dec741ce959a15bdfbfb799d80d6">rt_memset</a>(&amp;(server_addr.sin_zero), 0, <span class="keyword">sizeof</span>(server_addr.sin_zero));</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 绑定socket到服务端地址 */</span></div>
+<div class="line">    <span class="keywordflow">if</span> (<a class="code" href="group___s_o_c.html#ga8dca0ad474f0bb98c58283c151d6e2e2" title="绑定套接字 ">bind</a>(sock, (<span class="keyword">struct</span> sockaddr *)&amp;server_addr, <span class="keyword">sizeof</span>(<span class="keyword">struct</span> sockaddr)) == -1)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="comment">/* 绑定失败 */</span></div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;Unable to bind\n&quot;</span>);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* 释放已分配的接收缓冲 */</span></div>
+<div class="line">        <a class="code" href="group___m_m.html#gae5d286642b49be193200d11d6729ca66" title="释放内存块 ">rt_free</a>(recv_data);</div>
+<div class="line">        <span class="keywordflow">return</span>;</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 在socket上进行监听 */</span></div>
+<div class="line">    <span class="keywordflow">if</span> (<a class="code" href="group___s_o_c.html#gadd5137ee4523809b8e087345ff5dae6f" title="监听套接字 ">listen</a>(sock, 5) == -1)</div>
+<div class="line">    {</div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;Listen error\n&quot;</span>);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* release recv buffer */</span></div>
+<div class="line">        <a class="code" href="group___m_m.html#gae5d286642b49be193200d11d6729ca66" title="释放内存块 ">rt_free</a>(recv_data);</div>
+<div class="line">        <span class="keywordflow">return</span>;</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    rt_kprintf(<span class="stringliteral">&quot;\nTCPServer Waiting for client on port 5000...\n&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">while</span> (stop != <a class="code" href="group___basic_def.html#ga5e3d4a1b993df67473bc161096dba218" title="布尔值 真 ">RT_TRUE</a>)</div>
+<div class="line">    {</div>
+<div class="line">        sin_size = <span class="keyword">sizeof</span>(<span class="keyword">struct </span>sockaddr_in);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* 接受一个客户端连接socket的请求，这个函数调用是阻塞式的 */</span></div>
+<div class="line">        connected = <a class="code" href="group___s_o_c.html#gaaaf2f15c3d464ebd84caabb51920c4bc" title="接收连接 ">accept</a>(sock, (<span class="keyword">struct</span> sockaddr *)&amp;client_addr, &amp;sin_size);</div>
+<div class="line">        <span class="comment">/* 返回的是连接成功的socket */</span></div>
+<div class="line">        <span class="keywordflow">if</span> (connected &lt; 0)</div>
+<div class="line">        {</div>
+<div class="line">            rt_kprintf(<span class="stringliteral">&quot;accept connection failed! errno = %d\n&quot;</span>, errno);</div>
+<div class="line">            <span class="keywordflow">continue</span>;</div>
+<div class="line">        }</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* 接受返回的client_addr指向了客户端的地址信息 */</span></div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;I got a connection from (%s , %d)\n&quot;</span>,</div>
+<div class="line">                   inet_ntoa(client_addr.sin_addr), ntohs(client_addr.sin_port));</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* 客户端连接的处理 */</span></div>
+<div class="line">        <span class="keywordflow">while</span> (1)</div>
+<div class="line">        {</div>
+<div class="line">            <span class="comment">/* 发送数据到connected socket */</span></div>
+<div class="line">            ret = <a class="code" href="group___s_o_c.html#gaf296883cb996248ec81fe480537e5727" title="TCP 数据发送 ">send</a>(connected, send_data, strlen(send_data), 0);</div>
+<div class="line">            <span class="keywordflow">if</span> (ret &lt; 0)</div>
+<div class="line">            {</div>
+<div class="line">                <span class="comment">/* 发送失败，关闭这个连接 */</span></div>
+<div class="line">                <a class="code" href="group___s_o_c.html#gacb704989306fb22b3586d14661a3f990" title="关闭套接字 ">closesocket</a>(connected);</div>
+<div class="line">                rt_kprintf(<span class="stringliteral">&quot;\nsend error,close the socket.\r\n&quot;</span>);</div>
+<div class="line">                <span class="keywordflow">break</span>;</div>
+<div class="line">            }</div>
+<div class="line">            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ret == 0)</div>
+<div class="line">            {</div>
+<div class="line">                <span class="comment">/* 打印send函数返回值为0的警告信息 */</span></div>
+<div class="line">                rt_kprintf(<span class="stringliteral">&quot;\n Send warning,send function return 0.\r\n&quot;</span>);</div>
+<div class="line">            }</div>
+<div class="line"></div>
+<div class="line">            <span class="comment">/* 从connected socket中接收数据，接收buffer是1024大小，但并不一定能够收到1024大小的数据 */</span></div>
+<div class="line">            bytes_received = <a class="code" href="group___s_o_c.html#gac98728e53b98f1b22474f48ce6658749" title="TCP 数据接收 ">recv</a>(connected, recv_data, BUFSZ, 0);</div>
+<div class="line">            <span class="keywordflow">if</span> (bytes_received &lt; 0)</div>
+<div class="line">            {</div>
+<div class="line">                <span class="comment">/* 接收失败，关闭这个connected socket */</span></div>
+<div class="line">                <a class="code" href="group___s_o_c.html#gacb704989306fb22b3586d14661a3f990" title="关闭套接字 ">closesocket</a>(connected);</div>
+<div class="line">                <span class="keywordflow">break</span>;</div>
+<div class="line">            }</div>
+<div class="line">            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (bytes_received == 0)</div>
+<div class="line">            {</div>
+<div class="line">                <span class="comment">/* 打印recv函数返回值为0的警告信息 */</span></div>
+<div class="line">                rt_kprintf(<span class="stringliteral">&quot;\nReceived warning,recv function return 0.\r\n&quot;</span>);</div>
+<div class="line">                <a class="code" href="group___s_o_c.html#gacb704989306fb22b3586d14661a3f990" title="关闭套接字 ">closesocket</a>(connected);</div>
+<div class="line">                <span class="keywordflow">break</span>;</div>
+<div class="line">            }</div>
+<div class="line"></div>
+<div class="line">            <span class="comment">/* 有接收到数据，把末端清零 */</span></div>
+<div class="line">            recv_data[bytes_received] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line">            <span class="keywordflow">if</span> (strcmp(recv_data, <span class="stringliteral">&quot;q&quot;</span>) == 0 || strcmp(recv_data, <span class="stringliteral">&quot;Q&quot;</span>) == 0)</div>
+<div class="line">            {</div>
+<div class="line">                <span class="comment">/* 如果是首字母是q或Q，关闭这个连接 */</span></div>
+<div class="line">                <a class="code" href="group___s_o_c.html#gacb704989306fb22b3586d14661a3f990" title="关闭套接字 ">closesocket</a>(connected);</div>
+<div class="line">                <span class="keywordflow">break</span>;</div>
+<div class="line">            }</div>
+<div class="line">            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (strcmp(recv_data, <span class="stringliteral">&quot;exit&quot;</span>) == 0)</div>
+<div class="line">            {</div>
+<div class="line">                <span class="comment">/* 如果接收的是exit，则关闭整个服务端 */</span></div>
+<div class="line">                <a class="code" href="group___s_o_c.html#gacb704989306fb22b3586d14661a3f990" title="关闭套接字 ">closesocket</a>(connected);</div>
+<div class="line">                stop = <a class="code" href="group___basic_def.html#ga5e3d4a1b993df67473bc161096dba218" title="布尔值 真 ">RT_TRUE</a>;</div>
+<div class="line">                <span class="keywordflow">break</span>;</div>
+<div class="line">            }</div>
+<div class="line">            <span class="keywordflow">else</span></div>
+<div class="line">            {</div>
+<div class="line">                <span class="comment">/* 在控制终端显示收到的数据 */</span></div>
+<div class="line">                rt_kprintf(<span class="stringliteral">&quot;RECEIVED DATA = %s \n&quot;</span>, recv_data);</div>
+<div class="line">            }</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 退出服务 */</span></div>
+<div class="line">    <a class="code" href="group___s_o_c.html#gacb704989306fb22b3586d14661a3f990" title="关闭套接字 ">closesocket</a>(sock);</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 释放接收缓冲 */</span></div>
+<div class="line">    <a class="code" href="group___m_m.html#gae5d286642b49be193200d11d6729ca66" title="释放内存块 ">rt_free</a>(recv_data);</div>
+<div class="line"></div>
+<div class="line">    return ;</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line">MSH_CMD_EXPORT(tcpserv, a tcp server sample);</div>
+</div><!-- fragment --> </div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2018年 九月 22日 星期六 00:27:23 , 为 RT-Thread RTOS使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>

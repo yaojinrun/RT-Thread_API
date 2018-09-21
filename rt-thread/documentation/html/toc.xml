@@ -667,6 +667,20 @@
         <topic label="getsockname" href="group___s_o_c.html#ga7bafa2b03fec4e2d4e7492269b262975"/>
         <topic label="ioctlsocket" href="group___s_o_c.html#gae3e7eeeeba90dea26806d0271921b048"/>
       </topic>
+      <topic label="网络例程" href="group__network__sample.html">
+        <topic label="http客户端" href="group__httpclient.html">
+        </topic>
+        <topic label="tcp客户端" href="group__tcpclient.html">
+        </topic>
+        <topic label="利用select实现的tcp客户端" href="group__select.html">
+        </topic>
+        <topic label="tcp服务端" href="group__tcpserv.html">
+        </topic>
+        <topic label="udp客户端" href="group__udpclient.html">
+        </topic>
+        <topic label="udp服务端" href="group__udpserv.html">
+        </topic>
+      </topic>
     </topic>
   </topic>
   <topic label="结构体" href="annotated.html">

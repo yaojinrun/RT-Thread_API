@@ -48,6 +48,7 @@ group___fs__example.html
 group___n_e_t.html
 group___s_a_l.html
 group___s_o_c.html
+group__network__sample.html
 group__readwrite.html
 group__rename.html
 group__stat.html
@@ -71,6 +72,12 @@ group__pool.html
 group__heap.html
 group__int.html
 group__idlehook.html
+group__httpclient.html
+group__tcpclient.html
+group__select.html
+group__tcpserv.html
+group__udpclient.html
+group__udpserv.html
 structrt__device.html
 structrt__device__blk__geometry.html
 structrt__device__blk__sectors.html
@@ -103,6 +110,7 @@ dir_e64660aa15d94fc487926379369b9d74.html
 dir_d44c64559bbebec7f509842c48db8b23.html
 dir_2e3698ae960f7ade6c92353aeb2663b9.html
 dir_be192b558017e911b0616599e743dc44.html
+dir_b3c1584405e1e17b5a69df630af79c62.html
 dir_68267d1309a1af8e8297ef4c3efbcdba.html
 dir_4cff54b5d48e2714142bb683c43b165b.html
 index.html

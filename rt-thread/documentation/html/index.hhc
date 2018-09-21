@@ -759,6 +759,27 @@
       <LI><OBJECT type="text/sitemap"><param name="Name" value="getsockname"><param name="Local" value="group___s_o_c.html#ga7bafa2b03fec4e2d4e7492269b262975"><param name="ImageNumber" value="11"></OBJECT>
       <LI><OBJECT type="text/sitemap"><param name="Name" value="ioctlsocket"><param name="Local" value="group___s_o_c.html#gae3e7eeeeba90dea26806d0271921b048"><param name="ImageNumber" value="11"></OBJECT>
       </UL>
+    <LI><OBJECT type="text/sitemap"><param name="Name" value="网络例程"><param name="Local" value="group__network__sample.html"><param name="ImageNumber" value="1"></OBJECT>
+      <UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="http客户端"><param name="Local" value="group__httpclient.html"><param name="ImageNumber" value="11"></OBJECT>
+        <UL>
+        </UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="tcp客户端"><param name="Local" value="group__tcpclient.html"><param name="ImageNumber" value="11"></OBJECT>
+        <UL>
+        </UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="利用select实现的tcp客户端"><param name="Local" value="group__select.html"><param name="ImageNumber" value="11"></OBJECT>
+        <UL>
+        </UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="tcp服务端"><param name="Local" value="group__tcpserv.html"><param name="ImageNumber" value="11"></OBJECT>
+        <UL>
+        </UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="udp客户端"><param name="Local" value="group__udpclient.html"><param name="ImageNumber" value="11"></OBJECT>
+        <UL>
+        </UL>
+      <LI><OBJECT type="text/sitemap"><param name="Name" value="udp服务端"><param name="Local" value="group__udpserv.html"><param name="ImageNumber" value="11"></OBJECT>
+        <UL>
+        </UL>
+      </UL>
     </UL>
   </UL>
 <LI><OBJECT type="text/sitemap"><param name="Name" value="结构体"><param name="Local" value="annotated.html"><param name="ImageNumber" value="1"></OBJECT>

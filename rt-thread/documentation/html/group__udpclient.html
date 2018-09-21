@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-Thread RTOS: udp客户端</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-Thread RTOS
+   &#160;<span id="projectnumber">3.0.3</span>
+   </div>
+   <div id="projectbrief">An open source embedded real-time operating system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.10 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">udp客户端<div class="ingroups"><a class="el" href="group___n_e_t.html">网络框架</a> &raquo; <a class="el" href="group__network__sample.html">网络例程</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+<p>这是一个 udp 客户端的例程 导出 udpclient 命令到控制终端 命令调用格式：udpclient URL PORT [COUNT = 10] URL：服务器地址 PORT：端口号 COUNT：可选参数 默认为 10 程序功能：发送 COUNT 条数据到服务远端</p>
+<p><b>源码</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;rtthread.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;sys/socket.h&gt;</span> <span class="comment">/* 使用BSD socket，需要包含sockets.h头文件 */</span></div>
+<div class="line"><span class="preprocessor">#include &lt;netdb.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;finsh.h&gt;</span></div>
+<div class="line"></div>
+<div class="line"><span class="keyword">const</span> <span class="keywordtype">char</span> send_data[] = <span class="stringliteral">&quot;This is UDP Client from RT-Thread.\n&quot;</span>; <span class="comment">/* 发送用到的数据 */</span></div>
+<div class="line"><span class="keywordtype">void</span> udpclient(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordtype">int</span> sock, port, count;</div>
+<div class="line">    <span class="keyword">struct </span>hostent *host;</div>
+<div class="line">    <span class="keyword">struct </span>sockaddr_in server_addr;</div>
+<div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> *url;</div>
+<div class="line"></div>
+<div class="line">    <span class="keywordflow">if</span> (argc &lt; 3)</div>
+<div class="line">    {</div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;Usage: udpclient URL PORT [COUNT = 10]\n&quot;</span>);</div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;Like: tcpclient 192.168.12.44 5000\n&quot;</span>);</div>
+<div class="line">        return ;</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    url = argv[1];</div>
+<div class="line">    port = strtoul(argv[2], 0, 10);</div>
+<div class="line"></div>
+<div class="line">    <span class="keywordflow">if</span> (argc &gt; 3)</div>
+<div class="line">        count = strtoul(argv[3], 0, 10);</div>
+<div class="line">    <span class="keywordflow">else</span></div>
+<div class="line">        count = 10;</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 通过函数入口参数url获得host地址（如果是域名，会做域名解析） */</span></div>
+<div class="line">    host = (<span class="keyword">struct </span>hostent *) gethostbyname(url);</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 创建一个socket，类型是SOCK_DGRAM，UDP类型 */</span></div>
+<div class="line">    <span class="keywordflow">if</span> ((sock = <a class="code" href="group___s_o_c.html#gaf4e0711877c45a41168ac677b0670ccd" title="创建套接字（socket） ">socket</a>(AF_INET, SOCK_DGRAM, 0)) == -1)</div>
+<div class="line">    {</div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;Socket error\n&quot;</span>);</div>
+<div class="line">        <span class="keywordflow">return</span>;</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 初始化预连接的服务端地址 */</span></div>
+<div class="line">    server_addr.sin_family = AF_INET;</div>
+<div class="line">    server_addr.sin_port = htons(port);</div>
+<div class="line">    server_addr.sin_addr = *((<span class="keyword">struct </span>in_addr *)host-&gt;h_addr);</div>
+<div class="line">    <a class="code" href="group__mem.html#gabc97dec741ce959a15bdfbfb799d80d6">rt_memset</a>(&amp;(server_addr.sin_zero), 0, <span class="keyword">sizeof</span>(server_addr.sin_zero));</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 总计发送count次数据 */</span></div>
+<div class="line">    <span class="keywordflow">while</span> (count)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="comment">/* 发送数据到服务远端 */</span></div>
+<div class="line">        <a class="code" href="group___s_o_c.html#gaa3f8fd1b28c9374fae622aabdc8e7e74" title="UDP 数据发送 ">sendto</a>(sock, send_data, strlen(send_data), 0,</div>
+<div class="line">               (<span class="keyword">struct</span> sockaddr *)&amp;server_addr, <span class="keyword">sizeof</span>(<span class="keyword">struct</span> sockaddr));</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* 线程休眠一段时间 */</span></div>
+<div class="line">        <a class="code" href="group___thread.html#ga6b18459cac67e3695447e69b997fc74e" title="线程延时函数 ">rt_thread_delay</a>(50);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* 计数值减一 */</span></div>
+<div class="line">        count --;</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 关闭这个socket */</span></div>
+<div class="line">    <a class="code" href="group___s_o_c.html#gacb704989306fb22b3586d14661a3f990" title="关闭套接字 ">closesocket</a>(sock);</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line">MSH_CMD_EXPORT(udpclient, a udp client sample);</div>
+</div><!-- fragment --> </div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2018年 九月 22日 星期六 00:27:23 , 为 RT-Thread RTOS使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>

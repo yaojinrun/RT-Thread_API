@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-Thread RTOS: http客户端</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-Thread RTOS
+   &#160;<span id="projectnumber">3.0.3</span>
+   </div>
+   <div id="projectbrief">An open source embedded real-time operating system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.10 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">http客户端<div class="ingroups"><a class="el" href="group___n_e_t.html">网络框架</a> &raquo; <a class="el" href="group__network__sample.html">网络例程</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+<p><b>源码</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;webclient.h&gt;</span>  <span class="comment">/* 使用 HTTP 协议与服务器通信需要包含此头文件 */</span></div>
+<div class="line"><span class="preprocessor">#include &lt;sys/socket.h&gt;</span> <span class="comment">/* 使用BSD socket，需要包含socket.h头文件 */</span></div>
+<div class="line"><span class="preprocessor">#include &lt;netdb.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;cJSON.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;finsh.h&gt;</span></div>
+<div class="line"></div>
+<div class="line"><span class="preprocessor">#define GET_HEADER_BUFSZ        1024        //头部大小</span></div>
+<div class="line"><span class="preprocessor">#define GET_RESP_BUFSZ          1024        //响应缓冲区大小</span></div>
+<div class="line"><span class="preprocessor">#define GET_URL_LEN_MAX         256         //网址最大长度</span></div>
+<div class="line"><span class="preprocessor">#define GET_URI                 &quot;http://mobile.weather.com.cn/data/sk/%s.html&quot; //获取天气的 API</span></div>
+<div class="line"><span class="preprocessor">#define AREA_ID                 &quot;101021300&quot; //上海浦东地区 ID</span></div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* 天气数据解析 */</span></div>
+<div class="line"><span class="keywordtype">void</span> weather_data_parse(<a class="code" href="group___basic_def.html#ga585e2ad0fbab0f83817cb61373465df6" title="8位无符号整数类型 ">rt_uint8_t</a> *data)</div>
+<div class="line">{</div>
+<div class="line">    cJSON *root = <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>, *<span class="keywordtype">object</span> = <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>, *item = <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>;</div>
+<div class="line"></div>
+<div class="line">    root = cJSON_Parse((<span class="keyword">const</span> <span class="keywordtype">char</span> *)data);</div>
+<div class="line">    <span class="keywordflow">if</span> (!root)</div>
+<div class="line">    {</div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;No memory for cJSON root!\n&quot;</span>);</div>
+<div class="line">        <span class="keywordflow">return</span>;</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordtype">object</span> = cJSON_GetObjectItem(root, <span class="stringliteral">&quot;sk_info&quot;</span>);</div>
+<div class="line"></div>
+<div class="line">    item = cJSON_GetObjectItem(<span class="keywordtype">object</span>, <span class="stringliteral">&quot;cityName&quot;</span>);</div>
+<div class="line">    rt_kprintf(<span class="stringliteral">&quot;\ncityName:%s &quot;</span>, item-&gt;valuestring);</div>
+<div class="line"></div>
+<div class="line">    item = cJSON_GetObjectItem(<span class="keywordtype">object</span>, <span class="stringliteral">&quot;temp&quot;</span>);</div>
+<div class="line">    rt_kprintf(<span class="stringliteral">&quot;\ntemp    :%s &quot;</span>, item-&gt;valuestring);</div>
+<div class="line"></div>
+<div class="line">    item = cJSON_GetObjectItem(<span class="keywordtype">object</span>, <span class="stringliteral">&quot;wd&quot;</span>);</div>
+<div class="line">    rt_kprintf(<span class="stringliteral">&quot;\nwd      :%s &quot;</span>, item-&gt;valuestring);</div>
+<div class="line"></div>
+<div class="line">    item = cJSON_GetObjectItem(<span class="keywordtype">object</span>, <span class="stringliteral">&quot;ws&quot;</span>);</div>
+<div class="line">    rt_kprintf(<span class="stringliteral">&quot;\nws      :%s &quot;</span>, item-&gt;valuestring);</div>
+<div class="line"></div>
+<div class="line">    item = cJSON_GetObjectItem(<span class="keywordtype">object</span>, <span class="stringliteral">&quot;sd&quot;</span>);</div>
+<div class="line">    rt_kprintf(<span class="stringliteral">&quot;\nsd      :%s &quot;</span>, item-&gt;valuestring);</div>
+<div class="line"></div>
+<div class="line">    item = cJSON_GetObjectItem(<span class="keywordtype">object</span>, <span class="stringliteral">&quot;date&quot;</span>);</div>
+<div class="line">    rt_kprintf(<span class="stringliteral">&quot;\ndate    :%s&quot;</span>, item-&gt;valuestring);</div>
+<div class="line"></div>
+<div class="line">    item = cJSON_GetObjectItem(<span class="keywordtype">object</span>, <span class="stringliteral">&quot;time&quot;</span>);</div>
+<div class="line">    rt_kprintf(<span class="stringliteral">&quot;\ntime    :%s \n&quot;</span>, item-&gt;valuestring);</div>
+<div class="line"></div>
+<div class="line">    <span class="keywordflow">if</span> (root != <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>)</div>
+<div class="line">        cJSON_Delete(root);</div>
+<div class="line">}</div>
+<div class="line"><span class="keywordtype">void</span> weather(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv)</div>
+<div class="line">{</div>
+<div class="line">    <a class="code" href="group___basic_def.html#ga585e2ad0fbab0f83817cb61373465df6" title="8位无符号整数类型 ">rt_uint8_t</a> *buffer = <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>;</div>
+<div class="line">    <span class="keywordtype">int</span> resp_status;</div>
+<div class="line">    <span class="keyword">struct </span>webclient_session *session = <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>;</div>
+<div class="line">    <span class="keywordtype">char</span> *weather_url = <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>;</div>
+<div class="line">    <span class="keywordtype">int</span> content_length = -1, bytes_read = 0;</div>
+<div class="line">    <span class="keywordtype">int</span> content_pos = 0;</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 为 weather_url 分配空间 */</span></div>
+<div class="line">    weather_url = <a class="code" href="group___m_m.html#gacf5395171f8ad2ad6bc5e1c61b8b0d88" title="分配多内存块 ">rt_calloc</a>(1, GET_URL_LEN_MAX);</div>
+<div class="line">    <span class="keywordflow">if</span> (weather_url == <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>)</div>
+<div class="line">    {</div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;No memory for weather_url!\n&quot;</span>);</div>
+<div class="line">        <span class="keywordflow">goto</span> __exit;</div>
+<div class="line">    }</div>
+<div class="line">    <span class="comment">/* 拼接 GET 网址 */</span></div>
+<div class="line">    <a class="code" href="group__str.html#ga62a425223db6edffa3d9ab8f766eb992">rt_snprintf</a>(weather_url, GET_URL_LEN_MAX, GET_URI, AREA_ID);</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 创建会话并且设置响应的大小 */</span></div>
+<div class="line">    session = webclient_session_create(GET_HEADER_BUFSZ);</div>
+<div class="line">    <span class="keywordflow">if</span> (session == <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>)</div>
+<div class="line">    {</div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;No memory for get header!\n&quot;</span>);</div>
+<div class="line">        <span class="keywordflow">goto</span> __exit;</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 发送 GET 请求使用默认的头部 */</span></div>
+<div class="line">    <span class="keywordflow">if</span> ((resp_status = webclient_get(session, weather_url)) != 200)</div>
+<div class="line">    {</div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;webclient GET request failed, response(%d) error.\n&quot;</span>, resp_status);</div>
+<div class="line">        <span class="keywordflow">goto</span> __exit;</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 分配用于存放接收数据的缓冲 */</span></div>
+<div class="line">    buffer = <a class="code" href="group___m_m.html#gacf5395171f8ad2ad6bc5e1c61b8b0d88" title="分配多内存块 ">rt_calloc</a>(1, GET_RESP_BUFSZ);</div>
+<div class="line">    <span class="keywordflow">if</span>(buffer == <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>)</div>
+<div class="line">    {</div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;No memory for data receive buffer!\n&quot;</span>);</div>
+<div class="line">        <span class="keywordflow">goto</span> __exit;</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    content_length = webclient_content_length_get(session);</div>
+<div class="line">    <span class="keywordflow">if</span> (content_length &lt; 0)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="comment">/* 返回的数据是分块传输的. */</span></div>
+<div class="line">        <span class="keywordflow">do</span></div>
+<div class="line">        {</div>
+<div class="line">            bytes_read = webclient_read(session, buffer, GET_RESP_BUFSZ);</div>
+<div class="line">            <span class="keywordflow">if</span> (bytes_read &lt;= 0)</div>
+<div class="line">            {</div>
+<div class="line">                <span class="keywordflow">break</span>;</div>
+<div class="line">            }</div>
+<div class="line">        } <span class="keywordflow">while</span> (1);</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">else</span></div>
+<div class="line">    {</div>
+<div class="line">        <span class="keywordflow">do</span></div>
+<div class="line">        {</div>
+<div class="line">            bytes_read = webclient_read(session, buffer, </div>
+<div class="line">                    content_length - content_pos &gt; GET_RESP_BUFSZ ?</div>
+<div class="line">                            GET_RESP_BUFSZ : content_length - content_pos);</div>
+<div class="line">            <span class="keywordflow">if</span> (bytes_read &lt;= 0)</div>
+<div class="line">            {</div>
+<div class="line">                <span class="keywordflow">break</span>;</div>
+<div class="line">            }</div>
+<div class="line">            content_pos += bytes_read;</div>
+<div class="line">        } <span class="keywordflow">while</span> (content_pos &lt; content_length);</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 天气数据解析 */</span></div>
+<div class="line">    weather_data_parse(buffer);</div>
+<div class="line"></div>
+<div class="line">__exit:</div>
+<div class="line">    <span class="comment">/* 释放网址空间 */</span></div>
+<div class="line">    <span class="keywordflow">if</span> (weather_url != <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>)</div>
+<div class="line">        <a class="code" href="group___m_m.html#gae5d286642b49be193200d11d6729ca66" title="释放内存块 ">rt_free</a>(weather_url);</div>
+<div class="line">    <span class="comment">/* 关闭会话 */</span></div>
+<div class="line">    <span class="keywordflow">if</span> (session != <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>)</div>
+<div class="line">        webclient_close(session);</div>
+<div class="line">    <span class="comment">/* 释放缓冲区空间 */</span></div>
+<div class="line">    <span class="keywordflow">if</span> (buffer != <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>)</div>
+<div class="line">        <a class="code" href="group___m_m.html#gae5d286642b49be193200d11d6729ca66" title="释放内存块 ">rt_free</a>(buffer);</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line">MSH_CMD_EXPORT(weather, Get weather by webclient);</div>
+</div><!-- fragment --> </div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2018年 九月 22日 星期六 00:27:23 , 为 RT-Thread RTOS使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>
