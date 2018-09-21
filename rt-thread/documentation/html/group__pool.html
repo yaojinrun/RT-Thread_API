@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-Thread RTOS: 内存池例程</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-Thread RTOS
+   &#160;<span id="projectnumber">3.0.3</span>
+   </div>
+   <div id="projectbrief">An open source embedded real-time operating system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.10 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">内存池例程<div class="ingroups"><a class="el" href="group___kernel.html">内核</a> &raquo; <a class="el" href="group__example.html">内核例程</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+<p>这个程序会创建一个静态的内存池对象，2个动态线程。 一个线程会试图从内存池中获得内存块，另一个线程释放内存块 内存块</p>
+<p><b>源码</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;rtthread.h&gt;</span></div>
+<div class="line"></div>
+<div class="line"><span class="keyword">static</span> <a class="code" href="group___basic_def.html#ga585e2ad0fbab0f83817cb61373465df6" title="8位无符号整数类型 ">rt_uint8_t</a> *ptr[50];</div>
+<div class="line"><span class="keyword">static</span> <a class="code" href="group___basic_def.html#ga585e2ad0fbab0f83817cb61373465df6" title="8位无符号整数类型 ">rt_uint8_t</a> mempool[4096];</div>
+<div class="line"><span class="keyword">static</span> <span class="keyword">struct </span><a class="code" href="structrt__mempool.html">rt_mempool</a> mp;</div>
+<div class="line"></div>
+<div class="line"><span class="preprocessor">#define THREAD_PRIORITY      25</span></div>
+<div class="line"><span class="preprocessor">#define THREAD_STACK_SIZE    512</span></div>
+<div class="line"><span class="preprocessor">#define THREAD_TIMESLICE     5</span></div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* 指向线程控制块的指针 */</span></div>
+<div class="line"><span class="keyword">static</span> <a class="code" href="structrt__thread.html" title="线程对象控制块 ">rt_thread_t</a> tid1 = <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>;</div>
+<div class="line"><span class="keyword">static</span> <a class="code" href="structrt__thread.html" title="线程对象控制块 ">rt_thread_t</a> tid2 = <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>;</div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* 线程1入口 */</span></div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span> thread1_mp_alloc(<span class="keywordtype">void</span> *parameter)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordtype">int</span> i;</div>
+<div class="line">    <span class="keywordflow">for</span> (i = 0 ; i &lt; 50 ; i++)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="keywordflow">if</span> (ptr[i] == <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>)</div>
+<div class="line">        {</div>
+<div class="line">            <span class="comment">/* 试图申请内存块50次，当申请不到内存块时，</span></div>
+<div class="line"><span class="comment">               线程1挂起，转至线程2运行 */</span></div>
+<div class="line">            ptr[i] = <a class="code" href="group___pool.html#gaf89865566aac4498cdef57be54091a18" title="分配内存块 ">rt_mp_alloc</a>(&amp;mp, <a class="code" href="group___i_p_c.html#ga923d8e409f9daa8843978d6805ebcdeb" title="永远阻塞直到获得资源。 ">RT_WAITING_FOREVER</a>);</div>
+<div class="line">            <span class="keywordflow">if</span> (ptr[i] != <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>)</div>
+<div class="line">                rt_kprintf(<span class="stringliteral">&quot;allocate No.%d\n&quot;</span>, i);</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* 线程2入口，线程2的优先级比线程1低，应该线程1先获得执行。*/</span></div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span> thread2_mp_release(<span class="keywordtype">void</span> *parameter)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordtype">int</span> i;</div>
+<div class="line"></div>
+<div class="line">    rt_kprintf(<span class="stringliteral">&quot;thread2 try to release block\n&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">for</span> (i = 0; i &lt; 50 ; i++)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="comment">/* 释放所有分配成功的内存块 */</span></div>
+<div class="line">        <span class="keywordflow">if</span> (ptr[i] != <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>)</div>
+<div class="line">        {</div>
+<div class="line">            rt_kprintf(<span class="stringliteral">&quot;release block %d\n&quot;</span>, i);</div>
+<div class="line">            <a class="code" href="group___pool.html#ga65371665abde3bed7379c72d5ea225e2" title="释放内存块 ">rt_mp_free</a>(ptr[i]);</div>
+<div class="line">            ptr[i] = <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>;</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="keywordtype">int</span> mempool_sample(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordtype">int</span> i;</div>
+<div class="line">    <span class="keywordflow">for</span> (i = 0; i &lt; 50; i ++) ptr[i] = <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>;</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 初始化内存池对象 */</span></div>
+<div class="line">    <a class="code" href="group___pool.html#ga1a6bc99e5cb8663be2f1882410448f94" title="初始化内存池 ">rt_mp_init</a>(&amp;mp, <span class="stringliteral">&quot;mp1&quot;</span>, &amp;mempool[0], <span class="keyword">sizeof</span>(mempool), 80);</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 创建线程1：申请内存池 */</span></div>
+<div class="line">    tid1 = <a class="code" href="group___thread.html#gacb215b161f17c26b5e19c28cd0119e7b" title="创建线程 ">rt_thread_create</a>(<span class="stringliteral">&quot;thread1&quot;</span>, thread1_mp_alloc, <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>,</div>
+<div class="line">                            THREAD_STACK_SIZE,</div>
+<div class="line">                            THREAD_PRIORITY, THREAD_TIMESLICE);</div>
+<div class="line">    <span class="keywordflow">if</span> (tid1 != <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>)</div>
+<div class="line">        <a class="code" href="group___thread.html#ga04b743537fd099e204fc292e57b4aa5a" title="启动线程 ">rt_thread_startup</a>(tid1);</div>
+<div class="line"></div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 创建线程2：释放内存池*/</span></div>
+<div class="line">    tid2 = <a class="code" href="group___thread.html#gacb215b161f17c26b5e19c28cd0119e7b" title="创建线程 ">rt_thread_create</a>(<span class="stringliteral">&quot;thread2&quot;</span>, thread2_mp_release, <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>,</div>
+<div class="line">                            THREAD_STACK_SIZE,</div>
+<div class="line">                            THREAD_PRIORITY + 1, THREAD_TIMESLICE);</div>
+<div class="line">    <span class="keywordflow">if</span> (tid2 != <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>)</div>
+<div class="line">        <a class="code" href="group___thread.html#ga04b743537fd099e204fc292e57b4aa5a" title="启动线程 ">rt_thread_startup</a>(tid2);</div>
+<div class="line"></div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* 导出到 msh 命令列表中 */</span></div>
+<div class="line">MSH_CMD_EXPORT(mempool_sample, mempool sample);</div>
+</div><!-- fragment --> </div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2018年 九月 21日 星期五 22:35:14 , 为 RT-Thread RTOS使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>

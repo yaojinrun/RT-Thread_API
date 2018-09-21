@@ -1,0 +1,814 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-Thread RTOS: D:/yao/RTT/文档/stm32f429-api/rt-thread/components/finsh/finsh_ops.h 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-Thread RTOS
+   &#160;<span id="projectnumber">3.0.3</span>
+   </div>
+   <div id="projectbrief">An open source embedded real-time operating system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.10 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_409f97388efe006bc3438b95e9edef48.html">components</a></li><li class="navelem"><a class="el" href="dir_86d0af1c976cb2104552e4f347bf9ac9.html">finsh</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">宏定义</a> &#124;
+<a href="#typedef-members">类型定义</a> &#124;
+<a href="#var-members">变量</a>  </div>
+  <div class="headertitle">
+<div class="title">finsh_ops.h 文件参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="finsh__vm_8h.html">finsh_vm.h</a>&quot;</code><br />
+</div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> finsh_ops.h 的引用(Include)关系图:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="finsh__ops_8h__incl.png" border="0" usemap="#_d_1_2yao_2_r_t_t_2_xE6_x96_x87_xE6_xA1_xA3_2stm32f429-api_2rt-thread_2components_2finsh_2finsh__ops_8h" alt=""/></div>
+<map name="_d_1_2yao_2_r_t_t_2_xE6_x96_x87_xE6_xA1_xA3_2stm32f429-api_2rt-thread_2components_2finsh_2finsh__ops_8h" id="_d_1_2yao_2_r_t_t_2_xE6_x96_x87_xE6_xA1_xA3_2stm32f429-api_2rt-thread_2components_2finsh_2finsh__ops_8h">
+</map>
+</div>
+</div><div class="textblock"><div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> 此图展示该文件直接或间接的被哪些文件引用了:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="finsh__ops_8h__dep__incl.png" border="0" usemap="#_d_1_2yao_2_r_t_t_2_xE6_x96_x87_xE6_xA1_xA3_2stm32f429-api_2rt-thread_2components_2finsh_2finsh__ops_8hdep" alt=""/></div>
+<map name="_d_1_2yao_2_r_t_t_2_xE6_x96_x87_xE6_xA1_xA3_2stm32f429-api_2rt-thread_2components_2finsh_2finsh__ops_8hdep" id="_d_1_2yao_2_r_t_t_2_xE6_x96_x87_xE6_xA1_xA3_2stm32f429-api_2rt-thread_2components_2finsh_2finsh__ops_8hdep">
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:ad2fd1662f92718573216fa706a88e8de"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#ad2fd1662f92718573216fa706a88e8de">FINSH_OP_NOOP</a>&#160;&#160;&#160;0x00</td></tr>
+<tr class="separator:ad2fd1662f92718573216fa706a88e8de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae63ff8bc7c706707ed6a9d8a335775f6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#ae63ff8bc7c706707ed6a9d8a335775f6">FINSH_OP_ADD_BYTE</a>&#160;&#160;&#160;0x01</td></tr>
+<tr class="separator:ae63ff8bc7c706707ed6a9d8a335775f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf32f5cd331aeec9cf39cdfb49b5132a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#adf32f5cd331aeec9cf39cdfb49b5132a">FINSH_OP_ADD_WORD</a>&#160;&#160;&#160;0x02</td></tr>
+<tr class="separator:adf32f5cd331aeec9cf39cdfb49b5132a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada3d66894377ca218bd682bcd7cbd6dc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#ada3d66894377ca218bd682bcd7cbd6dc">FINSH_OP_ADD_DWORD</a>&#160;&#160;&#160;0x03</td></tr>
+<tr class="separator:ada3d66894377ca218bd682bcd7cbd6dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38a9badea5455c3d7fce2d1deea30475"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#a38a9badea5455c3d7fce2d1deea30475">FINSH_OP_SUB_BYTE</a>&#160;&#160;&#160;0x04</td></tr>
+<tr class="separator:a38a9badea5455c3d7fce2d1deea30475"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeac105284c8423c957b54864c2c7a337"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#aeac105284c8423c957b54864c2c7a337">FINSH_OP_SUB_WORD</a>&#160;&#160;&#160;0x05</td></tr>
+<tr class="separator:aeac105284c8423c957b54864c2c7a337"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05087862b21c9614e2830d7e5aae6143"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#a05087862b21c9614e2830d7e5aae6143">FINSH_OP_SUB_DWORD</a>&#160;&#160;&#160;0x06</td></tr>
+<tr class="separator:a05087862b21c9614e2830d7e5aae6143"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97ee0a5c29f6a4fcde25b2feac173e7d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#a97ee0a5c29f6a4fcde25b2feac173e7d">FINSH_OP_DIV_BYTE</a>&#160;&#160;&#160;0x07</td></tr>
+<tr class="separator:a97ee0a5c29f6a4fcde25b2feac173e7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedd37899006394ecb5d991b9ef5f8e79"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#aedd37899006394ecb5d991b9ef5f8e79">FINSH_OP_DIV_WORD</a>&#160;&#160;&#160;0x08</td></tr>
+<tr class="separator:aedd37899006394ecb5d991b9ef5f8e79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7c8e423dd05b0e61b5c999c385610a9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#ac7c8e423dd05b0e61b5c999c385610a9">FINSH_OP_DIV_DWORD</a>&#160;&#160;&#160;0x09</td></tr>
+<tr class="separator:ac7c8e423dd05b0e61b5c999c385610a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b2c89d511152e3e689614626f3deb51"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#a5b2c89d511152e3e689614626f3deb51">FINSH_OP_MOD_BYTE</a>&#160;&#160;&#160;0x0A</td></tr>
+<tr class="separator:a5b2c89d511152e3e689614626f3deb51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab14b38baf834cd70b3e7cdf64201f80f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#ab14b38baf834cd70b3e7cdf64201f80f">FINSH_OP_MOD_WORD</a>&#160;&#160;&#160;0x0B</td></tr>
+<tr class="separator:ab14b38baf834cd70b3e7cdf64201f80f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acee08705a1666a1823362ac0981cba04"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#acee08705a1666a1823362ac0981cba04">FINSH_OP_MOD_DWORD</a>&#160;&#160;&#160;0x0C</td></tr>
+<tr class="separator:acee08705a1666a1823362ac0981cba04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb98f82db8fb68348dbd29cbc8980805"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#abb98f82db8fb68348dbd29cbc8980805">FINSH_OP_MUL_BYTE</a>&#160;&#160;&#160;0x0D</td></tr>
+<tr class="separator:abb98f82db8fb68348dbd29cbc8980805"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3ab20a91e02d80f6242ebb6fd18361e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#af3ab20a91e02d80f6242ebb6fd18361e">FINSH_OP_MUL_WORD</a>&#160;&#160;&#160;0x0E</td></tr>
+<tr class="separator:af3ab20a91e02d80f6242ebb6fd18361e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad162d27b1ad9fd8d40155a12298bbd0e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#ad162d27b1ad9fd8d40155a12298bbd0e">FINSH_OP_MUL_DWORD</a>&#160;&#160;&#160;0x0F</td></tr>
+<tr class="separator:ad162d27b1ad9fd8d40155a12298bbd0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1802e4b6e5f801dcc89ba5ae9684a6a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#ae1802e4b6e5f801dcc89ba5ae9684a6a">FINSH_OP_AND_BYTE</a>&#160;&#160;&#160;0x10</td></tr>
+<tr class="separator:ae1802e4b6e5f801dcc89ba5ae9684a6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65db3411373b466124cae5697b01395e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#a65db3411373b466124cae5697b01395e">FINSH_OP_AND_WORD</a>&#160;&#160;&#160;0x11</td></tr>
+<tr class="separator:a65db3411373b466124cae5697b01395e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7a89f9a5243073e3bc08adda3c0162b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#af7a89f9a5243073e3bc08adda3c0162b">FINSH_OP_AND_DWORD</a>&#160;&#160;&#160;0x12</td></tr>
+<tr class="separator:af7a89f9a5243073e3bc08adda3c0162b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af80c2f56ab67933a2f073ea200c32e74"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#af80c2f56ab67933a2f073ea200c32e74">FINSH_OP_OR_BYTE</a>&#160;&#160;&#160;0x13</td></tr>
+<tr class="separator:af80c2f56ab67933a2f073ea200c32e74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adeaee4aa03a13e250139e9ca0e8b4459"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#adeaee4aa03a13e250139e9ca0e8b4459">FINSH_OP_OR_WORD</a>&#160;&#160;&#160;0x14</td></tr>
+<tr class="separator:adeaee4aa03a13e250139e9ca0e8b4459"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46ceb33c7da93313b18e088ae042aed8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#a46ceb33c7da93313b18e088ae042aed8">FINSH_OP_OR_DWORD</a>&#160;&#160;&#160;0x15</td></tr>
+<tr class="separator:a46ceb33c7da93313b18e088ae042aed8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a734b6f856a9bf07c915039e87d193e6a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#a734b6f856a9bf07c915039e87d193e6a">FINSH_OP_XOR_BYTE</a>&#160;&#160;&#160;0x16</td></tr>
+<tr class="separator:a734b6f856a9bf07c915039e87d193e6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7888036d9356f0021b31bc5feb2bb5b7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#a7888036d9356f0021b31bc5feb2bb5b7">FINSH_OP_XOR_WORD</a>&#160;&#160;&#160;0x17</td></tr>
+<tr class="separator:a7888036d9356f0021b31bc5feb2bb5b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07e501fa3b96ea8479836c0b1671c5f4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#a07e501fa3b96ea8479836c0b1671c5f4">FINSH_OP_XOR_DWORD</a>&#160;&#160;&#160;0x18</td></tr>
+<tr class="separator:a07e501fa3b96ea8479836c0b1671c5f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82030a66bc5cd128081913855252d520"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#a82030a66bc5cd128081913855252d520">FINSH_OP_BITWISE_BYTE</a>&#160;&#160;&#160;0x19</td></tr>
+<tr class="separator:a82030a66bc5cd128081913855252d520"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6413dfa73e3c98dc5f247633adde474f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#a6413dfa73e3c98dc5f247633adde474f">FINSH_OP_BITWISE_WORD</a>&#160;&#160;&#160;0x1A</td></tr>
+<tr class="separator:a6413dfa73e3c98dc5f247633adde474f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b6fed86cb450064924b65420550d9b1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#a8b6fed86cb450064924b65420550d9b1">FINSH_OP_BITWISE_DWORD</a>&#160;&#160;&#160;0x1B</td></tr>
+<tr class="separator:a8b6fed86cb450064924b65420550d9b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac46abf4349eb4b8770b05c5c855917c3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#ac46abf4349eb4b8770b05c5c855917c3">FINSH_OP_SHL_BYTE</a>&#160;&#160;&#160;0x1C</td></tr>
+<tr class="separator:ac46abf4349eb4b8770b05c5c855917c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8acf3b287ee19c8a1bcbdb2c512962e5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#a8acf3b287ee19c8a1bcbdb2c512962e5">FINSH_OP_SHL_WORD</a>&#160;&#160;&#160;0x1D</td></tr>
+<tr class="separator:a8acf3b287ee19c8a1bcbdb2c512962e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71cfa1151d2d5f19ca7af92d9d1b0b20"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#a71cfa1151d2d5f19ca7af92d9d1b0b20">FINSH_OP_SHL_DWORD</a>&#160;&#160;&#160;0x1E</td></tr>
+<tr class="separator:a71cfa1151d2d5f19ca7af92d9d1b0b20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d118a56cf73f18c82c41e0b58ac7cb0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#a2d118a56cf73f18c82c41e0b58ac7cb0">FINSH_OP_SHR_BYTE</a>&#160;&#160;&#160;0x1F</td></tr>
+<tr class="separator:a2d118a56cf73f18c82c41e0b58ac7cb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78c1a92a90ce4fb20ecaf30937c6ef42"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#a78c1a92a90ce4fb20ecaf30937c6ef42">FINSH_OP_SHR_WORD</a>&#160;&#160;&#160;0x20</td></tr>
+<tr class="separator:a78c1a92a90ce4fb20ecaf30937c6ef42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d0b84717780005420eb62099bba0f3a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#a0d0b84717780005420eb62099bba0f3a">FINSH_OP_SHR_DWORD</a>&#160;&#160;&#160;0x21</td></tr>
+<tr class="separator:a0d0b84717780005420eb62099bba0f3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a616af2fa7534d5f2225e3780d2925247"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#a616af2fa7534d5f2225e3780d2925247">FINSH_OP_LD_BYTE</a>&#160;&#160;&#160;0x22</td></tr>
+<tr class="separator:a616af2fa7534d5f2225e3780d2925247"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16a34993dabeebb03c4a28860ed7c3ec"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#a16a34993dabeebb03c4a28860ed7c3ec">FINSH_OP_LD_WORD</a>&#160;&#160;&#160;0x23</td></tr>
+<tr class="separator:a16a34993dabeebb03c4a28860ed7c3ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a698ce55f53bff99490517c889e2ffa0e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#a698ce55f53bff99490517c889e2ffa0e">FINSH_OP_LD_DWORD</a>&#160;&#160;&#160;0x24</td></tr>
+<tr class="separator:a698ce55f53bff99490517c889e2ffa0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fdca2a1371954d6532079dc9bf61cdb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#a8fdca2a1371954d6532079dc9bf61cdb">FINSH_OP_LD_VALUE_BYTE</a>&#160;&#160;&#160;0x25</td></tr>
+<tr class="separator:a8fdca2a1371954d6532079dc9bf61cdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae631318347cb39d63e39daf2922a0971"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#ae631318347cb39d63e39daf2922a0971">FINSH_OP_LD_VALUE_WORD</a>&#160;&#160;&#160;0x26</td></tr>
+<tr class="separator:ae631318347cb39d63e39daf2922a0971"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65ecf9c9d8c2c7d5d3173ca8b2645a38"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#a65ecf9c9d8c2c7d5d3173ca8b2645a38">FINSH_OP_LD_VALUE_DWORD</a>&#160;&#160;&#160;0x27</td></tr>
+<tr class="separator:a65ecf9c9d8c2c7d5d3173ca8b2645a38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a872c46f14bca7210125e23deadf851c2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#a872c46f14bca7210125e23deadf851c2">FINSH_OP_ST_BYTE</a>&#160;&#160;&#160;0x28</td></tr>
+<tr class="separator:a872c46f14bca7210125e23deadf851c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1c82e40fe23bde2c03268cfbe420f38"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#ae1c82e40fe23bde2c03268cfbe420f38">FINSH_OP_ST_WORD</a>&#160;&#160;&#160;0x29</td></tr>
+<tr class="separator:ae1c82e40fe23bde2c03268cfbe420f38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48b393727af3790c985a38f8051b2cc4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#a48b393727af3790c985a38f8051b2cc4">FINSH_OP_ST_DWORD</a>&#160;&#160;&#160;0x2A</td></tr>
+<tr class="separator:a48b393727af3790c985a38f8051b2cc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53190fb1ce8df18c8dacafbfc653dc5d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#a53190fb1ce8df18c8dacafbfc653dc5d">FINSH_OP_POP</a>&#160;&#160;&#160;0x2B</td></tr>
+<tr class="separator:a53190fb1ce8df18c8dacafbfc653dc5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae894d1e08379329adb9c1b5515649ee9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#ae894d1e08379329adb9c1b5515649ee9">FINSH_OP_SYSCALL</a>&#160;&#160;&#160;0x2C</td></tr>
+<tr class="separator:ae894d1e08379329adb9c1b5515649ee9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67c4ddaf0b8b89983e5cda06750cec77"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#a67c4ddaf0b8b89983e5cda06750cec77">FINSH_OP_LD_VALUE_BYTE_STACK</a>&#160;&#160;&#160;0x2D</td></tr>
+<tr class="separator:a67c4ddaf0b8b89983e5cda06750cec77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f6827bc5a110c4e9f91d58c2d5b647c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#a9f6827bc5a110c4e9f91d58c2d5b647c">FINSH_OP_LD_VALUE_WORD_STACK</a>&#160;&#160;&#160;0x2E</td></tr>
+<tr class="separator:a9f6827bc5a110c4e9f91d58c2d5b647c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac076a5143fa961934d44db2990ffb784"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#ac076a5143fa961934d44db2990ffb784">FINSH_OP_LD_VALUE_DWORD_STACK</a>&#160;&#160;&#160;0x2F</td></tr>
+<tr class="separator:ac076a5143fa961934d44db2990ffb784"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a63fe1b74928704ecd50767d4901a31"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#a0a63fe1b74928704ecd50767d4901a31">FINSH_OP_HALT</a>&#160;&#160;&#160;0xFF</td></tr>
+<tr class="separator:a0a63fe1b74928704ecd50767d4901a31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+类型定义</h2></td></tr>
+<tr class="memitem:ac9f0474dcf85d53b30fc2c35fb71a89f"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#ac9f0474dcf85d53b30fc2c35fb71a89f">op_func</a>) ()</td></tr>
+<tr class="separator:ac9f0474dcf85d53b30fc2c35fb71a89f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+变量</h2></td></tr>
+<tr class="memitem:ae0bb436e42ba8d1aad770639583fc509"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="finsh__ops_8h.html#ac9f0474dcf85d53b30fc2c35fb71a89f">op_func</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__ops_8h.html#ae0bb436e42ba8d1aad770639583fc509">op_table</a> []</td></tr>
+<tr class="separator:ae0bb436e42ba8d1aad770639583fc509"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">宏定义说明</h2>
+<a class="anchor" id="ad2fd1662f92718573216fa706a88e8de"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_NOOP&#160;&#160;&#160;0x00</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ae63ff8bc7c706707ed6a9d8a335775f6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_ADD_BYTE&#160;&#160;&#160;0x01</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="adf32f5cd331aeec9cf39cdfb49b5132a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_ADD_WORD&#160;&#160;&#160;0x02</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ada3d66894377ca218bd682bcd7cbd6dc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_ADD_DWORD&#160;&#160;&#160;0x03</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a38a9badea5455c3d7fce2d1deea30475"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_SUB_BYTE&#160;&#160;&#160;0x04</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aeac105284c8423c957b54864c2c7a337"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_SUB_WORD&#160;&#160;&#160;0x05</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a05087862b21c9614e2830d7e5aae6143"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_SUB_DWORD&#160;&#160;&#160;0x06</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a97ee0a5c29f6a4fcde25b2feac173e7d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_DIV_BYTE&#160;&#160;&#160;0x07</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aedd37899006394ecb5d991b9ef5f8e79"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_DIV_WORD&#160;&#160;&#160;0x08</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac7c8e423dd05b0e61b5c999c385610a9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_DIV_DWORD&#160;&#160;&#160;0x09</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a5b2c89d511152e3e689614626f3deb51"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_MOD_BYTE&#160;&#160;&#160;0x0A</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ab14b38baf834cd70b3e7cdf64201f80f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_MOD_WORD&#160;&#160;&#160;0x0B</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="acee08705a1666a1823362ac0981cba04"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_MOD_DWORD&#160;&#160;&#160;0x0C</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="abb98f82db8fb68348dbd29cbc8980805"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_MUL_BYTE&#160;&#160;&#160;0x0D</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="af3ab20a91e02d80f6242ebb6fd18361e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_MUL_WORD&#160;&#160;&#160;0x0E</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ad162d27b1ad9fd8d40155a12298bbd0e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_MUL_DWORD&#160;&#160;&#160;0x0F</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ae1802e4b6e5f801dcc89ba5ae9684a6a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_AND_BYTE&#160;&#160;&#160;0x10</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a65db3411373b466124cae5697b01395e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_AND_WORD&#160;&#160;&#160;0x11</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="af7a89f9a5243073e3bc08adda3c0162b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_AND_DWORD&#160;&#160;&#160;0x12</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="af80c2f56ab67933a2f073ea200c32e74"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_OR_BYTE&#160;&#160;&#160;0x13</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="adeaee4aa03a13e250139e9ca0e8b4459"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_OR_WORD&#160;&#160;&#160;0x14</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a46ceb33c7da93313b18e088ae042aed8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_OR_DWORD&#160;&#160;&#160;0x15</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a734b6f856a9bf07c915039e87d193e6a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_XOR_BYTE&#160;&#160;&#160;0x16</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a7888036d9356f0021b31bc5feb2bb5b7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_XOR_WORD&#160;&#160;&#160;0x17</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a07e501fa3b96ea8479836c0b1671c5f4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_XOR_DWORD&#160;&#160;&#160;0x18</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a82030a66bc5cd128081913855252d520"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_BITWISE_BYTE&#160;&#160;&#160;0x19</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a6413dfa73e3c98dc5f247633adde474f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_BITWISE_WORD&#160;&#160;&#160;0x1A</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a8b6fed86cb450064924b65420550d9b1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_BITWISE_DWORD&#160;&#160;&#160;0x1B</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac46abf4349eb4b8770b05c5c855917c3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_SHL_BYTE&#160;&#160;&#160;0x1C</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a8acf3b287ee19c8a1bcbdb2c512962e5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_SHL_WORD&#160;&#160;&#160;0x1D</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a71cfa1151d2d5f19ca7af92d9d1b0b20"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_SHL_DWORD&#160;&#160;&#160;0x1E</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a2d118a56cf73f18c82c41e0b58ac7cb0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_SHR_BYTE&#160;&#160;&#160;0x1F</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a78c1a92a90ce4fb20ecaf30937c6ef42"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_SHR_WORD&#160;&#160;&#160;0x20</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a0d0b84717780005420eb62099bba0f3a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_SHR_DWORD&#160;&#160;&#160;0x21</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a616af2fa7534d5f2225e3780d2925247"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_LD_BYTE&#160;&#160;&#160;0x22</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a16a34993dabeebb03c4a28860ed7c3ec"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_LD_WORD&#160;&#160;&#160;0x23</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a698ce55f53bff99490517c889e2ffa0e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_LD_DWORD&#160;&#160;&#160;0x24</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a8fdca2a1371954d6532079dc9bf61cdb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_LD_VALUE_BYTE&#160;&#160;&#160;0x25</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ae631318347cb39d63e39daf2922a0971"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_LD_VALUE_WORD&#160;&#160;&#160;0x26</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a65ecf9c9d8c2c7d5d3173ca8b2645a38"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_LD_VALUE_DWORD&#160;&#160;&#160;0x27</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a872c46f14bca7210125e23deadf851c2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_ST_BYTE&#160;&#160;&#160;0x28</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ae1c82e40fe23bde2c03268cfbe420f38"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_ST_WORD&#160;&#160;&#160;0x29</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a48b393727af3790c985a38f8051b2cc4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_ST_DWORD&#160;&#160;&#160;0x2A</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a53190fb1ce8df18c8dacafbfc653dc5d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_POP&#160;&#160;&#160;0x2B</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ae894d1e08379329adb9c1b5515649ee9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_SYSCALL&#160;&#160;&#160;0x2C</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a67c4ddaf0b8b89983e5cda06750cec77"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_LD_VALUE_BYTE_STACK&#160;&#160;&#160;0x2D</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a9f6827bc5a110c4e9f91d58c2d5b647c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_LD_VALUE_WORD_STACK&#160;&#160;&#160;0x2E</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac076a5143fa961934d44db2990ffb784"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_LD_VALUE_DWORD_STACK&#160;&#160;&#160;0x2F</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a0a63fe1b74928704ecd50767d4901a31"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_OP_HALT&#160;&#160;&#160;0xFF</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">类型定义说明</h2>
+<a class="anchor" id="ac9f0474dcf85d53b30fc2c35fb71a89f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(* op_func) ()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">变量说明</h2>
+<a class="anchor" id="ae0bb436e42ba8d1aad770639583fc509"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="finsh__ops_8h.html#ac9f0474dcf85d53b30fc2c35fb71a89f">op_func</a> op_table[]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2018年 八月 28日 星期二 20:44:38 , 为 RT-Thread RTOS使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>

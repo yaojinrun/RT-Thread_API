@@ -1,0 +1,286 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-Thread RTOS: 线程间通讯</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-Thread RTOS
+   &#160;<span id="projectnumber">3.0.3</span>
+   </div>
+   <div id="projectbrief">An open source embedded real-time operating system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.10 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#groups">模块</a> &#124;
+<a href="#nested-classes">结构体</a> &#124;
+<a href="#define-members">宏定义</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle">
+<div class="title">线程间通讯<div class="ingroups"><a class="el" href="group___kernel.html">内核</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>线程间通讯设施  
+<a href="#details">更多...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
+模块</h2></td></tr>
+<tr class="memitem:group__semaphore"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__semaphore.html">信号量</a></td></tr>
+<tr class="memdesc:group__semaphore"><td class="mdescLeft">&#160;</td><td class="mdescRight">信号量 <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__mutex"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__mutex.html">互斥量</a></td></tr>
+<tr class="memdesc:group__mutex"><td class="mdescLeft">&#160;</td><td class="mdescRight">互斥量 <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__event"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html">事件</a></td></tr>
+<tr class="memdesc:group__event"><td class="mdescLeft">&#160;</td><td class="mdescRight">事件 <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__mailbox"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__mailbox.html">邮箱</a></td></tr>
+<tr class="memdesc:group__mailbox"><td class="mdescLeft">&#160;</td><td class="mdescRight">邮箱 <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group__messagequeue"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__messagequeue.html">消息队列</a></td></tr>
+<tr class="memdesc:group__messagequeue"><td class="mdescLeft">&#160;</td><td class="mdescRight">消息队列 <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:group___signal"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___signal.html">信号</a></td></tr>
+<tr class="memdesc:group___signal"><td class="mdescLeft">&#160;</td><td class="mdescRight">信号 <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+结构体</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__ipc__object.html">rt_ipc_object</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:ga1b618f6714ea8f49a45ea4d105aaf5d5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_p_c.html#ga1b618f6714ea8f49a45ea4d105aaf5d5">RT_IPC_FLAG_FIFO</a>&#160;&#160;&#160;0x00</td></tr>
+<tr class="memdesc:ga1b618f6714ea8f49a45ea4d105aaf5d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">FIFOed IPC. <a class="el" href="group___i_p_c.html">线程间通讯</a>.  <a href="#ga1b618f6714ea8f49a45ea4d105aaf5d5">更多...</a><br /></td></tr>
+<tr class="separator:ga1b618f6714ea8f49a45ea4d105aaf5d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga296aeeb69fe2c8c5012e1059df4364a6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga296aeeb69fe2c8c5012e1059df4364a6"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_p_c.html#ga296aeeb69fe2c8c5012e1059df4364a6">RT_IPC_FLAG_PRIO</a>&#160;&#160;&#160;0x01</td></tr>
+<tr class="memdesc:ga296aeeb69fe2c8c5012e1059df4364a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">PRIOed IPC. <a class="el" href="group___i_p_c.html">线程间通讯</a>. <br /></td></tr>
+<tr class="separator:ga296aeeb69fe2c8c5012e1059df4364a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae7ea862e2d1edce01e015bdffe49d586"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gae7ea862e2d1edce01e015bdffe49d586"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_p_c.html#gae7ea862e2d1edce01e015bdffe49d586">RT_IPC_CMD_UNKNOWN</a>&#160;&#160;&#160;0x00</td></tr>
+<tr class="memdesc:gae7ea862e2d1edce01e015bdffe49d586"><td class="mdescLeft">&#160;</td><td class="mdescRight">位置的 IPC 命令 <br /></td></tr>
+<tr class="separator:gae7ea862e2d1edce01e015bdffe49d586"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga947606ce2a31a2d70e287c38a09dab3b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga947606ce2a31a2d70e287c38a09dab3b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_p_c.html#ga947606ce2a31a2d70e287c38a09dab3b">RT_IPC_CMD_RESET</a>&#160;&#160;&#160;0x01</td></tr>
+<tr class="memdesc:ga947606ce2a31a2d70e287c38a09dab3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">复位 IPC 对象命令 <br /></td></tr>
+<tr class="separator:ga947606ce2a31a2d70e287c38a09dab3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga923d8e409f9daa8843978d6805ebcdeb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga923d8e409f9daa8843978d6805ebcdeb"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_p_c.html#ga923d8e409f9daa8843978d6805ebcdeb">RT_WAITING_FOREVER</a>&#160;&#160;&#160;-1</td></tr>
+<tr class="memdesc:ga923d8e409f9daa8843978d6805ebcdeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">永远阻塞直到获得资源。 <br /></td></tr>
+<tr class="separator:ga923d8e409f9daa8843978d6805ebcdeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga78a487898fe750a9f7e9c37911fbe7cb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga78a487898fe750a9f7e9c37911fbe7cb"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_p_c.html#ga78a487898fe750a9f7e9c37911fbe7cb">RT_WAITING_NO</a>&#160;&#160;&#160;0</td></tr>
+<tr class="memdesc:ga78a487898fe750a9f7e9c37911fbe7cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">无阻塞. <br /></td></tr>
+<tr class="separator:ga78a487898fe750a9f7e9c37911fbe7cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:gacb55d0444383689161388fe89f415e92"><td class="memItemLeft" align="right" valign="top">rt_inline <a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_p_c.html#gacb55d0444383689161388fe89f415e92">rt_ipc_object_init</a> (struct <a class="el" href="structrt__ipc__object.html">rt_ipc_object</a> *ipc)</td></tr>
+<tr class="memdesc:gacb55d0444383689161388fe89f415e92"><td class="mdescLeft">&#160;</td><td class="mdescRight">IPC对象初始化  <a href="#gacb55d0444383689161388fe89f415e92">更多...</a><br /></td></tr>
+<tr class="separator:gacb55d0444383689161388fe89f415e92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga76ac02d6065733bd88ad9c225d17d7cc"><td class="memItemLeft" align="right" valign="top">rt_inline <a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_p_c.html#ga76ac02d6065733bd88ad9c225d17d7cc">rt_ipc_list_suspend</a> (<a class="el" href="group__list.html#ga8e0e590336e9435f976bf672d844547c">rt_list_t</a> *list, struct <a class="el" href="structrt__thread.html">rt_thread</a> *thread, <a class="el" href="group___basic_def.html#ga585e2ad0fbab0f83817cb61373465df6">rt_uint8_t</a> flag)</td></tr>
+<tr class="memdesc:ga76ac02d6065733bd88ad9c225d17d7cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">将线程挂起到对象链表  <a href="#ga76ac02d6065733bd88ad9c225d17d7cc">更多...</a><br /></td></tr>
+<tr class="separator:ga76ac02d6065733bd88ad9c225d17d7cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3305383c1afa8b8d6077d9a43fc05697"><td class="memItemLeft" align="right" valign="top">rt_inline <a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_p_c.html#ga3305383c1afa8b8d6077d9a43fc05697">rt_ipc_list_resume</a> (<a class="el" href="group__list.html#ga8e0e590336e9435f976bf672d844547c">rt_list_t</a> *list)</td></tr>
+<tr class="memdesc:ga3305383c1afa8b8d6077d9a43fc05697"><td class="mdescLeft">&#160;</td><td class="mdescRight">恢复IPC对象上挂起的第一个线程  <a href="#ga3305383c1afa8b8d6077d9a43fc05697">更多...</a><br /></td></tr>
+<tr class="separator:ga3305383c1afa8b8d6077d9a43fc05697"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9aff869d3f5db5c1788b45bb6feb9b4f"><td class="memItemLeft" align="right" valign="top">rt_inline <a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___i_p_c.html#ga9aff869d3f5db5c1788b45bb6feb9b4f">rt_ipc_list_resume_all</a> (<a class="el" href="group__list.html#ga8e0e590336e9435f976bf672d844547c">rt_list_t</a> *list)</td></tr>
+<tr class="memdesc:ga9aff869d3f5db5c1788b45bb6feb9b4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">恢复IPC对象上挂起的所有线程  <a href="#ga9aff869d3f5db5c1788b45bb6feb9b4f">更多...</a><br /></td></tr>
+<tr class="separator:ga9aff869d3f5db5c1788b45bb6feb9b4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<p>线程间通讯设施 </p>
+<p>RT-Thread操作系统支持传统的信号量和互斥量。</p><ul>
+<li>互斥对象使用继承的优先级来防止优先级反转。</li>
+<li>信号量释放操作对中断服务程序是安全的。</li>
+</ul>
+<p>此外，线程获取信号量或互斥锁的阻塞队列可以按优先级或FIFO排序。有两个标志来表示这种机制。</p><ul>
+<li>RT_IPC_FLAG_FIFO 当资源可用时，最先在此资源上挂起的线程将获得资源。</li>
+<li>RT_IPC_FLAG_PRIO 当资源可用时，具有最高优先级的线程将获得资源。</li>
+</ul>
+<p>RT-Thread操作系统支持事件/快速事件，邮箱和消息队列。</p><ul>
+<li>事件机制通过设置一个或多个相应标志位唤醒thead事件发生时的二进制数位。</li>
+<li>快速事件支持事件线程队列。一旦发生一位事件，可以及时得找到相应阻塞的线程，然后唤醒。</li>
+<li>在邮箱中，邮件长度固定为4字节，这比消息队列更有效。</li>
+<li>通信设备的发送动作对于中断服务程序也是安全的。 </li>
+</ul>
+<h2 class="groupheader">宏定义说明</h2>
+<a class="anchor" id="ga1b618f6714ea8f49a45ea4d105aaf5d5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RT_IPC_FLAG_FIFO&#160;&#160;&#160;0x00</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>FIFOed IPC. <a class="el" href="group___i_p_c.html">线程间通讯</a>. </p>
+<p>IPC标志和控制命令定义 </p>
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a class="anchor" id="gacb55d0444383689161388fe89f415e92"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">rt_inline <a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a> rt_ipc_object_init </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structrt__ipc__object.html">rt_ipc_object</a> *&#160;</td>
+          <td class="paramname"><em>ipc</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>IPC对象初始化 </p>
+<p>该函数将初始化一个 IPC 对象。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ipc</td><td>指定的 IPC 对象</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>the operation status, RT_EOK on successful </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga76ac02d6065733bd88ad9c225d17d7cc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">rt_inline <a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a> rt_ipc_list_suspend </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__list.html#ga8e0e590336e9435f976bf672d844547c">rt_list_t</a> *&#160;</td>
+          <td class="paramname"><em>list</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structrt__thread.html">rt_thread</a> *&#160;</td>
+          <td class="paramname"><em>thread</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group___basic_def.html#ga585e2ad0fbab0f83817cb61373465df6">rt_uint8_t</a>&#160;</td>
+          <td class="paramname"><em>flag</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>将线程挂起到对象链表 </p>
+<p>该函数将挂起一个线程到指定的链表。 IPC对象或某些双队列对象（邮箱等）包含这种链表。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">list</td><td>该IPC上挂起的线程链表 </td></tr>
+    <tr><td class="paramname">thread</td><td>要刮起的线程对象 </td></tr>
+    <tr><td class="paramname">flag</td><td>IPC对象的标志位，应为RT_IPC_FLAG_FIFO / RT_IPC_FLAG_PRIO。</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>RT_EOK </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga3305383c1afa8b8d6077d9a43fc05697"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">rt_inline <a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a> rt_ipc_list_resume </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__list.html#ga8e0e590336e9435f976bf672d844547c">rt_list_t</a> *&#160;</td>
+          <td class="paramname"><em>list</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>恢复IPC对象上挂起的第一个线程 </p>
+<p>此函数将恢复IPC对象列表中的第一个线程：</p><ul>
+<li>从IPC对象的挂起队列中删除线程</li>
+<li>将线程放入系统就绪队列</li>
+</ul>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">list</td><td>被挂起的线程链表</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>RT_EOK </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga9aff869d3f5db5c1788b45bb6feb9b4f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">rt_inline <a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a> rt_ipc_list_resume_all </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__list.html#ga8e0e590336e9435f976bf672d844547c">rt_list_t</a> *&#160;</td>
+          <td class="paramname"><em>list</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>恢复IPC对象上挂起的所有线程 </p>
+<p>此函数将恢复列表中所有挂起的线程，包括IPC对象的挂起链表和邮箱的私有链表等。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">list</td><td>将要恢复的线程链表</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>RT_EOK </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2018年 九月 21日 星期五 22:35:14 , 为 RT-Thread RTOS使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>

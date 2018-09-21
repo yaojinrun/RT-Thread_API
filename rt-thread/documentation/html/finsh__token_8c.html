@@ -1,0 +1,635 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-Thread RTOS: D:/yao/RTT/文档/stm32f429-api/rt-thread/components/finsh/finsh_token.c 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-Thread RTOS
+   &#160;<span id="projectnumber">3.0.3</span>
+   </div>
+   <div id="projectbrief">An open source embedded real-time operating system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.10 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_409f97388efe006bc3438b95e9edef48.html">components</a></li><li class="navelem"><a class="el" href="dir_86d0af1c976cb2104552e4f347bf9ac9.html">finsh</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">结构体</a> &#124;
+<a href="#define-members">宏定义</a> &#124;
+<a href="#func-members">函数</a> &#124;
+<a href="#var-members">变量</a>  </div>
+  <div class="headertitle">
+<div class="title">finsh_token.c 文件参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;<a class="el" href="components_2finsh_2finsh_8h.html">finsh.h</a>&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="finsh__token_8h.html">finsh_token.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="finsh__error_8h.html">finsh_error.h</a>&quot;</code><br />
+</div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> finsh_token.c 的引用(Include)关系图:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="finsh__token_8c__incl.png" border="0" usemap="#_d_1_2yao_2_r_t_t_2_xE6_x96_x87_xE6_xA1_xA3_2stm32f429-api_2rt-thread_2components_2finsh_2finsh__token_8c" alt=""/></div>
+<map name="_d_1_2yao_2_r_t_t_2_xE6_x96_x87_xE6_xA1_xA3_2stm32f429-api_2rt-thread_2components_2finsh_2finsh__token_8c" id="_d_1_2yao_2_r_t_t_2_xE6_x96_x87_xE6_xA1_xA3_2stm32f429-api_2rt-thread_2components_2finsh_2finsh__token_8c">
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+结构体</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structname__table.html">name_table</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:ab4ed7216c6fab82d4550d37d1d183437"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__token_8c.html#ab4ed7216c6fab82d4550d37d1d183437">is_alpha</a>(ch)    &#160;&#160;&#160;((ch | 0x20) - 'a') &lt; 26u</td></tr>
+<tr class="separator:ab4ed7216c6fab82d4550d37d1d183437"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a029f41e3a24882d3ebe36eed4ad2767a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__token_8c.html#a029f41e3a24882d3ebe36eed4ad2767a">is_digit</a>(ch)    &#160;&#160;&#160;((ch) &gt;= '0' &amp;&amp; (ch) &lt;= '9')</td></tr>
+<tr class="separator:a029f41e3a24882d3ebe36eed4ad2767a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10c60ce6b86752843678d1b86ab19136"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__token_8c.html#a10c60ce6b86752843678d1b86ab19136">is_xdigit</a>(ch)  &#160;&#160;&#160;(((ch) &gt;= '0' &amp;&amp; (ch) &lt;= '9') || (((ch | 0x20) - 'a') &lt; 6u))</td></tr>
+<tr class="separator:a10c60ce6b86752843678d1b86ab19136"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae49b9c09e0d830609c93e001bd3f8246"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__token_8c.html#ae49b9c09e0d830609c93e001bd3f8246">is_separator</a>(ch)</td></tr>
+<tr class="separator:ae49b9c09e0d830609c93e001bd3f8246"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af290e75dcd38dd9cc9fc67bc24adfb34"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__token_8c.html#af290e75dcd38dd9cc9fc67bc24adfb34">is_eof</a>(self)&#160;&#160;&#160;(self)-&gt;eof</td></tr>
+<tr class="separator:af290e75dcd38dd9cc9fc67bc24adfb34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add0b200728f8a288e880da0e177f3f9e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__token_8c.html#add0b200728f8a288e880da0e177f3f9e">BN_SIZE</a>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:add0b200728f8a288e880da0e177f3f9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:a3c6e04e55799890c6d898113c060af72"><td class="memItemLeft" align="right" valign="top">static char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__token_8c.html#a3c6e04e55799890c6d898113c060af72">token_next_char</a> (struct <a class="el" href="structfinsh__token.html">finsh_token</a> *self)</td></tr>
+<tr class="separator:a3c6e04e55799890c6d898113c060af72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5990bdd74abe8381174922e873419d56"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__token_8c.html#a5990bdd74abe8381174922e873419d56">token_prev_char</a> (struct <a class="el" href="structfinsh__token.html">finsh_token</a> *self)</td></tr>
+<tr class="separator:a5990bdd74abe8381174922e873419d56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af60f4720a93d7300d29a90689f9ef4c1"><td class="memItemLeft" align="right" valign="top">static long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__token_8c.html#af60f4720a93d7300d29a90689f9ef4c1">token_spec_number</a> (char *string, int length, int b)</td></tr>
+<tr class="separator:af60f4720a93d7300d29a90689f9ef4c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d9d84031d2e5835663a4f302ca862f1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__token_8c.html#a4d9d84031d2e5835663a4f302ca862f1">token_run</a> (struct <a class="el" href="structfinsh__token.html">finsh_token</a> *self)</td></tr>
+<tr class="separator:a4d9d84031d2e5835663a4f302ca862f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6770f909330041ef3d63e819d9949ff8"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__token_8c.html#a6770f909330041ef3d63e819d9949ff8">token_match_name</a> (struct <a class="el" href="structfinsh__token.html">finsh_token</a> *self, const char *str)</td></tr>
+<tr class="separator:a6770f909330041ef3d63e819d9949ff8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4edf14cdfe7b5d69786ccf34154f58ea"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__token_8c.html#a4edf14cdfe7b5d69786ccf34154f58ea">token_proc_number</a> (struct <a class="el" href="structfinsh__token.html">finsh_token</a> *self)</td></tr>
+<tr class="separator:a4edf14cdfe7b5d69786ccf34154f58ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5402155e013519b46961b90ce68fd8a9"><td class="memItemLeft" align="right" valign="top">static uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__token_8c.html#a5402155e013519b46961b90ce68fd8a9">token_proc_string</a> (struct <a class="el" href="structfinsh__token.html">finsh_token</a> *self)</td></tr>
+<tr class="separator:a5402155e013519b46961b90ce68fd8a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0c0cc2540f05e8c469764ce8f032b51"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__token_8c.html#ac0c0cc2540f05e8c469764ce8f032b51">token_trim_space</a> (struct <a class="el" href="structfinsh__token.html">finsh_token</a> *self)</td></tr>
+<tr class="separator:ac0c0cc2540f05e8c469764ce8f032b51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a618a7430deb5428fc59db8e340f5b9c5"><td class="memItemLeft" align="right" valign="top">static char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__token_8c.html#a618a7430deb5428fc59db8e340f5b9c5">token_proc_char</a> (struct <a class="el" href="structfinsh__token.html">finsh_token</a> *self)</td></tr>
+<tr class="separator:a618a7430deb5428fc59db8e340f5b9c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b5d613087f8c2ff88d74cc0134cc197"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__token_8c.html#a6b5d613087f8c2ff88d74cc0134cc197">token_proc_escape</a> (struct <a class="el" href="structfinsh__token.html">finsh_token</a> *self)</td></tr>
+<tr class="separator:a6b5d613087f8c2ff88d74cc0134cc197"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b30c60571707551b156206139d1ef4c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__token_8c.html#a0b30c60571707551b156206139d1ef4c">finsh_token_init</a> (struct <a class="el" href="structfinsh__token.html">finsh_token</a> *self, uint8_t *line)</td></tr>
+<tr class="separator:a0b30c60571707551b156206139d1ef4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cc3cee260ca241fa6dcc15a8986767d"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="finsh__token_8h.html#a38d3a37d2ca0a263246f56ca070341e9">finsh_token_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__token_8c.html#a9cc3cee260ca241fa6dcc15a8986767d">finsh_token_token</a> (struct <a class="el" href="structfinsh__token.html">finsh_token</a> *self)</td></tr>
+<tr class="separator:a9cc3cee260ca241fa6dcc15a8986767d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44fd521bcb495f499b82a580bbc90aa8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__token_8c.html#a44fd521bcb495f499b82a580bbc90aa8">finsh_token_get_token</a> (struct <a class="el" href="structfinsh__token.html">finsh_token</a> *self, uint8_t *token)</td></tr>
+<tr class="separator:a44fd521bcb495f499b82a580bbc90aa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a616bc267657e5fd88beec8165c330efd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__token_8c.html#a616bc267657e5fd88beec8165c330efd">token_get_string</a> (struct <a class="el" href="structfinsh__token.html">finsh_token</a> *self, uint8_t *str)</td></tr>
+<tr class="separator:a616bc267657e5fd88beec8165c330efd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+变量</h2></td></tr>
+<tr class="memitem:abb096e0f281ea4f82f665344559f6c14"><td class="memItemLeft" align="right" valign="top">static const struct <a class="el" href="structname__table.html">name_table</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__token_8c.html#abb096e0f281ea4f82f665344559f6c14">finsh_name_table</a> []</td></tr>
+<tr class="separator:abb096e0f281ea4f82f665344559f6c14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">宏定义说明</h2>
+<a class="anchor" id="ab4ed7216c6fab82d4550d37d1d183437"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define is_alpha</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ch</td><td>)</td>
+          <td>&#160;&#160;&#160;((ch | 0x20) - 'a') &lt; 26u</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a029f41e3a24882d3ebe36eed4ad2767a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define is_digit</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ch</td><td>)</td>
+          <td>&#160;&#160;&#160;((ch) &gt;= '0' &amp;&amp; (ch) &lt;= '9')</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a10c60ce6b86752843678d1b86ab19136"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define is_xdigit</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ch</td><td>)</td>
+          <td>&#160;&#160;&#160;(((ch) &gt;= '0' &amp;&amp; (ch) &lt;= '9') || (((ch | 0x20) - 'a') &lt; 6u))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ae49b9c09e0d830609c93e001bd3f8246"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define is_separator</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ch</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">!(((ch) &gt;= <span class="charliteral">&#39;a&#39;</span> &amp;&amp; (ch) &lt;= <span class="charliteral">&#39;z&#39;</span>) \</div>
+<div class="line">     || ((ch) &gt;= <span class="charliteral">&#39;A&#39;</span> &amp;&amp; (ch) &lt;= <span class="charliteral">&#39;Z&#39;</span>) || ((ch) &gt;= <span class="charliteral">&#39;0&#39;</span> &amp;&amp; (ch) &lt;= <span class="charliteral">&#39;9&#39;</span>) || ((ch) == <span class="charliteral">&#39;_&#39;</span>))</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="af290e75dcd38dd9cc9fc67bc24adfb34"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define is_eof</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">self</td><td>)</td>
+          <td>&#160;&#160;&#160;(self)-&gt;eof</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="add0b200728f8a288e880da0e177f3f9e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BN_SIZE&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a class="anchor" id="a3c6e04e55799890c6d898113c060af72"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static char token_next_char </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__token.html">finsh_token</a> *&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a5990bdd74abe8381174922e873419d56"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void token_prev_char </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__token.html">finsh_token</a> *&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="af60f4720a93d7300d29a90689f9ef4c1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static long token_spec_number </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>string</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a4d9d84031d2e5835663a4f302ca862f1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void token_run </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__token.html">finsh_token</a> *&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a6770f909330041ef3d63e819d9949ff8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int token_match_name </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__token.html">finsh_token</a> *&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>str</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a4edf14cdfe7b5d69786ccf34154f58ea"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void token_proc_number </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__token.html">finsh_token</a> *&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a5402155e013519b46961b90ce68fd8a9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static uint8_t * token_proc_string </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__token.html">finsh_token</a> *&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac0c0cc2540f05e8c469764ce8f032b51"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void token_trim_space </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__token.html">finsh_token</a> *&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a618a7430deb5428fc59db8e340f5b9c5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static char token_proc_char </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__token.html">finsh_token</a> *&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a6b5d613087f8c2ff88d74cc0134cc197"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int token_proc_escape </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__token.html">finsh_token</a> *&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a0b30c60571707551b156206139d1ef4c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void finsh_token_init </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__token.html">finsh_token</a> *&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>line</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a9cc3cee260ca241fa6dcc15a8986767d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="finsh__token_8h.html#a38d3a37d2ca0a263246f56ca070341e9">finsh_token_type</a> finsh_token_token </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__token.html">finsh_token</a> *&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a44fd521bcb495f499b82a580bbc90aa8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void finsh_token_get_token </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__token.html">finsh_token</a> *&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>token</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a616bc267657e5fd88beec8165c330efd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int token_get_string </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__token.html">finsh_token</a> *&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>str</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">变量说明</h2>
+<a class="anchor" id="abb096e0f281ea4f82f665344559f6c14"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const struct <a class="el" href="structname__table.html">name_table</a> finsh_name_table[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>初始值:</b><div class="fragment"><div class="line">=</div>
+<div class="line">{</div>
+<div class="line">    {<span class="stringliteral">&quot;void&quot;</span>,        <a class="code" href="finsh__token_8h.html#a38d3a37d2ca0a263246f56ca070341e9aae639f06b528355d7c1b9b832c0909c0">finsh_token_type_void</a>},</div>
+<div class="line">    {<span class="stringliteral">&quot;char&quot;</span>,        <a class="code" href="finsh__token_8h.html#a38d3a37d2ca0a263246f56ca070341e9aff92c55ba8cc8edfeeedf601f87e9297">finsh_token_type_char</a>},</div>
+<div class="line">    {<span class="stringliteral">&quot;short&quot;</span>,       <a class="code" href="finsh__token_8h.html#a38d3a37d2ca0a263246f56ca070341e9a1c1259d1396382643236e046c7c19361">finsh_token_type_short</a>},</div>
+<div class="line">    {<span class="stringliteral">&quot;int&quot;</span>,         <a class="code" href="finsh__token_8h.html#a38d3a37d2ca0a263246f56ca070341e9a7d99fccc7e82dd22683c4c86092a07ea">finsh_token_type_int</a>},</div>
+<div class="line">    {<span class="stringliteral">&quot;long&quot;</span>,        <a class="code" href="finsh__token_8h.html#a38d3a37d2ca0a263246f56ca070341e9a1c197b727cabf1215d622f9fc5aed295">finsh_token_type_long</a>},</div>
+<div class="line">    {<span class="stringliteral">&quot;unsigned&quot;</span>,    <a class="code" href="finsh__token_8h.html#a38d3a37d2ca0a263246f56ca070341e9a70d2c09c2794a438c86155d02878fb80">finsh_token_type_unsigned</a>},</div>
+<div class="line"></div>
+<div class="line">    {<span class="stringliteral">&quot;NULL&quot;</span>,        <a class="code" href="finsh__token_8h.html#a38d3a37d2ca0a263246f56ca070341e9a347313c640238969f9b2ee59c6936f6d">finsh_token_type_value_null</a>},</div>
+<div class="line">    {<span class="stringliteral">&quot;null&quot;</span>,        <a class="code" href="finsh__token_8h.html#a38d3a37d2ca0a263246f56ca070341e9a347313c640238969f9b2ee59c6936f6d">finsh_token_type_value_null</a>}</div>
+<div class="line">}</div>
+<div class="ttc" id="finsh__token_8h_html_a38d3a37d2ca0a263246f56ca070341e9aae639f06b528355d7c1b9b832c0909c0"><div class="ttname"><a href="finsh__token_8h.html#a38d3a37d2ca0a263246f56ca070341e9aae639f06b528355d7c1b9b832c0909c0">finsh_token_type_void</a></div><div class="ttdef"><b>Definition:</b> finsh_token.h:56</div></div>
+<div class="ttc" id="finsh__token_8h_html_a38d3a37d2ca0a263246f56ca070341e9a1c1259d1396382643236e046c7c19361"><div class="ttname"><a href="finsh__token_8h.html#a38d3a37d2ca0a263246f56ca070341e9a1c1259d1396382643236e046c7c19361">finsh_token_type_short</a></div><div class="ttdef"><b>Definition:</b> finsh_token.h:58</div></div>
+<div class="ttc" id="finsh__token_8h_html_a38d3a37d2ca0a263246f56ca070341e9aff92c55ba8cc8edfeeedf601f87e9297"><div class="ttname"><a href="finsh__token_8h.html#a38d3a37d2ca0a263246f56ca070341e9aff92c55ba8cc8edfeeedf601f87e9297">finsh_token_type_char</a></div><div class="ttdef"><b>Definition:</b> finsh_token.h:57</div></div>
+<div class="ttc" id="finsh__token_8h_html_a38d3a37d2ca0a263246f56ca070341e9a1c197b727cabf1215d622f9fc5aed295"><div class="ttname"><a href="finsh__token_8h.html#a38d3a37d2ca0a263246f56ca070341e9a1c197b727cabf1215d622f9fc5aed295">finsh_token_type_long</a></div><div class="ttdef"><b>Definition:</b> finsh_token.h:60</div></div>
+<div class="ttc" id="finsh__token_8h_html_a38d3a37d2ca0a263246f56ca070341e9a70d2c09c2794a438c86155d02878fb80"><div class="ttname"><a href="finsh__token_8h.html#a38d3a37d2ca0a263246f56ca070341e9a70d2c09c2794a438c86155d02878fb80">finsh_token_type_unsigned</a></div><div class="ttdef"><b>Definition:</b> finsh_token.h:61</div></div>
+<div class="ttc" id="finsh__token_8h_html_a38d3a37d2ca0a263246f56ca070341e9a7d99fccc7e82dd22683c4c86092a07ea"><div class="ttname"><a href="finsh__token_8h.html#a38d3a37d2ca0a263246f56ca070341e9a7d99fccc7e82dd22683c4c86092a07ea">finsh_token_type_int</a></div><div class="ttdef"><b>Definition:</b> finsh_token.h:59</div></div>
+<div class="ttc" id="finsh__token_8h_html_a38d3a37d2ca0a263246f56ca070341e9a347313c640238969f9b2ee59c6936f6d"><div class="ttname"><a href="finsh__token_8h.html#a38d3a37d2ca0a263246f56ca070341e9a347313c640238969f9b2ee59c6936f6d">finsh_token_type_value_null</a></div><div class="ttdef"><b>Definition:</b> finsh_token.h:67</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2018年 八月 28日 星期二 20:44:38 , 为 RT-Thread RTOS使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>

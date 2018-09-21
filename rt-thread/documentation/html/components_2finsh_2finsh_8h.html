@@ -1,0 +1,788 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-Thread RTOS: D:/yao/RTT/文档/stm32f429-api/rt-thread/components/finsh/finsh.h 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-Thread RTOS
+   &#160;<span id="projectnumber">3.0.3</span>
+   </div>
+   <div id="projectbrief">An open source embedded real-time operating system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.10 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_409f97388efe006bc3438b95e9edef48.html">components</a></li><li class="navelem"><a class="el" href="dir_86d0af1c976cb2104552e4f347bf9ac9.html">finsh</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">结构体</a> &#124;
+<a href="#define-members">宏定义</a> &#124;
+<a href="#enum-members">枚举</a> &#124;
+<a href="#func-members">函数</a> &#124;
+<a href="#var-members">变量</a>  </div>
+  <div class="headertitle">
+<div class="title">finsh.h 文件参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;<a class="el" href="rtthread_8h.html">rtthread.h</a>&gt;</code><br />
+<code>#include &quot;<a class="el" href="finsh__api_8h.html">finsh_api.h</a>&quot;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;ctype.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+</div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> finsh.h 的引用(Include)关系图:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="components_2finsh_2finsh_8h__incl.png" border="0" usemap="#_d_1_2yao_2_r_t_t_2_xE6_x96_x87_xE6_xA1_xA3_2stm32f429-api_2rt-thread_2components_2finsh_2finsh_8h" alt=""/></div>
+<map name="_d_1_2yao_2_r_t_t_2_xE6_x96_x87_xE6_xA1_xA3_2stm32f429-api_2rt-thread_2components_2finsh_2finsh_8h" id="_d_1_2yao_2_r_t_t_2_xE6_x96_x87_xE6_xA1_xA3_2stm32f429-api_2rt-thread_2components_2finsh_2finsh_8h">
+</map>
+</div>
+</div><div class="textblock"><div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> 此图展示该文件直接或间接的被哪些文件引用了:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="components_2finsh_2finsh_8h__dep__incl.png" border="0" usemap="#_d_1_2yao_2_r_t_t_2_xE6_x96_x87_xE6_xA1_xA3_2stm32f429-api_2rt-thread_2components_2finsh_2finsh_8hdep" alt=""/></div>
+<map name="_d_1_2yao_2_r_t_t_2_xE6_x96_x87_xE6_xA1_xA3_2stm32f429-api_2rt-thread_2components_2finsh_2finsh_8hdep" id="_d_1_2yao_2_r_t_t_2_xE6_x96_x87_xE6_xA1_xA3_2stm32f429-api_2rt-thread_2components_2finsh_2finsh_8hdep">
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+结构体</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfinsh__syscall__item.html">finsh_syscall_item</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfinsh__sysvar.html">finsh_sysvar</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfinsh__sysvar__item.html">finsh_sysvar_item</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfinsh__token.html">finsh_token</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfinsh__node.html">finsh_node</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfinsh__parser.html">finsh_parser</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:a1cb98b3f3ca0e6f24ba3dd319ac45165"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="components_2finsh_2finsh_8h.html#a1cb98b3f3ca0e6f24ba3dd319ac45165">FINSH_NAME_MAX</a>&#160;&#160;&#160;16      /* max length of identifier */</td></tr>
+<tr class="separator:a1cb98b3f3ca0e6f24ba3dd319ac45165"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5026b20d69cd643d2431322a0e43c4b5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="components_2finsh_2finsh_8h.html#a5026b20d69cd643d2431322a0e43c4b5">FINSH_NODE_MAX</a>&#160;&#160;&#160;16      /* max number of node */</td></tr>
+<tr class="separator:a5026b20d69cd643d2431322a0e43c4b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7b4cebc7b793979165398823ad1001b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="components_2finsh_2finsh_8h.html#ac7b4cebc7b793979165398823ad1001b">FINSH_HEAP_MAX</a>&#160;&#160;&#160;128     /* max length of heap */</td></tr>
+<tr class="separator:ac7b4cebc7b793979165398823ad1001b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa828d6ec6744b4557f0b55056a1a77fb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="components_2finsh_2finsh_8h.html#aa828d6ec6744b4557f0b55056a1a77fb">FINSH_STRING_MAX</a>&#160;&#160;&#160;128     /* max length of string */</td></tr>
+<tr class="separator:aa828d6ec6744b4557f0b55056a1a77fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb30cb13f2951a4cc8689e8a7b65ec44"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="components_2finsh_2finsh_8h.html#adb30cb13f2951a4cc8689e8a7b65ec44">FINSH_VARIABLE_MAX</a>&#160;&#160;&#160;8       /* max number of variable */</td></tr>
+<tr class="separator:adb30cb13f2951a4cc8689e8a7b65ec44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1a10aef4b86d71d89eb747ffc6e831f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="components_2finsh_2finsh_8h.html#aa1a10aef4b86d71d89eb747ffc6e831f">FINSH_STACK_MAX</a>&#160;&#160;&#160;64      /* max stack size */</td></tr>
+<tr class="separator:aa1a10aef4b86d71d89eb747ffc6e831f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b9ae49943f2a077bf1899331eaa4ebe"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="components_2finsh_2finsh_8h.html#a4b9ae49943f2a077bf1899331eaa4ebe">FINSH_TEXT_MAX</a>&#160;&#160;&#160;128     /* max text segment size */</td></tr>
+<tr class="separator:a4b9ae49943f2a077bf1899331eaa4ebe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afeca6ed2b9de0914399e4630ef58d059"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="components_2finsh_2finsh_8h.html#afeca6ed2b9de0914399e4630ef58d059">HEAP_ALIGNMENT</a>&#160;&#160;&#160;4       /* heap alignment */</td></tr>
+<tr class="separator:afeca6ed2b9de0914399e4630ef58d059"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace46ec173b17ea2814ed58f501e66d18"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="components_2finsh_2finsh_8h.html#ace46ec173b17ea2814ed58f501e66d18">FINSH_GET16</a>(x)    &#160;&#160;&#160;(*(x)) | (*((x)+1) &lt;&lt; 8)</td></tr>
+<tr class="separator:ace46ec173b17ea2814ed58f501e66d18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7816416206ad8ddb134be7827af6dac2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="components_2finsh_2finsh_8h.html#a7816416206ad8ddb134be7827af6dac2">FINSH_GET32</a>(x)    </td></tr>
+<tr class="separator:a7816416206ad8ddb134be7827af6dac2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ca0b75f4556bde221d3841f62a5ab8f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="components_2finsh_2finsh_8h.html#a4ca0b75f4556bde221d3841f62a5ab8f">FINSH_SET16</a>(x,  v)                  </td></tr>
+<tr class="separator:a4ca0b75f4556bde221d3841f62a5ab8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab31728854c677ef7989946437e58e343"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="components_2finsh_2finsh_8h.html#ab31728854c677ef7989946437e58e343">FINSH_SET32</a>(x,  v)                                                                          </td></tr>
+<tr class="separator:ab31728854c677ef7989946437e58e343"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2aecc2db1150988b6d46cb33bf69d3df"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="components_2finsh_2finsh_8h.html#a2aecc2db1150988b6d46cb33bf69d3df">FINSH_VERSION_MAJOR</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a2aecc2db1150988b6d46cb33bf69d3df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22d7066019570dee7cf7211676597dd9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="components_2finsh_2finsh_8h.html#a22d7066019570dee7cf7211676597dd9">FINSH_VERSION_MINOR</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a22d7066019570dee7cf7211676597dd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3488e933d5632544dc9a916134245af7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__finsh.html#ga3488e933d5632544dc9a916134245af7">FINSH_ERROR_OK</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:ga3488e933d5632544dc9a916134245af7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga64923347c4fc23842edd636c26d795a6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__finsh.html#ga64923347c4fc23842edd636c26d795a6">FINSH_ERROR_INVALID_TOKEN</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:ga64923347c4fc23842edd636c26d795a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1770f167ef1582ac09b41d3bed3ad3f3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__finsh.html#ga1770f167ef1582ac09b41d3bed3ad3f3">FINSH_ERROR_EXPECT_TYPE</a>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:ga1770f167ef1582ac09b41d3bed3ad3f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac2ddf9ed1d596afb60c2d076dfdb2818"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__finsh.html#gac2ddf9ed1d596afb60c2d076dfdb2818">FINSH_ERROR_UNKNOWN_TYPE</a>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:gac2ddf9ed1d596afb60c2d076dfdb2818"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa4e83b37a8c73e8cfd10c763444aa7ce"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__finsh.html#gaa4e83b37a8c73e8cfd10c763444aa7ce">FINSH_ERROR_VARIABLE_EXIST</a>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:gaa4e83b37a8c73e8cfd10c763444aa7ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa2b4532fe15f9800b96741a9060795f7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__finsh.html#gaa2b4532fe15f9800b96741a9060795f7">FINSH_ERROR_EXPECT_OPERATOR</a>&#160;&#160;&#160;5</td></tr>
+<tr class="separator:gaa2b4532fe15f9800b96741a9060795f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaff9a0273efba0367039731941b1deef7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__finsh.html#gaff9a0273efba0367039731941b1deef7">FINSH_ERROR_MEMORY_FULL</a>&#160;&#160;&#160;6</td></tr>
+<tr class="separator:gaff9a0273efba0367039731941b1deef7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaba62469aa55c69494a5b6773de671ad"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__finsh.html#gaaba62469aa55c69494a5b6773de671ad">FINSH_ERROR_UNKNOWN_OP</a>&#160;&#160;&#160;7</td></tr>
+<tr class="separator:gaaba62469aa55c69494a5b6773de671ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga76ab95077f21b51fc82c736617c0ba4a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__finsh.html#ga76ab95077f21b51fc82c736617c0ba4a">FINSH_ERROR_UNKNOWN_NODE</a>&#160;&#160;&#160;8</td></tr>
+<tr class="separator:ga76ab95077f21b51fc82c736617c0ba4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac4c47cabbf68dbdf3c17cd8e8a715b5e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__finsh.html#gac4c47cabbf68dbdf3c17cd8e8a715b5e">FINSH_ERROR_EXPECT_CHAR</a>&#160;&#160;&#160;9</td></tr>
+<tr class="separator:gac4c47cabbf68dbdf3c17cd8e8a715b5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga859aef184195257c8577972e0fe20222"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__finsh.html#ga859aef184195257c8577972e0fe20222">FINSH_ERROR_UNEXPECT_END</a>&#160;&#160;&#160;10</td></tr>
+<tr class="separator:ga859aef184195257c8577972e0fe20222"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae6f47a9204cfea6348f2df1de0c29383"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__finsh.html#gae6f47a9204cfea6348f2df1de0c29383">FINSH_ERROR_UNKNOWN_TOKEN</a>&#160;&#160;&#160;11</td></tr>
+<tr class="separator:gae6f47a9204cfea6348f2df1de0c29383"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga52a3188969ee71847bddf52ad1e714bf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__finsh.html#ga52a3188969ee71847bddf52ad1e714bf">FINSH_ERROR_NO_FLOAT</a>&#160;&#160;&#160;12</td></tr>
+<tr class="separator:ga52a3188969ee71847bddf52ad1e714bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf19f58eb853fac234bef69752cf791bb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__finsh.html#gaf19f58eb853fac234bef69752cf791bb">FINSH_ERROR_UNKNOWN_SYMBOL</a>&#160;&#160;&#160;13</td></tr>
+<tr class="separator:gaf19f58eb853fac234bef69752cf791bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2f3c0f6a80e2bb99784f136510913c00"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__finsh.html#ga2f3c0f6a80e2bb99784f136510913c00">FINSH_ERROR_NULL_NODE</a>&#160;&#160;&#160;14</td></tr>
+<tr class="separator:ga2f3c0f6a80e2bb99784f136510913c00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65b22ccf9abeba1bc5471342556f5164"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="components_2finsh_2finsh_8h.html#a65b22ccf9abeba1bc5471342556f5164">FINSH_NEXT_SYSCALL</a>(index)&#160;&#160;&#160;index++</td></tr>
+<tr class="separator:a65b22ccf9abeba1bc5471342556f5164"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af52d77ec519e1f6c0081944c755547b4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="components_2finsh_2finsh_8h.html#af52d77ec519e1f6c0081944c755547b4">FINSH_NEXT_SYSVAR</a>(index)  &#160;&#160;&#160;index++</td></tr>
+<tr class="separator:af52d77ec519e1f6c0081944c755547b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adaaa5750c4072a486c25e27464622648"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="components_2finsh_2finsh_8h.html#adaaa5750c4072a486c25e27464622648">FINSH_IDTYPE_VAR</a>&#160;&#160;&#160;0x01</td></tr>
+<tr class="separator:adaaa5750c4072a486c25e27464622648"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc91a3597ab50adeb01034a051b56ef1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="components_2finsh_2finsh_8h.html#abc91a3597ab50adeb01034a051b56ef1">FINSH_IDTYPE_SYSVAR</a>&#160;&#160;&#160;0x02</td></tr>
+<tr class="separator:abc91a3597ab50adeb01034a051b56ef1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43aee78ca18df5a2567d14eda3713790"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="components_2finsh_2finsh_8h.html#a43aee78ca18df5a2567d14eda3713790">FINSH_IDTYPE_SYSCALL</a>&#160;&#160;&#160;0x04</td></tr>
+<tr class="separator:a43aee78ca18df5a2567d14eda3713790"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a1389ff1cb411d038ec5d7896c67a02"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="components_2finsh_2finsh_8h.html#a0a1389ff1cb411d038ec5d7896c67a02">FINSH_IDTYPE_ADDRESS</a>&#160;&#160;&#160;0x08</td></tr>
+<tr class="separator:a0a1389ff1cb411d038ec5d7896c67a02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+枚举</h2></td></tr>
+<tr class="memitem:gaed99f2320eea22a0d941d4095e47fdb9"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__finsh.html#gaed99f2320eea22a0d941d4095e47fdb9">finsh_type</a> { <br />
+&#160;&#160;<a class="el" href="group__finsh.html#ggaed99f2320eea22a0d941d4095e47fdb9ade53b28d63e2eb8bf9db1c8c208064bb">finsh_type_unknown</a> = 0, 
+<a class="el" href="group__finsh.html#ggaed99f2320eea22a0d941d4095e47fdb9a8cd81668f94571c0b51d610e1b50938e">finsh_type_void</a>, 
+<a class="el" href="group__finsh.html#ggaed99f2320eea22a0d941d4095e47fdb9a6c6173f41a66c885762085a7565b5782">finsh_type_voidp</a>, 
+<a class="el" href="group__finsh.html#ggaed99f2320eea22a0d941d4095e47fdb9af9321e231cdf1308dc93f8fcc74cbb47">finsh_type_char</a>, 
+<br />
+&#160;&#160;<a class="el" href="group__finsh.html#ggaed99f2320eea22a0d941d4095e47fdb9acc8233eadd3a86c9445b6f9ef1eb2409">finsh_type_uchar</a>, 
+<a class="el" href="group__finsh.html#ggaed99f2320eea22a0d941d4095e47fdb9ad1c003eaf6ae93c7b6822e9645ea64be">finsh_type_charp</a>, 
+<a class="el" href="group__finsh.html#ggaed99f2320eea22a0d941d4095e47fdb9a2e6dab856b6a2c434b0067505e89ffc8">finsh_type_short</a>, 
+<a class="el" href="group__finsh.html#ggaed99f2320eea22a0d941d4095e47fdb9ad1d657ad220b7809bc1d3f84b49ba308">finsh_type_ushort</a>, 
+<br />
+&#160;&#160;<a class="el" href="group__finsh.html#ggaed99f2320eea22a0d941d4095e47fdb9a2d6a3286098af4a96d29fded58d9c810">finsh_type_shortp</a>, 
+<a class="el" href="group__finsh.html#ggaed99f2320eea22a0d941d4095e47fdb9aee5c9a462a5a9affc69d8e7bca870251">finsh_type_int</a>, 
+<a class="el" href="group__finsh.html#ggaed99f2320eea22a0d941d4095e47fdb9abf1c00b19b36e41e1c4d1d7a374e59ae">finsh_type_uint</a>, 
+<a class="el" href="group__finsh.html#ggaed99f2320eea22a0d941d4095e47fdb9a95683e05fd61b3865f160bf59fdd1119">finsh_type_intp</a>, 
+<br />
+&#160;&#160;<a class="el" href="group__finsh.html#ggaed99f2320eea22a0d941d4095e47fdb9a6920dac1e59612b6d0b4d47268459396">finsh_type_long</a>, 
+<a class="el" href="group__finsh.html#ggaed99f2320eea22a0d941d4095e47fdb9a06b40671f2e419fc42f5811f5d60d484">finsh_type_ulong</a>, 
+<a class="el" href="group__finsh.html#ggaed99f2320eea22a0d941d4095e47fdb9a3d1432a03da2b3976cd7cdb38a8f35bf">finsh_type_longp</a>
+<br />
+ }<tr class="separator:gaed99f2320eea22a0d941d4095e47fdb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:ac7586e133c1b004fd035de4c9698afb4"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structfinsh__sysvar.html">finsh_sysvar</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="components_2finsh_2finsh_8h.html#ac7586e133c1b004fd035de4c9698afb4">finsh_sysvar_lookup</a> (const char *name)</td></tr>
+<tr class="separator:ac7586e133c1b004fd035de4c9698afb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa8ea6f7a12576d9c796bbcf8760ed2b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="components_2finsh_2finsh_8h.html#afa8ea6f7a12576d9c796bbcf8760ed2b">finsh_init</a> (struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *parser)</td></tr>
+<tr class="separator:afa8ea6f7a12576d9c796bbcf8760ed2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46c3c17be5e44b73752277f29b49bb79"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="components_2finsh_2finsh_8h.html#a46c3c17be5e44b73752277f29b49bb79">finsh_flush</a> (struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *parser)</td></tr>
+<tr class="separator:a46c3c17be5e44b73752277f29b49bb79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07148c60920bccb1f59f2b425ed71b24"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="components_2finsh_2finsh_8h.html#a07148c60920bccb1f59f2b425ed71b24">finsh_reset</a> (struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *parser)</td></tr>
+<tr class="separator:a07148c60920bccb1f59f2b425ed71b24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4ca70de04431b9f767dff9f2ba7dcc8b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__finsh.html#ga4ca70de04431b9f767dff9f2ba7dcc8b">finsh_set_device</a> (const char *device_name)</td></tr>
+<tr class="separator:ga4ca70de04431b9f767dff9f2ba7dcc8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2f546382fa5bf0aed5fc6f298810eec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="components_2finsh_2finsh_8h.html#aa2f546382fa5bf0aed5fc6f298810eec">finsh_parser_run</a> (struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *parser, const unsigned char *string)</td></tr>
+<tr class="separator:aa2f546382fa5bf0aed5fc6f298810eec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26fbb5c1cd507b3afd7501e64920f110"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="components_2finsh_2finsh_8h.html#a26fbb5c1cd507b3afd7501e64920f110">finsh_compiler_run</a> (struct <a class="el" href="structfinsh__node.html">finsh_node</a> *node)</td></tr>
+<tr class="separator:a26fbb5c1cd507b3afd7501e64920f110"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16ad826396342b4e027b13d1aac8cb54"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="components_2finsh_2finsh_8h.html#a16ad826396342b4e027b13d1aac8cb54">finsh_vm_run</a> (void)</td></tr>
+<tr class="separator:a16ad826396342b4e027b13d1aac8cb54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8190022332ed7a08f3e4d7b56ea283b4"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structfinsh__var.html">finsh_var</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="components_2finsh_2finsh_8h.html#a8190022332ed7a08f3e4d7b56ea283b4">finsh_var_lookup</a> (const char *name)</td></tr>
+<tr class="separator:a8190022332ed7a08f3e4d7b56ea283b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94e2ae18ec979c38f93c2326cce7bc02"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="components_2finsh_2finsh_8h.html#a94e2ae18ec979c38f93c2326cce7bc02">finsh_stack_bottom</a> (void)</td></tr>
+<tr class="separator:a94e2ae18ec979c38f93c2326cce7bc02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acad6a8bcdaae257198b5865e9ad72fb9"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="components_2finsh_2finsh_8h.html#acad6a8bcdaae257198b5865e9ad72fb9">finsh_errno</a> (void)</td></tr>
+<tr class="separator:acad6a8bcdaae257198b5865e9ad72fb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bf28629119545d1789c69d5c6842621"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="components_2finsh_2finsh_8h.html#a9bf28629119545d1789c69d5c6842621">finsh_error_string</a> (uint8_t type)</td></tr>
+<tr class="separator:a9bf28629119545d1789c69d5c6842621"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa7c21ba556e9a84a8cc3a9c18ebeae07"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__finsh.html#gaa7c21ba556e9a84a8cc3a9c18ebeae07">finsh_syscall_append</a> (const char *name, <a class="el" href="finsh__api_8h.html#a02a90a13808c3728ae2627069a256de8">syscall_func</a> func)</td></tr>
+<tr class="separator:gaa7c21ba556e9a84a8cc3a9c18ebeae07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1bb54da71f4acb94c086f8c2d5376fa1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__finsh.html#ga1bb54da71f4acb94c086f8c2d5376fa1">finsh_sysvar_append</a> (const char *name, uint8_t type, void *addr)</td></tr>
+<tr class="separator:ga1bb54da71f4acb94c086f8c2d5376fa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+变量</h2></td></tr>
+<tr class="memitem:a75fba8f6e2aa7636a4ae2259ef968a7c"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structfinsh__syscall__item.html">finsh_syscall_item</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="components_2finsh_2finsh_8h.html#a75fba8f6e2aa7636a4ae2259ef968a7c">global_syscall_list</a></td></tr>
+<tr class="separator:a75fba8f6e2aa7636a4ae2259ef968a7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac86b4bb151fca0132adcb1bf29c60ba3"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structfinsh__sysvar.html">finsh_sysvar</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="components_2finsh_2finsh_8h.html#ac86b4bb151fca0132adcb1bf29c60ba3">_sysvar_table_begin</a></td></tr>
+<tr class="separator:ac86b4bb151fca0132adcb1bf29c60ba3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4e14ab58c69e7553d935a6a8c9d42f4"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structfinsh__sysvar.html">finsh_sysvar</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="components_2finsh_2finsh_8h.html#ab4e14ab58c69e7553d935a6a8c9d42f4">_sysvar_table_end</a></td></tr>
+<tr class="separator:ab4e14ab58c69e7553d935a6a8c9d42f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5272e426c24730c27a40bbc8a133112"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structfinsh__sysvar__item.html">finsh_sysvar_item</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="components_2finsh_2finsh_8h.html#ac5272e426c24730c27a40bbc8a133112">global_sysvar_list</a></td></tr>
+<tr class="separator:ac5272e426c24730c27a40bbc8a133112"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">宏定义说明</h2>
+<a class="anchor" id="a1cb98b3f3ca0e6f24ba3dd319ac45165"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_NAME_MAX&#160;&#160;&#160;16      /* max length of identifier */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a5026b20d69cd643d2431322a0e43c4b5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_NODE_MAX&#160;&#160;&#160;16      /* max number of node */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac7b4cebc7b793979165398823ad1001b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_HEAP_MAX&#160;&#160;&#160;128     /* max length of heap */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aa828d6ec6744b4557f0b55056a1a77fb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_STRING_MAX&#160;&#160;&#160;128     /* max length of string */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="adb30cb13f2951a4cc8689e8a7b65ec44"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_VARIABLE_MAX&#160;&#160;&#160;8       /* max number of variable */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aa1a10aef4b86d71d89eb747ffc6e831f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_STACK_MAX&#160;&#160;&#160;64      /* max stack size */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a4b9ae49943f2a077bf1899331eaa4ebe"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_TEXT_MAX&#160;&#160;&#160;128     /* max text segment size */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="afeca6ed2b9de0914399e4630ef58d059"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HEAP_ALIGNMENT&#160;&#160;&#160;4       /* heap alignment */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ace46ec173b17ea2814ed58f501e66d18"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_GET16</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x</td><td>)</td>
+          <td>&#160;&#160;&#160;(*(x)) | (*((x)+1) &lt;&lt; 8)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a7816416206ad8ddb134be7827af6dac2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_GET32</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">(<a class="code" href="group___basic_def.html#ga909edcac80e5e3f93f63fcebc95922c7">rt_uint32_t</a>)(*(x)) | ((<a class="code" href="group___basic_def.html#ga909edcac80e5e3f93f63fcebc95922c7">rt_uint32_t</a>)*((x)+1) &lt;&lt; 8) | \</div>
+<div class="line">    ((<a class="code" href="group___basic_def.html#ga909edcac80e5e3f93f63fcebc95922c7">rt_uint32_t</a>)*((x)+2) &lt;&lt; 16) | ((<a class="code" href="group___basic_def.html#ga909edcac80e5e3f93f63fcebc95922c7">rt_uint32_t</a>)*((x)+3) &lt;&lt; 24)</div>
+<div class="ttc" id="group___basic_def_html_ga909edcac80e5e3f93f63fcebc95922c7"><div class="ttname"><a href="group___basic_def.html#ga909edcac80e5e3f93f63fcebc95922c7">rt_uint32_t</a></div><div class="ttdeci">unsigned long rt_uint32_t</div><div class="ttdef"><b>Definition:</b> rtdef.h:72</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a4ca0b75f4556bde221d3841f62a5ab8f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_SET16</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">v&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span>                              \</div>
+<div class="line">    {                               \</div>
+<div class="line">        *(x)     = (v) &amp; 0x00ff;    \</div>
+<div class="line">        (*((x)+1)) = (v) &gt;&gt; 8;      \</div>
+<div class="line">    } <span class="keywordflow">while</span> ( 0 )</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="ab31728854c677ef7989946437e58e343"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_SET32</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">x, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">v&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line"><span class="keywordflow">do</span>                                                          \</div>
+<div class="line">    {                                                           \</div>
+<div class="line">        *(x)     = (<a class="code" href="group___basic_def.html#ga909edcac80e5e3f93f63fcebc95922c7">rt_uint32_t</a>)(v)  &amp; 0x000000ff;              \</div>
+<div class="line">        (*((x)+1)) = ((<a class="code" href="group___basic_def.html#ga909edcac80e5e3f93f63fcebc95922c7">rt_uint32_t</a>)(v) &gt;&gt; 8) &amp; 0x000000ff;      \</div>
+<div class="line">        (*((x)+2)) = ((<a class="code" href="group___basic_def.html#ga909edcac80e5e3f93f63fcebc95922c7">rt_uint32_t</a>)(v) &gt;&gt; 16) &amp; 0x000000ff;     \</div>
+<div class="line">        (*((x)+3)) = ((<a class="code" href="group___basic_def.html#ga909edcac80e5e3f93f63fcebc95922c7">rt_uint32_t</a>)(v) &gt;&gt; 24);                  \</div>
+<div class="line">    } <span class="keywordflow">while</span> ( 0 )</div>
+<div class="ttc" id="group___basic_def_html_ga909edcac80e5e3f93f63fcebc95922c7"><div class="ttname"><a href="group___basic_def.html#ga909edcac80e5e3f93f63fcebc95922c7">rt_uint32_t</a></div><div class="ttdeci">unsigned long rt_uint32_t</div><div class="ttdef"><b>Definition:</b> rtdef.h:72</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a2aecc2db1150988b6d46cb33bf69d3df"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_VERSION_MAJOR&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a22d7066019570dee7cf7211676597dd9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_VERSION_MINOR&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a65b22ccf9abeba1bc5471342556f5164"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_NEXT_SYSCALL</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">index</td><td>)</td>
+          <td>&#160;&#160;&#160;index++</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="af52d77ec519e1f6c0081944c755547b4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_NEXT_SYSVAR</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">index</td><td>)</td>
+          <td>&#160;&#160;&#160;index++</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="adaaa5750c4072a486c25e27464622648"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_IDTYPE_VAR&#160;&#160;&#160;0x01</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="abc91a3597ab50adeb01034a051b56ef1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_IDTYPE_SYSVAR&#160;&#160;&#160;0x02</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a43aee78ca18df5a2567d14eda3713790"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_IDTYPE_SYSCALL&#160;&#160;&#160;0x04</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a0a1389ff1cb411d038ec5d7896c67a02"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FINSH_IDTYPE_ADDRESS&#160;&#160;&#160;0x08</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a class="anchor" id="ac7586e133c1b004fd035de4c9698afb4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structfinsh__sysvar.html">finsh_sysvar</a>* finsh_sysvar_lookup </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="afa8ea6f7a12576d9c796bbcf8760ed2b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int finsh_init </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *&#160;</td>
+          <td class="paramname"><em>parser</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a46c3c17be5e44b73752277f29b49bb79"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int finsh_flush </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *&#160;</td>
+          <td class="paramname"><em>parser</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a07148c60920bccb1f59f2b425ed71b24"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int finsh_reset </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *&#160;</td>
+          <td class="paramname"><em>parser</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aa2f546382fa5bf0aed5fc6f298810eec"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void finsh_parser_run </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *&#160;</td>
+          <td class="paramname"><em>parser</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned char *&#160;</td>
+          <td class="paramname"><em>string</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a26fbb5c1cd507b3afd7501e64920f110"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int finsh_compiler_run </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__node.html">finsh_node</a> *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a16ad826396342b4e027b13d1aac8cb54"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void finsh_vm_run </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a8190022332ed7a08f3e4d7b56ea283b4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structfinsh__var.html">finsh_var</a>* finsh_var_lookup </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a94e2ae18ec979c38f93c2326cce7bc02"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long finsh_stack_bottom </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="acad6a8bcdaae257198b5865e9ad72fb9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t finsh_errno </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a9bf28629119545d1789c69d5c6842621"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* finsh_error_string </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">变量说明</h2>
+<a class="anchor" id="a75fba8f6e2aa7636a4ae2259ef968a7c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structfinsh__syscall__item.html">finsh_syscall_item</a>* global_syscall_list</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac86b4bb151fca0132adcb1bf29c60ba3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structfinsh__sysvar.html">finsh_sysvar</a>* _sysvar_table_begin</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ab4e14ab58c69e7553d935a6a8c9d42f4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structfinsh__sysvar.html">finsh_sysvar</a> * _sysvar_table_end</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac5272e426c24730c27a40bbc8a133112"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structfinsh__sysvar__item.html">finsh_sysvar_item</a>* global_sysvar_list</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2018年 八月 28日 星期二 20:44:38 , 为 RT-Thread RTOS使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>

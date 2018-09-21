@@ -1,0 +1,256 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-Thread RTOS: D:/yao/RTT/文档/stm32f429-api/rt-thread/src/idle.c 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-Thread RTOS
+   &#160;<span id="projectnumber">3.0.3</span>
+   </div>
+   <div id="projectbrief">An open source embedded real-time operating system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.10 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">宏定义</a> &#124;
+<a href="#func-members">函数</a> &#124;
+<a href="#var-members">变量</a>  </div>
+  <div class="headertitle">
+<div class="title">idle.c 文件参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;<a class="el" href="rthw_8h.html">rthw.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="rtthread_8h.html">rtthread.h</a>&gt;</code><br />
+</div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> idle.c 的引用(Include)关系图:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="idle_8c__incl.png" border="0" usemap="#_d_1_2yao_2_r_t_t_2_xE6_x96_x87_xE6_xA1_xA3_2stm32f429-api_2rt-thread_2src_2idle_8c" alt=""/></div>
+<map name="_d_1_2yao_2_r_t_t_2_xE6_x96_x87_xE6_xA1_xA3_2stm32f429-api_2rt-thread_2src_2idle_8c" id="_d_1_2yao_2_r_t_t_2_xE6_x96_x87_xE6_xA1_xA3_2stm32f429-api_2rt-thread_2src_2idle_8c">
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:ab91a7b8db2bfc24cc8f00539a75adfb7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="idle_8c.html#ab91a7b8db2bfc24cc8f00539a75adfb7">RT_USING_IDLE_HOOK</a></td></tr>
+<tr class="separator:ab91a7b8db2bfc24cc8f00539a75adfb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af470de5c7ee71a407e5c7e0c5825af35"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="idle_8c.html#af470de5c7ee71a407e5c7e0c5825af35">IDLE_THREAD_STACK_SIZE</a>&#160;&#160;&#160;256</td></tr>
+<tr class="separator:af470de5c7ee71a407e5c7e0c5825af35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:ga47689b07705c1e7892f6ec397152e9ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___hook.html#ga47689b07705c1e7892f6ec397152e9ac">rt_thread_idle_sethook</a> (void(*hook)(void))</td></tr>
+<tr class="memdesc:ga47689b07705c1e7892f6ec397152e9ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">空闲钩子函数设置  <a href="group___hook.html#ga47689b07705c1e7892f6ec397152e9ac">更多...</a><br /></td></tr>
+<tr class="separator:ga47689b07705c1e7892f6ec397152e9ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b2a392753c4669ef1e48d500866efec"><td class="memItemLeft" align="right" valign="top">rt_inline int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="idle_8c.html#a2b2a392753c4669ef1e48d500866efec">_has_defunct_thread</a> (void)</td></tr>
+<tr class="separator:a2b2a392753c4669ef1e48d500866efec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9c10243ac4c20396787df151ea13f4eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___thread.html#ga9c10243ac4c20396787df151ea13f4eb">rt_thread_idle_excute</a> (void)</td></tr>
+<tr class="memdesc:ga9c10243ac4c20396787df151ea13f4eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">系统空闲执行函数  <a href="group___thread.html#ga9c10243ac4c20396787df151ea13f4eb">更多...</a><br /></td></tr>
+<tr class="separator:ga9c10243ac4c20396787df151ea13f4eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9118c21953c9b3c75fde949b38ec411b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="idle_8c.html#a9118c21953c9b3c75fde949b38ec411b">rt_thread_idle_entry</a> (void *parameter)</td></tr>
+<tr class="separator:a9118c21953c9b3c75fde949b38ec411b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae0dcacf89c3d97272b185f7162a3e0c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___system_init.html#gae0dcacf89c3d97272b185f7162a3e0c3">rt_thread_idle_init</a> (void)</td></tr>
+<tr class="memdesc:gae0dcacf89c3d97272b185f7162a3e0c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">空闲线程初始化  <a href="group___system_init.html#gae0dcacf89c3d97272b185f7162a3e0c3">更多...</a><br /></td></tr>
+<tr class="separator:gae0dcacf89c3d97272b185f7162a3e0c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadd22f9965fffe9e940fd364f0838731f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___thread.html#gad617ac6bd69bf546743549542a86fbf9">rt_thread_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___thread.html#gadd22f9965fffe9e940fd364f0838731f">rt_thread_idle_gethandler</a> (void)</td></tr>
+<tr class="memdesc:gadd22f9965fffe9e940fd364f0838731f"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取空闲线程处理函数 该函数将获取空闲线程的处理程序。  <a href="group___thread.html#gadd22f9965fffe9e940fd364f0838731f">更多...</a><br /></td></tr>
+<tr class="separator:gadd22f9965fffe9e940fd364f0838731f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+变量</h2></td></tr>
+<tr class="memitem:af6add5c3619fb022db7e0e07905bf46e"><td class="memItemLeft" align="right" valign="top">static struct <a class="el" href="structrt__thread.html">rt_thread</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="idle_8c.html#af6add5c3619fb022db7e0e07905bf46e">idle</a></td></tr>
+<tr class="separator:af6add5c3619fb022db7e0e07905bf46e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48e1972f5cf8839338fd123b71764dc0"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="group___basic_def.html#ga585e2ad0fbab0f83817cb61373465df6">rt_uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="idle_8c.html#a48e1972f5cf8839338fd123b71764dc0">rt_thread_stack</a> [<a class="el" href="idle_8c.html#af470de5c7ee71a407e5c7e0c5825af35">IDLE_THREAD_STACK_SIZE</a>]</td></tr>
+<tr class="separator:a48e1972f5cf8839338fd123b71764dc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29b7acca3b0adcc67071b421bca7f3d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="rtdef_8h.html#a8e0e590336e9435f976bf672d844547c">rt_list_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="idle_8c.html#a29b7acca3b0adcc67071b421bca7f3d1">rt_thread_defunct</a></td></tr>
+<tr class="separator:a29b7acca3b0adcc67071b421bca7f3d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8bf3aeeca5d5321b6ed6f2b629fa13f"><td class="memItemLeft" align="right" valign="top">static void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="idle_8c.html#ae8bf3aeeca5d5321b6ed6f2b629fa13f">rt_thread_idle_hook</a> )()</td></tr>
+<tr class="separator:ae8bf3aeeca5d5321b6ed6f2b629fa13f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">宏定义说明</h2>
+<a class="anchor" id="ab91a7b8db2bfc24cc8f00539a75adfb7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RT_USING_IDLE_HOOK</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="af470de5c7ee71a407e5c7e0c5825af35"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IDLE_THREAD_STACK_SIZE&#160;&#160;&#160;256</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a class="anchor" id="a2b2a392753c4669ef1e48d500866efec"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">rt_inline int _has_defunct_thread </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a9118c21953c9b3c75fde949b38ec411b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void rt_thread_idle_entry </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>parameter</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">变量说明</h2>
+<a class="anchor" id="af6add5c3619fb022db7e0e07905bf46e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structrt__thread.html">rt_thread</a> idle</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a48e1972f5cf8839338fd123b71764dc0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group___basic_def.html#ga585e2ad0fbab0f83817cb61373465df6">rt_uint8_t</a> rt_thread_stack[<a class="el" href="idle_8c.html#af470de5c7ee71a407e5c7e0c5825af35">IDLE_THREAD_STACK_SIZE</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a29b7acca3b0adcc67071b421bca7f3d1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="rtdef_8h.html#a8e0e590336e9435f976bf672d844547c">rt_list_t</a> rt_thread_defunct</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ae8bf3aeeca5d5321b6ed6f2b629fa13f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void(* rt_thread_idle_hook) ()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2018年 八月 28日 星期二 20:44:38 , 为 RT-Thread RTOS使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>

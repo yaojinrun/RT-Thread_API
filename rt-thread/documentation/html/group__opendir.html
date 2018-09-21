@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-Thread RTOS: 打开目录</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-Thread RTOS
+   &#160;<span id="projectnumber">3.0.3</span>
+   </div>
+   <div id="projectbrief">An open source embedded real-time operating system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.10 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">打开目录<div class="ingroups"><a class="el" href="group___d_f_s.html">文件系统</a> &raquo; <a class="el" href="group___fs__example.html">文件系统例程</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+<p>程序会创建一个操作文件的函数并导出到msh命令列表 在函数中调用 <a class="el" href="group___fs_posix_api.html#ga1632d8c06c14f295c6d9407b7fec67af" title="打开目录 ">opendir()</a> 函数 DIR* <a class="el" href="group___fs_posix_api.html#ga1632d8c06c14f295c6d9407b7fec67af" title="打开目录 ">opendir(const char* name)</a>; <a class="el" href="group___fs_posix_api.html#ga1632d8c06c14f295c6d9407b7fec67af" title="打开目录 ">opendir()</a>函数用来打开一个目录，参数name 为目录路径名。 若读取目录成功，返回该目录结构，若读取目录失败，返回RT_NULL。</p>
+<p><b>源码</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;rtthread.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;dfs_posix.h&gt;</span> <span class="comment">/* 当需要使用文件操作时，需要包含这个头文件 */</span></div>
+<div class="line"></div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span> opendir_sample(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">    DIR *dirp;</div>
+<div class="line">    <span class="comment">/* 打开/dir_test 目录*/</span></div>
+<div class="line">    dirp = <a class="code" href="group___fs_posix_api.html#ga1632d8c06c14f295c6d9407b7fec67af" title="打开目录 ">opendir</a>(<span class="stringliteral">&quot;/dir_test&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">if</span> (dirp == <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>)</div>
+<div class="line">    {</div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;open directory error!\n&quot;</span>);</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">else</span></div>
+<div class="line">    {</div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;open directory OK!\n&quot;</span>);</div>
+<div class="line">        <span class="comment">/* 在这儿进行读取目录相关操作*/</span></div>
+<div class="line">        <span class="comment">/* ...... */</span></div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* 关闭目录 */</span></div>
+<div class="line">        <a class="code" href="group___fs_posix_api.html#ga058e669d865116ec6419ea3a52207830" title="关闭目录 ">closedir</a>(dirp);</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="line"><span class="comment">/* 导出到 msh 命令列表中 */</span></div>
+<div class="line">MSH_CMD_EXPORT(opendir_sample, <a class="code" href="group___fs_posix_api.html#ga94873fa89201b877351b663b9f5b040d" title="打开文件 ">open</a> dir sample);</div>
+</div><!-- fragment --> </div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2018年 九月 21日 星期五 22:35:14 , 为 RT-Thread RTOS使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>

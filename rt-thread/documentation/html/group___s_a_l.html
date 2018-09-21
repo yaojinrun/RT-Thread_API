@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-Thread RTOS: 网络框架</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-Thread RTOS
+   &#160;<span id="projectnumber">3.0.3</span>
+   </div>
+   <div id="projectbrief">An open source embedded real-time operating system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.10 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle">
+<div class="title">网络框架<div class="ingroups"><a class="el" href="group___n_e_t.html">网络框架</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:gabc183128e8c38d9e4a598304c90ff20a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_a_l.html#gabc183128e8c38d9e4a598304c90ff20a">sal_init</a> (void)</td></tr>
+<tr class="memdesc:gabc183128e8c38d9e4a598304c90ff20a"><td class="mdescLeft">&#160;</td><td class="mdescRight">SAL组件初始化  <a href="#gabc183128e8c38d9e4a598304c90ff20a">更多...</a><br /></td></tr>
+<tr class="separator:gabc183128e8c38d9e4a598304c90ff20a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacf28c7964e2d60936712661d17285856"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___s_a_l.html#gacf28c7964e2d60936712661d17285856">sal_proto_family_register</a> (const struct proto_family *pf)</td></tr>
+<tr class="memdesc:gacf28c7964e2d60936712661d17285856"><td class="mdescLeft">&#160;</td><td class="mdescRight">网络协议簇注册  <a href="#gacf28c7964e2d60936712661d17285856">更多...</a><br /></td></tr>
+<tr class="separator:gacf28c7964e2d60936712661d17285856"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<h2 class="groupheader">函数说明</h2>
+<a class="anchor" id="gabc183128e8c38d9e4a598304c90ff20a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int sal_init </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>SAL组件初始化 </p>
+<p>该函数完成对组件中使用的互斥锁等资源的初始化。</p>
+<dl class="section return"><dt>返回</dt><dd>0 SAL组件初始化成功。 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gacf28c7964e2d60936712661d17285856"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int sal_proto_family_register </td>
+          <td>(</td>
+          <td class="paramtype">const struct proto_family *&#160;</td>
+          <td class="paramname"><em>pf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>网络协议簇注册 </p>
+<p>该函数用于往SAL组件中注册网络协议簇。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pf</td><td>协议簇结构体指针</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>0 注册成功；失败返回 -1。 </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2018年 九月 21日 星期五 22:35:14 , 为 RT-Thread RTOS使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>

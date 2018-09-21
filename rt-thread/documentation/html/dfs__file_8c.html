@@ -1,0 +1,254 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-Thread RTOS: D:/yao/RTT/文档/stm32f429-api/rt-thread/components/dfs/src/dfs_file.c 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-Thread RTOS
+   &#160;<span id="projectnumber">3.0.3</span>
+   </div>
+   <div id="projectbrief">An open source embedded real-time operating system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.10 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_409f97388efe006bc3438b95e9edef48.html">components</a></li><li class="navelem"><a class="el" href="dir_88fad670f0983a8d34917f1a982db765.html">dfs</a></li><li class="navelem"><a class="el" href="dir_4cff54b5d48e2714142bb683c43b165b.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">宏定义</a> &#124;
+<a href="#func-members">函数</a> &#124;
+<a href="#var-members">变量</a>  </div>
+  <div class="headertitle">
+<div class="title">dfs_file.c 文件参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;<a class="el" href="dfs_8h.html">dfs.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="dfs__file_8h.html">dfs_file.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="dfs__private_8h.html">dfs_private.h</a>&gt;</code><br />
+<code>#include &lt;finsh.h&gt;</code><br />
+</div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> dfs_file.c 的引用(Include)关系图:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="dfs__file_8c__incl.png" border="0" usemap="#_d_1_2yao_2_r_t_t_2_xE6_x96_x87_xE6_xA1_xA3_2stm32f429-api_2rt-thread_2components_2dfs_2src_2dfs__file_8c" alt=""/></div>
+<map name="_d_1_2yao_2_r_t_t_2_xE6_x96_x87_xE6_xA1_xA3_2stm32f429-api_2rt-thread_2components_2dfs_2src_2dfs__file_8c" id="_d_1_2yao_2_r_t_t_2_xE6_x96_x87_xE6_xA1_xA3_2stm32f429-api_2rt-thread_2components_2dfs_2src_2dfs__file_8c">
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:ga4962f06eca1fdb2c29f4496e090bdaf4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___file_api.html#ga4962f06eca1fdb2c29f4496e090bdaf4">BUF_SZ</a>&#160;&#160;&#160;4096</td></tr>
+<tr class="separator:ga4962f06eca1fdb2c29f4496e090bdaf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64513441dec97fa57e5187bada40c215"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dfs__file_8c.html#a64513441dec97fa57e5187bada40c215">FLAG_SRC_TYPE</a>&#160;&#160;&#160;0x03</td></tr>
+<tr class="separator:a64513441dec97fa57e5187bada40c215"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab38c78f8acd36cf29c7f6b40be1aa24a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dfs__file_8c.html#ab38c78f8acd36cf29c7f6b40be1aa24a">FLAG_SRC_IS_DIR</a>&#160;&#160;&#160;0x01</td></tr>
+<tr class="separator:ab38c78f8acd36cf29c7f6b40be1aa24a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f03e1b81c0a1fcf148af7926adaab26"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dfs__file_8c.html#a1f03e1b81c0a1fcf148af7926adaab26">FLAG_SRC_IS_FILE</a>&#160;&#160;&#160;0x02</td></tr>
+<tr class="separator:a1f03e1b81c0a1fcf148af7926adaab26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2699a421f9331e06aa4a0c0434f76ebb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dfs__file_8c.html#a2699a421f9331e06aa4a0c0434f76ebb">FLAG_SRC_NON_EXSIT</a>&#160;&#160;&#160;0x00</td></tr>
+<tr class="separator:a2699a421f9331e06aa4a0c0434f76ebb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab97f5a1a3366f1ac71e7479e94e3b338"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dfs__file_8c.html#ab97f5a1a3366f1ac71e7479e94e3b338">FLAG_DST_TYPE</a>&#160;&#160;&#160;0x0C</td></tr>
+<tr class="separator:ab97f5a1a3366f1ac71e7479e94e3b338"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3c07dbbcb4ada26332fa5434262ea0e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dfs__file_8c.html#ab3c07dbbcb4ada26332fa5434262ea0e">FLAG_DST_IS_DIR</a>&#160;&#160;&#160;0x04</td></tr>
+<tr class="separator:ab3c07dbbcb4ada26332fa5434262ea0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcaff1587052dda21df3515d41793072"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dfs__file_8c.html#abcaff1587052dda21df3515d41793072">FLAG_DST_IS_FILE</a>&#160;&#160;&#160;0x08</td></tr>
+<tr class="separator:abcaff1587052dda21df3515d41793072"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3829e9d07d645fba8d034617ff82164a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dfs__file_8c.html#a3829e9d07d645fba8d034617ff82164a">FLAG_DST_NON_EXSIT</a>&#160;&#160;&#160;0x00</td></tr>
+<tr class="separator:a3829e9d07d645fba8d034617ff82164a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:ga69605ecef6247356eba5f0d6d42a838a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___file_api.html#ga69605ecef6247356eba5f0d6d42a838a">dfs_file_open</a> (struct <a class="el" href="structdfs__fd.html">dfs_fd</a> *<a class="el" href="group___file_api.html#gaecfd22443174fdd9ed8de729e5dc5eee">fd</a>, const char *path, int flags)</td></tr>
+<tr class="separator:ga69605ecef6247356eba5f0d6d42a838a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga236fc80632f93ca39ed2dbf686e483d8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___file_api.html#ga236fc80632f93ca39ed2dbf686e483d8">dfs_file_close</a> (struct <a class="el" href="structdfs__fd.html">dfs_fd</a> *<a class="el" href="group___file_api.html#gaecfd22443174fdd9ed8de729e5dc5eee">fd</a>)</td></tr>
+<tr class="separator:ga236fc80632f93ca39ed2dbf686e483d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0fe7b7f5445b634beb014b3354ef23c9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___file_api.html#ga0fe7b7f5445b634beb014b3354ef23c9">dfs_file_ioctl</a> (struct <a class="el" href="structdfs__fd.html">dfs_fd</a> *<a class="el" href="group___file_api.html#gaecfd22443174fdd9ed8de729e5dc5eee">fd</a>, int cmd, void *args)</td></tr>
+<tr class="separator:ga0fe7b7f5445b634beb014b3354ef23c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad542af0ccc64a808b264d6da36d0d6e5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___file_api.html#gad542af0ccc64a808b264d6da36d0d6e5">dfs_file_read</a> (struct <a class="el" href="structdfs__fd.html">dfs_fd</a> *<a class="el" href="group___file_api.html#gaecfd22443174fdd9ed8de729e5dc5eee">fd</a>, void *buf, size_t len)</td></tr>
+<tr class="separator:gad542af0ccc64a808b264d6da36d0d6e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaebf468f9b776a6ca98ddc8f8cc5c8f09"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___file_api.html#gaebf468f9b776a6ca98ddc8f8cc5c8f09">dfs_file_getdents</a> (struct <a class="el" href="structdfs__fd.html">dfs_fd</a> *<a class="el" href="group___file_api.html#gaecfd22443174fdd9ed8de729e5dc5eee">fd</a>, struct <a class="el" href="structdirent.html">dirent</a> *dirp, size_t nbytes)</td></tr>
+<tr class="separator:gaebf468f9b776a6ca98ddc8f8cc5c8f09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5e4ad5654aba88c0e37c3f8c1c7dfe66"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___file_api.html#ga5e4ad5654aba88c0e37c3f8c1c7dfe66">dfs_file_unlink</a> (const char *path)</td></tr>
+<tr class="separator:ga5e4ad5654aba88c0e37c3f8c1c7dfe66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaad6acb4b09208c6f1b5e28411029583d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___file_api.html#gaad6acb4b09208c6f1b5e28411029583d">dfs_file_write</a> (struct <a class="el" href="structdfs__fd.html">dfs_fd</a> *<a class="el" href="group___file_api.html#gaecfd22443174fdd9ed8de729e5dc5eee">fd</a>, const void *buf, size_t len)</td></tr>
+<tr class="separator:gaad6acb4b09208c6f1b5e28411029583d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1d4f54fe6bd307dce523c30d4ab9eb1a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___file_api.html#ga1d4f54fe6bd307dce523c30d4ab9eb1a">dfs_file_flush</a> (struct <a class="el" href="structdfs__fd.html">dfs_fd</a> *<a class="el" href="group___file_api.html#gaecfd22443174fdd9ed8de729e5dc5eee">fd</a>)</td></tr>
+<tr class="separator:ga1d4f54fe6bd307dce523c30d4ab9eb1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga484bb2611ebf45e38ee183373474c98e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___file_api.html#ga484bb2611ebf45e38ee183373474c98e">dfs_file_lseek</a> (struct <a class="el" href="structdfs__fd.html">dfs_fd</a> *<a class="el" href="group___file_api.html#gaecfd22443174fdd9ed8de729e5dc5eee">fd</a>, off_t offset)</td></tr>
+<tr class="separator:ga484bb2611ebf45e38ee183373474c98e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae3b60867436d7b3be91af7cc40299f13"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___file_api.html#gae3b60867436d7b3be91af7cc40299f13">dfs_file_stat</a> (const char *path, struct <a class="el" href="group___fs_posix_api.html#gac21b705a5ebd42c4c46363250ab817bc">stat</a> *buf)</td></tr>
+<tr class="separator:gae3b60867436d7b3be91af7cc40299f13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf8756544960620bf56886c0020e35e4f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___file_api.html#gaf8756544960620bf56886c0020e35e4f">dfs_file_rename</a> (const char *oldpath, const char *newpath)</td></tr>
+<tr class="separator:gaf8756544960620bf56886c0020e35e4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga34c1e64397880b7fc49b85b16ef24bc6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___file_api.html#ga34c1e64397880b7fc49b85b16ef24bc6">ls</a> (const char *pathname)</td></tr>
+<tr class="separator:ga34c1e64397880b7fc49b85b16ef24bc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac41128f781518ec5c3a18c921e3d212a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___file_api.html#gac41128f781518ec5c3a18c921e3d212a">FINSH_FUNCTION_EXPORT</a> (<a class="el" href="group___file_api.html#ga34c1e64397880b7fc49b85b16ef24bc6">ls</a>, <a class="el" href="symbol_8c.html#ae4f1f4375d640400f05371f3061ab74b">list</a> directory contents)</td></tr>
+<tr class="separator:gac41128f781518ec5c3a18c921e3d212a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2e9e45191bd81a3a16eebf7a53f8f979"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___file_api.html#ga2e9e45191bd81a3a16eebf7a53f8f979">rm</a> (const char *filename)</td></tr>
+<tr class="separator:ga2e9e45191bd81a3a16eebf7a53f8f979"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7d3471c0c61832de5e5dff8efde46b86"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___file_api.html#ga7d3471c0c61832de5e5dff8efde46b86">FINSH_FUNCTION_EXPORT</a> (<a class="el" href="group___file_api.html#ga2e9e45191bd81a3a16eebf7a53f8f979">rm</a>, remove files or directories)</td></tr>
+<tr class="separator:ga7d3471c0c61832de5e5dff8efde46b86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4c215f6615e0608da43650ecbc6c1573"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___file_api.html#ga4c215f6615e0608da43650ecbc6c1573">cat</a> (const char *filename)</td></tr>
+<tr class="separator:ga4c215f6615e0608da43650ecbc6c1573"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga54a5771b798a361a3511ce082a415dae"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___file_api.html#ga54a5771b798a361a3511ce082a415dae">FINSH_FUNCTION_EXPORT</a> (<a class="el" href="group___file_api.html#ga4c215f6615e0608da43650ecbc6c1573">cat</a>, print file)</td></tr>
+<tr class="separator:ga54a5771b798a361a3511ce082a415dae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2e9a11f9f2f9ccad738b28173258122c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___file_api.html#ga2e9a11f9f2f9ccad738b28173258122c">copyfile</a> (const char *src, const char *dst)</td></tr>
+<tr class="separator:ga2e9a11f9f2f9ccad738b28173258122c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga548e5b744ca2e97beb61ad7aa41114e2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___file_api.html#ga548e5b744ca2e97beb61ad7aa41114e2">mkdir</a> (const char *path, mode_t mode)</td></tr>
+<tr class="separator:ga548e5b744ca2e97beb61ad7aa41114e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga46fc180b5f8d9ba84219bbe99e9f0845"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___file_api.html#ga46fc180b5f8d9ba84219bbe99e9f0845">copydir</a> (const char *src, const char *dst)</td></tr>
+<tr class="separator:ga46fc180b5f8d9ba84219bbe99e9f0845"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabc306ae5972dc40adc24ba0a951c4ad4"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___file_api.html#gabc306ae5972dc40adc24ba0a951c4ad4">_get_path_lastname</a> (const char *path)</td></tr>
+<tr class="separator:gabc306ae5972dc40adc24ba0a951c4ad4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga309791b7ef910c13d6f1710b2ab338c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___file_api.html#ga309791b7ef910c13d6f1710b2ab338c1">copy</a> (const char *src, const char *dst)</td></tr>
+<tr class="separator:ga309791b7ef910c13d6f1710b2ab338c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+变量</h2></td></tr>
+<tr class="memitem:gaecfd22443174fdd9ed8de729e5dc5eee"><td class="memItemLeft" align="right" valign="top">static struct <a class="el" href="structdfs__fd.html">dfs_fd</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___file_api.html#gaecfd22443174fdd9ed8de729e5dc5eee">fd</a></td></tr>
+<tr class="separator:gaecfd22443174fdd9ed8de729e5dc5eee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga85a0945a3cb128517bfcd352d3c43c97"><td class="memItemLeft" align="right" valign="top">static struct <a class="el" href="structdirent.html">dirent</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___file_api.html#ga85a0945a3cb128517bfcd352d3c43c97">dirent</a></td></tr>
+<tr class="separator:ga85a0945a3cb128517bfcd352d3c43c97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">宏定义说明</h2>
+<a class="anchor" id="a64513441dec97fa57e5187bada40c215"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FLAG_SRC_TYPE&#160;&#160;&#160;0x03</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ab38c78f8acd36cf29c7f6b40be1aa24a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FLAG_SRC_IS_DIR&#160;&#160;&#160;0x01</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a1f03e1b81c0a1fcf148af7926adaab26"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FLAG_SRC_IS_FILE&#160;&#160;&#160;0x02</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a2699a421f9331e06aa4a0c0434f76ebb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FLAG_SRC_NON_EXSIT&#160;&#160;&#160;0x00</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ab97f5a1a3366f1ac71e7479e94e3b338"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FLAG_DST_TYPE&#160;&#160;&#160;0x0C</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ab3c07dbbcb4ada26332fa5434262ea0e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FLAG_DST_IS_DIR&#160;&#160;&#160;0x04</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="abcaff1587052dda21df3515d41793072"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FLAG_DST_IS_FILE&#160;&#160;&#160;0x08</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a3829e9d07d645fba8d034617ff82164a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FLAG_DST_NON_EXSIT&#160;&#160;&#160;0x00</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2018年 八月 28日 星期二 20:44:38 , 为 RT-Thread RTOS使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>

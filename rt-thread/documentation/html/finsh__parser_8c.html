@@ -1,0 +1,766 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-Thread RTOS: D:/yao/RTT/文档/stm32f429-api/rt-thread/components/finsh/finsh_parser.c 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-Thread RTOS
+   &#160;<span id="projectnumber">3.0.3</span>
+   </div>
+   <div id="projectbrief">An open source embedded real-time operating system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.10 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_409f97388efe006bc3438b95e9edef48.html">components</a></li><li class="navelem"><a class="el" href="dir_86d0af1c976cb2104552e4f347bf9ac9.html">finsh</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">宏定义</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle">
+<div class="title">finsh_parser.c 文件参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;<a class="el" href="components_2finsh_2finsh_8h.html">finsh.h</a>&gt;</code><br />
+<code>#include &quot;<a class="el" href="finsh__token_8h.html">finsh_token.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="finsh__node_8h.html">finsh_node.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="finsh__error_8h.html">finsh_error.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="finsh__parser_8h.html">finsh_parser.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="finsh__var_8h.html">finsh_var.h</a>&quot;</code><br />
+</div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> finsh_parser.c 的引用(Include)关系图:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="finsh__parser_8c__incl.png" border="0" usemap="#_d_1_2yao_2_r_t_t_2_xE6_x96_x87_xE6_xA1_xA3_2stm32f429-api_2rt-thread_2components_2finsh_2finsh__parser_8c" alt=""/></div>
+<map name="_d_1_2yao_2_r_t_t_2_xE6_x96_x87_xE6_xA1_xA3_2stm32f429-api_2rt-thread_2components_2finsh_2finsh__parser_8c" id="_d_1_2yao_2_r_t_t_2_xE6_x96_x87_xE6_xA1_xA3_2stm32f429-api_2rt-thread_2components_2finsh_2finsh__parser_8c">
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:ab3dae4b30b91ffc06e8816cf6343eeff"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__parser_8c.html#ab3dae4b30b91ffc06e8816cf6343eeff">check_token</a>(token,  lex,  type)</td></tr>
+<tr class="separator:ab3dae4b30b91ffc06e8816cf6343eeff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada068ef75a41864a053a43d448cdb6af"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__parser_8c.html#ada068ef75a41864a053a43d448cdb6af">is_base_type</a>(token)</td></tr>
+<tr class="separator:ada068ef75a41864a053a43d448cdb6af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37e16cac7effde44c78e2c4a3865fda6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__parser_8c.html#a37e16cac7effde44c78e2c4a3865fda6">next_token</a>(token,  lex)&#160;&#160;&#160;(token) = <a class="el" href="finsh__token_8h.html#a9cc3cee260ca241fa6dcc15a8986767d">finsh_token_token</a>(lex)</td></tr>
+<tr class="separator:a37e16cac7effde44c78e2c4a3865fda6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04cdce908c1cc88bfd5e7f1b27f8996d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__parser_8c.html#a04cdce908c1cc88bfd5e7f1b27f8996d">match_token</a>(token,  lex,  type)  </td></tr>
+<tr class="separator:a04cdce908c1cc88bfd5e7f1b27f8996d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:a1055ae7a2e480603cd0f6f7ab5766cc1"><td class="memItemLeft" align="right" valign="top">static enum <a class="el" href="group__finsh.html#gaed99f2320eea22a0d941d4095e47fdb9">finsh_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__parser_8c.html#a1055ae7a2e480603cd0f6f7ab5766cc1">proc_type</a> (struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *self)</td></tr>
+<tr class="separator:a1055ae7a2e480603cd0f6f7ab5766cc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54ea77a9b89a0d05950b0f4284eb7255"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__parser_8c.html#a54ea77a9b89a0d05950b0f4284eb7255">proc_identifier</a> (struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *self, char *id)</td></tr>
+<tr class="separator:a54ea77a9b89a0d05950b0f4284eb7255"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb253647a5eebdcfbe19b10a92a8a87f"><td class="memItemLeft" align="right" valign="top">static struct <a class="el" href="structfinsh__node.html">finsh_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__parser_8c.html#abb253647a5eebdcfbe19b10a92a8a87f">proc_variable_decl</a> (struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *self)</td></tr>
+<tr class="separator:abb253647a5eebdcfbe19b10a92a8a87f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e75c7267b3d73c902377cad4b30835d"><td class="memItemLeft" align="right" valign="top">static struct <a class="el" href="structfinsh__node.html">finsh_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__parser_8c.html#a1e75c7267b3d73c902377cad4b30835d">proc_expr</a> (struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *self)</td></tr>
+<tr class="separator:a1e75c7267b3d73c902377cad4b30835d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5467963df3252f1d1b15efe65a17be8"><td class="memItemLeft" align="right" valign="top">static struct <a class="el" href="structfinsh__node.html">finsh_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__parser_8c.html#ac5467963df3252f1d1b15efe65a17be8">proc_assign_expr</a> (struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *self)</td></tr>
+<tr class="separator:ac5467963df3252f1d1b15efe65a17be8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0016f70e58a9a40abee1eaa54509b43"><td class="memItemLeft" align="right" valign="top">static struct <a class="el" href="structfinsh__node.html">finsh_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__parser_8c.html#af0016f70e58a9a40abee1eaa54509b43">proc_inclusive_or_expr</a> (struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *self)</td></tr>
+<tr class="separator:af0016f70e58a9a40abee1eaa54509b43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba1e5b2e415e4b1ed7a67c9844803287"><td class="memItemLeft" align="right" valign="top">static struct <a class="el" href="structfinsh__node.html">finsh_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__parser_8c.html#aba1e5b2e415e4b1ed7a67c9844803287">proc_exclusive_or_expr</a> (struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *self)</td></tr>
+<tr class="separator:aba1e5b2e415e4b1ed7a67c9844803287"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3d5e9dba6700cec57d363c0c51660fc"><td class="memItemLeft" align="right" valign="top">static struct <a class="el" href="structfinsh__node.html">finsh_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__parser_8c.html#af3d5e9dba6700cec57d363c0c51660fc">proc_and_expr</a> (struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *self)</td></tr>
+<tr class="separator:af3d5e9dba6700cec57d363c0c51660fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e290c2643700b4e8744ddf953a21e67"><td class="memItemLeft" align="right" valign="top">static struct <a class="el" href="structfinsh__node.html">finsh_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__parser_8c.html#a5e290c2643700b4e8744ddf953a21e67">proc_shift_expr</a> (struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *self)</td></tr>
+<tr class="separator:a5e290c2643700b4e8744ddf953a21e67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67ae7514968363461224a50e3ff23aa1"><td class="memItemLeft" align="right" valign="top">static struct <a class="el" href="structfinsh__node.html">finsh_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__parser_8c.html#a67ae7514968363461224a50e3ff23aa1">proc_additive_expr</a> (struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *self)</td></tr>
+<tr class="separator:a67ae7514968363461224a50e3ff23aa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7421dbd1fcaf7c0b2e2c4259e3964956"><td class="memItemLeft" align="right" valign="top">static struct <a class="el" href="structfinsh__node.html">finsh_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__parser_8c.html#a7421dbd1fcaf7c0b2e2c4259e3964956">proc_multiplicative_expr</a> (struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *self)</td></tr>
+<tr class="separator:a7421dbd1fcaf7c0b2e2c4259e3964956"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace7c4c311cce02b372f376c54ff1c153"><td class="memItemLeft" align="right" valign="top">static struct <a class="el" href="structfinsh__node.html">finsh_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__parser_8c.html#ace7c4c311cce02b372f376c54ff1c153">proc_cast_expr</a> (struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *self)</td></tr>
+<tr class="separator:ace7c4c311cce02b372f376c54ff1c153"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4cd461d69179bd58cc1071315af1f922"><td class="memItemLeft" align="right" valign="top">static struct <a class="el" href="structfinsh__node.html">finsh_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__parser_8c.html#a4cd461d69179bd58cc1071315af1f922">proc_unary_expr</a> (struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *self)</td></tr>
+<tr class="separator:a4cd461d69179bd58cc1071315af1f922"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b20242bc1c587685d2f8b780ccf8319"><td class="memItemLeft" align="right" valign="top">static struct <a class="el" href="structfinsh__node.html">finsh_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__parser_8c.html#a8b20242bc1c587685d2f8b780ccf8319">proc_postfix_expr</a> (struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *self)</td></tr>
+<tr class="separator:a8b20242bc1c587685d2f8b780ccf8319"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff261e600e60e645b7622f1e1a8440dd"><td class="memItemLeft" align="right" valign="top">static struct <a class="el" href="structfinsh__node.html">finsh_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__parser_8c.html#aff261e600e60e645b7622f1e1a8440dd">proc_primary_expr</a> (struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *self)</td></tr>
+<tr class="separator:aff261e600e60e645b7622f1e1a8440dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6968ba6240417fc20c4fc47aca4801c7"><td class="memItemLeft" align="right" valign="top">static struct <a class="el" href="structfinsh__node.html">finsh_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__parser_8c.html#a6968ba6240417fc20c4fc47aca4801c7">proc_param_list</a> (struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *self)</td></tr>
+<tr class="separator:a6968ba6240417fc20c4fc47aca4801c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6f63438f17efd82f6875c22da654d35"><td class="memItemLeft" align="right" valign="top">static struct <a class="el" href="structfinsh__node.html">finsh_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__parser_8c.html#aa6f63438f17efd82f6875c22da654d35">proc_expr_statement</a> (struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *self)</td></tr>
+<tr class="separator:aa6f63438f17efd82f6875c22da654d35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9b96887a3d09dee06c2101be9530ea9"><td class="memItemLeft" align="right" valign="top">static struct <a class="el" href="structfinsh__node.html">finsh_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__parser_8c.html#aa9b96887a3d09dee06c2101be9530ea9">make_sys_node</a> (uint8_t type, struct <a class="el" href="structfinsh__node.html">finsh_node</a> *node1, struct <a class="el" href="structfinsh__node.html">finsh_node</a> *node2)</td></tr>
+<tr class="separator:aa9b96887a3d09dee06c2101be9530ea9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb4be2b630c047415e7953913555d47e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__parser_8c.html#adb4be2b630c047415e7953913555d47e">finsh_parser_run</a> (struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *self, const uint8_t *string)</td></tr>
+<tr class="separator:adb4be2b630c047415e7953913555d47e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf7fd2aee630945c0d944c6dcc71a63f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="finsh__parser_8c.html#acf7fd2aee630945c0d944c6dcc71a63f">finsh_parser_init</a> (struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *self)</td></tr>
+<tr class="separator:acf7fd2aee630945c0d944c6dcc71a63f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">宏定义说明</h2>
+<a class="anchor" id="ab3dae4b30b91ffc06e8816cf6343eeff"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define check_token</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">token, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">lex, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">type&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line"><span class="keywordflow">if</span> ( (token) != (<a class="code" href="structfinsh__sysvar.html#afc86f229c445dcb772b504eb4fc1c9e0">type</a>) ) \</div>
+<div class="line">    { \</div>
+<div class="line">        finsh_error_set(<a class="code" href="group__finsh.html#ga64923347c4fc23842edd636c26d795a6">FINSH_ERROR_INVALID_TOKEN</a>); \</div>
+<div class="line">        finsh_token_replay(lex); \</div>
+<div class="line">    }</div>
+<div class="ttc" id="structfinsh__sysvar_html_afc86f229c445dcb772b504eb4fc1c9e0"><div class="ttname"><a href="structfinsh__sysvar.html#afc86f229c445dcb772b504eb4fc1c9e0">finsh_sysvar::type</a></div><div class="ttdeci">uint8_t type</div><div class="ttdef"><b>Definition:</b> finsh.h:110</div></div>
+<div class="ttc" id="group__finsh_html_ga64923347c4fc23842edd636c26d795a6"><div class="ttname"><a href="group__finsh.html#ga64923347c4fc23842edd636c26d795a6">FINSH_ERROR_INVALID_TOKEN</a></div><div class="ttdeci">#define FINSH_ERROR_INVALID_TOKEN</div><div class="ttdef"><b>Definition:</b> finsh.h:79</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="ada068ef75a41864a053a43d448cdb6af"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define is_base_type</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">token</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">((token) == <a class="code" href="finsh__token_8h.html#a38d3a37d2ca0a263246f56ca070341e9aae639f06b528355d7c1b9b832c0909c0">finsh_token_type_void</a> \</div>
+<div class="line">    || (token) == <a class="code" href="finsh__token_8h.html#a38d3a37d2ca0a263246f56ca070341e9aff92c55ba8cc8edfeeedf601f87e9297">finsh_token_type_char</a> \</div>
+<div class="line">    || (token) == <a class="code" href="finsh__token_8h.html#a38d3a37d2ca0a263246f56ca070341e9a1c1259d1396382643236e046c7c19361">finsh_token_type_short</a> \</div>
+<div class="line">    || (token) == <a class="code" href="finsh__token_8h.html#a38d3a37d2ca0a263246f56ca070341e9a7d99fccc7e82dd22683c4c86092a07ea">finsh_token_type_int</a> \</div>
+<div class="line">    || (token) == <a class="code" href="finsh__token_8h.html#a38d3a37d2ca0a263246f56ca070341e9a1c197b727cabf1215d622f9fc5aed295">finsh_token_type_long</a>)</div>
+<div class="ttc" id="finsh__token_8h_html_a38d3a37d2ca0a263246f56ca070341e9aae639f06b528355d7c1b9b832c0909c0"><div class="ttname"><a href="finsh__token_8h.html#a38d3a37d2ca0a263246f56ca070341e9aae639f06b528355d7c1b9b832c0909c0">finsh_token_type_void</a></div><div class="ttdef"><b>Definition:</b> finsh_token.h:56</div></div>
+<div class="ttc" id="finsh__token_8h_html_a38d3a37d2ca0a263246f56ca070341e9a1c1259d1396382643236e046c7c19361"><div class="ttname"><a href="finsh__token_8h.html#a38d3a37d2ca0a263246f56ca070341e9a1c1259d1396382643236e046c7c19361">finsh_token_type_short</a></div><div class="ttdef"><b>Definition:</b> finsh_token.h:58</div></div>
+<div class="ttc" id="finsh__token_8h_html_a38d3a37d2ca0a263246f56ca070341e9aff92c55ba8cc8edfeeedf601f87e9297"><div class="ttname"><a href="finsh__token_8h.html#a38d3a37d2ca0a263246f56ca070341e9aff92c55ba8cc8edfeeedf601f87e9297">finsh_token_type_char</a></div><div class="ttdef"><b>Definition:</b> finsh_token.h:57</div></div>
+<div class="ttc" id="finsh__token_8h_html_a38d3a37d2ca0a263246f56ca070341e9a1c197b727cabf1215d622f9fc5aed295"><div class="ttname"><a href="finsh__token_8h.html#a38d3a37d2ca0a263246f56ca070341e9a1c197b727cabf1215d622f9fc5aed295">finsh_token_type_long</a></div><div class="ttdef"><b>Definition:</b> finsh_token.h:60</div></div>
+<div class="ttc" id="finsh__token_8h_html_a38d3a37d2ca0a263246f56ca070341e9a7d99fccc7e82dd22683c4c86092a07ea"><div class="ttname"><a href="finsh__token_8h.html#a38d3a37d2ca0a263246f56ca070341e9a7d99fccc7e82dd22683c4c86092a07ea">finsh_token_type_int</a></div><div class="ttdef"><b>Definition:</b> finsh_token.h:59</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a37e16cac7effde44c78e2c4a3865fda6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define next_token</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">token, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">lex&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;(token) = <a class="el" href="finsh__token_8h.html#a9cc3cee260ca241fa6dcc15a8986767d">finsh_token_token</a>(lex)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a04cdce908c1cc88bfd5e7f1b27f8996d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define match_token</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">token, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">lex, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">type&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line"><a class="code" href="finsh__parser_8c.html#a37e16cac7effde44c78e2c4a3865fda6">next_token</a>(token, lex); \</div>
+<div class="line">    check_token(token, lex, <a class="code" href="structfinsh__sysvar.html#afc86f229c445dcb772b504eb4fc1c9e0">type</a>)</div>
+<div class="ttc" id="structfinsh__sysvar_html_afc86f229c445dcb772b504eb4fc1c9e0"><div class="ttname"><a href="structfinsh__sysvar.html#afc86f229c445dcb772b504eb4fc1c9e0">finsh_sysvar::type</a></div><div class="ttdeci">uint8_t type</div><div class="ttdef"><b>Definition:</b> finsh.h:110</div></div>
+<div class="ttc" id="finsh__parser_8c_html_a37e16cac7effde44c78e2c4a3865fda6"><div class="ttname"><a href="finsh__parser_8c.html#a37e16cac7effde44c78e2c4a3865fda6">next_token</a></div><div class="ttdeci">#define next_token(token, lex)</div><div class="ttdef"><b>Definition:</b> finsh_parser.c:82</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a class="anchor" id="a1055ae7a2e480603cd0f6f7ab5766cc1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static enum <a class="el" href="group__finsh.html#gaed99f2320eea22a0d941d4095e47fdb9">finsh_type</a> proc_type </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a54ea77a9b89a0d05950b0f4284eb7255"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int proc_identifier </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="abb253647a5eebdcfbe19b10a92a8a87f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static struct <a class="el" href="structfinsh__node.html">finsh_node</a> * proc_variable_decl </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a1e75c7267b3d73c902377cad4b30835d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static struct <a class="el" href="structfinsh__node.html">finsh_node</a> * proc_expr </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac5467963df3252f1d1b15efe65a17be8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static struct <a class="el" href="structfinsh__node.html">finsh_node</a> * proc_assign_expr </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="af0016f70e58a9a40abee1eaa54509b43"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static struct <a class="el" href="structfinsh__node.html">finsh_node</a> * proc_inclusive_or_expr </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aba1e5b2e415e4b1ed7a67c9844803287"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static struct <a class="el" href="structfinsh__node.html">finsh_node</a> * proc_exclusive_or_expr </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="af3d5e9dba6700cec57d363c0c51660fc"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static struct <a class="el" href="structfinsh__node.html">finsh_node</a> * proc_and_expr </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a5e290c2643700b4e8744ddf953a21e67"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static struct <a class="el" href="structfinsh__node.html">finsh_node</a> * proc_shift_expr </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a67ae7514968363461224a50e3ff23aa1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static struct <a class="el" href="structfinsh__node.html">finsh_node</a> * proc_additive_expr </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a7421dbd1fcaf7c0b2e2c4259e3964956"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static struct <a class="el" href="structfinsh__node.html">finsh_node</a> * proc_multiplicative_expr </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ace7c4c311cce02b372f376c54ff1c153"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static struct <a class="el" href="structfinsh__node.html">finsh_node</a> * proc_cast_expr </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a4cd461d69179bd58cc1071315af1f922"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static struct <a class="el" href="structfinsh__node.html">finsh_node</a> * proc_unary_expr </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a8b20242bc1c587685d2f8b780ccf8319"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static struct <a class="el" href="structfinsh__node.html">finsh_node</a> * proc_postfix_expr </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aff261e600e60e645b7622f1e1a8440dd"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static struct <a class="el" href="structfinsh__node.html">finsh_node</a> * proc_primary_expr </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a6968ba6240417fc20c4fc47aca4801c7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static struct <a class="el" href="structfinsh__node.html">finsh_node</a> * proc_param_list </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aa6f63438f17efd82f6875c22da654d35"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static struct <a class="el" href="structfinsh__node.html">finsh_node</a> * proc_expr_statement </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aa9b96887a3d09dee06c2101be9530ea9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static struct <a class="el" href="structfinsh__node.html">finsh_node</a> * make_sys_node </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__node.html">finsh_node</a> *&#160;</td>
+          <td class="paramname"><em>node1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__node.html">finsh_node</a> *&#160;</td>
+          <td class="paramname"><em>node2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="adb4be2b630c047415e7953913555d47e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void finsh_parser_run </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>string</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="acf7fd2aee630945c0d944c6dcc71a63f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int finsh_parser_init </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structfinsh__parser.html">finsh_parser</a> *&#160;</td>
+          <td class="paramname"><em>self</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2018年 八月 28日 星期二 20:44:38 , 为 RT-Thread RTOS使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>

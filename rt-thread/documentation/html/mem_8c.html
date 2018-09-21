@@ -1,0 +1,421 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-Thread RTOS: D:/yao/RTT/文档/stm32f429-api/rt-thread/src/mem.c 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-Thread RTOS
+   &#160;<span id="projectnumber">3.0.3</span>
+   </div>
+   <div id="projectbrief">An open source embedded real-time operating system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.10 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">结构体</a> &#124;
+<a href="#define-members">宏定义</a> &#124;
+<a href="#func-members">函数</a> &#124;
+<a href="#var-members">变量</a>  </div>
+  <div class="headertitle">
+<div class="title">mem.c 文件参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;<a class="el" href="rthw_8h.html">rthw.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="rtthread_8h.html">rtthread.h</a>&gt;</code><br />
+<code>#include &lt;finsh.h&gt;</code><br />
+</div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> mem.c 的引用(Include)关系图:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="mem_8c__incl.png" border="0" usemap="#_d_1_2yao_2_r_t_t_2_xE6_x96_x87_xE6_xA1_xA3_2stm32f429-api_2rt-thread_2src_2mem_8c" alt=""/></div>
+<map name="_d_1_2yao_2_r_t_t_2_xE6_x96_x87_xE6_xA1_xA3_2stm32f429-api_2rt-thread_2src_2mem_8c" id="_d_1_2yao_2_r_t_t_2_xE6_x96_x87_xE6_xA1_xA3_2stm32f429-api_2rt-thread_2src_2mem_8c">
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+结构体</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structheap__mem.html">heap_mem</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:aad14e960101fad86b1b4788b4455266d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mem_8c.html#aad14e960101fad86b1b4788b4455266d">RT_MEM_STATS</a></td></tr>
+<tr class="separator:aad14e960101fad86b1b4788b4455266d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a604474f5c0892ea2c6c16b5e45c59f59"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mem_8c.html#a604474f5c0892ea2c6c16b5e45c59f59">HEAP_MAGIC</a>&#160;&#160;&#160;0x1ea0</td></tr>
+<tr class="separator:a604474f5c0892ea2c6c16b5e45c59f59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a278694c2333c9826f21ddd2c2d220f66"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mem_8c.html#a278694c2333c9826f21ddd2c2d220f66">MIN_SIZE</a>&#160;&#160;&#160;12</td></tr>
+<tr class="separator:a278694c2333c9826f21ddd2c2d220f66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97c704b85f71b6e61b0098b4a0a743cd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mem_8c.html#a97c704b85f71b6e61b0098b4a0a743cd">MIN_SIZE_ALIGNED</a>&#160;&#160;&#160;<a class="el" href="group___basic_def.html#ga26d73b0669c3e335b2737e6d348cd4d8">RT_ALIGN</a>(<a class="el" href="mem_8c.html#a278694c2333c9826f21ddd2c2d220f66">MIN_SIZE</a>, RT_ALIGN_SIZE)</td></tr>
+<tr class="separator:a97c704b85f71b6e61b0098b4a0a743cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade9cedd48e9a482120e29c010352ee5c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mem_8c.html#ade9cedd48e9a482120e29c010352ee5c">SIZEOF_STRUCT_MEM</a>&#160;&#160;&#160;<a class="el" href="group___basic_def.html#ga26d73b0669c3e335b2737e6d348cd4d8">RT_ALIGN</a>(sizeof(struct <a class="el" href="structheap__mem.html">heap_mem</a>), RT_ALIGN_SIZE)</td></tr>
+<tr class="separator:ade9cedd48e9a482120e29c010352ee5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:ga909761c80493569b64558225d7f89e77"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___hook.html#ga909761c80493569b64558225d7f89e77">rt_malloc_sethook</a> (void(*hook)(void *ptr, <a class="el" href="group___basic_def.html#ga8011d259fdfc54b8a9aa006b4d49ac14">rt_size_t</a> size))</td></tr>
+<tr class="separator:ga909761c80493569b64558225d7f89e77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf556549fc541bfc634f37f2dca004547"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___hook.html#gaf556549fc541bfc634f37f2dca004547">rt_free_sethook</a> (void(*hook)(void *ptr))</td></tr>
+<tr class="separator:gaf556549fc541bfc634f37f2dca004547"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8089def0ae81c913102c982a185188a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mem_8c.html#af8089def0ae81c913102c982a185188a">plug_holes</a> (struct <a class="el" href="structheap__mem.html">heap_mem</a> *mem)</td></tr>
+<tr class="separator:af8089def0ae81c913102c982a185188a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafa6feb60f6204d1783bc3bc324b886e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___system_init.html#gafa6feb60f6204d1783bc3bc324b886e7">rt_system_heap_init</a> (void *begin_addr, void *end_addr)</td></tr>
+<tr class="separator:gafa6feb60f6204d1783bc3bc324b886e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6f19fbf07d6cf7ac5c91af52352644f6"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___m_m.html#ga6f19fbf07d6cf7ac5c91af52352644f6">rt_malloc</a> (<a class="el" href="group___basic_def.html#ga8011d259fdfc54b8a9aa006b4d49ac14">rt_size_t</a> size)</td></tr>
+<tr class="separator:ga6f19fbf07d6cf7ac5c91af52352644f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6ed95500cbb5b79f60d6eb244e922bdd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___m_m.html#ga6ed95500cbb5b79f60d6eb244e922bdd">RTM_EXPORT</a> (<a class="el" href="group___m_m.html#ga6f19fbf07d6cf7ac5c91af52352644f6">rt_malloc</a>)</td></tr>
+<tr class="separator:ga6ed95500cbb5b79f60d6eb244e922bdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1986c303c58c9b98f0326954d73ede21"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___m_m.html#ga1986c303c58c9b98f0326954d73ede21">rt_realloc</a> (void *rmem, <a class="el" href="group___basic_def.html#ga8011d259fdfc54b8a9aa006b4d49ac14">rt_size_t</a> newsize)</td></tr>
+<tr class="separator:ga1986c303c58c9b98f0326954d73ede21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga42d249573eaf24e317460db30b17b205"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___m_m.html#ga42d249573eaf24e317460db30b17b205">RTM_EXPORT</a> (<a class="el" href="group___m_m.html#ga1986c303c58c9b98f0326954d73ede21">rt_realloc</a>)</td></tr>
+<tr class="separator:ga42d249573eaf24e317460db30b17b205"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga89c02c2964ca603cf87912871bafa1b4"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___m_m.html#ga89c02c2964ca603cf87912871bafa1b4">rt_calloc</a> (<a class="el" href="group___basic_def.html#ga8011d259fdfc54b8a9aa006b4d49ac14">rt_size_t</a> count, <a class="el" href="group___basic_def.html#ga8011d259fdfc54b8a9aa006b4d49ac14">rt_size_t</a> size)</td></tr>
+<tr class="separator:ga89c02c2964ca603cf87912871bafa1b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaccc9a775ac3fbd81f4f880e1cfde211b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___m_m.html#gaccc9a775ac3fbd81f4f880e1cfde211b">RTM_EXPORT</a> (<a class="el" href="group___m_m.html#ga89c02c2964ca603cf87912871bafa1b4">rt_calloc</a>)</td></tr>
+<tr class="separator:gaccc9a775ac3fbd81f4f880e1cfde211b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae5d286642b49be193200d11d6729ca66"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___m_m.html#gae5d286642b49be193200d11d6729ca66">rt_free</a> (void *rmem)</td></tr>
+<tr class="separator:gae5d286642b49be193200d11d6729ca66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga44f99711c3416f6a39983d273e9dfcbe"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___m_m.html#ga44f99711c3416f6a39983d273e9dfcbe">RTM_EXPORT</a> (<a class="el" href="group___m_m.html#gae5d286642b49be193200d11d6729ca66">rt_free</a>)</td></tr>
+<tr class="separator:ga44f99711c3416f6a39983d273e9dfcbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga371688ea6bcec95edea82a28dc3be30d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___m_m.html#ga371688ea6bcec95edea82a28dc3be30d">rt_memory_info</a> (<a class="el" href="group___basic_def.html#ga909edcac80e5e3f93f63fcebc95922c7">rt_uint32_t</a> *total, <a class="el" href="group___basic_def.html#ga909edcac80e5e3f93f63fcebc95922c7">rt_uint32_t</a> *used, <a class="el" href="group___basic_def.html#ga909edcac80e5e3f93f63fcebc95922c7">rt_uint32_t</a> *max_used)</td></tr>
+<tr class="separator:ga371688ea6bcec95edea82a28dc3be30d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae5cd60fba293971c220a3f8f1548ac4a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___m_m.html#gae5cd60fba293971c220a3f8f1548ac4a">list_mem</a> (void)</td></tr>
+<tr class="separator:gae5cd60fba293971c220a3f8f1548ac4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+变量</h2></td></tr>
+<tr class="memitem:aaf862ca0cbdafe6c097324577c0ea683"><td class="memItemLeft" align="right" valign="top">static void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mem_8c.html#aaf862ca0cbdafe6c097324577c0ea683">rt_malloc_hook</a> )(void *ptr, <a class="el" href="group___basic_def.html#ga8011d259fdfc54b8a9aa006b4d49ac14">rt_size_t</a> size)</td></tr>
+<tr class="separator:aaf862ca0cbdafe6c097324577c0ea683"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82094ba21e55c2c207d47d1470161e97"><td class="memItemLeft" align="right" valign="top">static void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mem_8c.html#a82094ba21e55c2c207d47d1470161e97">rt_free_hook</a> )(void *ptr)</td></tr>
+<tr class="separator:a82094ba21e55c2c207d47d1470161e97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa38efdbd0941e192ebd3d54753631b82"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="group___basic_def.html#ga585e2ad0fbab0f83817cb61373465df6">rt_uint8_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mem_8c.html#aa38efdbd0941e192ebd3d54753631b82">heap_ptr</a></td></tr>
+<tr class="separator:aa38efdbd0941e192ebd3d54753631b82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a803d66952a48b02ed321889e6fc561e5"><td class="memItemLeft" align="right" valign="top">static struct <a class="el" href="structheap__mem.html">heap_mem</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mem_8c.html#a803d66952a48b02ed321889e6fc561e5">heap_end</a></td></tr>
+<tr class="separator:a803d66952a48b02ed321889e6fc561e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab65de87165cdf291f44bc7317d27d0d8"><td class="memItemLeft" align="right" valign="top">static struct <a class="el" href="structheap__mem.html">heap_mem</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mem_8c.html#ab65de87165cdf291f44bc7317d27d0d8">lfree</a></td></tr>
+<tr class="separator:ab65de87165cdf291f44bc7317d27d0d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7c190a0101d4fe41838e3b22ea82b82"><td class="memItemLeft" align="right" valign="top">static struct <a class="el" href="structrt__semaphore.html">rt_semaphore</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mem_8c.html#ab7c190a0101d4fe41838e3b22ea82b82">heap_sem</a></td></tr>
+<tr class="separator:ab7c190a0101d4fe41838e3b22ea82b82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a796f58983e79e17259b62eb2d57b70ea"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="group___basic_def.html#ga8011d259fdfc54b8a9aa006b4d49ac14">rt_size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mem_8c.html#a796f58983e79e17259b62eb2d57b70ea">mem_size_aligned</a></td></tr>
+<tr class="separator:a796f58983e79e17259b62eb2d57b70ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0eb3129a342eaa0b0d33c88bf30f9d8"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="group___basic_def.html#ga8011d259fdfc54b8a9aa006b4d49ac14">rt_size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mem_8c.html#ac0eb3129a342eaa0b0d33c88bf30f9d8">used_mem</a></td></tr>
+<tr class="separator:ac0eb3129a342eaa0b0d33c88bf30f9d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a276e8ffc1995a70fdee4771b3ff8900b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="group___basic_def.html#ga8011d259fdfc54b8a9aa006b4d49ac14">rt_size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mem_8c.html#a276e8ffc1995a70fdee4771b3ff8900b">max_mem</a></td></tr>
+<tr class="separator:a276e8ffc1995a70fdee4771b3ff8900b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">宏定义说明</h2>
+<a class="anchor" id="aad14e960101fad86b1b4788b4455266d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RT_MEM_STATS</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a604474f5c0892ea2c6c16b5e45c59f59"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HEAP_MAGIC&#160;&#160;&#160;0x1ea0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a278694c2333c9826f21ddd2c2d220f66"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MIN_SIZE&#160;&#160;&#160;12</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a97c704b85f71b6e61b0098b4a0a743cd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MIN_SIZE_ALIGNED&#160;&#160;&#160;<a class="el" href="group___basic_def.html#ga26d73b0669c3e335b2737e6d348cd4d8">RT_ALIGN</a>(<a class="el" href="mem_8c.html#a278694c2333c9826f21ddd2c2d220f66">MIN_SIZE</a>, RT_ALIGN_SIZE)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ade9cedd48e9a482120e29c010352ee5c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SIZEOF_STRUCT_MEM&#160;&#160;&#160;<a class="el" href="group___basic_def.html#ga26d73b0669c3e335b2737e6d348cd4d8">RT_ALIGN</a>(sizeof(struct <a class="el" href="structheap__mem.html">heap_mem</a>), RT_ALIGN_SIZE)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a class="anchor" id="af8089def0ae81c913102c982a185188a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void plug_holes </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structheap__mem.html">heap_mem</a> *&#160;</td>
+          <td class="paramname"><em>mem</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">变量说明</h2>
+<a class="anchor" id="aaf862ca0cbdafe6c097324577c0ea683"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void(* rt_malloc_hook) (void *ptr, <a class="el" href="group___basic_def.html#ga8011d259fdfc54b8a9aa006b4d49ac14">rt_size_t</a> size)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a82094ba21e55c2c207d47d1470161e97"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void(* rt_free_hook) (void *ptr)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aa38efdbd0941e192ebd3d54753631b82"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group___basic_def.html#ga585e2ad0fbab0f83817cb61373465df6">rt_uint8_t</a>* heap_ptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>指向堆的指针：为了对齐，heap_ptr现在是指针而不是数组 </p>
+
+</div>
+</div>
+<a class="anchor" id="a803d66952a48b02ed321889e6fc561e5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structheap__mem.html">heap_mem</a>* heap_end</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>最后一个条目，不会被使用！ </p>
+
+</div>
+</div>
+<a class="anchor" id="ab65de87165cdf291f44bc7317d27d0d8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structheap__mem.html">heap_mem</a>* lfree</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ab7c190a0101d4fe41838e3b22ea82b82"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structrt__semaphore.html">rt_semaphore</a> heap_sem</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a796f58983e79e17259b62eb2d57b70ea"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group___basic_def.html#ga8011d259fdfc54b8a9aa006b4d49ac14">rt_size_t</a> mem_size_aligned</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac0eb3129a342eaa0b0d33c88bf30f9d8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group___basic_def.html#ga8011d259fdfc54b8a9aa006b4d49ac14">rt_size_t</a> used_mem</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a276e8ffc1995a70fdee4771b3ff8900b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group___basic_def.html#ga8011d259fdfc54b8a9aa006b4d49ac14">rt_size_t</a> max_mem</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2018年 八月 28日 星期二 20:44:38 , 为 RT-Thread RTOS使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>

@@ -1,0 +1,477 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-Thread RTOS: 定时器管理</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-Thread RTOS
+   &#160;<span id="projectnumber">3.0.3</span>
+   </div>
+   <div id="projectbrief">An open source embedded real-time operating system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.10 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">结构体</a> &#124;
+<a href="#define-members">宏定义</a> &#124;
+<a href="#typedef-members">类型定义</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle">
+<div class="title">定时器管理<div class="ingroups"><a class="el" href="group___kernel.html">内核</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>定时器管理接口  
+<a href="#details">更多...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+结构体</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__timer.html">rt_timer</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:gaf00c192dcbc7a949beebaec8e8bf9232"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___timer.html#gaf00c192dcbc7a949beebaec8e8bf9232">RT_TIMER_FLAG_DEACTIVATED</a>&#160;&#160;&#160;0x0</td></tr>
+<tr class="memdesc:gaf00c192dcbc7a949beebaec8e8bf9232"><td class="mdescLeft">&#160;</td><td class="mdescRight">定时器未激活  <a href="#gaf00c192dcbc7a949beebaec8e8bf9232">更多...</a><br /></td></tr>
+<tr class="separator:gaf00c192dcbc7a949beebaec8e8bf9232"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga174b5f60b760b5e421616ff17cb15c4b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga174b5f60b760b5e421616ff17cb15c4b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___timer.html#ga174b5f60b760b5e421616ff17cb15c4b">RT_TIMER_FLAG_ACTIVATED</a>&#160;&#160;&#160;0x1</td></tr>
+<tr class="memdesc:ga174b5f60b760b5e421616ff17cb15c4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">定时器活动状态 <br /></td></tr>
+<tr class="separator:ga174b5f60b760b5e421616ff17cb15c4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae9ef5d12543ac6b2113741ed503fc9c3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gae9ef5d12543ac6b2113741ed503fc9c3"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___timer.html#gae9ef5d12543ac6b2113741ed503fc9c3">RT_TIMER_FLAG_ONE_SHOT</a>&#160;&#160;&#160;0x0</td></tr>
+<tr class="memdesc:gae9ef5d12543ac6b2113741ed503fc9c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">一次性计时器 <br /></td></tr>
+<tr class="separator:gae9ef5d12543ac6b2113741ed503fc9c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga52a9fd903938762a98408771bd139097"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga52a9fd903938762a98408771bd139097"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___timer.html#ga52a9fd903938762a98408771bd139097">RT_TIMER_FLAG_PERIODIC</a>&#160;&#160;&#160;0x2</td></tr>
+<tr class="memdesc:ga52a9fd903938762a98408771bd139097"><td class="mdescLeft">&#160;</td><td class="mdescRight">周期性定时器 <br /></td></tr>
+<tr class="separator:ga52a9fd903938762a98408771bd139097"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad750e1e3947c267e57be487dad3b4300"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad750e1e3947c267e57be487dad3b4300"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___timer.html#gad750e1e3947c267e57be487dad3b4300">RT_TIMER_FLAG_HARD_TIMER</a>&#160;&#160;&#160;0x0</td></tr>
+<tr class="memdesc:gad750e1e3947c267e57be487dad3b4300"><td class="mdescLeft">&#160;</td><td class="mdescRight">硬定时器，定时器的回调函数将在tick isr中调用。 <br /></td></tr>
+<tr class="separator:gad750e1e3947c267e57be487dad3b4300"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0df6e547917d460610fd734ae84daca3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga0df6e547917d460610fd734ae84daca3"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___timer.html#ga0df6e547917d460610fd734ae84daca3">RT_TIMER_FLAG_SOFT_TIMER</a>&#160;&#160;&#160;0x4</td></tr>
+<tr class="memdesc:ga0df6e547917d460610fd734ae84daca3"><td class="mdescLeft">&#160;</td><td class="mdescRight">软定时器，定时器的回调函数将在定时器线程中调用。 <br /></td></tr>
+<tr class="separator:ga0df6e547917d460610fd734ae84daca3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9b1d12b8471acff4c8f9eebb4216c7df"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga9b1d12b8471acff4c8f9eebb4216c7df"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___timer.html#ga9b1d12b8471acff4c8f9eebb4216c7df">RT_TIMER_CTRL_SET_TIME</a>&#160;&#160;&#160;0x0</td></tr>
+<tr class="memdesc:ga9b1d12b8471acff4c8f9eebb4216c7df"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置定时器控制命令 <br /></td></tr>
+<tr class="separator:ga9b1d12b8471acff4c8f9eebb4216c7df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2bbc0b4b2a4914c8eea4d1263e52ab85"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2bbc0b4b2a4914c8eea4d1263e52ab85"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___timer.html#ga2bbc0b4b2a4914c8eea4d1263e52ab85">RT_TIMER_CTRL_GET_TIME</a>&#160;&#160;&#160;0x1</td></tr>
+<tr class="memdesc:ga2bbc0b4b2a4914c8eea4d1263e52ab85"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取定时器控制命令 <br /></td></tr>
+<tr class="separator:ga2bbc0b4b2a4914c8eea4d1263e52ab85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga460a57e7d4fe4ea24772affaca3d62bc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga460a57e7d4fe4ea24772affaca3d62bc"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___timer.html#ga460a57e7d4fe4ea24772affaca3d62bc">RT_TIMER_CTRL_SET_ONESHOT</a>&#160;&#160;&#160;0x2</td></tr>
+<tr class="memdesc:ga460a57e7d4fe4ea24772affaca3d62bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">将计时器更改为一次性定时 <br /></td></tr>
+<tr class="separator:ga460a57e7d4fe4ea24772affaca3d62bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2e125a6714e6a5ff5756129cadbe3a7d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga2e125a6714e6a5ff5756129cadbe3a7d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___timer.html#ga2e125a6714e6a5ff5756129cadbe3a7d">RT_TIMER_CTRL_SET_PERIODIC</a>&#160;&#160;&#160;0x3</td></tr>
+<tr class="memdesc:ga2e125a6714e6a5ff5756129cadbe3a7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">将计时器更改为周期性定时 <br /></td></tr>
+<tr class="separator:ga2e125a6714e6a5ff5756129cadbe3a7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+类型定义</h2></td></tr>
+<tr class="memitem:ga32c381b041bcb69be117bcb32273775d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga32c381b041bcb69be117bcb32273775d"></a>
+typedef struct <a class="el" href="structrt__timer.html">rt_timer</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___timer.html#ga32c381b041bcb69be117bcb32273775d">rt_timer_t</a></td></tr>
+<tr class="memdesc:ga32c381b041bcb69be117bcb32273775d"><td class="mdescLeft">&#160;</td><td class="mdescRight">定时器类型定义 <br /></td></tr>
+<tr class="separator:ga32c381b041bcb69be117bcb32273775d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:ga678d29f53307113da6b1578c9d3423cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___timer.html#ga678d29f53307113da6b1578c9d3423cb">rt_timer_init</a> (<a class="el" href="group___timer.html#ga32c381b041bcb69be117bcb32273775d">rt_timer_t</a> timer, const char *name, void(*timeout)(void *parameter), void *parameter, <a class="el" href="group___basic_def.html#ga66c400929925784dba020d671154978a">rt_tick_t</a> time, <a class="el" href="group___basic_def.html#ga585e2ad0fbab0f83817cb61373465df6">rt_uint8_t</a> flag)</td></tr>
+<tr class="memdesc:ga678d29f53307113da6b1578c9d3423cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化定时器  <a href="#ga678d29f53307113da6b1578c9d3423cb">更多...</a><br /></td></tr>
+<tr class="separator:ga678d29f53307113da6b1578c9d3423cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0d1aca4fc86f1dbd88945be8820793bb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___timer.html#ga0d1aca4fc86f1dbd88945be8820793bb">rt_timer_detach</a> (<a class="el" href="group___timer.html#ga32c381b041bcb69be117bcb32273775d">rt_timer_t</a> timer)</td></tr>
+<tr class="memdesc:ga0d1aca4fc86f1dbd88945be8820793bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">脱离定时器  <a href="#ga0d1aca4fc86f1dbd88945be8820793bb">更多...</a><br /></td></tr>
+<tr class="separator:ga0d1aca4fc86f1dbd88945be8820793bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9e6911989135de1b989dd7fe1b3543ce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___timer.html#ga32c381b041bcb69be117bcb32273775d">rt_timer_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___timer.html#ga9e6911989135de1b989dd7fe1b3543ce">rt_timer_create</a> (const char *name, void(*timeout)(void *parameter), void *parameter, <a class="el" href="group___basic_def.html#ga66c400929925784dba020d671154978a">rt_tick_t</a> time, <a class="el" href="group___basic_def.html#ga585e2ad0fbab0f83817cb61373465df6">rt_uint8_t</a> flag)</td></tr>
+<tr class="memdesc:ga9e6911989135de1b989dd7fe1b3543ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建定时器  <a href="#ga9e6911989135de1b989dd7fe1b3543ce">更多...</a><br /></td></tr>
+<tr class="separator:ga9e6911989135de1b989dd7fe1b3543ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf6c147a1f25bd5ac9e72a142ab36a4ac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___timer.html#gaf6c147a1f25bd5ac9e72a142ab36a4ac">rt_timer_delete</a> (<a class="el" href="group___timer.html#ga32c381b041bcb69be117bcb32273775d">rt_timer_t</a> timer)</td></tr>
+<tr class="memdesc:gaf6c147a1f25bd5ac9e72a142ab36a4ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">删除定时器  <a href="#gaf6c147a1f25bd5ac9e72a142ab36a4ac">更多...</a><br /></td></tr>
+<tr class="separator:gaf6c147a1f25bd5ac9e72a142ab36a4ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3aeb8f8350b3a7403d8629231396c016"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___timer.html#ga3aeb8f8350b3a7403d8629231396c016">rt_timer_start</a> (<a class="el" href="group___timer.html#ga32c381b041bcb69be117bcb32273775d">rt_timer_t</a> timer)</td></tr>
+<tr class="memdesc:ga3aeb8f8350b3a7403d8629231396c016"><td class="mdescLeft">&#160;</td><td class="mdescRight">启动定时器  <a href="#ga3aeb8f8350b3a7403d8629231396c016">更多...</a><br /></td></tr>
+<tr class="separator:ga3aeb8f8350b3a7403d8629231396c016"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaaef9923c8b90ede02e12826c58c6f8a2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___timer.html#gaaef9923c8b90ede02e12826c58c6f8a2">rt_timer_stop</a> (<a class="el" href="group___timer.html#ga32c381b041bcb69be117bcb32273775d">rt_timer_t</a> timer)</td></tr>
+<tr class="memdesc:gaaef9923c8b90ede02e12826c58c6f8a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">停止定时器  <a href="#gaaef9923c8b90ede02e12826c58c6f8a2">更多...</a><br /></td></tr>
+<tr class="separator:gaaef9923c8b90ede02e12826c58c6f8a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga15e3b76a4a58d31aaf5c992bc127615c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___timer.html#ga15e3b76a4a58d31aaf5c992bc127615c">rt_timer_control</a> (<a class="el" href="group___timer.html#ga32c381b041bcb69be117bcb32273775d">rt_timer_t</a> timer, int cmd, void *arg)</td></tr>
+<tr class="memdesc:ga15e3b76a4a58d31aaf5c992bc127615c"><td class="mdescLeft">&#160;</td><td class="mdescRight">控制定时器  <a href="#ga15e3b76a4a58d31aaf5c992bc127615c">更多...</a><br /></td></tr>
+<tr class="separator:ga15e3b76a4a58d31aaf5c992bc127615c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<p>定时器管理接口 </p>
+<p>线程的定时精度由定时器决定。 定时器可以设置为单次或定期超时。</p>
+<p><b>范例：</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;rtthread.h&gt;</span></div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* 定时器的控制块 */</span></div>
+<div class="line"><span class="keyword">static</span> <a class="code" href="structrt__timer.html">rt_timer_t</a> timer1;</div>
+<div class="line"><span class="keyword">static</span> <a class="code" href="structrt__timer.html">rt_timer_t</a> timer2;</div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span> cnt = 0;</div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* 定时器1超时函数 */</span></div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span> timeout1(<span class="keywordtype">void</span> *parameter)</div>
+<div class="line">{</div>
+<div class="line">    rt_kprintf(<span class="stringliteral">&quot;periodic timer is timeout %d\n&quot;</span>, cnt);</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 运行第10次，停止周期定时器 */</span></div>
+<div class="line">    <span class="keywordflow">if</span> (cnt++ &gt;= 9)</div>
+<div class="line">    {</div>
+<div class="line">        <a class="code" href="group___timer.html#gaaef9923c8b90ede02e12826c58c6f8a2" title="停止定时器 ">rt_timer_stop</a>(timer1);</div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;periodic timer was stopped! \n&quot;</span>);</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* 定时器2超时函数 */</span></div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span> timeout2(<span class="keywordtype">void</span> *parameter)</div>
+<div class="line">{</div>
+<div class="line">    rt_kprintf(<span class="stringliteral">&quot;one shot timer is timeout\n&quot;</span>);</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="keywordtype">int</span> timer_sample(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">    <span class="comment">/* 创建定时器1  周期定时器 */</span></div>
+<div class="line">    timer1 = <a class="code" href="group___timer.html#ga9e6911989135de1b989dd7fe1b3543ce" title="创建定时器 ">rt_timer_create</a>(<span class="stringliteral">&quot;timer1&quot;</span>, timeout1,</div>
+<div class="line">                             <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>, 10,</div>
+<div class="line">                             <a class="code" href="group___timer.html#ga52a9fd903938762a98408771bd139097" title="周期性定时器 ">RT_TIMER_FLAG_PERIODIC</a>);</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 启动定时器1 */</span></div>
+<div class="line">    <span class="keywordflow">if</span> (timer1 != <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>) <a class="code" href="group___timer.html#ga3aeb8f8350b3a7403d8629231396c016" title="启动定时器 ">rt_timer_start</a>(timer1);</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 创建定时器2 单次定时器 */</span></div>
+<div class="line">    timer2 = <a class="code" href="group___timer.html#ga9e6911989135de1b989dd7fe1b3543ce" title="创建定时器 ">rt_timer_create</a>(<span class="stringliteral">&quot;timer2&quot;</span>, timeout2,</div>
+<div class="line">                             <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>,  30,</div>
+<div class="line">                             <a class="code" href="group___timer.html#gae9ef5d12543ac6b2113741ed503fc9c3" title="一次性计时器 ">RT_TIMER_FLAG_ONE_SHOT</a>);</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 启动定时器2 */</span></div>
+<div class="line">    <span class="keywordflow">if</span> (timer2 != <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>) <a class="code" href="group___timer.html#ga3aeb8f8350b3a7403d8629231396c016" title="启动定时器 ">rt_timer_start</a>(timer2);</div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* 导出到 msh 命令列表中 */</span></div>
+<div class="line">MSH_CMD_EXPORT(timer_sample, timer sample);</div>
+</div><!-- fragment --> <h2 class="groupheader">宏定义说明</h2>
+<a class="anchor" id="gaf00c192dcbc7a949beebaec8e8bf9232"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RT_TIMER_FLAG_DEACTIVATED&#160;&#160;&#160;0x0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>定时器未激活 </p>
+<p>clock &amp; timer macros </p>
+
+</div>
+</div>
+<h2 class="groupheader">函数说明</h2>
+<a class="anchor" id="ga678d29f53307113da6b1578c9d3423cb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rt_timer_init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group___timer.html#ga32c381b041bcb69be117bcb32273775d">rt_timer_t</a>&#160;</td>
+          <td class="paramname"><em>timer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void(*)(void *parameter)&#160;</td>
+          <td class="paramname"><em>timeout</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>parameter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group___basic_def.html#ga66c400929925784dba020d671154978a">rt_tick_t</a>&#160;</td>
+          <td class="paramname"><em>time</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group___basic_def.html#ga585e2ad0fbab0f83817cb61373465df6">rt_uint8_t</a>&#160;</td>
+          <td class="paramname"><em>flag</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>初始化定时器 </p>
+<p>该函数将初始化一个定时器，通常该函数用于初始化一个静态定时器对象。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timer</td><td>静态定时器对象句柄 </td></tr>
+    <tr><td class="paramname">name</td><td>定时器的名称 </td></tr>
+    <tr><td class="paramname">timeout</td><td>超时回调函数 </td></tr>
+    <tr><td class="paramname">parameter</td><td>超时回调函数的传入参数 </td></tr>
+    <tr><td class="paramname">time</td><td>定时器的超时滴答数 </td></tr>
+    <tr><td class="paramname">flag</td><td>定时器创建时的参数，支持的值包括单次定时、周期定时、 硬件定时器、软件定时器（可以用 “或” 关系取多个值） </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga0d1aca4fc86f1dbd88945be8820793bb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a> rt_timer_detach </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group___timer.html#ga32c381b041bcb69be117bcb32273775d">rt_timer_t</a>&#160;</td>
+          <td class="paramname"><em>timer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>脱离定时器 </p>
+<p>当一个静态定时器不需要再使用时，可以使用该函数接口把定时器对象从系统容器的定时器链表中删除， 但是定时器对象所占有的内存不会被释放。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timer</td><td>静态定时器对象句柄</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功 OK; 错误则返回 RT_ERROR </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga9e6911989135de1b989dd7fe1b3543ce"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group___timer.html#ga32c381b041bcb69be117bcb32273775d">rt_timer_t</a> rt_timer_create </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void(*)(void *parameter)&#160;</td>
+          <td class="paramname"><em>timeout</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>parameter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group___basic_def.html#ga66c400929925784dba020d671154978a">rt_tick_t</a>&#160;</td>
+          <td class="paramname"><em>time</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group___basic_def.html#ga585e2ad0fbab0f83817cb61373465df6">rt_uint8_t</a>&#160;</td>
+          <td class="paramname"><em>flag</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>创建定时器 </p>
+<p>调用该函数接口后，内核首先从动态内存堆中分配一个定时器控制块，然后对该控制块进行基本的初始化。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>定时器名称 </td></tr>
+    <tr><td class="paramname">timeout</td><td>超时回调函数 </td></tr>
+    <tr><td class="paramname">parameter</td><td>超时回调函数的传入参数 </td></tr>
+    <tr><td class="paramname">time</td><td>定时超时时间 </td></tr>
+    <tr><td class="paramname">flag</td><td>定时器的标志位</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>创建的定时器句柄 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gaf6c147a1f25bd5ac9e72a142ab36a4ac"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a> rt_timer_delete </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group___timer.html#ga32c381b041bcb69be117bcb32273775d">rt_timer_t</a>&#160;</td>
+          <td class="paramname"><em>timer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>删除定时器 </p>
+<p>系统不再使用动态定时器时，可使用该函数接口，系统会把这个定时器从 rt_timer_list 链表中删除，然后释放相应的定时器控制块占有的内存。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timer</td><td>将要被删除的定时器句柄</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功 RT_EOK ; 错误则返回 -RT_ERROR </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga3aeb8f8350b3a7403d8629231396c016"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a> rt_timer_start </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group___timer.html#ga32c381b041bcb69be117bcb32273775d">rt_timer_t</a>&#160;</td>
+          <td class="paramname"><em>timer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>启动定时器 </p>
+<p>当定时器被创建或者初始化以后，并不会被立即启动，必须在调用该函数接口后，才开始工作。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timer</td><td>将要被启动的定时器</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功 RT_EOK ; 错误则返回 -RT_ERROR </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gaaef9923c8b90ede02e12826c58c6f8a2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a> rt_timer_stop </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group___timer.html#ga32c381b041bcb69be117bcb32273775d">rt_timer_t</a>&#160;</td>
+          <td class="paramname"><em>timer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>停止定时器 </p>
+<p>启动定时器以后，若想使它停止，可以调用该函数接口。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timer</td><td>定时器句柄，指向要停止的定时器控制块</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>成功则返回 RT_EOK ; 返回 -RT_ERROR 时则说明已经处于停止状态 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga15e3b76a4a58d31aaf5c992bc127615c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a> rt_timer_control </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group___timer.html#ga32c381b041bcb69be117bcb32273775d">rt_timer_t</a>&#160;</td>
+          <td class="paramname"><em>timer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cmd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>arg</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>控制定时器 </p>
+<p>该函数可根据命令类型参数，来查看或改变定时器的设置。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timer</td><td>定时器句柄，指向将要控制的定时器控制块 </td></tr>
+    <tr><td class="paramname">cmd</td><td>控制命令 </td></tr>
+    <tr><td class="paramname">arg</td><td>控制命令相关的参数</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>RT_EOK </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2018年 九月 21日 星期五 22:35:14 , 为 RT-Thread RTOS使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>

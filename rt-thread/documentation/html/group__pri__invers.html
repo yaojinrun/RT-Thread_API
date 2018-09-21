@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-Thread RTOS: 互斥量优先级反转</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-Thread RTOS
+   &#160;<span id="projectnumber">3.0.3</span>
+   </div>
+   <div id="projectbrief">An open source embedded real-time operating system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.10 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">互斥量优先级反转<div class="ingroups"><a class="el" href="group___kernel.html">内核</a> &raquo; <a class="el" href="group__example.html">内核例程</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+<p>这个例子将创建 3 个动态线程以检查持有互斥量时，持有的线程优先级是否 被调整到等待线程优先级中的最高优先级。</p>
+<p>线程 1，2，3 的优先级从高到低分别被创建， 线程 3 先持有互斥量，而后线程 2 试图持有互斥量，此时线程 3 的优先级应该 被提升为和线程 2 的优先级相同。线程 1 用于检查线程 3 的优先级是否被提升 为与线程 2的优先级相同。</p>
+<p><b>源码</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;rtthread.h&gt;</span></div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* 指向线程控制块的指针 */</span></div>
+<div class="line"><span class="keyword">static</span> <a class="code" href="structrt__thread.html" title="线程对象控制块 ">rt_thread_t</a> tid1 = <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>;</div>
+<div class="line"><span class="keyword">static</span> <a class="code" href="structrt__thread.html" title="线程对象控制块 ">rt_thread_t</a> tid2 = <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>;</div>
+<div class="line"><span class="keyword">static</span> <a class="code" href="structrt__thread.html" title="线程对象控制块 ">rt_thread_t</a> tid3 = <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>;</div>
+<div class="line"><span class="keyword">static</span> <a class="code" href="structrt__mutex.html">rt_mutex_t</a> mutex = <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>;</div>
+<div class="line"></div>
+<div class="line"></div>
+<div class="line"><span class="preprocessor">#define THREAD_PRIORITY       10</span></div>
+<div class="line"><span class="preprocessor">#define THREAD_STACK_SIZE     512</span></div>
+<div class="line"><span class="preprocessor">#define THREAD_TIMESLICE      5</span></div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* 线程 1 入口 */</span></div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span> thread1_entry(<span class="keywordtype">void</span> *parameter)</div>
+<div class="line">{</div>
+<div class="line">    <span class="comment">/* 先让低优先级线程运行 */</span></div>
+<div class="line">    <a class="code" href="group___thread.html#ga4ba0dbf06d5fa05f469da371ff6d2876" title="线程毫秒延时函数 ">rt_thread_mdelay</a>(100);</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 此时 thread3 持有 mutex，并且 thread2 等待持有 mutex */</span></div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 检查 rt_kprintf(&quot;the producer generates a number: %d\n&quot;, array[set%MAXSEM]); 与 thread3 的优先级情况 */</span></div>
+<div class="line">    <span class="keywordflow">if</span> (tid2-&gt;<a class="code" href="structrt__thread.html#a90875799a0ea47e5558f104702a20548" title="当前优先级 ">current_priority</a> != tid3-&gt;<a class="code" href="structrt__thread.html#a90875799a0ea47e5558f104702a20548" title="当前优先级 ">current_priority</a>)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="comment">/* 优先级不相同，测试失败 */</span></div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;the priority of thread2 is: %d\n&quot;</span>, tid2-&gt;<a class="code" href="structrt__thread.html#a90875799a0ea47e5558f104702a20548" title="当前优先级 ">current_priority</a>);</div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;the priority of thread3 is: %d\n&quot;</span>, tid3-&gt;<a class="code" href="structrt__thread.html#a90875799a0ea47e5558f104702a20548" title="当前优先级 ">current_priority</a>);</div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;test failed.\n&quot;</span>);</div>
+<div class="line">        <span class="keywordflow">return</span>;</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">else</span></div>
+<div class="line">    {</div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;the priority of thread2 is: %d\n&quot;</span>, tid2-&gt;<a class="code" href="structrt__thread.html#a90875799a0ea47e5558f104702a20548" title="当前优先级 ">current_priority</a>);</div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;the priority of thread3 is: %d\n&quot;</span>, tid3-&gt;<a class="code" href="structrt__thread.html#a90875799a0ea47e5558f104702a20548" title="当前优先级 ">current_priority</a>);</div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;test OK.\n&quot;</span>);</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* 线程 2 入口 */</span></div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span> thread2_entry(<span class="keywordtype">void</span> *parameter)</div>
+<div class="line">{</div>
+<div class="line">    <a class="code" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950" title="错误号类型 ">rt_err_t</a> result;</div>
+<div class="line"></div>
+<div class="line">    rt_kprintf(<span class="stringliteral">&quot;the priority of thread2 is: %d\n&quot;</span>, tid2-&gt;<a class="code" href="structrt__thread.html#a90875799a0ea47e5558f104702a20548" title="当前优先级 ">current_priority</a>);</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 先让低优先级线程运行 */</span></div>
+<div class="line">    <a class="code" href="group___thread.html#ga4ba0dbf06d5fa05f469da371ff6d2876" title="线程毫秒延时函数 ">rt_thread_mdelay</a>(50);</div>
+<div class="line"></div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/*</span></div>
+<div class="line"><span class="comment">     * 试图持有互斥锁，此时 thread3 持有，应把 thread3 的优先级提升</span></div>
+<div class="line"><span class="comment">     * 到 thread2 相同的优先级</span></div>
+<div class="line"><span class="comment">     */</span></div>
+<div class="line">    result = <a class="code" href="group__mutex.html#ga77845c9c0da68d07225c4c4699f114f0" title="获取互斥量 ">rt_mutex_take</a>(mutex, <a class="code" href="group___i_p_c.html#ga923d8e409f9daa8843978d6805ebcdeb" title="永远阻塞直到获得资源。 ">RT_WAITING_FOREVER</a>);</div>
+<div class="line"></div>
+<div class="line">    <span class="keywordflow">if</span> (result == <a class="code" href="group___error.html#gaaaddfb31f867cc924e0220470aaaec5f" title="无错误 ">RT_EOK</a>)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="comment">/* 释放互斥锁 */</span></div>
+<div class="line">        <a class="code" href="group__mutex.html#gad49c2ee6dc578e6687919f01a4ac5137" title="释放互斥量 ">rt_mutex_release</a>(mutex);</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* 线程 3 入口 */</span></div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span> thread3_entry(<span class="keywordtype">void</span> *parameter)</div>
+<div class="line">{</div>
+<div class="line">    <a class="code" href="group___basic_def.html#ga66c400929925784dba020d671154978a" title="系统时钟节拍计数类型 ">rt_tick_t</a> tick;</div>
+<div class="line">    <a class="code" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950" title="错误号类型 ">rt_err_t</a> result;</div>
+<div class="line"></div>
+<div class="line">    rt_kprintf(<span class="stringliteral">&quot;the priority of thread3 is: %d\n&quot;</span>, tid3-&gt;<a class="code" href="structrt__thread.html#a90875799a0ea47e5558f104702a20548" title="当前优先级 ">current_priority</a>);</div>
+<div class="line"></div>
+<div class="line">    result = <a class="code" href="group__mutex.html#ga77845c9c0da68d07225c4c4699f114f0" title="获取互斥量 ">rt_mutex_take</a>(mutex, <a class="code" href="group___i_p_c.html#ga923d8e409f9daa8843978d6805ebcdeb" title="永远阻塞直到获得资源。 ">RT_WAITING_FOREVER</a>);</div>
+<div class="line">    <span class="keywordflow">if</span> (result != <a class="code" href="group___error.html#gaaaddfb31f867cc924e0220470aaaec5f" title="无错误 ">RT_EOK</a>)</div>
+<div class="line">    {</div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;thread3 take a mutex, failed.\n&quot;</span>);</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 做一个长时间的循环，500ms */</span></div>
+<div class="line">    tick = <a class="code" href="group___clock.html#ga6e2aa36f263bddcddae01a91986fcdae">rt_tick_get</a>();</div>
+<div class="line">    <span class="keywordflow">while</span> (<a class="code" href="group___clock.html#ga6e2aa36f263bddcddae01a91986fcdae">rt_tick_get</a>() - tick &lt; (RT_TICK_PER_SECOND / 2)) ;</div>
+<div class="line"></div>
+<div class="line">    <a class="code" href="group__mutex.html#gad49c2ee6dc578e6687919f01a4ac5137" title="释放互斥量 ">rt_mutex_release</a>(mutex);</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="keywordtype">int</span> pri_inversion(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">    <span class="comment">/* 创建互斥锁 */</span></div>
+<div class="line">    mutex = <a class="code" href="group__mutex.html#ga5ce96ed48d83086aab6ecadebac6d0c6" title="创建互斥量 ">rt_mutex_create</a>(<span class="stringliteral">&quot;mutex&quot;</span>, <a class="code" href="group___i_p_c.html#ga1b618f6714ea8f49a45ea4d105aaf5d5" title="FIFOed IPC. 线程间通讯. ">RT_IPC_FLAG_FIFO</a>);</div>
+<div class="line">    <span class="keywordflow">if</span> (mutex == <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>)</div>
+<div class="line">    {</div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;create dynamic mutex failed.\n&quot;</span>);</div>
+<div class="line">        <span class="keywordflow">return</span> -1;</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 创建线程 1 */</span></div>
+<div class="line">    tid1 = <a class="code" href="group___thread.html#gacb215b161f17c26b5e19c28cd0119e7b" title="创建线程 ">rt_thread_create</a>(<span class="stringliteral">&quot;thread1&quot;</span>,</div>
+<div class="line">                            thread1_entry, </div>
+<div class="line">                            <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>,</div>
+<div class="line">                            THREAD_STACK_SIZE, </div>
+<div class="line">                            THREAD_PRIORITY - 1, THREAD_TIMESLICE);</div>
+<div class="line">    <span class="keywordflow">if</span> (tid1 != <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>)</div>
+<div class="line">         <a class="code" href="group___thread.html#ga04b743537fd099e204fc292e57b4aa5a" title="启动线程 ">rt_thread_startup</a>(tid1);</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">/* 创建线程 2 */</span></div>
+<div class="line">    tid2 = <a class="code" href="group___thread.html#gacb215b161f17c26b5e19c28cd0119e7b" title="创建线程 ">rt_thread_create</a>(<span class="stringliteral">&quot;thread2&quot;</span>,</div>
+<div class="line">                            thread2_entry, </div>
+<div class="line">                            <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>, </div>
+<div class="line">                            THREAD_STACK_SIZE, </div>
+<div class="line">                            THREAD_PRIORITY, THREAD_TIMESLICE);</div>
+<div class="line">    <span class="keywordflow">if</span> (tid2 != <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>)</div>
+<div class="line">        <a class="code" href="group___thread.html#ga04b743537fd099e204fc292e57b4aa5a" title="启动线程 ">rt_thread_startup</a>(tid2);</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 创建线程 3 */</span></div>
+<div class="line">    tid3 = <a class="code" href="group___thread.html#gacb215b161f17c26b5e19c28cd0119e7b" title="创建线程 ">rt_thread_create</a>(<span class="stringliteral">&quot;thread3&quot;</span>,</div>
+<div class="line">                            thread3_entry, </div>
+<div class="line">                            <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>, </div>
+<div class="line">                            THREAD_STACK_SIZE, </div>
+<div class="line">                            THREAD_PRIORITY + 1, THREAD_TIMESLICE);</div>
+<div class="line">    <span class="keywordflow">if</span> (tid3 != <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>)</div>
+<div class="line">        <a class="code" href="group___thread.html#ga04b743537fd099e204fc292e57b4aa5a" title="启动线程 ">rt_thread_startup</a>(tid3);</div>
+<div class="line"></div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* 导出到 msh 命令列表中 */</span></div>
+<div class="line">MSH_CMD_EXPORT(pri_inversion, pri_inversion sample);</div>
+</div><!-- fragment --> </div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2018年 九月 21日 星期五 22:35:14 , 为 RT-Thread RTOS使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>

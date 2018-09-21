@@ -1,0 +1,15 @@
+digraph "Device Virtual File System"
+{
+  edge [fontname="FreeSans.ttf",fontsize="10",labelfontname="FreeSans.ttf",labelfontsize="10"];
+  node [fontname="FreeSans.ttf",fontsize="10",shape=record];
+  rankdir=LR;
+  Node1 [label="File Descriptor",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___fd.html"];
+  Node0 [label="Device Virtual File\l System",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node4 [label="File POSIX API",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___fs_posix_api.html"];
+  Node2 [label="File System API",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___fs_api.html"];
+  Node3 [label="File API",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___file_api.html"];
+  Node0->Node1 [shape=plaintext, dir="back", style="solid"];
+  Node0->Node2 [shape=plaintext, dir="back", style="solid"];
+  Node0->Node3 [shape=plaintext, dir="back", style="solid"];
+  Node0->Node4 [shape=plaintext, dir="back", style="solid"];
+}

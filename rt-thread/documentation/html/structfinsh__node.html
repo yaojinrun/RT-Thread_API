@@ -1,0 +1,282 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-Thread RTOS: finsh_node结构体 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-Thread RTOS
+   &#160;<span id="projectnumber">3.0.3</span>
+   </div>
+   <div id="projectbrief">An open source embedded real-time operating system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.10 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li class="current"><a href="annotated.html"><span>结构体</span></a></li>
+      <li><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li><a href="classes.html"><span>结构体索引</span></a></li>
+      <li><a href="functions.html"><span>成员变量</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-attribs">成员变量</a>  </div>
+  <div class="headertitle">
+<div class="title">finsh_node结构体 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;finsh.h&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+成员变量</h2></td></tr>
+<tr class="memitem:a88237d7130ed5fff2e0e09383f312de0"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfinsh__node.html#a88237d7130ed5fff2e0e09383f312de0">node_type</a></td></tr>
+<tr class="separator:a88237d7130ed5fff2e0e09383f312de0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af443e4b70f5dea18dfc6c42bc9f79624"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfinsh__node.html#af443e4b70f5dea18dfc6c42bc9f79624">data_type</a></td></tr>
+<tr class="separator:af443e4b70f5dea18dfc6c42bc9f79624"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa8575b8b3b33825ca40a1c1a9d22f13"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfinsh__node.html#aaa8575b8b3b33825ca40a1c1a9d22f13">idtype</a></td></tr>
+<tr class="separator:aaa8575b8b3b33825ca40a1c1a9d22f13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a497144a0b17316b5eb7403f14d9bfe56"><td class="memItemLeft" >union {</td></tr>
+<tr class="memitem:a448843d28401020a18d2dfc7f7356aa6"><td class="memItemLeft" >&#160;&#160;&#160;char&#160;&#160;&#160;<a class="el" href="structfinsh__node.html#a5de8f5f53671b41cf94f039802473c15">char_value</a></td></tr>
+<tr class="separator:a448843d28401020a18d2dfc7f7356aa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82491f08a01cdc0f38efe769cb9e5e4b"><td class="memItemLeft" >&#160;&#160;&#160;short&#160;&#160;&#160;<a class="el" href="structfinsh__node.html#ae59e02a73c9a2efe146bae5150cf12dd">short_value</a></td></tr>
+<tr class="separator:a82491f08a01cdc0f38efe769cb9e5e4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30c3a15168c7b6b3dc515101b7bb8e0e"><td class="memItemLeft" >&#160;&#160;&#160;int&#160;&#160;&#160;<a class="el" href="structfinsh__node.html#a4b6bb7732f3d3ad5f9899afeedbf453d">int_value</a></td></tr>
+<tr class="separator:a30c3a15168c7b6b3dc515101b7bb8e0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2ce00d27491f719bfd77edf2b2849af"><td class="memItemLeft" >&#160;&#160;&#160;long&#160;&#160;&#160;<a class="el" href="structfinsh__node.html#afa4055b01d50adda79488073c3f8d2d3">long_value</a></td></tr>
+<tr class="separator:ad2ce00d27491f719bfd77edf2b2849af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53e5422534f558ddce8b7e50b5cbdd5d"><td class="memItemLeft" >&#160;&#160;&#160;void *&#160;&#160;&#160;<a class="el" href="structfinsh__node.html#a70a2c4e345159557c08debd29fa98b9e">ptr</a></td></tr>
+<tr class="separator:a53e5422534f558ddce8b7e50b5cbdd5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a497144a0b17316b5eb7403f14d9bfe56"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfinsh__node.html#a497144a0b17316b5eb7403f14d9bfe56">value</a></td></tr>
+<tr class="separator:a497144a0b17316b5eb7403f14d9bfe56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa772b7e28ce83f30c550b0783b06e675"><td class="memItemLeft" >union {</td></tr>
+<tr class="memitem:a69f988ae36803261815a10ad1eb72663"><td class="memItemLeft" >&#160;&#160;&#160;struct <a class="el" href="structfinsh__var.html">finsh_var</a> *&#160;&#160;&#160;<a class="el" href="structfinsh__node.html#a04b7e280357197352c6cc57b20830299">var</a></td></tr>
+<tr class="separator:a69f988ae36803261815a10ad1eb72663"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af81b979d099933929d5cc99844b4a603"><td class="memItemLeft" >&#160;&#160;&#160;struct <a class="el" href="structfinsh__sysvar.html">finsh_sysvar</a> *&#160;&#160;&#160;<a class="el" href="structfinsh__node.html#a74e2082523d3e81722f86b1982cf7e11">sysvar</a></td></tr>
+<tr class="separator:af81b979d099933929d5cc99844b4a603"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a820aa0eaf09a28da8107b1cae98f2f55"><td class="memItemLeft" >&#160;&#160;&#160;struct <a class="el" href="structfinsh__syscall.html">finsh_syscall</a> *&#160;&#160;&#160;<a class="el" href="structfinsh__node.html#a1893c5dc789881356c1912de5d92ca54">syscall</a></td></tr>
+<tr class="separator:a820aa0eaf09a28da8107b1cae98f2f55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa772b7e28ce83f30c550b0783b06e675"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfinsh__node.html#aa772b7e28ce83f30c550b0783b06e675">id</a></td></tr>
+<tr class="separator:aa772b7e28ce83f30c550b0783b06e675"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1af53041091525a72cca6ac128a5a738"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structfinsh__node.html">finsh_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfinsh__node.html#a1af53041091525a72cca6ac128a5a738">sibling</a></td></tr>
+<tr class="separator:a1af53041091525a72cca6ac128a5a738"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3866ab6ba3d02a52d60146fa29930a7f"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structfinsh__node.html">finsh_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfinsh__node.html#a3866ab6ba3d02a52d60146fa29930a7f">child</a></td></tr>
+<tr class="separator:a3866ab6ba3d02a52d60146fa29930a7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">结构体成员变量说明</h2>
+<a class="anchor" id="a88237d7130ed5fff2e0e09383f312de0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t finsh_node::node_type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="af443e4b70f5dea18dfc6c42bc9f79624"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t finsh_node::data_type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aaa8575b8b3b33825ca40a1c1a9d22f13"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t finsh_node::idtype</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a5de8f5f53671b41cf94f039802473c15"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char finsh_node::char_value</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ae59e02a73c9a2efe146bae5150cf12dd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">short finsh_node::short_value</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a4b6bb7732f3d3ad5f9899afeedbf453d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int finsh_node::int_value</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="afa4055b01d50adda79488073c3f8d2d3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long finsh_node::long_value</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a70a2c4e345159557c08debd29fa98b9e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* finsh_node::ptr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a497144a0b17316b5eb7403f14d9bfe56"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">union { ... }   finsh_node::value</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a04b7e280357197352c6cc57b20830299"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structfinsh__var.html">finsh_var</a>* finsh_node::var</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a74e2082523d3e81722f86b1982cf7e11"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structfinsh__sysvar.html">finsh_sysvar</a>* finsh_node::sysvar</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a1893c5dc789881356c1912de5d92ca54"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structfinsh__syscall.html">finsh_syscall</a>* finsh_node::syscall</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aa772b7e28ce83f30c550b0783b06e675"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">union { ... }  finsh_node::id</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a1af53041091525a72cca6ac128a5a738"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structfinsh__node.html">finsh_node</a>* finsh_node::sibling</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a3866ab6ba3d02a52d60146fa29930a7f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structfinsh__node.html">finsh_node</a> * finsh_node::child</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2018年 八月 28日 星期二 20:44:38 , 为 RT-Thread RTOS使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>

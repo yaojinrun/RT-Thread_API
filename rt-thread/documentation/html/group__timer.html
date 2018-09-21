@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-Thread RTOS: 定时器例程</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-Thread RTOS
+   &#160;<span id="projectnumber">3.0.3</span>
+   </div>
+   <div id="projectbrief">An open source embedded real-time operating system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.10 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">定时器例程<div class="ingroups"><a class="el" href="group___kernel.html">内核</a> &raquo; <a class="el" href="group__example.html">内核例程</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+<p>这个例程会创建两个动态定时器，一个是单次定时，一个是周期性定时 并让周期定时器运行一段时间后停止运行</p>
+<p><b>源码</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;rtthread.h&gt;</span></div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* 定时器的控制块 */</span></div>
+<div class="line"><span class="keyword">static</span> <a class="code" href="structrt__timer.html">rt_timer_t</a> timer1;</div>
+<div class="line"><span class="keyword">static</span> <a class="code" href="structrt__timer.html">rt_timer_t</a> timer2;</div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span> cnt = 0;</div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* 定时器1超时函数 */</span></div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span> timeout1(<span class="keywordtype">void</span> *parameter)</div>
+<div class="line">{</div>
+<div class="line">    rt_kprintf(<span class="stringliteral">&quot;periodic timer is timeout %d\n&quot;</span>, cnt);</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 运行第10次，停止周期定时器 */</span></div>
+<div class="line">    <span class="keywordflow">if</span> (cnt++ &gt;= 9)</div>
+<div class="line">    {</div>
+<div class="line">        <a class="code" href="group___timer.html#gaaef9923c8b90ede02e12826c58c6f8a2" title="停止定时器 ">rt_timer_stop</a>(timer1);</div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;periodic timer was stopped! \n&quot;</span>);</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* 定时器2超时函数 */</span></div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span> timeout2(<span class="keywordtype">void</span> *parameter)</div>
+<div class="line">{</div>
+<div class="line">    rt_kprintf(<span class="stringliteral">&quot;one shot timer is timeout\n&quot;</span>);</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="keywordtype">int</span> timer_sample(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">    <span class="comment">/* 创建定时器1  周期定时器 */</span></div>
+<div class="line">    timer1 = <a class="code" href="group___timer.html#ga9e6911989135de1b989dd7fe1b3543ce" title="创建定时器 ">rt_timer_create</a>(<span class="stringliteral">&quot;timer1&quot;</span>, timeout1,</div>
+<div class="line">                             <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>, 10,</div>
+<div class="line">                             <a class="code" href="group___timer.html#ga52a9fd903938762a98408771bd139097" title="周期性定时器 ">RT_TIMER_FLAG_PERIODIC</a>);</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 启动定时器1 */</span></div>
+<div class="line">    <span class="keywordflow">if</span> (timer1 != <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>) <a class="code" href="group___timer.html#ga3aeb8f8350b3a7403d8629231396c016" title="启动定时器 ">rt_timer_start</a>(timer1);</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 创建定时器2 单次定时器 */</span></div>
+<div class="line">    timer2 = <a class="code" href="group___timer.html#ga9e6911989135de1b989dd7fe1b3543ce" title="创建定时器 ">rt_timer_create</a>(<span class="stringliteral">&quot;timer2&quot;</span>, timeout2,</div>
+<div class="line">                             <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>,  30,</div>
+<div class="line">                             <a class="code" href="group___timer.html#gae9ef5d12543ac6b2113741ed503fc9c3" title="一次性计时器 ">RT_TIMER_FLAG_ONE_SHOT</a>);</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 启动定时器2 */</span></div>
+<div class="line">    <span class="keywordflow">if</span> (timer2 != <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>) <a class="code" href="group___timer.html#ga3aeb8f8350b3a7403d8629231396c016" title="启动定时器 ">rt_timer_start</a>(timer2);</div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* 导出到 msh 命令列表中 */</span></div>
+<div class="line">MSH_CMD_EXPORT(timer_sample, timer sample);</div>
+</div><!-- fragment --> </div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2018年 九月 21日 星期五 22:35:14 , 为 RT-Thread RTOS使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>

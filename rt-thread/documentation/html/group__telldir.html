@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-Thread RTOS: 保存与设置读取目录位置</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-Thread RTOS
+   &#160;<span id="projectnumber">3.0.3</span>
+   </div>
+   <div id="projectbrief">An open source embedded real-time operating system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.10 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">保存与设置读取目录位置<div class="ingroups"><a class="el" href="group___d_f_s.html">文件系统</a> &raquo; <a class="el" href="group___fs__example.html">文件系统例程</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+<p>程序会创建一个操作文件的函数并导出到msh命令列表 在函数中调用 <a class="el" href="group___fs_posix_api.html#gaaf08168ca632ba3f9385aa53261ae63d" title="获取目录流的读取位置 ">telldir()</a> 函数 off_t <a class="el" href="group___fs_posix_api.html#gaaf08168ca632ba3f9385aa53261ae63d" title="获取目录流的读取位置 ">telldir(DIR *d)</a>; 获取目录流的读取位置 void <a class="el" href="group___fs_posix_api.html#ga58829cca160034015b3dddc17bb502ab" title="设置下次读取目录的位置 ">seekdir(DIR *d, off_t offset)</a>; 设置下次读取目录的位置</p>
+<p><b>源码</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;rtthread.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;dfs_posix.h&gt;</span> <span class="comment">/* 当需要使用文件操作时，需要包含这个头文件 */</span></div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* 假设文件操作是在一个线程中完成 */</span></div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span> telldir_sample(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">    DIR *dirp;</div>
+<div class="line">    <span class="keywordtype">int</span> save3 = 0;</div>
+<div class="line">    <span class="keywordtype">int</span> cur;</div>
+<div class="line">    <span class="keywordtype">int</span> i = 0;</div>
+<div class="line">    <span class="keyword">struct </span>dirent *dp;</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 打开根目录 */</span></div>
+<div class="line">    rt_kprintf(<span class="stringliteral">&quot;the directory is:\n&quot;</span>);</div>
+<div class="line">    dirp = <a class="code" href="group___fs_posix_api.html#ga1632d8c06c14f295c6d9407b7fec67af" title="打开目录 ">opendir</a>(<span class="stringliteral">&quot;/&quot;</span>);</div>
+<div class="line">    </div>
+<div class="line">    <span class="keywordflow">for</span> (dp = <a class="code" href="group___fs_posix_api.html#gaa7687571d2af8efd5153874ae6e678d9" title="读取目录 ">readdir</a>(dirp); dp != <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>; dp = <a class="code" href="group___fs_posix_api.html#gaa7687571d2af8efd5153874ae6e678d9" title="读取目录 ">readdir</a>(dirp))</div>
+<div class="line">    {</div>
+<div class="line">        <span class="comment">/* 保存第三个目录项的目录指针*/</span></div>
+<div class="line">        i++;</div>
+<div class="line">        <span class="keywordflow">if</span> (i == 3)</div>
+<div class="line">            save3 = <a class="code" href="group___fs_posix_api.html#gaaf08168ca632ba3f9385aa53261ae63d" title="获取目录流的读取位置 ">telldir</a>(dirp);</div>
+<div class="line"></div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;%s\n&quot;</span>, dp-&gt;d_name);</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 回到刚才保存的第三个目录项的目录指针*/</span></div>
+<div class="line">    <a class="code" href="group___fs_posix_api.html#ga58829cca160034015b3dddc17bb502ab" title="设置下次读取目录的位置 ">seekdir</a>(dirp, save3);</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 检查当前目录指针是否等于保存过的第三个目录项的指针. */</span></div>
+<div class="line">    cur = <a class="code" href="group___fs_posix_api.html#gaaf08168ca632ba3f9385aa53261ae63d" title="获取目录流的读取位置 ">telldir</a>(dirp);</div>
+<div class="line">    <span class="keywordflow">if</span> (cur != save3)</div>
+<div class="line">    {</div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;seekdir (d, %ld); telldir (d) == %ld\n&quot;</span>, save3, cur);</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 从第三个目录项开始打印*/</span></div>
+<div class="line">    rt_kprintf(<span class="stringliteral">&quot;the result of tell_seek_dir is:\n&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">for</span> (dp = <a class="code" href="group___fs_posix_api.html#gaa7687571d2af8efd5153874ae6e678d9" title="读取目录 ">readdir</a>(dirp); dp != NULL; dp = <a class="code" href="group___fs_posix_api.html#gaa7687571d2af8efd5153874ae6e678d9" title="读取目录 ">readdir</a>(dirp))</div>
+<div class="line">    {</div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;%s\n&quot;</span>, dp-&gt;d_name);</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 关闭目录*/</span></div>
+<div class="line">    <a class="code" href="group___fs_posix_api.html#ga058e669d865116ec6419ea3a52207830" title="关闭目录 ">closedir</a>(dirp);</div>
+<div class="line">}</div>
+<div class="line"><span class="comment">/* 导出到 msh 命令列表中 */</span></div>
+<div class="line">MSH_CMD_EXPORT(telldir_sample, <a class="code" href="group___fs_posix_api.html#gaaf08168ca632ba3f9385aa53261ae63d" title="获取目录流的读取位置 ">telldir</a> sample);</div>
+</div><!-- fragment --> </div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2018年 九月 21日 星期五 22:35:14 , 为 RT-Thread RTOS使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>

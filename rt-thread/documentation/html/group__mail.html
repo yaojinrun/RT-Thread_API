@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-Thread RTOS: 邮箱例程</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-Thread RTOS
+   &#160;<span id="projectnumber">3.0.3</span>
+   </div>
+   <div id="projectbrief">An open source embedded real-time operating system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.10 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">邮箱例程<div class="ingroups"><a class="el" href="group___kernel.html">内核</a> &raquo; <a class="el" href="group__example.html">内核例程</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+<p>这个程序会创建2个动态线程，一个静态的邮箱对象，其中一个线程往邮箱中发送邮件， 一个线程往邮箱中收取邮件。</p>
+<p><b>源码</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;rtthread.h&gt;</span></div>
+<div class="line"></div>
+<div class="line"><span class="preprocessor">#define THREAD_PRIORITY      10</span></div>
+<div class="line"><span class="preprocessor">#define THREAD_TIMESLICE     5</span></div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* 邮箱控制块 */</span></div>
+<div class="line"><span class="keyword">static</span> <span class="keyword">struct </span><a class="code" href="structrt__mailbox.html">rt_mailbox</a> mb;</div>
+<div class="line"><span class="comment">/* 用于放邮件的内存池 */</span></div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">char</span> mb_pool[128];</div>
+<div class="line"></div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">char</span> mb_str1[] = <span class="stringliteral">&quot;I&#39;m a mail!&quot;</span>;</div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">char</span> mb_str2[] = <span class="stringliteral">&quot;this is another mail!&quot;</span>;</div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">char</span> mb_str3[] = <span class="stringliteral">&quot;over&quot;</span>;</div>
+<div class="line"></div>
+<div class="line">ALIGN(RT_ALIGN_SIZE)</div>
+<div class="line">static <span class="keywordtype">char</span> thread1_stack[1024];</div>
+<div class="line">static struct <a class="code" href="structrt__thread.html" title="线程对象控制块 ">rt_thread</a> thread1;</div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* 线程1入口 */</span></div>
+<div class="line">static <span class="keywordtype">void</span> thread1_entry(<span class="keywordtype">void</span> *parameter)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordtype">char</span> *str;</div>
+<div class="line"></div>
+<div class="line">    <span class="keywordflow">while</span> (1)</div>
+<div class="line">    {</div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;thread1: try to recv a mail\n&quot;</span>);</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* 从邮箱中收取邮件 */</span></div>
+<div class="line">        <span class="keywordflow">if</span> (<a class="code" href="group__mailbox.html#ga363ad0b0f09a2b1f62dad79199c4d717" title="接收邮件 ">rt_mb_recv</a>(&amp;mb, (<a class="code" href="group___basic_def.html#ga909edcac80e5e3f93f63fcebc95922c7" title="32位无符号整数类型 ">rt_uint32_t</a> *)&amp;str, <a class="code" href="group___i_p_c.html#ga923d8e409f9daa8843978d6805ebcdeb" title="永远阻塞直到获得资源。 ">RT_WAITING_FOREVER</a>) == <a class="code" href="group___error.html#gaaaddfb31f867cc924e0220470aaaec5f" title="无错误 ">RT_EOK</a>)</div>
+<div class="line">        {</div>
+<div class="line">            rt_kprintf(<span class="stringliteral">&quot;thread1: get a mail from mailbox, the content:%s\n&quot;</span>, str);</div>
+<div class="line">            <span class="keywordflow">if</span> (str == mb_str3)</div>
+<div class="line">                <span class="keywordflow">break</span>;</div>
+<div class="line"></div>
+<div class="line">            <span class="comment">/* 延时100ms */</span></div>
+<div class="line">            <a class="code" href="group___thread.html#ga4ba0dbf06d5fa05f469da371ff6d2876" title="线程毫秒延时函数 ">rt_thread_mdelay</a>(100);</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">    <span class="comment">/* 执行邮箱对象脱离 */</span></div>
+<div class="line">    <a class="code" href="group__mailbox.html#ga3312c6094d9c21af33a74f444a8c5993" title="脱离邮箱 ">rt_mb_detach</a>(&amp;mb);</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line">ALIGN(RT_ALIGN_SIZE)</div>
+<div class="line">static <span class="keywordtype">char</span> thread2_stack[1024];</div>
+<div class="line">static struct <a class="code" href="structrt__thread.html" title="线程对象控制块 ">rt_thread</a> thread2;</div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* 线程2入口 */</span></div>
+<div class="line">static <span class="keywordtype">void</span> thread2_entry(<span class="keywordtype">void</span> *parameter)</div>
+<div class="line">{</div>
+<div class="line">    <a class="code" href="group___basic_def.html#ga585e2ad0fbab0f83817cb61373465df6" title="8位无符号整数类型 ">rt_uint8_t</a> count;</div>
+<div class="line"></div>
+<div class="line">    count = 0;</div>
+<div class="line">    <span class="keywordflow">while</span> (count &lt; 10)</div>
+<div class="line">    {</div>
+<div class="line">        count ++;</div>
+<div class="line">        <span class="keywordflow">if</span> (count &amp; 0x1)</div>
+<div class="line">        {</div>
+<div class="line">            <span class="comment">/* 发送mb_str1地址到邮箱中 */</span></div>
+<div class="line">            <a class="code" href="group__mailbox.html#ga9d800aa0faa0ab5ccd3b0e75837db047" title="发送邮件 ">rt_mb_send</a>(&amp;mb, (<a class="code" href="group___basic_def.html#ga909edcac80e5e3f93f63fcebc95922c7" title="32位无符号整数类型 ">rt_uint32_t</a>)&amp;mb_str1);</div>
+<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">else</span></div>
+<div class="line">        {</div>
+<div class="line">            <span class="comment">/* 发送mb_str2地址到邮箱中 */</span></div>
+<div class="line">            <a class="code" href="group__mailbox.html#ga9d800aa0faa0ab5ccd3b0e75837db047" title="发送邮件 ">rt_mb_send</a>(&amp;mb, (<a class="code" href="group___basic_def.html#ga909edcac80e5e3f93f63fcebc95922c7" title="32位无符号整数类型 ">rt_uint32_t</a>)&amp;mb_str2);</div>
+<div class="line">        }</div>
+<div class="line"></div>
+<div class="line">        <span class="comment">/* 延时200ms */</span></div>
+<div class="line">        <a class="code" href="group___thread.html#ga4ba0dbf06d5fa05f469da371ff6d2876" title="线程毫秒延时函数 ">rt_thread_mdelay</a>(200);</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 发送邮件告诉线程1，线程2已经运行结束 */</span></div>
+<div class="line">    <a class="code" href="group__mailbox.html#ga9d800aa0faa0ab5ccd3b0e75837db047" title="发送邮件 ">rt_mb_send</a>(&amp;mb, (<a class="code" href="group___basic_def.html#ga909edcac80e5e3f93f63fcebc95922c7" title="32位无符号整数类型 ">rt_uint32_t</a>)&amp;mb_str3);</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="keywordtype">int</span> mailbox_sample(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">    <a class="code" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950" title="错误号类型 ">rt_err_t</a> result;</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 初始化一个mailbox */</span></div>
+<div class="line">    result = <a class="code" href="group__mailbox.html#gac05bd0c179f754c32f83a7b013e8953b" title="初始化邮箱 ">rt_mb_init</a>(&amp;mb,</div>
+<div class="line">                        <span class="stringliteral">&quot;mbt&quot;</span>,                      <span class="comment">/* 名称是mbt */</span></div>
+<div class="line">                        &amp;mb_pool[0],                <span class="comment">/* 邮箱用到的内存池是mb_pool */</span></div>
+<div class="line">                        <span class="keyword">sizeof</span>(mb_pool) / 4,        <span class="comment">/* 邮箱中的邮件数目，因为一封邮件占4字节 */</span></div>
+<div class="line">                        <a class="code" href="group___i_p_c.html#ga1b618f6714ea8f49a45ea4d105aaf5d5" title="FIFOed IPC. 线程间通讯. ">RT_IPC_FLAG_FIFO</a>);          <span class="comment">/* 采用FIFO方式进行线程等待 */</span></div>
+<div class="line">    <span class="keywordflow">if</span> (result != <a class="code" href="group___error.html#gaaaddfb31f867cc924e0220470aaaec5f" title="无错误 ">RT_EOK</a>)</div>
+<div class="line">    {</div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;init mailbox failed.\n&quot;</span>);</div>
+<div class="line">        <span class="keywordflow">return</span> -1;</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    <a class="code" href="group___thread.html#gacd985aa60939b95e510f144610f001b9" title="初始化线程 ">rt_thread_init</a>(&amp;thread1,</div>
+<div class="line">                   <span class="stringliteral">&quot;thread1&quot;</span>,</div>
+<div class="line">                   thread1_entry,</div>
+<div class="line">                   <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>,</div>
+<div class="line">                   &amp;thread1_stack[0],</div>
+<div class="line">                   <span class="keyword">sizeof</span>(thread1_stack),</div>
+<div class="line">                   THREAD_PRIORITY, THREAD_TIMESLICE);</div>
+<div class="line">    <a class="code" href="group___thread.html#ga04b743537fd099e204fc292e57b4aa5a" title="启动线程 ">rt_thread_startup</a>(&amp;thread1);</div>
+<div class="line"></div>
+<div class="line">    <a class="code" href="group___thread.html#gacd985aa60939b95e510f144610f001b9" title="初始化线程 ">rt_thread_init</a>(&amp;thread2,</div>
+<div class="line">                   <span class="stringliteral">&quot;thread2&quot;</span>,</div>
+<div class="line">                   thread2_entry,</div>
+<div class="line">                   <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>,</div>
+<div class="line">                   &amp;thread2_stack[0],</div>
+<div class="line">                   <span class="keyword">sizeof</span>(thread2_stack),</div>
+<div class="line">                   THREAD_PRIORITY, THREAD_TIMESLICE);</div>
+<div class="line">    <a class="code" href="group___thread.html#ga04b743537fd099e204fc292e57b4aa5a" title="启动线程 ">rt_thread_startup</a>(&amp;thread2);</div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* 导出到 msh 命令列表中 */</span></div>
+<div class="line">MSH_CMD_EXPORT(mailbox_sample, mailbox sample);</div>
+</div><!-- fragment --> </div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2018年 九月 21日 星期五 22:35:14 , 为 RT-Thread RTOS使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>

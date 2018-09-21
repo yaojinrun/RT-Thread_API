@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-Thread RTOS: D:/yao/RTT/文档/stm32f429-api/rt-thread/components/dfs/src/dfs_fs.c 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-Thread RTOS
+   &#160;<span id="projectnumber">3.0.3</span>
+   </div>
+   <div id="projectbrief">An open source embedded real-time operating system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.10 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="pages.html"><span>相关页面</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li class="current"><a href="files.html"><span>文件</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>文件列表</span></a></li>
+      <li><a href="globals.html"><span>全局定义</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_409f97388efe006bc3438b95e9edef48.html">components</a></li><li class="navelem"><a class="el" href="dir_88fad670f0983a8d34917f1a982db765.html">dfs</a></li><li class="navelem"><a class="el" href="dir_4cff54b5d48e2714142bb683c43b165b.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">宏定义</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle">
+<div class="title">dfs_fs.c 文件参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;<a class="el" href="dfs__fs_8h.html">dfs_fs.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="dfs__file_8h.html">dfs_file.h</a>&gt;</code><br />
+<code>#include &quot;<a class="el" href="dfs__private_8h.html">dfs_private.h</a>&quot;</code><br />
+<code>#include &lt;finsh.h&gt;</code><br />
+</div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> dfs_fs.c 的引用(Include)关系图:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="dfs__fs_8c__incl.png" border="0" usemap="#_d_1_2yao_2_r_t_t_2_xE6_x96_x87_xE6_xA1_xA3_2stm32f429-api_2rt-thread_2components_2dfs_2src_2dfs__fs_8c" alt=""/></div>
+<map name="_d_1_2yao_2_r_t_t_2_xE6_x96_x87_xE6_xA1_xA3_2stm32f429-api_2rt-thread_2components_2dfs_2src_2dfs__fs_8c" id="_d_1_2yao_2_r_t_t_2_xE6_x96_x87_xE6_xA1_xA3_2stm32f429-api_2rt-thread_2components_2dfs_2src_2dfs__fs_8c">
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:a4910b20e8b78d8fd978ae0700efc7632"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dfs__fs_8c.html#a4910b20e8b78d8fd978ae0700efc7632">DPT_ADDRESS</a>&#160;&#160;&#160;0x1be       /* device partition offset in Boot Sector */</td></tr>
+<tr class="separator:a4910b20e8b78d8fd978ae0700efc7632"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75bdc1aabbcf2162ce249bfafaada0ec"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dfs__fs_8c.html#a75bdc1aabbcf2162ce249bfafaada0ec">DPT_ITEM_SIZE</a>&#160;&#160;&#160;16          /* partition item size */</td></tr>
+<tr class="separator:a75bdc1aabbcf2162ce249bfafaada0ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:ga50104477b4ee48dfa421235640b5a498"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___fs_api.html#ga50104477b4ee48dfa421235640b5a498">dfs_register</a> (const struct <a class="el" href="structdfs__filesystem__ops.html">dfs_filesystem_ops</a> *ops)</td></tr>
+<tr class="separator:ga50104477b4ee48dfa421235640b5a498"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1ecf73109f4592e4209471c7d6b90365"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structdfs__filesystem.html">dfs_filesystem</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___fs_api.html#ga1ecf73109f4592e4209471c7d6b90365">dfs_filesystem_lookup</a> (const char *path)</td></tr>
+<tr class="separator:ga1ecf73109f4592e4209471c7d6b90365"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3cb60463a06968dd3ef54118d003a57b"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___fs_api.html#ga3cb60463a06968dd3ef54118d003a57b">dfs_filesystem_get_mounted_path</a> (struct <a class="el" href="structrt__device.html">rt_device</a> *device)</td></tr>
+<tr class="separator:ga3cb60463a06968dd3ef54118d003a57b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga88118b6ca2e4cb0dda9c312220026297"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___fs_api.html#ga88118b6ca2e4cb0dda9c312220026297">dfs_filesystem_get_partition</a> (struct <a class="el" href="structdfs__partition.html">dfs_partition</a> *part, uint8_t *buf, uint32_t pindex)</td></tr>
+<tr class="separator:ga88118b6ca2e4cb0dda9c312220026297"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga702705756723b44edb0e15d9ac17e114"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___fs_api.html#ga702705756723b44edb0e15d9ac17e114">dfs_mount</a> (const char *device_name, const char *path, const char *filesystemtype, unsigned long rwflag, const void *data)</td></tr>
+<tr class="separator:ga702705756723b44edb0e15d9ac17e114"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7b98c02de9e4f4716890faf98c8197af"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___fs_api.html#ga7b98c02de9e4f4716890faf98c8197af">dfs_unmount</a> (const char *specialfile)</td></tr>
+<tr class="separator:ga7b98c02de9e4f4716890faf98c8197af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga496d9227cdf71e5f42207faf2c2cd6c1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___fs_api.html#ga496d9227cdf71e5f42207faf2c2cd6c1">dfs_mkfs</a> (const char *fs_name, const char *device_name)</td></tr>
+<tr class="separator:ga496d9227cdf71e5f42207faf2c2cd6c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga23bdcfa90747eee0d4004aaab2744e08"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___fs_api.html#ga23bdcfa90747eee0d4004aaab2744e08">dfs_statfs</a> (const char *path, struct <a class="el" href="structstatfs.html">statfs</a> *buffer)</td></tr>
+<tr class="separator:ga23bdcfa90747eee0d4004aaab2744e08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaef7a10e55293c50f99be6d9017a19e8f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___fs_api.html#gaef7a10e55293c50f99be6d9017a19e8f">mkfs</a> (const char *fs_name, const char *device_name)</td></tr>
+<tr class="separator:gaef7a10e55293c50f99be6d9017a19e8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga539118f2f225c231a78edf522cca6353"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___fs_api.html#ga539118f2f225c231a78edf522cca6353">FINSH_FUNCTION_EXPORT</a> (<a class="el" href="group___fs_api.html#gaef7a10e55293c50f99be6d9017a19e8f">mkfs</a>, make a file system)</td></tr>
+<tr class="separator:ga539118f2f225c231a78edf522cca6353"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga74d3745b627a15701dd1dde9c556338b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___fs_api.html#ga74d3745b627a15701dd1dde9c556338b">df</a> (const char *path)</td></tr>
+<tr class="separator:ga74d3745b627a15701dd1dde9c556338b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab1e548b00e518e3907aef2cf0a2a7e18"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___fs_api.html#gab1e548b00e518e3907aef2cf0a2a7e18">FINSH_FUNCTION_EXPORT</a> (<a class="el" href="group___fs_api.html#ga74d3745b627a15701dd1dde9c556338b">df</a>, get disk free)</td></tr>
+<tr class="separator:gab1e548b00e518e3907aef2cf0a2a7e18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">宏定义说明</h2>
+<a class="anchor" id="a4910b20e8b78d8fd978ae0700efc7632"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DPT_ADDRESS&#160;&#160;&#160;0x1be       /* device partition offset in Boot Sector */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a75bdc1aabbcf2162ce249bfafaada0ec"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DPT_ITEM_SIZE&#160;&#160;&#160;16          /* partition item size */</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2018年 八月 28日 星期二 20:44:38 , 为 RT-Thread RTOS使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>

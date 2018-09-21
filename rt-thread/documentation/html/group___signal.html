@@ -1,0 +1,314 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-Thread RTOS: 信号</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-Thread RTOS
+   &#160;<span id="projectnumber">3.0.3</span>
+   </div>
+   <div id="projectbrief">An open source embedded real-time operating system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.10 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">结构体</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle">
+<div class="title">信号<div class="ingroups"><a class="el" href="group___kernel.html">内核</a> &raquo; <a class="el" href="group___i_p_c.html">线程间通讯</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>信号  
+<a href="#details">更多...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+结构体</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsiginfo__node.html">siginfo_node</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:ga55baee131d10ccb32bec3f8bec93e461"><td class="memItemLeft" align="right" valign="top">rt_sighandler_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___signal.html#ga55baee131d10ccb32bec3f8bec93e461">rt_signal_install</a> (int signo, rt_sighandler_t handler)</td></tr>
+<tr class="memdesc:ga55baee131d10ccb32bec3f8bec93e461"><td class="mdescLeft">&#160;</td><td class="mdescRight">信号安装  <a href="#ga55baee131d10ccb32bec3f8bec93e461">更多...</a><br /></td></tr>
+<tr class="separator:ga55baee131d10ccb32bec3f8bec93e461"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadf5b9d9d71c646bc197061740086bea1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___signal.html#gadf5b9d9d71c646bc197061740086bea1">rt_signal_mask</a> (int signo)</td></tr>
+<tr class="memdesc:gadf5b9d9d71c646bc197061740086bea1"><td class="mdescLeft">&#160;</td><td class="mdescRight">信号阻塞  <a href="#gadf5b9d9d71c646bc197061740086bea1">更多...</a><br /></td></tr>
+<tr class="separator:gadf5b9d9d71c646bc197061740086bea1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4a1a87673979f0f998291e4d2e23f84f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___signal.html#ga4a1a87673979f0f998291e4d2e23f84f">rt_signal_unmask</a> (int signo)</td></tr>
+<tr class="memdesc:ga4a1a87673979f0f998291e4d2e23f84f"><td class="mdescLeft">&#160;</td><td class="mdescRight">解除信号阻塞  <a href="#ga4a1a87673979f0f998291e4d2e23f84f">更多...</a><br /></td></tr>
+<tr class="separator:ga4a1a87673979f0f998291e4d2e23f84f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaef728f0d33d2ba37a164d121337d37a6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___signal.html#gaef728f0d33d2ba37a164d121337d37a6">rt_signal_wait</a> (const rt_sigset_t *set, rt_siginfo_t *si, <a class="el" href="group___basic_def.html#gae5c6ccee15f067714ca9c44e509c4047">rt_int32_t</a> timeout)</td></tr>
+<tr class="memdesc:gaef728f0d33d2ba37a164d121337d37a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">等待信号  <a href="#gaef728f0d33d2ba37a164d121337d37a6">更多...</a><br /></td></tr>
+<tr class="separator:gaef728f0d33d2ba37a164d121337d37a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2135a51adac8206aa7876466ae00ee20"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___signal.html#ga2135a51adac8206aa7876466ae00ee20">rt_thread_kill</a> (<a class="el" href="group___thread.html#gad617ac6bd69bf546743549542a86fbf9">rt_thread_t</a> tid, int sig)</td></tr>
+<tr class="memdesc:ga2135a51adac8206aa7876466ae00ee20"><td class="mdescLeft">&#160;</td><td class="mdescRight">信号的发送  <a href="#ga2135a51adac8206aa7876466ae00ee20">更多...</a><br /></td></tr>
+<tr class="separator:ga2135a51adac8206aa7876466ae00ee20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<p>信号 </p>
+<p>软中断信号（signal，又简称为信号）用来通知线程发生了异步事件。在软件层次上是对中断机制的一种模拟， 在原理上，一个线程收到一个信号与处理器收到一个中断请求可以说是一样的。信号是线程间通信机制中唯一的 异步通信机制，一个线程不必通过任何操作来等待信号的到达，事实上，线程也不知道信号到底什么时候到达， 线程之间可以互相通过调用 kill 发送软中断信号。</p>
+<p>收到信号的线程对各种信号有不同的处理方法。处理方法可以分为三类：</p>
+<ul>
+<li>第一种是类似中断的处理程序，对于需要处理的信号，线程可以指定处理函数，由该函数来处理。</li>
+<li>第二种方法是，忽略某个信号，对该信号不做任何处理，就象未发生过一样。</li>
+<li>第三种方法是，对该信号的处理保留系统的默认值。</li>
+</ul>
+<p><b>范例：</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;rtthread.h&gt;</span></div>
+<div class="line"></div>
+<div class="line"><span class="preprocessor">#define THREAD_PRIORITY         25</span></div>
+<div class="line"><span class="preprocessor">#define THREAD_STACK_SIZE       512</span></div>
+<div class="line"><span class="preprocessor">#define THREAD_TIMESLICE        5</span></div>
+<div class="line"></div>
+<div class="line"><span class="keyword">static</span> <a class="code" href="structrt__thread.html" title="线程对象控制块 ">rt_thread_t</a> tid1 = <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>;</div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* 线程1的信号处理函数 */</span></div>
+<div class="line"><span class="keywordtype">void</span> thread1_signal_handler(<span class="keywordtype">int</span> sig)</div>
+<div class="line">{</div>
+<div class="line">    rt_kprintf(<span class="stringliteral">&quot;thread1 received signal %d\n&quot;</span>, sig);</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* 线程1的入口函数 */</span></div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span> thread1_entry(<span class="keywordtype">void</span> *parameter)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordtype">int</span> cnt = 0;</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 安装信号 */</span></div>
+<div class="line">    <a class="code" href="group___signal.html#ga55baee131d10ccb32bec3f8bec93e461" title="信号安装 ">rt_signal_install</a>(SIGUSR1, thread1_signal_handler);</div>
+<div class="line">    <a class="code" href="group___signal.html#ga4a1a87673979f0f998291e4d2e23f84f" title="解除信号阻塞 ">rt_signal_unmask</a>(SIGUSR1);</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 运行10次 */</span></div>
+<div class="line">    <span class="keywordflow">while</span> (cnt &lt; 10)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="comment">/* 线程1采用低优先级运行，一直打印计数值 */</span></div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;thread1 count : %d\n&quot;</span>, cnt);</div>
+<div class="line"></div>
+<div class="line">        cnt++;</div>
+<div class="line">        <a class="code" href="group___thread.html#ga4ba0dbf06d5fa05f469da371ff6d2876" title="线程毫秒延时函数 ">rt_thread_mdelay</a>(100);</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* 信号示例的初始化 */</span></div>
+<div class="line"><span class="keywordtype">int</span> signal_sample(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">    <span class="comment">/* 创建线程1 */</span></div>
+<div class="line">    tid1 = <a class="code" href="group___thread.html#gacb215b161f17c26b5e19c28cd0119e7b" title="创建线程 ">rt_thread_create</a>(<span class="stringliteral">&quot;thread1&quot;</span>,</div>
+<div class="line">                            thread1_entry, <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>,</div>
+<div class="line">                            THREAD_STACK_SIZE,</div>
+<div class="line">                            THREAD_PRIORITY, THREAD_TIMESLICE);</div>
+<div class="line">    </div>
+<div class="line">    <span class="keywordflow">if</span> (tid1 != <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>)       </div>
+<div class="line">        <a class="code" href="group___thread.html#ga04b743537fd099e204fc292e57b4aa5a" title="启动线程 ">rt_thread_startup</a>(tid1);</div>
+<div class="line"></div>
+<div class="line">    <a class="code" href="group___thread.html#ga4ba0dbf06d5fa05f469da371ff6d2876" title="线程毫秒延时函数 ">rt_thread_mdelay</a>(300);</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 发送信号 SIGUSR1 给线程1 */</span></div>
+<div class="line">    <a class="code" href="group___signal.html#ga2135a51adac8206aa7876466ae00ee20" title="信号的发送 ">rt_thread_kill</a>(tid1, SIGUSR1);</div>
+<div class="line"></div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* 导出到 msh 命令列表中 */</span></div>
+<div class="line">MSH_CMD_EXPORT(signal_sample, signal sample);</div>
+</div><!-- fragment --> <h2 class="groupheader">函数说明</h2>
+<a class="anchor" id="ga55baee131d10ccb32bec3f8bec93e461"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">rt_sighandler_t rt_signal_install </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>signo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">rt_sighandler_t&#160;</td>
+          <td class="paramname"><em>handler</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>信号安装 </p>
+<p>如果线程要处理某一信号，那么就要在线程中安装该信号。安装信号主要 用来确定信号值及线程针对该信号值的动作之间的映射关系，即线程将要处理 哪个信号；该信号被传递给线程时，将执行何种操作。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">signo</td><td>信号值（只有 SIGUSR1 和 SIGUSR2 是开放给用户使用的） </td></tr>
+    <tr><td class="paramname">handler</td><td>信号值的处理。可以忽略该信号（参数设为 SIG_IGN）； 可以采用系统默认方式处理信号 (参数设为 SIG_DFL)；也可以自己实现 处理方式 (参数指定一个函数地址)。</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd>成功安装信号前的 handler 值，失败返回SIG_ERR。 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gadf5b9d9d71c646bc197061740086bea1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rt_signal_mask </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>signo</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>信号阻塞 </p>
+<p>该函数将阻塞指定的信号。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">signo</td><td>指定的信号值 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga4a1a87673979f0f998291e4d2e23f84f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rt_signal_unmask </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>signo</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>解除信号阻塞 </p>
+<p>该函数将解除指定信号的阻塞。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">signo</td><td>指定的信号值 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gaef728f0d33d2ba37a164d121337d37a6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rt_signal_wait </td>
+          <td>(</td>
+          <td class="paramtype">const rt_sigset_t *&#160;</td>
+          <td class="paramname"><em>set</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">rt_siginfo_t *&#160;</td>
+          <td class="paramname"><em>si</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group___basic_def.html#gae5c6ccee15f067714ca9c44e509c4047">rt_int32_t</a>&#160;</td>
+          <td class="paramname"><em>timeout</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>等待信号 </p>
+<p>该函数将等待 set 信号的到来，如果没有等到这个信号，则把线程给挂起来， 直到等到这个信号或者等待时间超过指定的超时时间 timeout。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">set</td><td>指定等待的信号值 </td></tr>
+    <tr><td class="paramname">si</td><td>等待的信号句柄 </td></tr>
+    <tr><td class="paramname">timeout</td><td>指定的超时时间 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga2135a51adac8206aa7876466ae00ee20"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rt_thread_kill </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group___thread.html#gad617ac6bd69bf546743549542a86fbf9">rt_thread_t</a>&#160;</td>
+          <td class="paramname"><em>tid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>sig</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>信号的发送 </p>
+<p>调用该函数可以用来向任何线程发送任何信号。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tid</td><td>接收信号的线程 </td></tr>
+    <tr><td class="paramname">sig</td><td>指定的信号值 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2018年 九月 21日 星期五 22:35:14 , 为 RT-Thread RTOS使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>

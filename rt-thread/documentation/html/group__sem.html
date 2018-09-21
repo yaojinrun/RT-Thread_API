@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-Thread RTOS: 信号量例程</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-Thread RTOS
+   &#160;<span id="projectnumber">3.0.3</span>
+   </div>
+   <div id="projectbrief">An open source embedded real-time operating system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.10 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">信号量例程<div class="ingroups"><a class="el" href="group___kernel.html">内核</a> &raquo; <a class="el" href="group__example.html">内核例程</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+<p>该例程创建了一个动态信号量，初始化两个线程，线程1在count每计数10次时， 发送一个信号量，线程2在接收信号量后，对number进行加1操作</p>
+<p><b>源码</b> </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;rtthread.h&gt;</span></div>
+<div class="line"></div>
+<div class="line"><span class="preprocessor">#define THREAD_PRIORITY         25</span></div>
+<div class="line"><span class="preprocessor">#define THREAD_TIMESLICE        5</span></div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* 指向信号量的指针 */</span></div>
+<div class="line"><span class="keyword">static</span> <a class="code" href="structrt__semaphore.html">rt_sem_t</a> dynamic_sem = <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>;</div>
+<div class="line"></div>
+<div class="line">ALIGN(RT_ALIGN_SIZE)</div>
+<div class="line">static <span class="keywordtype">char</span> thread1_stack[1024];</div>
+<div class="line">static struct <a class="code" href="structrt__thread.html" title="线程对象控制块 ">rt_thread</a> thread1;</div>
+<div class="line">static <span class="keywordtype">void</span> rt_thread1_entry(<span class="keywordtype">void</span> *parameter)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keyword">static</span> <a class="code" href="group___basic_def.html#ga585e2ad0fbab0f83817cb61373465df6" title="8位无符号整数类型 ">rt_uint8_t</a> count = 0;</div>
+<div class="line">  </div>
+<div class="line">    <span class="keywordflow">while</span>(1)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="keywordflow">if</span>(count &lt;= 100)</div>
+<div class="line">        {</div>
+<div class="line">            count++;           </div>
+<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">else</span></div>
+<div class="line">            <span class="keywordflow">return</span>; </div>
+<div class="line">        </div>
+<div class="line">        <span class="comment">/* count每计数10次，就释放一次信号量 */</span></div>
+<div class="line">         <span class="keywordflow">if</span>(0 == (count % 10))</div>
+<div class="line">        {</div>
+<div class="line">            rt_kprintf(<span class="stringliteral">&quot;t1 release a dynamic semaphore.\n&quot;</span> ); </div>
+<div class="line">            <a class="code" href="group__semaphore.html#gad9a5760bc4c7faeb08a7d9c112506f76" title="释放信号量 ">rt_sem_release</a>(dynamic_sem);            </div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line">ALIGN(RT_ALIGN_SIZE)</div>
+<div class="line">static <span class="keywordtype">char</span> thread2_stack[1024];</div>
+<div class="line">static struct <a class="code" href="structrt__thread.html" title="线程对象控制块 ">rt_thread</a> thread2;</div>
+<div class="line">static <span class="keywordtype">void</span> rt_thread2_entry(<span class="keywordtype">void</span> *parameter)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keyword">static</span> <a class="code" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950" title="错误号类型 ">rt_err_t</a> result;</div>
+<div class="line">    <span class="keyword">static</span> <a class="code" href="group___basic_def.html#ga585e2ad0fbab0f83817cb61373465df6" title="8位无符号整数类型 ">rt_uint8_t</a> number = 0;</div>
+<div class="line">    <span class="keywordflow">while</span>(1)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="comment">/* 永久方式等待信号量，获取到信号量，则执行number自加的操作 */</span></div>
+<div class="line">        result = <a class="code" href="group__semaphore.html#gaad0807b1eb15fe12a67de122e28f20eb" title="获取信号量 ">rt_sem_take</a>(dynamic_sem, <a class="code" href="group___i_p_c.html#ga923d8e409f9daa8843978d6805ebcdeb" title="永远阻塞直到获得资源。 ">RT_WAITING_FOREVER</a>);</div>
+<div class="line">        <span class="keywordflow">if</span> (result != <a class="code" href="group___error.html#gaaaddfb31f867cc924e0220470aaaec5f" title="无错误 ">RT_EOK</a>)</div>
+<div class="line">        {        </div>
+<div class="line">            rt_kprintf(<span class="stringliteral">&quot;t2 take a dynamic semaphore, failed.\n&quot;</span>);</div>
+<div class="line">            <a class="code" href="group__semaphore.html#ga0e45d2b96aab649832b6756d68629bbe" title="删除信号量 ">rt_sem_delete</a>(dynamic_sem);</div>
+<div class="line">            <span class="keywordflow">return</span>;</div>
+<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">else</span></div>
+<div class="line">        {      </div>
+<div class="line">            number++;             </div>
+<div class="line">            rt_kprintf(<span class="stringliteral">&quot;t2 take a dynamic semaphore. number = %d\n&quot;</span> ,number);                        </div>
+<div class="line">        }</div>
+<div class="line">    }   </div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* 信号量示例的初始化 */</span></div>
+<div class="line"><span class="keywordtype">int</span> semaphore_sample()</div>
+<div class="line">{</div>
+<div class="line">    <span class="comment">/* 创建一个动态信号量，初始值是0 */</span></div>
+<div class="line">    dynamic_sem = <a class="code" href="group__semaphore.html#ga61a4960ff4a173f1d1c35ede42e1227f" title="创建信号量 ">rt_sem_create</a>(<span class="stringliteral">&quot;dsem&quot;</span>, 0, <a class="code" href="group___i_p_c.html#ga1b618f6714ea8f49a45ea4d105aaf5d5" title="FIFOed IPC. 线程间通讯. ">RT_IPC_FLAG_FIFO</a>);</div>
+<div class="line">    <span class="keywordflow">if</span> (dynamic_sem == <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>)</div>
+<div class="line">    {</div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;create dynamic semaphore failed.\n&quot;</span>);</div>
+<div class="line">        <span class="keywordflow">return</span> -1;</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">else</span></div>
+<div class="line">    {</div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;create done. dynamic semaphore value = 0.\n&quot;</span>);</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    <a class="code" href="group___thread.html#gacd985aa60939b95e510f144610f001b9" title="初始化线程 ">rt_thread_init</a>(&amp;thread1,</div>
+<div class="line">                   <span class="stringliteral">&quot;thread1&quot;</span>,</div>
+<div class="line">                   rt_thread1_entry,</div>
+<div class="line">                   <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>,</div>
+<div class="line">                   &amp;thread1_stack[0],</div>
+<div class="line">                   <span class="keyword">sizeof</span>(thread1_stack), </div>
+<div class="line">                   THREAD_PRIORITY, THREAD_TIMESLICE);</div>
+<div class="line">    <a class="code" href="group___thread.html#ga04b743537fd099e204fc292e57b4aa5a" title="启动线程 ">rt_thread_startup</a>(&amp;thread1);</div>
+<div class="line">                   </div>
+<div class="line">    <a class="code" href="group___thread.html#gacd985aa60939b95e510f144610f001b9" title="初始化线程 ">rt_thread_init</a>(&amp;thread2,</div>
+<div class="line">                   <span class="stringliteral">&quot;thread2&quot;</span>,</div>
+<div class="line">                   rt_thread2_entry,</div>
+<div class="line">                   <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>,</div>
+<div class="line">                   &amp;thread2_stack[0],</div>
+<div class="line">                   <span class="keyword">sizeof</span>(thread2_stack), </div>
+<div class="line">                   THREAD_PRIORITY-1, THREAD_TIMESLICE);</div>
+<div class="line">    <a class="code" href="group___thread.html#ga04b743537fd099e204fc292e57b4aa5a" title="启动线程 ">rt_thread_startup</a>(&amp;thread2);</div>
+<div class="line"></div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="line"><span class="comment">/* 导出到 msh 命令列表中 */</span></div>
+<div class="line">MSH_CMD_EXPORT(semaphore_sample, semaphore sample);</div>
+</div><!-- fragment --> </div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2018年 九月 21日 星期五 22:35:14 , 为 RT-Thread RTOS使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>
