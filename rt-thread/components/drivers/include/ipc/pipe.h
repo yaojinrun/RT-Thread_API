@@ -12,7 +12,9 @@
 #else
 #define PIPE_BUFSZ    RT_PIPE_BUFSZ
 #endif
-
+/**
+ * pipe ½á¹¹Ìå
+ */
 struct rt_pipe_device
 {
     struct rt_device parent;

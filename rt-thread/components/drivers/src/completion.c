@@ -41,6 +41,7 @@ void rt_completion_init(struct rt_completion *completion)
 }
 RTM_EXPORT(rt_completion_init);
 
+
 rt_err_t rt_completion_wait(struct rt_completion *completion,
                             rt_int32_t            timeout)
 {
