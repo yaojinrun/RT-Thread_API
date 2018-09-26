@@ -36,8 +36,8 @@ extern "C"{
 #define RT_SPI_CPOL     (1<<1)                             /* bit[1]:CPOL, clock polarity */
 /**
  * At CPOL=0 the base value of the clock is zero
- *  - For CPHA=0, data are captured on the clock's rising edge (low��high transition)
- *    and data are propagated on a falling edge (high��low clock transition).
+ *  - For CPHA=0, data are captured on the clock's rising edge (low→high transition)
+ *    and data are propagated on a falling edge (high→low clock transition).
  *  - For CPHA=1, data are captured on the clock's falling edge and data are
  *    propagated on a rising edge.
  * At CPOL=1 the base value of the clock is one (inversion of CPOL=0)
@@ -121,64 +121,139 @@ struct rt_spi_device
 };
 #define SPI_DEVICE(dev) ((struct rt_spi_device *)(dev))
 
-/* register a SPI bus */
+
+/**
+ * @addtogroup spi
+ */
+
+/**@{*/
+
+
+/**
+ * @brief SPI 总线注册
+ *
+ * 调用此函数可以向系统中注册 SPI 总线。
+ *
+ * @param bus SPI 总线句柄
+ * @param name SPI 总线名称，一般与硬件控制器名称一致，如：”spi0”
+ * @param ops SPI 总线操作方法，即 SPI 驱动的实现
+ *
+ * @return RT_EOK 成功；-RT_ERROR bus 为空或者 name 已被注册。
+ */
 rt_err_t rt_spi_bus_register(struct rt_spi_bus       *bus,
                              const char              *name,
                              const struct rt_spi_ops *ops);
 
-/* attach a device on SPI bus */
+
+/**
+ * @brief 挂载 SPI 设备到总线上
+ *
+ * 此函数用于挂载一个SPI设备节点到指定的SPI总线，并内核注册SPI设备节点，并将user_data保存到SPI设备节点的user_data指针里。
+ *
+ * @param device SPI 设备句柄
+ * @param name SPI 设备名称
+ * @param bus_name SPI 总线名称
+ * @param user_data 用户数据指针
+ *
+ * @return RT_EOK 成功；-RT_ERROR bus_name 不存在、device 为空、name 已被注册。
+ */
 rt_err_t rt_spi_bus_attach_device(struct rt_spi_device *device,
                                   const char           *name,
                                   const char           *bus_name,
                                   void                 *user_data);
 
 /**
- * This function takes SPI bus.
+ * @brief 获取 SPI 总线
  *
- * @param device the SPI device attached to SPI bus
+ * 用户调用此函数来获取SPI总线，并设置SPI总线的工作模式和参数。
  *
- * @return RT_EOK on taken SPI bus successfully. others on taken SPI bus failed.
+ * @param device SPI 总线设备句柄
+ *
+ * @return 成功则返回RT_EOK；错误则返回 错误码。
  */
 rt_err_t rt_spi_take_bus(struct rt_spi_device *device);
 
+
 /**
- * This function releases SPI bus.
+ * @brief 释放 SPI 总线
  *
- * @param device the SPI device attached to SPI bus
+ * 用户可以调用此函数来释放SPI总线。
  *
- * @return RT_EOK on release SPI bus successfully.
+ * @param device SPI 总线设备句柄
+ *
+ * @return 成功则返回RT_EOK；错误则返回 错误码。
  */
 rt_err_t rt_spi_release_bus(struct rt_spi_device *device);
 
+
 /**
- * This function take SPI device (takes CS of SPI device).
+ * @brief 获取 SPI 器件
  *
- * @param device the SPI device attached to SPI bus
+ * 调用此函数可以片选SPI设备。
  *
- * @return RT_EOK on release SPI bus successfully. others on taken SPI bus failed.
+ * @param device SPI 总线设备句柄
+ *
+ * @return 0 获取成功，片选开始。
  */
 rt_err_t rt_spi_take(struct rt_spi_device *device);
 
 /**
- * This function releases SPI device (releases CS of SPI device).
+ * @brief 释放 SPI 器件
  *
- * @param device the SPI device attached to SPI bus
+ * 调用此函数可以释放被片选SPI设备。
  *
- * @return RT_EOK on release SPI device successfully.
+ * @param device SPI 总线设备句柄
+ *
+ * @return 0 释放成功，片选结束。
  */
 rt_err_t rt_spi_release(struct rt_spi_device *device);
 
-/* set configuration on SPI device */
+/**
+ * @brief SPI 总线配置
+ *
+ * 本函数用于配置SPI BUS以满足不同设备的时钟、数据宽度等要求，通常需要配置SPI模式、频率参数。
+ *
+ * @param device SPI 设备句柄
+ * @param cfg SPI 传输配置参数指针
+ * @param device SPI 设备句柄
+ *
+ * @return RT_EOK 配置成功。
+ */
 rt_err_t rt_spi_configure(struct rt_spi_device        *device,
                           struct rt_spi_configuration *cfg);
 
-/* send data then receive data from SPI device */
+/**
+ * @brief SPI 发送一次数据后再接收一次数据
+ *
+ * 本函数适合从SPI外设中读取一块数据，本函数中会先发送一些数据（如命令和地址），然后再接收指定长度的数据。此函数等同于调用rt_spi_transfer_message()传输2条消息。
+ *
+ * @param device SPI 总线设备句柄
+ * @param send_buf 发送缓冲区数据指针
+ * @param send_length 发送缓冲区数据字节数
+ * @param recv_buf 接收缓冲区数据指针，spi 是全双工的，支持同时收发
+ * @param recv_length 接收缓冲区数据字节数
+ *
+ * @return RT_EOK 成功，-RT_EIO 失败。
+ */
 rt_err_t rt_spi_send_then_recv(struct rt_spi_device *device,
                                const void           *send_buf,
                                rt_size_t             send_length,
                                void                 *recv_buf,
                                rt_size_t             recv_length);
 
+/**
+ * @brief SPI 连续发送两次数据
+ *
+ * 本函数适合向SPI外设中写入一块数据，本函数中会先发送一些数据（如命令和地址），然后再发送指定长度的数据。此函数等同于调用rt_spi_transfer_message()传输2条消息。
+ *
+ * @param device SPI 总线设备句柄
+ * @param send_buf1 发送缓冲区1数据指针
+ * @param send_length1 发送缓冲区1数据字节数
+ * @param send_buf2 发送缓冲区2数据指针
+ * @param send_length2 发送缓冲区2数据字节数
+ *
+ * @return RT_EOK 成功，-RT_EIO 失败。
+ */
 rt_err_t rt_spi_send_then_send(struct rt_spi_device *device,
                                const void           *send_buf1,
                                rt_size_t             send_length1,
@@ -186,14 +261,16 @@ rt_err_t rt_spi_send_then_send(struct rt_spi_device *device,
                                rt_size_t             send_length2);
 
 /**
- * This function transmits data to SPI device.
+ * @brief SPI 单个消息传输
  *
- * @param device the SPI device attached to SPI bus
- * @param send_buf the buffer to be transmitted to SPI device.
- * @param recv_buf the buffer to save received data from SPI device.
- * @param length the length of transmitted data.
+ * 调用此函数将发送一次数据，同于调用rt_spi_transfer_message()传输一条消息。
  *
- * @return the actual length of transmitted.
+ * @param device SPI 设备句柄
+ * @param send_buf 发送缓冲区指针
+ * @param recv_buf 接收缓冲区指针
+ * @param length 发送 / 接收 数据字节数
+ *
+ * @return 实际传输的字节数
  */
 rt_size_t rt_spi_transfer(struct rt_spi_device *device,
                           const void           *send_buf,
@@ -201,17 +278,31 @@ rt_size_t rt_spi_transfer(struct rt_spi_device *device,
                           rt_size_t             length);
 
 /**
- * This function transfers a message list to the SPI device.
+ * @brief SPI 多个消息连续传输
  *
- * @param device the SPI device attached to SPI bus
- * @param message the message list to be transmitted to SPI device
+ * 此函数可以传输一连串消息，用户可以很灵活的设置message结构体各参数的数值，从而可以很方便的控制数据传输方式。
  *
- * @return RT_NULL if transmits message list successfully,
- *         SPI message which be transmitted failed.
+ * @param device SPI 设备句柄
+ * @param message 消息指针
+ *
+ * @return RT_NULL 消息列表发送成功，发送失败则返回当前的消息指针。
  */
 struct rt_spi_message *rt_spi_transfer_message(struct rt_spi_device  *device,
                                                struct rt_spi_message *message);
 
+/**
+ * @brief SPI 消息接收函数
+ *
+ * 调用此函数接受数据并保存到recv_buf指向的缓冲区。是对rt_spi_transfer()函数的封装。
+ * SPI协议里面只能由MASTER主动产生时钟，因此，在接收数据时，会发送dummy。此函数等同于
+ * 调用rt_spi_transfer_message()传输一条消息。
+ *
+ * @param device SPI 设备句柄
+ * @param recv_buf 接收缓冲区指针
+ * @param length 接受数据的字节数
+ *
+ * @return 实际接收的字节数。
+ */
 rt_inline rt_size_t rt_spi_recv(struct rt_spi_device *device,
                                 void                 *recv_buf,
                                 rt_size_t             length)
@@ -219,6 +310,18 @@ rt_inline rt_size_t rt_spi_recv(struct rt_spi_device *device,
     return rt_spi_transfer(device, RT_NULL, recv_buf, length);
 }
 
+/**
+ * @brief SPI 消息接收函数
+ *
+ * 调用此函数发送send_buf指向的缓冲区的数据，忽略接收到的数据。是对rt_spi_transfer()函数的封装。
+ * 此函数等同于调用rt_spi_transfer_message()传输一条消息。
+ *
+ * @param device SPI 设备句柄
+ * @param send_buf 发送缓冲区指针
+ * @param length 发送数据的字节数
+ *
+ * @return 实际发送的字节数。
+ */
 rt_inline rt_size_t rt_spi_send(struct rt_spi_device *device,
                                 const void           *send_buf,
                                 rt_size_t             length)
@@ -247,10 +350,12 @@ rt_inline rt_uint16_t rt_spi_sendrecv16(struct rt_spi_device *device,
 }
 
 /**
- * This function appends a message to the SPI message list.
+ * @brief SPI 消息追加
  *
- * @param list the SPI message list header.
- * @param message the message pointer to be appended to the message list.
+ * 调用此函数可以向SPI消息发送链表中增加一条消息。
+ *
+ * @param list 消息链表指针
+ * @param message 消息指针
  */
 rt_inline void rt_spi_message_append(struct rt_spi_message *list,
                                      struct rt_spi_message *message)
@@ -267,6 +372,9 @@ rt_inline void rt_spi_message_append(struct rt_spi_message *list,
     list->next = message;
     message->next = RT_NULL;
 }
+
+
+/**@}*/
 
 #ifdef __cplusplus
 }
