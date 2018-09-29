@@ -43,16 +43,6 @@
 #endif
 #endif /* RTC_SYNC_USING_NTP */
 
-/**
- * Set system date(time not modify).
- *
- * @param rt_uint32_t year  e.g: 2012.
- * @param rt_uint32_t month e.g: 12 (1~12).
- * @param rt_uint32_t day   e.g: 31.
- *
- * @return rt_err_t if set success, return RT_EOK.
- *
- */
 rt_err_t set_date(rt_uint32_t year, rt_uint32_t month, rt_uint32_t day)
 {
     time_t now;
@@ -93,16 +83,6 @@ rt_err_t set_date(rt_uint32_t year, rt_uint32_t month, rt_uint32_t day)
     return ret;
 }
 
-/**
- * Set system time(date not modify).
- *
- * @param rt_uint32_t hour   e.g: 0~23.
- * @param rt_uint32_t minute e.g: 0~59.
- * @param rt_uint32_t second e.g: 0~59.
- *
- * @return rt_err_t if set success, return RT_EOK.
- *
- */
 rt_err_t set_time(rt_uint32_t hour, rt_uint32_t minute, rt_uint32_t second)
 {
     time_t now;

@@ -74,13 +74,81 @@ struct rt_alarm_container
     struct rt_alarm *current;
 };
 
+
+/**
+ * @addtogroup alarm
+ */
+
+/**@{*/
+
+/**
+ * @brief 创建闹钟
+ *
+ * 调用此函数可以根据设定的参数创建一个闹钟，并指定闹钟的回调函数。
+ *
+ * @param callback 闹钟回调函数
+ * @param setup 闹钟的设置参数
+ *
+ * @return 错误号
+ */
 rt_alarm_t rt_alarm_create(rt_alarm_callback_t    callback,
                            struct rt_alarm_setup *setup);
+
+/**
+ * @brief 修改闹钟设置
+ *
+ * @param alarm 闹钟控制块
+ * @param cmd 闹钟的设置命令
+ * @param arg 设置命令相关的参数
+ *
+ * @return 错误号
+ */
 rt_err_t rt_alarm_control(rt_alarm_t alarm, int cmd, void *arg);
+
+/**
+ * @brief 发送rtc闹钟事件
+ *
+ * @param dev 指向RTC设备的指针（当前未使用，可以忽略）
+ * @param event RTC事件（当前未使用）
+ */
 void rt_alarm_update(rt_device_t dev, rt_uint32_t event);
+
+/**
+ * @brief 删除闹钟
+ *
+ * 调用此函数可以删除指定的闹钟并释放其占用的系统内存空间。
+ *
+ * @param alarm 闹钟控制块
+ *
+ * @return 错误号
+ */
 rt_err_t rt_alarm_delete(rt_alarm_t alarm);
+
+/**
+ * @brief 启动闹钟
+ *
+ * @param alarm 闹钟控制块
+ *
+ * @return 错误号
+ */
 rt_err_t rt_alarm_start(rt_alarm_t alarm);
+
+/**
+ * @brief 停止闹钟
+ *
+ * @param alarm 闹钟控制块
+ *
+ * @return 错误号
+ */
 rt_err_t rt_alarm_stop(rt_alarm_t alarm);
+
+/**
+ * @brief 初始化闹钟服务系统
+ *
+ */
 void rt_alarm_system_init(void);
+
+
+/**@}*/
 
 #endif /* __ALARM_H__ */

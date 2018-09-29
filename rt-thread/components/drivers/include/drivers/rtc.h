@@ -25,10 +25,40 @@
 #ifndef __RTC_H__
 #define __RTC_H__
 
+
+/**
+ * @addtogroup rtc
+ */
+
+/**@{*/
+
+/**
+ * @brief 管设置系统日期但不修改时间
+ *
+ * @param year 年
+ * @param month 月(1~12).
+ * @param day 日
+ *
+ * @return RT_EOK 成功，RT_ERROR 失败。
+ *
+ */
 rt_err_t set_date(rt_uint32_t year, rt_uint32_t month, rt_uint32_t day);
+
+/**
+ * @brief 管设置系统时间但不修改日期
+ *
+ * @param hour  小时（0~23）
+ * @param minute 分钟（0~59）
+ * @param second 秒（0~59）
+ *
+ * @return RT_EOK 成功，RT_ERROR 失败。
+ *
+ */
 rt_err_t set_time(rt_uint32_t hour, rt_uint32_t minute, rt_uint32_t second);
 
 int rt_soft_rtc_init(void);
 int rt_rtc_ntp_sync_init(void);
+
+/**@}*/
 
 #endif /* __RTC_H__ */

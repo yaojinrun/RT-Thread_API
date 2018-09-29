@@ -5,19 +5,19 @@
 
 /* workqueue implementation */
 /**
- * workqueue ç»“æž„ä½“å®šä¹‰
+ * workqueue ½á¹¹Ìå¶¨Òå
  */
 struct rt_workqueue
 {
-    rt_list_t      work_list;	/**< @brief worké“¾è¡¨ */
-    struct rt_work *work_current; /**< @brief å½“å‰workæŒ‡é’ˆ */
+    rt_list_t      work_list;	/**< @brief workÁ´±í */
+    struct rt_work *work_current; /**< @brief µ±Ç°workÖ¸Õë */
 
-    struct rt_semaphore sem; 	/**< @brief ç”¨äºŽåŒæ­¥çš„ä¿¡å·é‡ */
-    rt_thread_t    work_thread;	/**< @brief workå¤„ç†çº¿ç¨‹ */
+    struct rt_semaphore sem; 	/**< @brief ÓÃÓÚÍ¬²½µÄÐÅºÅÁ¿ */
+    rt_thread_t    work_thread;	/**< @brief work´¦ÀíÏß³Ì */
 };
 
 /**
- * work ç»“æž„ä½“å®šä¹‰
+ * work ½á¹¹Ìå¶¨Òå
  */
 struct rt_work
 {
@@ -37,73 +37,73 @@ struct rt_work
 /**@{*/
 
 /**
- * @brief åˆ›å»ºå·¥ä½œé˜Ÿåˆ—
+ * @brief ´´½¨¹¤×÷¶ÓÁÐ
  *
- * è°ƒç”¨è¯¥å‡½æ•°æŽ¥å£åŽï¼Œå†…æ ¸é¦–å…ˆä»ŽåŠ¨æ€å†…å­˜å †ä¸­åˆ†é…ä¸€ä¸ªå·¥ä½œé˜Ÿåˆ—æŽ§åˆ¶å—ï¼Œç„¶åŽå¯¹è¯¥æŽ§åˆ¶å—è¿›è¡ŒåŸºæœ¬çš„åˆå§‹åŒ–ï¼Œå¹¶åˆ›å»ºä¸€ä¸ªå·¥ä½œé˜Ÿåˆ—å¤„ç†çº¿ç¨‹ã€‚
+ * µ÷ÓÃ¸Ãº¯Êý½Ó¿Úºó£¬ÄÚºËÊ×ÏÈ´Ó¶¯Ì¬ÄÚ´æ¶ÑÖÐ·ÖÅäÒ»¸ö¹¤×÷¶ÓÁÐ¿ØÖÆ¿é£¬È»ºó¶Ô¸Ã¿ØÖÆ¿é½øÐÐ»ù±¾µÄ³õÊ¼»¯£¬²¢´´½¨Ò»¸ö¹¤×÷¶ÓÁÐ´¦ÀíÏß³Ì¡£
  *
- * @param name å·¥ä½œé˜Ÿåˆ—åç§°
- * @param stack_size å·¥ä½œé˜Ÿåˆ—å †æ ˆç©ºé—´å¤§å°
- * @param priority å·¥ä½œé˜Ÿåˆ—çš„ä¼˜å…ˆçº§
+ * @param name ¹¤×÷¶ÓÁÐÃû³Æ
+ * @param stack_size ¹¤×÷¶ÓÁÐ¶ÑÕ»¿Õ¼ä´óÐ¡
+ * @param priority ¹¤×÷¶ÓÁÐµÄÓÅÏÈ¼¶
  *
- * @return åˆ›å»ºæˆåŠŸåˆ™è¿”å›žworkqueueæŽ§åˆ¶å—ï¼Œå¤±è´¥åˆ™è¿”å›ž RT_NULL
+ * @return ´´½¨³É¹¦Ôò·µ»Øworkqueue¿ØÖÆ¿é£¬Ê§°ÜÔò·µ»Ø RT_NULL
  */
 struct rt_workqueue *rt_workqueue_create(const char* name, rt_uint16_t stack_size, rt_uint8_t priority);
 
 /**
- * @brief é”€æ¯å·¥ä½œé˜Ÿåˆ—
+ * @brief Ïú»Ù¹¤×÷¶ÓÁÐ
  *
- * è°ƒç”¨è¿™ä¸ªå‡½æ•°æŽ¥å£åŽï¼Œç³»ç»Ÿä¼šåˆ é™¤è¿™ä¸ªå·¥ä½œé˜Ÿåˆ—çš„å¤„ç†çº¿ç¨‹ï¼Œç„¶åŽé‡Šæ”¾ç›¸åº”çš„å·¥ä½œé˜Ÿåˆ—æŽ§åˆ¶å—å æœ‰çš„å†…å­˜ã€‚
+ * µ÷ÓÃÕâ¸öº¯Êý½Ó¿Úºó£¬ÏµÍ³»áÉ¾³ýÕâ¸ö¹¤×÷¶ÓÁÐµÄ´¦ÀíÏß³Ì£¬È»ºóÊÍ·ÅÏàÓ¦µÄ¹¤×÷¶ÓÁÐ¿ØÖÆ¿éÕ¼ÓÐµÄÄÚ´æ¡£
  *
- * @param queue workqueueæŽ§åˆ¶å—
+ * @param queue workqueue¿ØÖÆ¿é
  *
  * @return RT_EOK
  */
 rt_err_t rt_workqueue_destroy(struct rt_workqueue* queue);
 
 /**
- * @brief å¢žåŠ å·¥ä½œé˜Ÿåˆ—ä»»åŠ¡
+ * @brief Ôö¼Ó¹¤×÷¶ÓÁÐÈÎÎñ
  *
- * è°ƒç”¨è¯¥å‡½æ•°å¯ä»¥å‘æŒ‡å®šçš„å·¥ä½œé˜Ÿåˆ—ä¸­æ·»åŠ ä»»åŠ¡ã€‚
+ * µ÷ÓÃ¸Ãº¯Êý¿ÉÒÔÏòÖ¸¶¨µÄ¹¤×÷¶ÓÁÐÖÐÌí¼ÓÈÎÎñ¡£
  *
- * @param queue workqueueæŽ§åˆ¶å—
- * @param work ä»»åŠ¡æŽ§åˆ¶å—
+ * @param queue workqueue¿ØÖÆ¿é
+ * @param work ÈÎÎñ¿ØÖÆ¿é
  *
- * @return -RT_EBUSY ä»»åŠ¡å·²åœ¨æ‰§è¡Œä¸­ï¼Œè¯·å‹¿é‡å¤æ‰§è¡Œï¼›RT_EOK åŠ å…¥workqueueä»»åŠ¡æˆåŠŸ
+ * @return -RT_EBUSY ÈÎÎñÒÑÔÚÖ´ÐÐÖÐ£¬ÇëÎðÖØ¸´Ö´ÐÐ£»RT_EOK ¼ÓÈëworkqueueÈÎÎñ³É¹¦
  */
 rt_err_t rt_workqueue_dowork(struct rt_workqueue* queue, struct rt_work* work);
 
 /**
- * @brief å–æ¶ˆå·¥ä½œé˜Ÿåˆ—ä»»åŠ¡
+ * @brief È¡Ïû¹¤×÷¶ÓÁÐÈÎÎñ
  *
- * è°ƒç”¨è¯¥å‡½æ•°å¯ä»¥å–æ¶ˆä»»åŠ¡é˜Ÿåˆ—ä¸­å°šæœªæ‰§è¡Œçš„ä»»åŠ¡ã€‚
+ * µ÷ÓÃ¸Ãº¯Êý¿ÉÒÔÈ¡ÏûÈÎÎñ¶ÓÁÐÖÐÉÐÎ´Ö´ÐÐµÄÈÎÎñ¡£
  *
- * @param queue workqueueæŽ§åˆ¶å—
- * @param work ä»»åŠ¡æŽ§åˆ¶å—
+ * @param queue workqueue¿ØÖÆ¿é
+ * @param work ÈÎÎñ¿ØÖÆ¿é
  *
- * @return -RT_EBUSY ä»»åŠ¡å·²åœ¨æ‰§è¡Œä¸­ï¼Œä¸èƒ½å–æ¶ˆï¼›RT_EOK å–æ¶ˆæˆåŠŸ
+ * @return -RT_EBUSY ÈÎÎñÒÑÔÚÖ´ÐÐÖÐ£¬²»ÄÜÈ¡Ïû£»RT_EOK È¡Ïû³É¹¦
  */
 rt_err_t rt_workqueue_cancel_work(struct rt_workqueue* queue, struct rt_work* work);
 
 /**
- * @brief åŒæ­¥å–æ¶ˆå·¥ä½œé˜Ÿåˆ—ä»»åŠ¡
+ * @brief Í¬²½È¡Ïû¹¤×÷¶ÓÁÐÈÎÎñ
  *
- * è°ƒç”¨è¯¥å‡½æ•°å¯ä»¥å–æ¶ˆå¾ªçŽ¯ä»»åŠ¡ï¼Œå¦‚æžœä»»åŠ¡æ­£åœ¨æ‰§è¡Œä¸­ï¼Œåˆ™ç­‰å¾…è¯¥æ¬¡ä»»åŠ¡å®ŒæˆåŽå–æ¶ˆã€‚
+ * µ÷ÓÃ¸Ãº¯Êý¿ÉÒÔÈ¡ÏûÑ­»·ÈÎÎñ£¬Èç¹ûÈÎÎñÕýÔÚÖ´ÐÐÖÐ£¬ÔòµÈ´ý¸Ã´ÎÈÎÎñÍê³ÉºóÈ¡Ïû¡£
  *
- * @param queue workqueueæŽ§åˆ¶å—
- * @param work ä»»åŠ¡æŽ§åˆ¶å—
+ * @param queue workqueue¿ØÖÆ¿é
+ * @param work ÈÎÎñ¿ØÖÆ¿é
  *
- * @return å–æ¶ˆæˆåŠŸï¼ˆå¦‚æžœä»»åŠ¡å·²åœ¨æ‰§è¡Œä¸­ï¼Œç­‰å¾…ä»»åŠ¡å®ŒæˆåŽå–æ¶ˆï¼‰
+ * @return È¡Ïû³É¹¦£¨Èç¹ûÈÎÎñÒÑÔÚÖ´ÐÐÖÐ£¬µÈ´ýÈÎÎñÍê³ÉºóÈ¡Ïû£©
  */
 rt_err_t rt_workqueue_cancel_work_sync(struct rt_workqueue* queue, struct rt_work* work);
 
 /**
- * @brief åˆå§‹åŒ–work
+ * @brief ³õÊ¼»¯work
  *
- * è°ƒç”¨è¯¥å‡½æ•°å¯ä»¥åˆå§‹åŒ–æŒ‡å®šworkçš„é“¾è¡¨ï¼Œå¹¶æŒ‡å®šä»»åŠ¡å›žè°ƒå‡½æ•°å’Œå¾…å¤„ç†çš„æ•°æ®æŒ‡é’ˆã€‚
+ * µ÷ÓÃ¸Ãº¯Êý¿ÉÒÔ³õÊ¼»¯Ö¸¶¨workµÄÁ´±í£¬²¢Ö¸¶¨ÈÎÎñ»Øµ÷º¯ÊýºÍ´ý´¦ÀíµÄÊý¾ÝÖ¸Õë¡£
  *
- * @param work workæŽ§åˆ¶å—
- * @param work_func workå›žè°ƒå¤„ç†å‡½æ•°
- * @param work_data å¾…å¤„ç†çš„æ•°æ®ç¼“å†²åŒºæŒ‡é’ˆ
+ * @param work work¿ØÖÆ¿é
+ * @param work_func work»Øµ÷´¦Àíº¯Êý
+ * @param work_data ´ý´¦ÀíµÄÊý¾Ý»º³åÇøÖ¸Õë
  *
  */
 rt_inline void rt_work_init(struct rt_work* work, void (*work_func)(struct rt_work* work, void* work_data),

@@ -36,8 +36,8 @@ extern "C"{
 #define RT_SPI_CPOL     (1<<1)                             /* bit[1]:CPOL, clock polarity */
 /**
  * At CPOL=0 the base value of the clock is zero
- *  - For CPHA=0, data are captured on the clock's rising edge (lowâ†’high transition)
- *    and data are propagated on a falling edge (highâ†’low clock transition).
+ *  - For CPHA=0, data are captured on the clock's rising edge (low¡úhigh transition)
+ *    and data are propagated on a falling edge (high¡úlow clock transition).
  *  - For CPHA=1, data are captured on the clock's falling edge and data are
  *    propagated on a rising edge.
  * At CPOL=1 the base value of the clock is one (inversion of CPOL=0)
@@ -130,15 +130,15 @@ struct rt_spi_device
 
 
 /**
- * @brief SPI æ€»çº¿æ³¨å†Œ
+ * @brief SPI ×ÜÏß×¢²á
  *
- * è°ƒç”¨æ­¤å‡½æ•°å¯ä»¥å‘ç³»ç»Ÿä¸­æ³¨å†Œ SPI æ€»çº¿ã€‚
+ * µ÷ÓÃ´Ëº¯Êý¿ÉÒÔÏòÏµÍ³ÖÐ×¢²á SPI ×ÜÏß¡£
  *
- * @param bus SPI æ€»çº¿å¥æŸ„
- * @param name SPI æ€»çº¿åç§°ï¼Œä¸€èˆ¬ä¸Žç¡¬ä»¶æŽ§åˆ¶å™¨åç§°ä¸€è‡´ï¼Œå¦‚ï¼šâ€spi0â€
- * @param ops SPI æ€»çº¿æ“ä½œæ–¹æ³•ï¼Œå³ SPI é©±åŠ¨çš„å®žçŽ°
+ * @param bus SPI ×ÜÏß¾ä±ú
+ * @param name SPI ×ÜÏßÃû³Æ£¬Ò»°ãÓëÓ²¼þ¿ØÖÆÆ÷Ãû³ÆÒ»ÖÂ£¬Èç£º¡±spi0¡±
+ * @param ops SPI ×ÜÏß²Ù×÷·½·¨£¬¼´ SPI Çý¶¯µÄÊµÏÖ
  *
- * @return RT_EOK æˆåŠŸï¼›-RT_ERROR bus ä¸ºç©ºæˆ–è€… name å·²è¢«æ³¨å†Œã€‚
+ * @return RT_EOK ³É¹¦£»-RT_ERROR bus Îª¿Õ»òÕß name ÒÑ±»×¢²á¡£
  */
 rt_err_t rt_spi_bus_register(struct rt_spi_bus       *bus,
                              const char              *name,
@@ -146,16 +146,16 @@ rt_err_t rt_spi_bus_register(struct rt_spi_bus       *bus,
 
 
 /**
- * @brief æŒ‚è½½ SPI è®¾å¤‡åˆ°æ€»çº¿ä¸Š
+ * @brief ¹ÒÔØ SPI Éè±¸µ½×ÜÏßÉÏ
  *
- * æ­¤å‡½æ•°ç”¨äºŽæŒ‚è½½ä¸€ä¸ªSPIè®¾å¤‡èŠ‚ç‚¹åˆ°æŒ‡å®šçš„SPIæ€»çº¿ï¼Œå¹¶å†…æ ¸æ³¨å†ŒSPIè®¾å¤‡èŠ‚ç‚¹ï¼Œå¹¶å°†user_dataä¿å­˜åˆ°SPIè®¾å¤‡èŠ‚ç‚¹çš„user_dataæŒ‡é’ˆé‡Œã€‚
+ * ´Ëº¯ÊýÓÃÓÚ¹ÒÔØÒ»¸öSPIÉè±¸½Úµãµ½Ö¸¶¨µÄSPI×ÜÏß£¬²¢ÄÚºË×¢²áSPIÉè±¸½Úµã£¬²¢½«user_data±£´æµ½SPIÉè±¸½ÚµãµÄuser_dataÖ¸ÕëÀï¡£
  *
- * @param device SPI è®¾å¤‡å¥æŸ„
- * @param name SPI è®¾å¤‡åç§°
- * @param bus_name SPI æ€»çº¿åç§°
- * @param user_data ç”¨æˆ·æ•°æ®æŒ‡é’ˆ
+ * @param device SPI Éè±¸¾ä±ú
+ * @param name SPI Éè±¸Ãû³Æ
+ * @param bus_name SPI ×ÜÏßÃû³Æ
+ * @param user_data ÓÃ»§Êý¾ÝÖ¸Õë
  *
- * @return RT_EOK æˆåŠŸï¼›-RT_ERROR bus_name ä¸å­˜åœ¨ã€device ä¸ºç©ºã€name å·²è¢«æ³¨å†Œã€‚
+ * @return RT_EOK ³É¹¦£»-RT_ERROR bus_name ²»´æÔÚ¡¢device Îª¿Õ¡¢name ÒÑ±»×¢²á¡£
  */
 rt_err_t rt_spi_bus_attach_device(struct rt_spi_device *device,
                                   const char           *name,
@@ -163,77 +163,77 @@ rt_err_t rt_spi_bus_attach_device(struct rt_spi_device *device,
                                   void                 *user_data);
 
 /**
- * @brief èŽ·å– SPI æ€»çº¿
+ * @brief »ñÈ¡ SPI ×ÜÏß
  *
- * ç”¨æˆ·è°ƒç”¨æ­¤å‡½æ•°æ¥èŽ·å–SPIæ€»çº¿ï¼Œå¹¶è®¾ç½®SPIæ€»çº¿çš„å·¥ä½œæ¨¡å¼å’Œå‚æ•°ã€‚
+ * ÓÃ»§µ÷ÓÃ´Ëº¯ÊýÀ´»ñÈ¡SPI×ÜÏß£¬²¢ÉèÖÃSPI×ÜÏßµÄ¹¤×÷Ä£Ê½ºÍ²ÎÊý¡£
  *
- * @param device SPI æ€»çº¿è®¾å¤‡å¥æŸ„
+ * @param device SPI ×ÜÏßÉè±¸¾ä±ú
  *
- * @return æˆåŠŸåˆ™è¿”å›žRT_EOKï¼›é”™è¯¯åˆ™è¿”å›ž é”™è¯¯ç ã€‚
+ * @return ³É¹¦Ôò·µ»ØRT_EOK£»´íÎóÔò·µ»Ø ´íÎóÂë¡£
  */
 rt_err_t rt_spi_take_bus(struct rt_spi_device *device);
 
 
 /**
- * @brief é‡Šæ”¾ SPI æ€»çº¿
+ * @brief ÊÍ·Å SPI ×ÜÏß
  *
- * ç”¨æˆ·å¯ä»¥è°ƒç”¨æ­¤å‡½æ•°æ¥é‡Šæ”¾SPIæ€»çº¿ã€‚
+ * ÓÃ»§¿ÉÒÔµ÷ÓÃ´Ëº¯ÊýÀ´ÊÍ·ÅSPI×ÜÏß¡£
  *
- * @param device SPI æ€»çº¿è®¾å¤‡å¥æŸ„
+ * @param device SPI ×ÜÏßÉè±¸¾ä±ú
  *
- * @return æˆåŠŸåˆ™è¿”å›žRT_EOKï¼›é”™è¯¯åˆ™è¿”å›ž é”™è¯¯ç ã€‚
+ * @return ³É¹¦Ôò·µ»ØRT_EOK£»´íÎóÔò·µ»Ø ´íÎóÂë¡£
  */
 rt_err_t rt_spi_release_bus(struct rt_spi_device *device);
 
 
 /**
- * @brief èŽ·å– SPI å™¨ä»¶
+ * @brief »ñÈ¡ SPI Æ÷¼þ
  *
- * è°ƒç”¨æ­¤å‡½æ•°å¯ä»¥ç‰‡é€‰SPIè®¾å¤‡ã€‚
+ * µ÷ÓÃ´Ëº¯Êý¿ÉÒÔÆ¬Ñ¡SPIÉè±¸¡£
  *
- * @param device SPI æ€»çº¿è®¾å¤‡å¥æŸ„
+ * @param device SPI ×ÜÏßÉè±¸¾ä±ú
  *
- * @return 0 èŽ·å–æˆåŠŸï¼Œç‰‡é€‰å¼€å§‹ã€‚
+ * @return 0 »ñÈ¡³É¹¦£¬Æ¬Ñ¡¿ªÊ¼¡£
  */
 rt_err_t rt_spi_take(struct rt_spi_device *device);
 
 /**
- * @brief é‡Šæ”¾ SPI å™¨ä»¶
+ * @brief ÊÍ·Å SPI Æ÷¼þ
  *
- * è°ƒç”¨æ­¤å‡½æ•°å¯ä»¥é‡Šæ”¾è¢«ç‰‡é€‰SPIè®¾å¤‡ã€‚
+ * µ÷ÓÃ´Ëº¯Êý¿ÉÒÔÊÍ·Å±»Æ¬Ñ¡SPIÉè±¸¡£
  *
- * @param device SPI æ€»çº¿è®¾å¤‡å¥æŸ„
+ * @param device SPI ×ÜÏßÉè±¸¾ä±ú
  *
- * @return 0 é‡Šæ”¾æˆåŠŸï¼Œç‰‡é€‰ç»“æŸã€‚
+ * @return 0 ÊÍ·Å³É¹¦£¬Æ¬Ñ¡½áÊø¡£
  */
 rt_err_t rt_spi_release(struct rt_spi_device *device);
 
 /**
- * @brief SPI æ€»çº¿é…ç½®
+ * @brief SPI ×ÜÏßÅäÖÃ
  *
- * æœ¬å‡½æ•°ç”¨äºŽé…ç½®SPI BUSä»¥æ»¡è¶³ä¸åŒè®¾å¤‡çš„æ—¶é’Ÿã€æ•°æ®å®½åº¦ç­‰è¦æ±‚ï¼Œé€šå¸¸éœ€è¦é…ç½®SPIæ¨¡å¼ã€é¢‘çŽ‡å‚æ•°ã€‚
+ * ±¾º¯ÊýÓÃÓÚÅäÖÃSPI BUSÒÔÂú×ã²»Í¬Éè±¸µÄÊ±ÖÓ¡¢Êý¾Ý¿í¶ÈµÈÒªÇó£¬Í¨³£ÐèÒªÅäÖÃSPIÄ£Ê½¡¢ÆµÂÊ²ÎÊý¡£
  *
- * @param device SPI è®¾å¤‡å¥æŸ„
- * @param cfg SPI ä¼ è¾“é…ç½®å‚æ•°æŒ‡é’ˆ
- * @param device SPI è®¾å¤‡å¥æŸ„
+ * @param device SPI Éè±¸¾ä±ú
+ * @param cfg SPI ´«ÊäÅäÖÃ²ÎÊýÖ¸Õë
+ * @param device SPI Éè±¸¾ä±ú
  *
- * @return RT_EOK é…ç½®æˆåŠŸã€‚
+ * @return RT_EOK ÅäÖÃ³É¹¦¡£
  */
 rt_err_t rt_spi_configure(struct rt_spi_device        *device,
                           struct rt_spi_configuration *cfg);
 
 /**
- * @brief SPI å‘é€ä¸€æ¬¡æ•°æ®åŽå†æŽ¥æ”¶ä¸€æ¬¡æ•°æ®
+ * @brief SPI ·¢ËÍÒ»´ÎÊý¾ÝºóÔÙ½ÓÊÕÒ»´ÎÊý¾Ý
  *
- * æœ¬å‡½æ•°é€‚åˆä»ŽSPIå¤–è®¾ä¸­è¯»å–ä¸€å—æ•°æ®ï¼Œæœ¬å‡½æ•°ä¸­ä¼šå…ˆå‘é€ä¸€äº›æ•°æ®ï¼ˆå¦‚å‘½ä»¤å’Œåœ°å€ï¼‰ï¼Œç„¶åŽå†æŽ¥æ”¶æŒ‡å®šé•¿åº¦çš„æ•°æ®ã€‚æ­¤å‡½æ•°ç­‰åŒäºŽè°ƒç”¨rt_spi_transfer_message()ä¼ è¾“2æ¡æ¶ˆæ¯ã€‚
+ * ±¾º¯ÊýÊÊºÏ´ÓSPIÍâÉèÖÐ¶ÁÈ¡Ò»¿éÊý¾Ý£¬±¾º¯ÊýÖÐ»áÏÈ·¢ËÍÒ»Ð©Êý¾Ý£¨ÈçÃüÁîºÍµØÖ·£©£¬È»ºóÔÙ½ÓÊÕÖ¸¶¨³¤¶ÈµÄÊý¾Ý¡£´Ëº¯ÊýµÈÍ¬ÓÚµ÷ÓÃrt_spi_transfer_message()´«Êä2ÌõÏûÏ¢¡£
  *
- * @param device SPI æ€»çº¿è®¾å¤‡å¥æŸ„
- * @param send_buf å‘é€ç¼“å†²åŒºæ•°æ®æŒ‡é’ˆ
- * @param send_length å‘é€ç¼“å†²åŒºæ•°æ®å­—èŠ‚æ•°
- * @param recv_buf æŽ¥æ”¶ç¼“å†²åŒºæ•°æ®æŒ‡é’ˆï¼Œspi æ˜¯å…¨åŒå·¥çš„ï¼Œæ”¯æŒåŒæ—¶æ”¶å‘
- * @param recv_length æŽ¥æ”¶ç¼“å†²åŒºæ•°æ®å­—èŠ‚æ•°
+ * @param device SPI ×ÜÏßÉè±¸¾ä±ú
+ * @param send_buf ·¢ËÍ»º³åÇøÊý¾ÝÖ¸Õë
+ * @param send_length ·¢ËÍ»º³åÇøÊý¾Ý×Ö½ÚÊý
+ * @param recv_buf ½ÓÊÕ»º³åÇøÊý¾ÝÖ¸Õë£¬spi ÊÇÈ«Ë«¹¤µÄ£¬Ö§³ÖÍ¬Ê±ÊÕ·¢
+ * @param recv_length ½ÓÊÕ»º³åÇøÊý¾Ý×Ö½ÚÊý
  *
- * @return RT_EOK æˆåŠŸï¼Œ-RT_EIO å¤±è´¥ã€‚
+ * @return RT_EOK ³É¹¦£¬-RT_EIO Ê§°Ü¡£
  */
 rt_err_t rt_spi_send_then_recv(struct rt_spi_device *device,
                                const void           *send_buf,
@@ -242,17 +242,17 @@ rt_err_t rt_spi_send_then_recv(struct rt_spi_device *device,
                                rt_size_t             recv_length);
 
 /**
- * @brief SPI è¿žç»­å‘é€ä¸¤æ¬¡æ•°æ®
+ * @brief SPI Á¬Ðø·¢ËÍÁ½´ÎÊý¾Ý
  *
- * æœ¬å‡½æ•°é€‚åˆå‘SPIå¤–è®¾ä¸­å†™å…¥ä¸€å—æ•°æ®ï¼Œæœ¬å‡½æ•°ä¸­ä¼šå…ˆå‘é€ä¸€äº›æ•°æ®ï¼ˆå¦‚å‘½ä»¤å’Œåœ°å€ï¼‰ï¼Œç„¶åŽå†å‘é€æŒ‡å®šé•¿åº¦çš„æ•°æ®ã€‚æ­¤å‡½æ•°ç­‰åŒäºŽè°ƒç”¨rt_spi_transfer_message()ä¼ è¾“2æ¡æ¶ˆæ¯ã€‚
+ * ±¾º¯ÊýÊÊºÏÏòSPIÍâÉèÖÐÐ´ÈëÒ»¿éÊý¾Ý£¬±¾º¯ÊýÖÐ»áÏÈ·¢ËÍÒ»Ð©Êý¾Ý£¨ÈçÃüÁîºÍµØÖ·£©£¬È»ºóÔÙ·¢ËÍÖ¸¶¨³¤¶ÈµÄÊý¾Ý¡£´Ëº¯ÊýµÈÍ¬ÓÚµ÷ÓÃrt_spi_transfer_message()´«Êä2ÌõÏûÏ¢¡£
  *
- * @param device SPI æ€»çº¿è®¾å¤‡å¥æŸ„
- * @param send_buf1 å‘é€ç¼“å†²åŒº1æ•°æ®æŒ‡é’ˆ
- * @param send_length1 å‘é€ç¼“å†²åŒº1æ•°æ®å­—èŠ‚æ•°
- * @param send_buf2 å‘é€ç¼“å†²åŒº2æ•°æ®æŒ‡é’ˆ
- * @param send_length2 å‘é€ç¼“å†²åŒº2æ•°æ®å­—èŠ‚æ•°
+ * @param device SPI ×ÜÏßÉè±¸¾ä±ú
+ * @param send_buf1 ·¢ËÍ»º³åÇø1Êý¾ÝÖ¸Õë
+ * @param send_length1 ·¢ËÍ»º³åÇø1Êý¾Ý×Ö½ÚÊý
+ * @param send_buf2 ·¢ËÍ»º³åÇø2Êý¾ÝÖ¸Õë
+ * @param send_length2 ·¢ËÍ»º³åÇø2Êý¾Ý×Ö½ÚÊý
  *
- * @return RT_EOK æˆåŠŸï¼Œ-RT_EIO å¤±è´¥ã€‚
+ * @return RT_EOK ³É¹¦£¬-RT_EIO Ê§°Ü¡£
  */
 rt_err_t rt_spi_send_then_send(struct rt_spi_device *device,
                                const void           *send_buf1,
@@ -261,16 +261,16 @@ rt_err_t rt_spi_send_then_send(struct rt_spi_device *device,
                                rt_size_t             send_length2);
 
 /**
- * @brief SPI å•ä¸ªæ¶ˆæ¯ä¼ è¾“
+ * @brief SPI µ¥¸öÏûÏ¢´«Êä
  *
- * è°ƒç”¨æ­¤å‡½æ•°å°†å‘é€ä¸€æ¬¡æ•°æ®ï¼ŒåŒäºŽè°ƒç”¨rt_spi_transfer_message()ä¼ è¾“ä¸€æ¡æ¶ˆæ¯ã€‚
+ * µ÷ÓÃ´Ëº¯Êý½«·¢ËÍÒ»´ÎÊý¾Ý£¬Í¬ÓÚµ÷ÓÃrt_spi_transfer_message()´«ÊäÒ»ÌõÏûÏ¢¡£
  *
- * @param device SPI è®¾å¤‡å¥æŸ„
- * @param send_buf å‘é€ç¼“å†²åŒºæŒ‡é’ˆ
- * @param recv_buf æŽ¥æ”¶ç¼“å†²åŒºæŒ‡é’ˆ
- * @param length å‘é€ / æŽ¥æ”¶ æ•°æ®å­—èŠ‚æ•°
+ * @param device SPI Éè±¸¾ä±ú
+ * @param send_buf ·¢ËÍ»º³åÇøÖ¸Õë
+ * @param recv_buf ½ÓÊÕ»º³åÇøÖ¸Õë
+ * @param length ·¢ËÍ / ½ÓÊÕ Êý¾Ý×Ö½ÚÊý
  *
- * @return å®žé™…ä¼ è¾“çš„å­—èŠ‚æ•°
+ * @return Êµ¼Ê´«ÊäµÄ×Ö½ÚÊý
  */
 rt_size_t rt_spi_transfer(struct rt_spi_device *device,
                           const void           *send_buf,
@@ -278,30 +278,30 @@ rt_size_t rt_spi_transfer(struct rt_spi_device *device,
                           rt_size_t             length);
 
 /**
- * @brief SPI å¤šä¸ªæ¶ˆæ¯è¿žç»­ä¼ è¾“
+ * @brief SPI ¶à¸öÏûÏ¢Á¬Ðø´«Êä
  *
- * æ­¤å‡½æ•°å¯ä»¥ä¼ è¾“ä¸€è¿žä¸²æ¶ˆæ¯ï¼Œç”¨æˆ·å¯ä»¥å¾ˆçµæ´»çš„è®¾ç½®messageç»“æž„ä½“å„å‚æ•°çš„æ•°å€¼ï¼Œä»Žè€Œå¯ä»¥å¾ˆæ–¹ä¾¿çš„æŽ§åˆ¶æ•°æ®ä¼ è¾“æ–¹å¼ã€‚
+ * ´Ëº¯Êý¿ÉÒÔ´«ÊäÒ»Á¬´®ÏûÏ¢£¬ÓÃ»§¿ÉÒÔºÜÁé»îµÄÉèÖÃmessage½á¹¹Ìå¸÷²ÎÊýµÄÊýÖµ£¬´Ó¶ø¿ÉÒÔºÜ·½±ãµÄ¿ØÖÆÊý¾Ý´«Êä·½Ê½¡£
  *
- * @param device SPI è®¾å¤‡å¥æŸ„
- * @param message æ¶ˆæ¯æŒ‡é’ˆ
+ * @param device SPI Éè±¸¾ä±ú
+ * @param message ÏûÏ¢Ö¸Õë
  *
- * @return RT_NULL æ¶ˆæ¯åˆ—è¡¨å‘é€æˆåŠŸï¼Œå‘é€å¤±è´¥åˆ™è¿”å›žå½“å‰çš„æ¶ˆæ¯æŒ‡é’ˆã€‚
+ * @return RT_NULL ÏûÏ¢ÁÐ±í·¢ËÍ³É¹¦£¬·¢ËÍÊ§°ÜÔò·µ»Øµ±Ç°µÄÏûÏ¢Ö¸Õë¡£
  */
 struct rt_spi_message *rt_spi_transfer_message(struct rt_spi_device  *device,
                                                struct rt_spi_message *message);
 
 /**
- * @brief SPI æ¶ˆæ¯æŽ¥æ”¶å‡½æ•°
+ * @brief SPI ÏûÏ¢½ÓÊÕº¯Êý
  *
- * è°ƒç”¨æ­¤å‡½æ•°æŽ¥å—æ•°æ®å¹¶ä¿å­˜åˆ°recv_bufæŒ‡å‘çš„ç¼“å†²åŒºã€‚æ˜¯å¯¹rt_spi_transfer()å‡½æ•°çš„å°è£…ã€‚
- * SPIåè®®é‡Œé¢åªèƒ½ç”±MASTERä¸»åŠ¨äº§ç”Ÿæ—¶é’Ÿï¼Œå› æ­¤ï¼Œåœ¨æŽ¥æ”¶æ•°æ®æ—¶ï¼Œä¼šå‘é€dummyã€‚æ­¤å‡½æ•°ç­‰åŒäºŽ
- * è°ƒç”¨rt_spi_transfer_message()ä¼ è¾“ä¸€æ¡æ¶ˆæ¯ã€‚
+ * µ÷ÓÃ´Ëº¯Êý½ÓÊÜÊý¾Ý²¢±£´æµ½recv_bufÖ¸ÏòµÄ»º³åÇø¡£ÊÇ¶Ôrt_spi_transfer()º¯ÊýµÄ·â×°¡£
+ * SPIÐ­ÒéÀïÃæÖ»ÄÜÓÉMASTERÖ÷¶¯²úÉúÊ±ÖÓ£¬Òò´Ë£¬ÔÚ½ÓÊÕÊý¾ÝÊ±£¬»á·¢ËÍdummy¡£´Ëº¯ÊýµÈÍ¬ÓÚ
+ * µ÷ÓÃrt_spi_transfer_message()´«ÊäÒ»ÌõÏûÏ¢¡£
  *
- * @param device SPI è®¾å¤‡å¥æŸ„
- * @param recv_buf æŽ¥æ”¶ç¼“å†²åŒºæŒ‡é’ˆ
- * @param length æŽ¥å—æ•°æ®çš„å­—èŠ‚æ•°
+ * @param device SPI Éè±¸¾ä±ú
+ * @param recv_buf ½ÓÊÕ»º³åÇøÖ¸Õë
+ * @param length ½ÓÊÜÊý¾ÝµÄ×Ö½ÚÊý
  *
- * @return å®žé™…æŽ¥æ”¶çš„å­—èŠ‚æ•°ã€‚
+ * @return Êµ¼Ê½ÓÊÕµÄ×Ö½ÚÊý¡£
  */
 rt_inline rt_size_t rt_spi_recv(struct rt_spi_device *device,
                                 void                 *recv_buf,
@@ -311,16 +311,16 @@ rt_inline rt_size_t rt_spi_recv(struct rt_spi_device *device,
 }
 
 /**
- * @brief SPI æ¶ˆæ¯æŽ¥æ”¶å‡½æ•°
+ * @brief SPI ÏûÏ¢½ÓÊÕº¯Êý
  *
- * è°ƒç”¨æ­¤å‡½æ•°å‘é€send_bufæŒ‡å‘çš„ç¼“å†²åŒºçš„æ•°æ®ï¼Œå¿½ç•¥æŽ¥æ”¶åˆ°çš„æ•°æ®ã€‚æ˜¯å¯¹rt_spi_transfer()å‡½æ•°çš„å°è£…ã€‚
- * æ­¤å‡½æ•°ç­‰åŒäºŽè°ƒç”¨rt_spi_transfer_message()ä¼ è¾“ä¸€æ¡æ¶ˆæ¯ã€‚
+ * µ÷ÓÃ´Ëº¯Êý·¢ËÍsend_bufÖ¸ÏòµÄ»º³åÇøµÄÊý¾Ý£¬ºöÂÔ½ÓÊÕµ½µÄÊý¾Ý¡£ÊÇ¶Ôrt_spi_transfer()º¯ÊýµÄ·â×°¡£
+ * ´Ëº¯ÊýµÈÍ¬ÓÚµ÷ÓÃrt_spi_transfer_message()´«ÊäÒ»ÌõÏûÏ¢¡£
  *
- * @param device SPI è®¾å¤‡å¥æŸ„
- * @param send_buf å‘é€ç¼“å†²åŒºæŒ‡é’ˆ
- * @param length å‘é€æ•°æ®çš„å­—èŠ‚æ•°
+ * @param device SPI Éè±¸¾ä±ú
+ * @param send_buf ·¢ËÍ»º³åÇøÖ¸Õë
+ * @param length ·¢ËÍÊý¾ÝµÄ×Ö½ÚÊý
  *
- * @return å®žé™…å‘é€çš„å­—èŠ‚æ•°ã€‚
+ * @return Êµ¼Ê·¢ËÍµÄ×Ö½ÚÊý¡£
  */
 rt_inline rt_size_t rt_spi_send(struct rt_spi_device *device,
                                 const void           *send_buf,
@@ -350,12 +350,12 @@ rt_inline rt_uint16_t rt_spi_sendrecv16(struct rt_spi_device *device,
 }
 
 /**
- * @brief SPI æ¶ˆæ¯è¿½åŠ 
+ * @brief SPI ÏûÏ¢×·¼Ó
  *
- * è°ƒç”¨æ­¤å‡½æ•°å¯ä»¥å‘SPIæ¶ˆæ¯å‘é€é“¾è¡¨ä¸­å¢žåŠ ä¸€æ¡æ¶ˆæ¯ã€‚
+ * µ÷ÓÃ´Ëº¯Êý¿ÉÒÔÏòSPIÏûÏ¢·¢ËÍÁ´±íÖÐÔö¼ÓÒ»ÌõÏûÏ¢¡£
  *
- * @param list æ¶ˆæ¯é“¾è¡¨æŒ‡é’ˆ
- * @param message æ¶ˆæ¯æŒ‡é’ˆ
+ * @param list ÏûÏ¢Á´±íÖ¸Õë
+ * @param message ÏûÏ¢Ö¸Õë
  */
 rt_inline void rt_spi_message_append(struct rt_spi_message *list,
                                      struct rt_spi_message *message)

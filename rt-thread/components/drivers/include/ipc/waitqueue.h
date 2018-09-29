@@ -35,21 +35,21 @@ struct rt_wqueue_node;
 typedef int (*rt_wqueue_func_t)(struct rt_wqueue_node *wait, void *key);
 
 /**
- * wqueue ç»“æž„ä½“å®šä¹‰
+ * waitqueue ½á¹¹Ìå¶¨Òå
  */
 struct rt_wqueue_node
 {
-    rt_thread_t polling_thread;		/**< @brief ç­‰å¾…é˜Ÿåˆ—è½®è¯¢çº¿ç¨‹ */
-    rt_list_t   list;				/**< @brief ç­‰å¾…é˜Ÿåˆ—é“¾è¡¨ */
+    rt_thread_t polling_thread;		/**< @brief µÈ´ý¶ÓÁÐÂÖÑ¯Ïß³Ì */
+    rt_list_t   list;				/**< @brief µÈ´ý¶ÓÁÐÁ´±í */
 
-    rt_wqueue_func_t wakeup;		/**< @brief å”¤é†’å›žè°ƒå‡½æ•° */
-    rt_uint32_t key;				/**< @brief å”¤é†’æ¡ä»¶ */
+    rt_wqueue_func_t wakeup;		/**< @brief »½ÐÑ»Øµ÷º¯Êý */
+    rt_uint32_t key;				/**< @brief »½ÐÑÌõ¼þ */
 };
 typedef struct rt_wqueue_node rt_wqueue_node_t;
 
 
 /**
- * @addtogroup wqueue
+ * @addtogroup waitqueue
  */
 
 /**@{*/
@@ -68,33 +68,33 @@ void rt_wqueue_add(rt_wqueue_t *queue, struct rt_wqueue_node *node);
 void rt_wqueue_remove(struct rt_wqueue_node *node);
 
 /**
- * @brief åŠ å…¥ç­‰å¾…é˜Ÿåˆ—
+ * @brief ¼ÓÈëµÈ´ý¶ÓÁÐ
  * 
- * åœ¨æŒ‡å®šç­‰å¾…é˜Ÿåˆ—ä¸ŠæŒ‚èµ·ç­‰å¾…è¢«å”¤é†’æˆ–è¶…æ—¶è¿”å›žã€‚
+ * ÔÚÖ¸¶¨µÈ´ý¶ÓÁÐÉÏ¹ÒÆðµÈ´ý±»»½ÐÑ»ò³¬Ê±·µ»Ø¡£
  *
- * @param queue 	ç­‰å¾…é˜Ÿåˆ—æŽ§åˆ¶å—
- * @param condition ä¸ŽPOSIX æ ‡å‡†æŽ¥å£å…¼å®¹çš„å‚æ•°ï¼ˆç›®å‰æ²¡æœ‰æ„ä¹‰ï¼Œä¼ å…¥0å³å¯ï¼‰ã€‚
- * @param timeout	æŒ‡å®šçš„ç­‰å¾…æ—¶é—´ã€‚
+ * @param queue 	µÈ´ý¶ÓÁÐ¿ØÖÆ¿é
+ * @param condition ÓëPOSIX ±ê×¼½Ó¿Ú¼æÈÝµÄ²ÎÊý£¨Ä¿Ç°Ã»ÓÐÒâÒå£¬´«Èë0¼´¿É£©¡£
+ * @param timeout	Ö¸¶¨µÄµÈ´ýÊ±¼ä¡£
  *
- * @return 0 åŠ å…¥æˆåŠŸ
+ * @return 0 ¼ÓÈë³É¹¦
  */
 int  rt_wqueue_wait(rt_wqueue_t *queue, int condition, int timeout);
 
 /**
- * @brief å”¤é†’ç­‰å¾…é˜Ÿåˆ—
+ * @brief »½ÐÑµÈ´ý¶ÓÁÐ
  * 
- * å”¤é†’æŒ‡å®šç­‰å¾…é˜Ÿåˆ—ä¸Šç¬¦åˆæ¡ä»¶çš„è¢«æŒ‚èµ·çš„çº¿ç¨‹ã€‚
+ * »½ÐÑÖ¸¶¨µÈ´ý¶ÓÁÐÉÏ·ûºÏÌõ¼þµÄ±»¹ÒÆðµÄÏß³Ì¡£
  *
- * @param queue ç­‰å¾…é˜Ÿåˆ—æŽ§åˆ¶å—
- * @param key 	å”¤é†’æ¡ä»¶
+ * @param queue µÈ´ý¶ÓÁÐ¿ØÖÆ¿é
+ * @param key 	»½ÐÑÌõ¼þ
  */
 void rt_wqueue_wakeup(rt_wqueue_t *queue, void *key);
 
 /**
- * @brief å®šä¹‰ç­‰å¾…é˜Ÿåˆ—
+ * @brief ¶¨ÒåµÈ´ý¶ÓÁÐ
  * 
- * @param name:    	ç­‰å¾…é˜Ÿåˆ—æŽ§åˆ¶å—å®žä½“
- * @param function: ç­‰å¾…é˜Ÿåˆ—å”¤é†’æ¡ä»¶åˆ¤æ–­å‡½æ•°ï¼Œç”±å®¢æˆ·å®šä¹‰
+ * @param name:    	µÈ´ý¶ÓÁÐ¿ØÖÆ¿éÊµÌå
+ * @param function: µÈ´ý¶ÓÁÐ»½ÐÑÌõ¼þÅÐ¶Ïº¯Êý£¬ÓÉ¿Í»§¶¨Òå
  */
 #define DEFINE_WAIT_FUNC(name, function)                \
     struct rt_wqueue_node name = {                      \

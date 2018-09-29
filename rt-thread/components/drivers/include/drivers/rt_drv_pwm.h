@@ -49,6 +49,50 @@ struct rt_device_pwm
     const struct rt_pwm_ops *ops;
 };
 
+/**
+ * @addtogroup pwm
+ */
+
+/**@{*/
+
+/*
+ * @brief PWM设备注册
+ *
+ * 调用此函数可以解绑指定的管脚中断。
+ *
+ * @param pin 管脚编号
+ * @param name 设备名称
+ * @param ops PWM设备的私有操作集
+ * @param user_data PWM设备的私有数据
+ *
+ * @return 注册结果
+ */
 extern rt_err_t rt_device_pwm_register(struct rt_device_pwm *device, const char *name, const struct rt_pwm_ops *ops, const void *user_data);
+
+/**
+ * @brief 打开指定的PWM通道
+ *
+ * 调用此函数可以使能指定的PWM通道
+ *
+ * @param channel 指定的PWM通道
+ *
+ * @return -RT_EIO 未找到pwm设备，RT_OK 打开成功
+ */
+rt_err_t rt_pwm_enable(int channel);
+
+/**
+ * @brief 设置PWM参数
+ *
+ * 调用此函数可以使能指定的PWM通道
+ *
+ * @param channel 指定的PWM通道
+ * @param period 周期
+ * @param pulse 占空比
+ *
+ * @return -RT_EIO 未找到pwm设备，RT_OK 设置成功
+ */
+rt_err_t rt_pwm_set(int channel, rt_uint32_t period, rt_uint32_t pulse);
+
+/**@}*/
 
 #endif /* __DRV_PWM_H_INCLUDE__ */
