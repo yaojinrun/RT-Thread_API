@@ -1,0 +1,298 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-Thread RTOS: I2C</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-Thread RTOS
+   &#160;<span id="projectnumber">3.1.0</span>
+   </div>
+   <div id="projectbrief">An open source embedded real-time operating system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.10 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle">
+<div class="title">I2C<div class="ingroups"><a class="el" href="group___d_r_i_v_e_r.html">外设驱动框架API</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:ga00f0af93f0bec1cd6adeab5427f5aa61"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__i2c.html#ga00f0af93f0bec1cd6adeab5427f5aa61">rt_i2c_bus_device_register</a> (struct rt_i2c_bus_device *bus, const char *bus_name)</td></tr>
+<tr class="memdesc:ga00f0af93f0bec1cd6adeab5427f5aa61"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2C 总线注册  <a href="#ga00f0af93f0bec1cd6adeab5427f5aa61">更多...</a><br /></td></tr>
+<tr class="separator:ga00f0af93f0bec1cd6adeab5427f5aa61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga768ae96dd89801841ba33170a66d1d05"><td class="memItemLeft" align="right" valign="top">struct rt_i2c_bus_device *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__i2c.html#ga768ae96dd89801841ba33170a66d1d05">rt_i2c_bus_device_find</a> (const char *bus_name)</td></tr>
+<tr class="memdesc:ga768ae96dd89801841ba33170a66d1d05"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2C 总线设备查找  <a href="#ga768ae96dd89801841ba33170a66d1d05">更多...</a><br /></td></tr>
+<tr class="separator:ga768ae96dd89801841ba33170a66d1d05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2dd6e38f222d72a572dbf28afad65574"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___basic_def.html#ga8011d259fdfc54b8a9aa006b4d49ac14">rt_size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__i2c.html#ga2dd6e38f222d72a572dbf28afad65574">rt_i2c_transfer</a> (struct rt_i2c_bus_device *bus, struct rt_i2c_msg msgs[], <a class="el" href="group___basic_def.html#ga909edcac80e5e3f93f63fcebc95922c7">rt_uint32_t</a> num)</td></tr>
+<tr class="memdesc:ga2dd6e38f222d72a572dbf28afad65574"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2C 数据传输  <a href="#ga2dd6e38f222d72a572dbf28afad65574">更多...</a><br /></td></tr>
+<tr class="separator:ga2dd6e38f222d72a572dbf28afad65574"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1e13a746f33f3f3be2df065440a49d93"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___basic_def.html#ga8011d259fdfc54b8a9aa006b4d49ac14">rt_size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__i2c.html#ga1e13a746f33f3f3be2df065440a49d93">rt_i2c_master_send</a> (struct rt_i2c_bus_device *bus, <a class="el" href="group___basic_def.html#ga5acba55f46553417996ac70828b874da">rt_uint16_t</a> addr, <a class="el" href="group___basic_def.html#ga5acba55f46553417996ac70828b874da">rt_uint16_t</a> flags, const <a class="el" href="group___basic_def.html#ga585e2ad0fbab0f83817cb61373465df6">rt_uint8_t</a> *buf, <a class="el" href="group___basic_def.html#ga909edcac80e5e3f93f63fcebc95922c7">rt_uint32_t</a> count)</td></tr>
+<tr class="memdesc:ga1e13a746f33f3f3be2df065440a49d93"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2C 主机模式发送  <a href="#ga1e13a746f33f3f3be2df065440a49d93">更多...</a><br /></td></tr>
+<tr class="separator:ga1e13a746f33f3f3be2df065440a49d93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8b9bbfaacbadce6d1f2e4a34762f9a51"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___basic_def.html#ga8011d259fdfc54b8a9aa006b4d49ac14">rt_size_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__i2c.html#ga8b9bbfaacbadce6d1f2e4a34762f9a51">rt_i2c_master_recv</a> (struct rt_i2c_bus_device *bus, <a class="el" href="group___basic_def.html#ga5acba55f46553417996ac70828b874da">rt_uint16_t</a> addr, <a class="el" href="group___basic_def.html#ga5acba55f46553417996ac70828b874da">rt_uint16_t</a> flags, <a class="el" href="group___basic_def.html#ga585e2ad0fbab0f83817cb61373465df6">rt_uint8_t</a> *buf, <a class="el" href="group___basic_def.html#ga909edcac80e5e3f93f63fcebc95922c7">rt_uint32_t</a> count)</td></tr>
+<tr class="memdesc:ga8b9bbfaacbadce6d1f2e4a34762f9a51"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2C 主机模式接收  <a href="#ga8b9bbfaacbadce6d1f2e4a34762f9a51">更多...</a><br /></td></tr>
+<tr class="separator:ga8b9bbfaacbadce6d1f2e4a34762f9a51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<h2 class="groupheader">函数说明</h2>
+<a class="anchor" id="ga00f0af93f0bec1cd6adeab5427f5aa61"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a> rt_i2c_bus_device_register </td>
+          <td>(</td>
+          <td class="paramtype">struct rt_i2c_bus_device *&#160;</td>
+          <td class="paramname"><em>bus</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>bus_name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>I2C 总线注册 </p>
+<p>本函数用于向系统中注册I2C 总线。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bus</td><td>I2C 总线句柄 </td></tr>
+    <tr><td class="paramname">bus_name</td><td>I2C 总线名称，一般与硬件控制器名称一致，如：”i2c0”</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>RT_EOK 成功 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga768ae96dd89801841ba33170a66d1d05"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct rt_i2c_bus_device* rt_i2c_bus_device_find </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>bus_name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>I2C 总线设备查找 </p>
+<p>调用该函数可以用名称在系统中查找指定的总线设备。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bus_name</td><td>I2C 总线名称</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>I2C 设备总线存在则返回 I2C 设备句柄；未找到则返回 RT_NULL。 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga2dd6e38f222d72a572dbf28afad65574"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group___basic_def.html#ga8011d259fdfc54b8a9aa006b4d49ac14">rt_size_t</a> rt_i2c_transfer </td>
+          <td>(</td>
+          <td class="paramtype">struct rt_i2c_bus_device *&#160;</td>
+          <td class="paramname"><em>bus</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct rt_i2c_msg&#160;</td>
+          <td class="paramname"><em>msgs</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group___basic_def.html#ga909edcac80e5e3f93f63fcebc95922c7">rt_uint32_t</a>&#160;</td>
+          <td class="paramname"><em>num</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>I2C 数据传输 </p>
+<p>该函数传递的消息是链式结构，可以通过消息链，实现调用一次完成多次数据的收发，主机调用此函数可以完成读或者写从设备的操作。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bus</td><td>I2C 总线设备句柄 </td></tr>
+    <tr><td class="paramname">msgs[]</td><td>I2C 消息数组 </td></tr>
+    <tr><td class="paramname">num</td><td>I2C 消息数组的数量</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>传输成功则返回成功传输的消息数组的个数；失败则返回 RT_ERROR。 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga1e13a746f33f3f3be2df065440a49d93"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group___basic_def.html#ga8011d259fdfc54b8a9aa006b4d49ac14">rt_size_t</a> rt_i2c_master_send </td>
+          <td>(</td>
+          <td class="paramtype">struct rt_i2c_bus_device *&#160;</td>
+          <td class="paramname"><em>bus</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group___basic_def.html#ga5acba55f46553417996ac70828b874da">rt_uint16_t</a>&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group___basic_def.html#ga5acba55f46553417996ac70828b874da">rt_uint16_t</a>&#160;</td>
+          <td class="paramname"><em>flags</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="group___basic_def.html#ga585e2ad0fbab0f83817cb61373465df6">rt_uint8_t</a> *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group___basic_def.html#ga909edcac80e5e3f93f63fcebc95922c7">rt_uint32_t</a>&#160;</td>
+          <td class="paramname"><em>count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>I2C 主机模式发送 </p>
+<p>此函是对rt_i2c_transfer()的简单封装。主机调用此函数可以完成写从设备的操作。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bus</td><td>I2C 总线设备句柄 </td></tr>
+    <tr><td class="paramname">addr</td><td>从机地址，不包含读写位 </td></tr>
+    <tr><td class="paramname">flags</td><td>标志，读写标志默认为写。只支持 10 位地址选择 RT_I2C_ADDR_10BIT </td></tr>
+    <tr><td class="paramname">buf</td><td>指向发送数据的指针 </td></tr>
+    <tr><td class="paramname">count</td><td>发送数据字节数</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>传输成功则返回成功发送的数据字节数；失败则返回 RT_ERROR。 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga8b9bbfaacbadce6d1f2e4a34762f9a51"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group___basic_def.html#ga8011d259fdfc54b8a9aa006b4d49ac14">rt_size_t</a> rt_i2c_master_recv </td>
+          <td>(</td>
+          <td class="paramtype">struct rt_i2c_bus_device *&#160;</td>
+          <td class="paramname"><em>bus</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group___basic_def.html#ga5acba55f46553417996ac70828b874da">rt_uint16_t</a>&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group___basic_def.html#ga5acba55f46553417996ac70828b874da">rt_uint16_t</a>&#160;</td>
+          <td class="paramname"><em>flags</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group___basic_def.html#ga585e2ad0fbab0f83817cb61373465df6">rt_uint8_t</a> *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group___basic_def.html#ga909edcac80e5e3f93f63fcebc95922c7">rt_uint32_t</a>&#160;</td>
+          <td class="paramname"><em>count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>I2C 主机模式接收 </p>
+<p>此函数是对rt_i2c_transfer()的简单封装，主机调用此函数可以完成读从设备的操作。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bus</td><td>I2C 总线设备句柄 </td></tr>
+    <tr><td class="paramname">addr</td><td>从机地址，不包含读写位 </td></tr>
+    <tr><td class="paramname">flags</td><td>标志，读写标志默认为写。只支持 10 位地址选择 RT_I2C_ADDR_10BIT </td></tr>
+    <tr><td class="paramname">buf</td><td>接受数据指针 </td></tr>
+    <tr><td class="paramname">count</td><td>接收数据字节数</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>传输成功则返回成功接收的数据字节数。 </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2018年 十月 15日 星期一 21:35:58 , 为 RT-Thread RTOS使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>

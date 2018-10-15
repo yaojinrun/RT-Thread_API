@@ -682,9 +682,114 @@
         </topic>
       </topic>
     </topic>
+    <topic label="外设驱动框架API" href="group___d_r_i_v_e_r.html">
+      <topic label="环形缓冲区" href="group__ringbuffer.html">
+        <topic label="rt_ringbuffer_space_len" href="group__ringbuffer.html#ga26f1390977c49579f076812a2550f3ae"/>
+        <topic label="rt_ringbuffer_init" href="group__ringbuffer.html#gafca4decdbf6545339b4ef09cbf92a4f0"/>
+        <topic label="rt_ringbuffer_reset" href="group__ringbuffer.html#ga020a6971d8817dcd03fab52223801c26"/>
+        <topic label="rt_ringbuffer_put" href="group__ringbuffer.html#ga92d82130a7c0e3109d444e8c17589403"/>
+        <topic label="rt_ringbuffer_put_force" href="group__ringbuffer.html#gaaf03a32d7ada03f1390458466785f2f1"/>
+        <topic label="rt_ringbuffer_putchar" href="group__ringbuffer.html#ga917b73fd4e482671eba62a37b9f31f84"/>
+        <topic label="rt_ringbuffer_putchar_force" href="group__ringbuffer.html#ga71326c61e0d13d2d3b90c8da5fcdad0f"/>
+        <topic label="rt_ringbuffer_get" href="group__ringbuffer.html#ga0ea8b284a546b28dfcde98c07fa91fbd"/>
+        <topic label="rt_ringbuffer_getchar" href="group__ringbuffer.html#ga6d298a8e9cad49b06143d5c3d3ba6b4a"/>
+        <topic label="rt_ringbuffer_data_len" href="group__ringbuffer.html#ga3cc7d94dd3bf5fb1786ba25038eb70d6"/>
+        <topic label="rt_ringbuffer_create" href="group__ringbuffer.html#ga74e41baba6557f7a5ab1c2d1991cae29"/>
+        <topic label="rt_ringbuffer_destroy" href="group__ringbuffer.html#ga2397c80deb04ca0bed0f18b27cf5c2cb"/>
+        <topic label="rt_ringbuffer_get_size" href="group__ringbuffer.html#ga19c3fbdce083b76e5bb3dccca362b68f"/>
+      </topic>
+      <topic label="completion" href="group__completion.html">
+        <topic label="rt_completion_init" href="group__completion.html#ga1527dc7227b7da4415c4d618de21203a"/>
+        <topic label="rt_completion_wait" href="group__completion.html#gac3d4fab47c460684679388e9b82549c9"/>
+        <topic label="rt_completion_done" href="group__completion.html#gaef87b77329dbc70bfd8e2f0cc115b8c7"/>
+      </topic>
+      <topic label="管道" href="group__pipe.html">
+        <topic label="rt_pipe_open" href="group__pipe.html#ga3736cbd3b311405881532c2bf69dc3f9"/>
+        <topic label="rt_pipe_close" href="group__pipe.html#ga9f7037aaa57fcf9b2b13a75ce562e791"/>
+        <topic label="rt_pipe_read" href="group__pipe.html#gaff970951e7bc46aa5fd1d0e7f6c0b6f4"/>
+        <topic label="rt_pipe_write" href="group__pipe.html#ga45d5296cbf5a3135004d2c63b9c835ea"/>
+        <topic label="rt_pipe_create" href="group__pipe.html#gacfc55982858aad909f0caf1b79f20756"/>
+        <topic label="rt_pipe_delete" href="group__pipe.html#ga79f617d873cb0c5f7e1a9284545eb88c"/>
+      </topic>
+      <topic label="数据队列" href="group__dataqueue.html">
+        <topic label="rt_data_queue_init" href="group__dataqueue.html#ga3bd9e191f1378bc23599e2249bd5944c"/>
+        <topic label="rt_data_queue_push" href="group__dataqueue.html#ga985fea2e16f95ecd0699850f4686dd4f"/>
+        <topic label="rt_data_queue_pop" href="group__dataqueue.html#gad3a4cb91b2a0668c9566386b8abb645f"/>
+        <topic label="rt_data_queue_peak" href="group__dataqueue.html#ga967287df8a2530abdb8ff97190a2c3a1"/>
+        <topic label="rt_data_queue_reset" href="group__dataqueue.html#ga86700d03f8c9d9ff24ee1b4821376cef"/>
+      </topic>
+      <topic label="工作队列" href="group__workqueue.html">
+        <topic label="rt_workqueue_create" href="group__workqueue.html#ga8fc3d93130967613f0443602ab9b78ae"/>
+        <topic label="rt_workqueue_destroy" href="group__workqueue.html#ga7fd843557a598e9370b02b523af8845d"/>
+        <topic label="rt_workqueue_dowork" href="group__workqueue.html#ga0373b52a4f2919a8e4089e1e00a366fe"/>
+        <topic label="rt_workqueue_cancel_work" href="group__workqueue.html#ga21243fc68244bb238eae0eab1a7d119c"/>
+        <topic label="rt_workqueue_cancel_work_sync" href="group__workqueue.html#ga75aac825ab88ba72f946869ad2f955f0"/>
+        <topic label="rt_work_init" href="group__workqueue.html#ga5e0b6e6a6294d870522785a38db7c15e"/>
+      </topic>
+      <topic label="等待队列" href="group__waitqueue.html">
+        <topic label="DEFINE_WAIT_FUNC" href="group__waitqueue.html#gab830a2e2f406034357c282cb2c406c9e"/>
+        <topic label="rt_wqueue_wait" href="group__waitqueue.html#gaef95df00f81f672689a207458b1a8e8c"/>
+        <topic label="rt_wqueue_wakeup" href="group__waitqueue.html#ga5ec9b86db5f60d18a4d272db0fa17856"/>
+      </topic>
+      <topic label="管脚" href="group__pin.html">
+        <topic label="rt_pin_mode" href="group__pin.html#gad42f2dcd4e82150760f9374a99816a24"/>
+        <topic label="rt_pin_write" href="group__pin.html#gae4eff8afb5909e1fae3685bc2d0a0c96"/>
+        <topic label="rt_pin_read" href="group__pin.html#ga7eaab904b26cda77337034ff7d42ad4b"/>
+        <topic label="rt_pin_attach_irq" href="group__pin.html#ga33e2d70aba620257d025e1a68bced238"/>
+        <topic label="rt_pin_detach_irq" href="group__pin.html#ga90384a32554b615d2a10ba6c66ff0a48"/>
+        <topic label="rt_pin_irq_enable" href="group__pin.html#gaed329b40d6f3159aa3b353281107c109"/>
+      </topic>
+      <topic label="I2C" href="group__i2c.html">
+        <topic label="rt_i2c_bus_device_register" href="group__i2c.html#ga00f0af93f0bec1cd6adeab5427f5aa61"/>
+        <topic label="rt_i2c_bus_device_find" href="group__i2c.html#ga768ae96dd89801841ba33170a66d1d05"/>
+        <topic label="rt_i2c_transfer" href="group__i2c.html#ga2dd6e38f222d72a572dbf28afad65574"/>
+        <topic label="rt_i2c_master_send" href="group__i2c.html#ga1e13a746f33f3f3be2df065440a49d93"/>
+        <topic label="rt_i2c_master_recv" href="group__i2c.html#ga8b9bbfaacbadce6d1f2e4a34762f9a51"/>
+      </topic>
+      <topic label="SPI" href="group__spi.html">
+        <topic label="rt_spi_bus_register" href="group__spi.html#ga819ded0df4aefcabf5d7b2a254ce415e"/>
+        <topic label="rt_spi_bus_attach_device" href="group__spi.html#ga1ab153eb02cfb523b4fdc4d40e79c96c"/>
+        <topic label="rt_spi_take_bus" href="group__spi.html#ga19faa07950f052fcd3fb2a0af26a2db0"/>
+        <topic label="rt_spi_release_bus" href="group__spi.html#gaa7025986fe1543c10f23c776687dcf56"/>
+        <topic label="rt_spi_take" href="group__spi.html#gaee394d6fc071e0060608004feafd1bee"/>
+        <topic label="rt_spi_release" href="group__spi.html#gac86c852bfaef894264800afd569ac66d"/>
+        <topic label="rt_spi_configure" href="group__spi.html#ga454653047b1964d01154a7657b675c2b"/>
+        <topic label="rt_spi_send_then_recv" href="group__spi.html#gae02064c17425153edcf867cf7710af10"/>
+        <topic label="rt_spi_send_then_send" href="group__spi.html#ga5f6e4ea6c445fdca36f299dae7bd69ae"/>
+        <topic label="rt_spi_transfer" href="group__spi.html#ga915185f522e978bcdcb76d113462cb0b"/>
+        <topic label="rt_spi_transfer_message" href="group__spi.html#ga21dae313bb9a0faf840ad1b42ccff62b"/>
+        <topic label="rt_spi_recv" href="group__spi.html#gaf73c4e6ac2190b3360045945fe898271"/>
+        <topic label="rt_spi_send" href="group__spi.html#ga8d272f7d685a4dc19b2bca56c192d817"/>
+        <topic label="rt_spi_message_append" href="group__spi.html#ga33ed1148c095fdc28bec6f57c40c0245"/>
+      </topic>
+      <topic label="实时时钟" href="group__rtc.html">
+        <topic label="set_date" href="group__rtc.html#ga1b67ee6a4ee7baed3169dd93ce2f76d3"/>
+        <topic label="set_time" href="group__rtc.html#gab0e3ba48a24fe7d3b369a0489655d0f2"/>
+      </topic>
+      <topic label="闹钟" href="group__alarm.html">
+        <topic label="rt_alarm_create" href="group__alarm.html#ga3d0961b6bdaeeb6cc6498918f796dbbb"/>
+        <topic label="rt_alarm_control" href="group__alarm.html#ga5cc997bc4e999f484e695362434fab36"/>
+        <topic label="rt_alarm_update" href="group__alarm.html#ga55290b66b63247dc6fe3953d8fa4e156"/>
+        <topic label="rt_alarm_delete" href="group__alarm.html#ga9d6a5f616e4b7e10396826cb8da5b011"/>
+        <topic label="rt_alarm_start" href="group__alarm.html#ga11e202760b412c9c49fb052ca671d5e0"/>
+        <topic label="rt_alarm_stop" href="group__alarm.html#ga56a33a079371429a00b1d103a5d49f62"/>
+        <topic label="rt_alarm_system_init" href="group__alarm.html#gadbbaa64d7a066b40e34a8f9dc1bc8c5a"/>
+      </topic>
+      <topic label="PWM" href="group__pwm.html">
+        <topic label="rt_pwm_enable" href="group__pwm.html#gac25226598181394640b33cee3bded047"/>
+        <topic label="rt_pwm_set" href="group__pwm.html#ga55d1432d81d6df352a7b40aca5fb9bc4"/>
+      </topic>
+    </topic>
   </topic>
   <topic label="结构体" href="annotated.html">
     <topic label="结构体" href="annotated.html">
+      <topic label="rt_completion" href="structrt__completion.html">
+        <topic label="flag" href="structrt__completion.html#a3f21bdcdc9e56b8ada96a489a1621754"/>
+        <topic label="suspended_list" href="structrt__completion.html#adde0d5d728cec551e341eb0497e8d271"/>
+      </topic>
+      <topic label="rt_data_queue" href="structrt__data__queue.html">
+        <topic label="evt_notify" href="structrt__data__queue.html#a4199aadecbc14b8d85166a776399939e"/>
+      </topic>
       <topic label="rt_device" href="structrt__device.html">
         <topic label="parent" href="structrt__device.html#a52df486399b65f49455698b55b656d8d"/>
         <topic label="type" href="structrt__device.html#a0b8dba8f32d49291b85e54d13520b871"/>
@@ -806,12 +911,26 @@
         <topic label="object_list" href="structrt__object__information.html#ad201bcecb2a95d3516b06e020ec24e73"/>
         <topic label="object_size" href="structrt__object__information.html#ada7e29b16c914f1692557fdc98f471fc"/>
       </topic>
+      <topic label="rt_pipe_device" href="structrt__pipe__device.html">
+      </topic>
+      <topic label="rt_ringbuffer" href="structrt__ringbuffer.html">
+        <topic label="buffer_ptr" href="structrt__ringbuffer.html#a4be1a982f192f39f5ea593263b6ac7db"/>
+        <topic label="buffer_size" href="structrt__ringbuffer.html#a660dd9abbcde1034c7e2988b38ac5dee"/>
+      </topic>
       <topic label="rt_semaphore" href="structrt__semaphore.html">
         <topic label="parent" href="structrt__semaphore.html#ae30f5ce3f4e89636b0f5b19755f39df7"/>
         <topic label="value" href="structrt__semaphore.html#a320fc41815308456699a4d3efee49418"/>
       </topic>
       <topic label="rt_slist_node" href="structrt__slist__node.html">
         <topic label="next" href="structrt__slist__node.html#a6184e2a9a7d6294118ad8ca8b7cc3954"/>
+      </topic>
+      <topic label="rt_spi_configuration" href="structrt__spi__configuration.html">
+      </topic>
+      <topic label="rt_spi_device" href="structrt__spi__device.html">
+      </topic>
+      <topic label="rt_spi_message" href="structrt__spi__message.html">
+      </topic>
+      <topic label="rt_spi_ops" href="structrt__spi__ops.html">
       </topic>
       <topic label="rt_thread" href="structrt__thread.html">
         <topic label="name" href="structrt__thread.html#a89b5c7fb22abb868056586e365b3fbd3"/>
@@ -846,9 +965,25 @@
         <topic label="init_tick" href="structrt__timer.html#af958eb6ee48462b264972242f9b6d9c3"/>
         <topic label="timeout_tick" href="structrt__timer.html#afc375a971b021a1c75a6fba94742b136"/>
       </topic>
+      <topic label="rt_uart_ops" href="structrt__uart__ops.html">
+      </topic>
+      <topic label="rt_work" href="structrt__work.html">
+      </topic>
+      <topic label="rt_workqueue" href="structrt__workqueue.html">
+        <topic label="work_list" href="structrt__workqueue.html#ac3ef4d49ffaa9459f43537c380ee19f3"/>
+        <topic label="work_current" href="structrt__workqueue.html#a6df1aa5b35733f395021da51b74e61a7"/>
+        <topic label="sem" href="structrt__workqueue.html#a0ec431edb5547bfd116b3b61017bb403"/>
+        <topic label="work_thread" href="structrt__workqueue.html#ac4790f3354b207a5ccfcad01168374c1"/>
+      </topic>
       <topic label="rt_wqueue" href="structrt__wqueue.html">
         <topic label="flag" href="structrt__wqueue.html#a1c815cdd4cadfd3a5d47c2913b36e08b"/>
         <topic label="waiting_list" href="structrt__wqueue.html#a46bfc2350c808eb724dff8dd83d2f24b"/>
+      </topic>
+      <topic label="rt_wqueue_node" href="structrt__wqueue__node.html">
+        <topic label="polling_thread" href="structrt__wqueue__node.html#a5886a0d31ca55070eb0bdb49043bd5e4"/>
+        <topic label="list" href="structrt__wqueue__node.html#ae7dc71d6b013a5ed864bdf64b82051fd"/>
+        <topic label="wakeup" href="structrt__wqueue__node.html#abd7ae3a47fd6a57ccb27f66b88b4c478"/>
+        <topic label="key" href="structrt__wqueue__node.html#a91dd8195e53b7db7b3210815f930260a"/>
       </topic>
       <topic label="siginfo_node" href="structsiginfo__node.html">
         <topic label="si" href="structsiginfo__node.html#a33d81b6fff0af6f6d200983de2dfc9fc"/>

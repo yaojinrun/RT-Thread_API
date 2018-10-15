@@ -33,25 +33,25 @@
 /**@{*/
 
 /**
- * @brief ç®¡è®¾ç½®ç³»ç»Ÿæ—¥æœŸä½†ä¸ä¿®æ”¹æ—¶é—´
+ * @brief ¹ÜÉèÖÃÏµÍ³ÈÕÆÚµ«²»ĞŞ¸ÄÊ±¼ä
  *
- * @param year å¹´
- * @param month æœˆ(1~12).
- * @param day æ—¥
+ * @param year Äê
+ * @param month ÔÂ(1~12).
+ * @param day ÈÕ
  *
- * @return RT_EOK æˆåŠŸï¼ŒRT_ERROR å¤±è´¥ã€‚
+ * @return RT_EOK ³É¹¦£¬RT_ERROR Ê§°Ü¡£
  *
  */
 rt_err_t set_date(rt_uint32_t year, rt_uint32_t month, rt_uint32_t day);
 
 /**
- * @brief ç®¡è®¾ç½®ç³»ç»Ÿæ—¶é—´ä½†ä¸ä¿®æ”¹æ—¥æœŸ
+ * @brief ¹ÜÉèÖÃÏµÍ³Ê±¼äµ«²»ĞŞ¸ÄÈÕÆÚ
  *
- * @param hour  å°æ—¶ï¼ˆ0~23ï¼‰
- * @param minute åˆ†é’Ÿï¼ˆ0~59ï¼‰
- * @param second ç§’ï¼ˆ0~59ï¼‰
+ * @param hour  Ğ¡Ê±£¨0~23£©
+ * @param minute ·ÖÖÓ£¨0~59£©
+ * @param second Ãë£¨0~59£©
  *
- * @return RT_EOK æˆåŠŸï¼ŒRT_ERROR å¤±è´¥ã€‚
+ * @return RT_EOK ³É¹¦£¬RT_ERROR Ê§°Ü¡£
  *
  */
 rt_err_t set_time(rt_uint32_t hour, rt_uint32_t minute, rt_uint32_t second);

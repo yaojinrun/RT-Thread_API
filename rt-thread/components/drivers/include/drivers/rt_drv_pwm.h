@@ -56,40 +56,40 @@ struct rt_device_pwm
 /**@{*/
 
 /*
- * @brief PWMè®¾å¤‡æ³¨å†Œ
+ * @brief PWMÉè±¸×¢²á
  *
- * è°ƒç”¨æ­¤å‡½æ•°å¯ä»¥è§£ç»‘æŒ‡å®šçš„ç®¡è„šä¸­æ–­ã€‚
+ * µ÷ÓÃ´Ëº¯Êı¿ÉÒÔ½â°óÖ¸¶¨µÄ¹Ü½ÅÖĞ¶Ï¡£
  *
- * @param pin ç®¡è„šç¼–å·
- * @param name è®¾å¤‡åç§°
- * @param ops PWMè®¾å¤‡çš„ç§æœ‰æ“ä½œé›†
- * @param user_data PWMè®¾å¤‡çš„ç§æœ‰æ•°æ®
+ * @param pin ¹Ü½Å±àºÅ
+ * @param name Éè±¸Ãû³Æ
+ * @param ops PWMÉè±¸µÄË½ÓĞ²Ù×÷¼¯
+ * @param user_data PWMÉè±¸µÄË½ÓĞÊı¾İ
  *
- * @return æ³¨å†Œç»“æœ
+ * @return ×¢²á½á¹û
  */
 extern rt_err_t rt_device_pwm_register(struct rt_device_pwm *device, const char *name, const struct rt_pwm_ops *ops, const void *user_data);
 
 /**
- * @brief æ‰“å¼€æŒ‡å®šçš„PWMé€šé“
+ * @brief ´ò¿ªÖ¸¶¨µÄPWMÍ¨µÀ
  *
- * è°ƒç”¨æ­¤å‡½æ•°å¯ä»¥ä½¿èƒ½æŒ‡å®šçš„PWMé€šé“
+ * µ÷ÓÃ´Ëº¯Êı¿ÉÒÔÊ¹ÄÜÖ¸¶¨µÄPWMÍ¨µÀ
  *
- * @param channel æŒ‡å®šçš„PWMé€šé“
+ * @param channel Ö¸¶¨µÄPWMÍ¨µÀ
  *
- * @return -RT_EIO æœªæ‰¾åˆ°pwmè®¾å¤‡ï¼ŒRT_OK æ‰“å¼€æˆåŠŸ
+ * @return -RT_EIO Î´ÕÒµ½pwmÉè±¸£¬RT_OK ´ò¿ª³É¹¦
  */
 rt_err_t rt_pwm_enable(int channel);
 
 /**
- * @brief è®¾ç½®PWMå‚æ•°
+ * @brief ÉèÖÃPWM²ÎÊı
  *
- * è°ƒç”¨æ­¤å‡½æ•°å¯ä»¥ä½¿èƒ½æŒ‡å®šçš„PWMé€šé“
+ * µ÷ÓÃ´Ëº¯Êı¿ÉÒÔÊ¹ÄÜÖ¸¶¨µÄPWMÍ¨µÀ
  *
- * @param channel æŒ‡å®šçš„PWMé€šé“
- * @param period å‘¨æœŸ
- * @param pulse å ç©ºæ¯”
+ * @param channel Ö¸¶¨µÄPWMÍ¨µÀ
+ * @param period ÖÜÆÚ
+ * @param pulse Õ¼¿Õ±È
  *
- * @return -RT_EIO æœªæ‰¾åˆ°pwmè®¾å¤‡ï¼ŒRT_OK è®¾ç½®æˆåŠŸ
+ * @return -RT_EIO Î´ÕÒµ½pwmÉè±¸£¬RT_OK ÉèÖÃ³É¹¦
  */
 rt_err_t rt_pwm_set(int channel, rt_uint32_t period, rt_uint32_t pulse);
 

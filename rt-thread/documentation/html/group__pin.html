@@ -1,0 +1,318 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-Thread RTOS: 管脚</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-Thread RTOS
+   &#160;<span id="projectnumber">3.1.0</span>
+   </div>
+   <div id="projectbrief">An open source embedded real-time operating system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.10 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle">
+<div class="title">管脚<div class="ingroups"><a class="el" href="group___d_r_i_v_e_r.html">外设驱动框架API</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:gad42f2dcd4e82150760f9374a99816a24"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__pin.html#gad42f2dcd4e82150760f9374a99816a24">rt_pin_mode</a> (<a class="el" href="group___basic_def.html#gab7ede51a23ea8b78381b5a59506edd7d">rt_base_t</a> pin, <a class="el" href="group___basic_def.html#gab7ede51a23ea8b78381b5a59506edd7d">rt_base_t</a> mode)</td></tr>
+<tr class="memdesc:gad42f2dcd4e82150760f9374a99816a24"><td class="mdescLeft">&#160;</td><td class="mdescRight">管脚工作模式设置  <a href="#gad42f2dcd4e82150760f9374a99816a24">更多...</a><br /></td></tr>
+<tr class="separator:gad42f2dcd4e82150760f9374a99816a24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae4eff8afb5909e1fae3685bc2d0a0c96"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__pin.html#gae4eff8afb5909e1fae3685bc2d0a0c96">rt_pin_write</a> (<a class="el" href="group___basic_def.html#gab7ede51a23ea8b78381b5a59506edd7d">rt_base_t</a> pin, <a class="el" href="group___basic_def.html#gab7ede51a23ea8b78381b5a59506edd7d">rt_base_t</a> value)</td></tr>
+<tr class="memdesc:gae4eff8afb5909e1fae3685bc2d0a0c96"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置管脚电平  <a href="#gae4eff8afb5909e1fae3685bc2d0a0c96">更多...</a><br /></td></tr>
+<tr class="separator:gae4eff8afb5909e1fae3685bc2d0a0c96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7eaab904b26cda77337034ff7d42ad4b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__pin.html#ga7eaab904b26cda77337034ff7d42ad4b">rt_pin_read</a> (<a class="el" href="group___basic_def.html#gab7ede51a23ea8b78381b5a59506edd7d">rt_base_t</a> pin)</td></tr>
+<tr class="memdesc:ga7eaab904b26cda77337034ff7d42ad4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">读管脚电平  <a href="#ga7eaab904b26cda77337034ff7d42ad4b">更多...</a><br /></td></tr>
+<tr class="separator:ga7eaab904b26cda77337034ff7d42ad4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga33e2d70aba620257d025e1a68bced238"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__pin.html#ga33e2d70aba620257d025e1a68bced238">rt_pin_attach_irq</a> (<a class="el" href="group___basic_def.html#gae5c6ccee15f067714ca9c44e509c4047">rt_int32_t</a> pin, <a class="el" href="group___basic_def.html#ga909edcac80e5e3f93f63fcebc95922c7">rt_uint32_t</a> mode, void(*hdr)(void *args), void *args)</td></tr>
+<tr class="memdesc:ga33e2d70aba620257d025e1a68bced238"><td class="mdescLeft">&#160;</td><td class="mdescRight">绑定管脚中断  <a href="#ga33e2d70aba620257d025e1a68bced238">更多...</a><br /></td></tr>
+<tr class="separator:ga33e2d70aba620257d025e1a68bced238"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga90384a32554b615d2a10ba6c66ff0a48"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__pin.html#ga90384a32554b615d2a10ba6c66ff0a48">rt_pin_detach_irq</a> (<a class="el" href="group___basic_def.html#gae5c6ccee15f067714ca9c44e509c4047">rt_int32_t</a> pin)</td></tr>
+<tr class="memdesc:ga90384a32554b615d2a10ba6c66ff0a48"><td class="mdescLeft">&#160;</td><td class="mdescRight">解绑管脚中断  <a href="#ga90384a32554b615d2a10ba6c66ff0a48">更多...</a><br /></td></tr>
+<tr class="separator:ga90384a32554b615d2a10ba6c66ff0a48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaed329b40d6f3159aa3b353281107c109"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__pin.html#gaed329b40d6f3159aa3b353281107c109">rt_pin_irq_enable</a> (<a class="el" href="group___basic_def.html#gab7ede51a23ea8b78381b5a59506edd7d">rt_base_t</a> pin, <a class="el" href="group___basic_def.html#ga909edcac80e5e3f93f63fcebc95922c7">rt_uint32_t</a> enabled)</td></tr>
+<tr class="memdesc:gaed329b40d6f3159aa3b353281107c109"><td class="mdescLeft">&#160;</td><td class="mdescRight">失能 / 屏蔽管脚中断  <a href="#gaed329b40d6f3159aa3b353281107c109">更多...</a><br /></td></tr>
+<tr class="separator:gaed329b40d6f3159aa3b353281107c109"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<h2 class="groupheader">函数说明</h2>
+<a class="anchor" id="gad42f2dcd4e82150760f9374a99816a24"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rt_pin_mode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group___basic_def.html#gab7ede51a23ea8b78381b5a59506edd7d">rt_base_t</a>&#160;</td>
+          <td class="paramname"><em>pin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group___basic_def.html#gab7ede51a23ea8b78381b5a59506edd7d">rt_base_t</a>&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>管脚工作模式设置 </p>
+<p>此函数可以设定指定管脚的工作模式。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pin</td><td>管脚编号 </td></tr>
+    <tr><td class="paramname">mode</td><td>管脚工作模式，可以去以下 5 种模式之一 <table class="doxtable">
+<tr>
+<th>参数 </th><th>说明  </th></tr>
+<tr>
+<td>PIN_MODE_OUTPUT </td><td>输出，具体模式看 drv_gpio.c 源码实现 </td></tr>
+<tr>
+<td>PIN_MODE_INPUT </td><td>输入 </td></tr>
+<tr>
+<td>PIN_MODE_INPUT_PULLUP </td><td>上拉输入 </td></tr>
+<tr>
+<td>PIN_MODE_INPUT_PULLDOWN </td><td>下拉输入 </td></tr>
+<tr>
+<td>PIN_MODE_OUTPUT_OD </td><td>开漏输出 </td></tr>
+</table>
+</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gae4eff8afb5909e1fae3685bc2d0a0c96"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rt_pin_write </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group___basic_def.html#gab7ede51a23ea8b78381b5a59506edd7d">rt_base_t</a>&#160;</td>
+          <td class="paramname"><em>pin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group___basic_def.html#gab7ede51a23ea8b78381b5a59506edd7d">rt_base_t</a>&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置管脚电平 </p>
+<p>此函数可以设定指定管脚的输出电平。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pin</td><td>管脚编号 </td></tr>
+    <tr><td class="paramname">value</td><td>电平逻辑值，可取 2 种值之一，PIN_LOW 低电平，PIN_HIGH 高电平 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga7eaab904b26cda77337034ff7d42ad4b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rt_pin_read </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group___basic_def.html#gab7ede51a23ea8b78381b5a59506edd7d">rt_base_t</a>&#160;</td>
+          <td class="paramname"><em>pin</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>读管脚电平 </p>
+<p>该函数可以读取指定管脚的当前电平。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pin</td><td>管脚编号</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>PIN_LOW 低电平；PIN_HIGH 高电平 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga33e2d70aba620257d025e1a68bced238"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a> rt_pin_attach_irq </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group___basic_def.html#gae5c6ccee15f067714ca9c44e509c4047">rt_int32_t</a>&#160;</td>
+          <td class="paramname"><em>pin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group___basic_def.html#ga909edcac80e5e3f93f63fcebc95922c7">rt_uint32_t</a>&#160;</td>
+          <td class="paramname"><em>mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void(*)(void *args)&#160;</td>
+          <td class="paramname"><em>hdr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>args</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>绑定管脚中断 </p>
+<p>此函数可以设定指定管脚的中断出发模式，并可指定中断回调函数。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pin</td><td>管脚编号 </td></tr>
+    <tr><td class="paramname">mode</td><td>中断触发模式，可取以下 5 种值之一 <table class="doxtable">
+<tr>
+<th>参数 </th><th>描述  </th></tr>
+<tr>
+<td>PIN_IRQ_MODE_RISING </td><td>上升沿触发 </td></tr>
+<tr>
+<td>PIN_IRQ_MODE_FALLING </td><td>下降沿触发 </td></tr>
+<tr>
+<td>PIN_IRQ_MODE_RISING_FALLING </td><td>边沿触发（上升沿和下降沿都触发） </td></tr>
+<tr>
+<td>PIN_IRQ_MODE_HIGH_LEVEL </td><td>高电平触发 </td></tr>
+<tr>
+<td>PIN_IRQ_MODE_LOW_LEVEL </td><td>低电平触发 </td></tr>
+</table>
+</td></tr>
+    <tr><td class="paramname">hdr</td><td>中断回调函数，用户需要自行定义这个函数，其返回值为 void </td></tr>
+    <tr><td class="paramname">args</td><td>中断回调函数的参数，不需要时设置为 RT_NULL</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>RT_EOK 成功；RT_ENOSYS 无系统；RT_EBUSY 忙 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga90384a32554b615d2a10ba6c66ff0a48"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a> rt_pin_detach_irq </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group___basic_def.html#gae5c6ccee15f067714ca9c44e509c4047">rt_int32_t</a>&#160;</td>
+          <td class="paramname"><em>pin</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>解绑管脚中断 </p>
+<p>调用此函数可以解绑指定的管脚中断。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pin</td><td>管脚编号</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>RT_EOK 成功；RT_ENOSYS 出错 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gaed329b40d6f3159aa3b353281107c109"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a> rt_pin_irq_enable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group___basic_def.html#gab7ede51a23ea8b78381b5a59506edd7d">rt_base_t</a>&#160;</td>
+          <td class="paramname"><em>pin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group___basic_def.html#ga909edcac80e5e3f93f63fcebc95922c7">rt_uint32_t</a>&#160;</td>
+          <td class="paramname"><em>enabled</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>失能 / 屏蔽管脚中断 </p>
+<p>此函数可以使能/屏蔽指定管脚的中断。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pin</td><td>管脚编号 </td></tr>
+    <tr><td class="paramname">enabled</td><td>状态，可取 2 种值之一：PIN_IRQ_ENABLE 开启，PIN_IRQ_DISABLE 关闭</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>RT_EOK 成功；RT_ENOSYS 出错 </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2018年 十月 15日 星期一 21:35:58 , 为 RT-Thread RTOS使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>

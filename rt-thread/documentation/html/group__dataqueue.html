@@ -1,0 +1,298 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-Thread RTOS: 数据队列</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-Thread RTOS
+   &#160;<span id="projectnumber">3.1.0</span>
+   </div>
+   <div id="projectbrief">An open source embedded real-time operating system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.10 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle">
+<div class="title">数据队列<div class="ingroups"><a class="el" href="group___d_r_i_v_e_r.html">外设驱动框架API</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:ga3bd9e191f1378bc23599e2249bd5944c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__dataqueue.html#ga3bd9e191f1378bc23599e2249bd5944c">rt_data_queue_init</a> (struct <a class="el" href="structrt__data__queue.html">rt_data_queue</a> *queue, <a class="el" href="group___basic_def.html#ga5acba55f46553417996ac70828b874da">rt_uint16_t</a> size, <a class="el" href="group___basic_def.html#ga5acba55f46553417996ac70828b874da">rt_uint16_t</a> lwm, void(*evt_notify)(struct <a class="el" href="structrt__data__queue.html">rt_data_queue</a> *queue, <a class="el" href="group___basic_def.html#ga909edcac80e5e3f93f63fcebc95922c7">rt_uint32_t</a> event))</td></tr>
+<tr class="memdesc:ga3bd9e191f1378bc23599e2249bd5944c"><td class="mdescLeft">&#160;</td><td class="mdescRight">数据队列初始化  <a href="#ga3bd9e191f1378bc23599e2249bd5944c">更多...</a><br /></td></tr>
+<tr class="separator:ga3bd9e191f1378bc23599e2249bd5944c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga985fea2e16f95ecd0699850f4686dd4f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__dataqueue.html#ga985fea2e16f95ecd0699850f4686dd4f">rt_data_queue_push</a> (struct <a class="el" href="structrt__data__queue.html">rt_data_queue</a> *queue, const void *data_ptr, <a class="el" href="group___basic_def.html#ga8011d259fdfc54b8a9aa006b4d49ac14">rt_size_t</a> data_size, <a class="el" href="group___basic_def.html#gae5c6ccee15f067714ca9c44e509c4047">rt_int32_t</a> timeout)</td></tr>
+<tr class="memdesc:ga985fea2e16f95ecd0699850f4686dd4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">向数据队列中压入数据  <a href="#ga985fea2e16f95ecd0699850f4686dd4f">更多...</a><br /></td></tr>
+<tr class="separator:ga985fea2e16f95ecd0699850f4686dd4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad3a4cb91b2a0668c9566386b8abb645f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__dataqueue.html#gad3a4cb91b2a0668c9566386b8abb645f">rt_data_queue_pop</a> (struct <a class="el" href="structrt__data__queue.html">rt_data_queue</a> *queue, const void **data_ptr, <a class="el" href="group___basic_def.html#ga8011d259fdfc54b8a9aa006b4d49ac14">rt_size_t</a> *size, <a class="el" href="group___basic_def.html#gae5c6ccee15f067714ca9c44e509c4047">rt_int32_t</a> timeout)</td></tr>
+<tr class="memdesc:gad3a4cb91b2a0668c9566386b8abb645f"><td class="mdescLeft">&#160;</td><td class="mdescRight">取出数据队列中的数据  <a href="#gad3a4cb91b2a0668c9566386b8abb645f">更多...</a><br /></td></tr>
+<tr class="separator:gad3a4cb91b2a0668c9566386b8abb645f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga967287df8a2530abdb8ff97190a2c3a1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__dataqueue.html#ga967287df8a2530abdb8ff97190a2c3a1">rt_data_queue_peak</a> (struct <a class="el" href="structrt__data__queue.html">rt_data_queue</a> *queue, const void **data_ptr, <a class="el" href="group___basic_def.html#ga8011d259fdfc54b8a9aa006b4d49ac14">rt_size_t</a> *size)</td></tr>
+<tr class="memdesc:ga967287df8a2530abdb8ff97190a2c3a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">取出但保留数据队列中的数据  <a href="#ga967287df8a2530abdb8ff97190a2c3a1">更多...</a><br /></td></tr>
+<tr class="separator:ga967287df8a2530abdb8ff97190a2c3a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga86700d03f8c9d9ff24ee1b4821376cef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__dataqueue.html#ga86700d03f8c9d9ff24ee1b4821376cef">rt_data_queue_reset</a> (struct <a class="el" href="structrt__data__queue.html">rt_data_queue</a> *queue)</td></tr>
+<tr class="memdesc:ga86700d03f8c9d9ff24ee1b4821376cef"><td class="mdescLeft">&#160;</td><td class="mdescRight">重置数据队列  <a href="#ga86700d03f8c9d9ff24ee1b4821376cef">更多...</a><br /></td></tr>
+<tr class="separator:ga86700d03f8c9d9ff24ee1b4821376cef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<h2 class="groupheader">函数说明</h2>
+<a class="anchor" id="ga3bd9e191f1378bc23599e2249bd5944c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a> rt_data_queue_init </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structrt__data__queue.html">rt_data_queue</a> *&#160;</td>
+          <td class="paramname"><em>queue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group___basic_def.html#ga5acba55f46553417996ac70828b874da">rt_uint16_t</a>&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group___basic_def.html#ga5acba55f46553417996ac70828b874da">rt_uint16_t</a>&#160;</td>
+          <td class="paramname"><em>lwm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void(*)(struct <a class="el" href="structrt__data__queue.html">rt_data_queue</a> *queue, <a class="el" href="group___basic_def.html#ga909edcac80e5e3f93f63fcebc95922c7">rt_uint32_t</a> event)&#160;</td>
+          <td class="paramname"><em>evt_notify</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>数据队列初始化 </p>
+<p>调用该函数将初始化数据队列控制块，并设定通知回调函数。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">queue</td><td>数据队列控制块 </td></tr>
+    <tr><td class="paramname">size</td><td>数据队列块大小 </td></tr>
+    <tr><td class="paramname">lwm</td><td>阈值设定 </td></tr>
+    <tr><td class="paramname">evt_notify</td><td>通知事件回调函数</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>-RT_ENOMEM 内存不足申请失败, RT_EOK 初始化成功 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga985fea2e16f95ecd0699850f4686dd4f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a> rt_data_queue_push </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structrt__data__queue.html">rt_data_queue</a> *&#160;</td>
+          <td class="paramname"><em>queue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>data_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group___basic_def.html#ga8011d259fdfc54b8a9aa006b4d49ac14">rt_size_t</a>&#160;</td>
+          <td class="paramname"><em>data_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group___basic_def.html#gae5c6ccee15f067714ca9c44e509c4047">rt_int32_t</a>&#160;</td>
+          <td class="paramname"><em>timeout</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>向数据队列中压入数据 </p>
+<p>调用该函数可以向指定的数据队列中压入数据，当数据队列已满，则在指定的超时时间内挂起等待。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">queue</td><td>数据队列控制块 </td></tr>
+    <tr><td class="paramname">data_ptr</td><td>待压入的数据指针 </td></tr>
+    <tr><td class="paramname">data_size</td><td>待压入数据的字节数 </td></tr>
+    <tr><td class="paramname">timeout</td><td>指定超时时间</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>-RT_ETIMEOUT 队列已满，等待超时；RT_EOK 压入成功 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gad3a4cb91b2a0668c9566386b8abb645f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a> rt_data_queue_pop </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structrt__data__queue.html">rt_data_queue</a> *&#160;</td>
+          <td class="paramname"><em>queue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void **&#160;</td>
+          <td class="paramname"><em>data_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group___basic_def.html#ga8011d259fdfc54b8a9aa006b4d49ac14">rt_size_t</a> *&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group___basic_def.html#gae5c6ccee15f067714ca9c44e509c4047">rt_int32_t</a>&#160;</td>
+          <td class="paramname"><em>timeout</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>取出数据队列中的数据 </p>
+<p>调用该函数可以从指定的数据队列中取出数据，如果数据队列为空，则在指定的时间内挂起等待。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">queue</td><td>数据队列控制块 </td></tr>
+    <tr><td class="paramname">data_ptr</td><td>待取出的数据指针 </td></tr>
+    <tr><td class="paramname">data_size</td><td>待取出数据的字节数 </td></tr>
+    <tr><td class="paramname">timeout</td><td>指定超时时间</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>-RT_ETIMEOUT 队列已空，等待超时；RT_EOK 取出成功 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga967287df8a2530abdb8ff97190a2c3a1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a> rt_data_queue_peak </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structrt__data__queue.html">rt_data_queue</a> *&#160;</td>
+          <td class="paramname"><em>queue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void **&#160;</td>
+          <td class="paramname"><em>data_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group___basic_def.html#ga8011d259fdfc54b8a9aa006b4d49ac14">rt_size_t</a> *&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>取出但保留数据队列中的数据 </p>
+<p>调用该函数可以从指定的数据队列中取出数据，如果数据队列为空，则在指定的时间内挂起等待。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">queue</td><td>数据队列控制块 </td></tr>
+    <tr><td class="paramname">data_ptr</td><td>待取出的数据指针 </td></tr>
+    <tr><td class="paramname">data_size</td><td>待取出数据的字节数 </td></tr>
+    <tr><td class="paramname">timeout</td><td>指定超时时间</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>&ndash;RT_EEMPTY 队列已空；RT_EOK 取出成功 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga86700d03f8c9d9ff24ee1b4821376cef"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rt_data_queue_reset </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structrt__data__queue.html">rt_data_queue</a> *&#160;</td>
+          <td class="paramname"><em>queue</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>重置数据队列 </p>
+<p>调用该函数将唤醒数据队列上挂起等待的所有线程。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">queue</td><td>数据队列控制块 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2018年 十月 15日 星期一 21:35:58 , 为 RT-Thread RTOS使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>

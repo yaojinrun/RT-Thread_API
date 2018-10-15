@@ -82,68 +82,68 @@ struct rt_alarm_container
 /**@{*/
 
 /**
- * @brief åˆ›å»ºé—¹é’Ÿ
+ * @brief ´´½¨ÄÖÖÓ
  *
- * è°ƒç”¨æ­¤å‡½æ•°å¯ä»¥æ ¹æ®è®¾å®šçš„å‚æ•°åˆ›å»ºä¸€ä¸ªé—¹é’Ÿï¼Œå¹¶æŒ‡å®šé—¹é’Ÿçš„å›è°ƒå‡½æ•°ã€‚
+ * µ÷ÓÃ´Ëº¯Êı¿ÉÒÔ¸ù¾İÉè¶¨µÄ²ÎÊı´´½¨Ò»¸öÄÖÖÓ£¬²¢Ö¸¶¨ÄÖÖÓµÄ»Øµ÷º¯Êı¡£
  *
- * @param callback é—¹é’Ÿå›è°ƒå‡½æ•°
- * @param setup é—¹é’Ÿçš„è®¾ç½®å‚æ•°
+ * @param callback ÄÖÖÓ»Øµ÷º¯Êı
+ * @param setup ÄÖÖÓµÄÉèÖÃ²ÎÊı
  *
- * @return é”™è¯¯å·
+ * @return ´íÎóºÅ
  */
 rt_alarm_t rt_alarm_create(rt_alarm_callback_t    callback,
                            struct rt_alarm_setup *setup);
 
 /**
- * @brief ä¿®æ”¹é—¹é’Ÿè®¾ç½®
+ * @brief ĞŞ¸ÄÄÖÖÓÉèÖÃ
  *
- * @param alarm é—¹é’Ÿæ§åˆ¶å—
- * @param cmd é—¹é’Ÿçš„è®¾ç½®å‘½ä»¤
- * @param arg è®¾ç½®å‘½ä»¤ç›¸å…³çš„å‚æ•°
+ * @param alarm ÄÖÖÓ¿ØÖÆ¿é
+ * @param cmd ÄÖÖÓµÄÉèÖÃÃüÁî
+ * @param arg ÉèÖÃÃüÁîÏà¹ØµÄ²ÎÊı
  *
- * @return é”™è¯¯å·
+ * @return ´íÎóºÅ
  */
 rt_err_t rt_alarm_control(rt_alarm_t alarm, int cmd, void *arg);
 
 /**
- * @brief å‘é€rtcé—¹é’Ÿäº‹ä»¶
+ * @brief ·¢ËÍrtcÄÖÖÓÊÂ¼ş
  *
- * @param dev æŒ‡å‘RTCè®¾å¤‡çš„æŒ‡é’ˆï¼ˆå½“å‰æœªä½¿ç”¨ï¼Œå¯ä»¥å¿½ç•¥ï¼‰
- * @param event RTCäº‹ä»¶ï¼ˆå½“å‰æœªä½¿ç”¨ï¼‰
+ * @param dev Ö¸ÏòRTCÉè±¸µÄÖ¸Õë£¨µ±Ç°Î´Ê¹ÓÃ£¬¿ÉÒÔºöÂÔ£©
+ * @param event RTCÊÂ¼ş£¨µ±Ç°Î´Ê¹ÓÃ£©
  */
 void rt_alarm_update(rt_device_t dev, rt_uint32_t event);
 
 /**
- * @brief åˆ é™¤é—¹é’Ÿ
+ * @brief É¾³ıÄÖÖÓ
  *
- * è°ƒç”¨æ­¤å‡½æ•°å¯ä»¥åˆ é™¤æŒ‡å®šçš„é—¹é’Ÿå¹¶é‡Šæ”¾å…¶å ç”¨çš„ç³»ç»Ÿå†…å­˜ç©ºé—´ã€‚
+ * µ÷ÓÃ´Ëº¯Êı¿ÉÒÔÉ¾³ıÖ¸¶¨µÄÄÖÖÓ²¢ÊÍ·ÅÆäÕ¼ÓÃµÄÏµÍ³ÄÚ´æ¿Õ¼ä¡£
  *
- * @param alarm é—¹é’Ÿæ§åˆ¶å—
+ * @param alarm ÄÖÖÓ¿ØÖÆ¿é
  *
- * @return é”™è¯¯å·
+ * @return ´íÎóºÅ
  */
 rt_err_t rt_alarm_delete(rt_alarm_t alarm);
 
 /**
- * @brief å¯åŠ¨é—¹é’Ÿ
+ * @brief Æô¶¯ÄÖÖÓ
  *
- * @param alarm é—¹é’Ÿæ§åˆ¶å—
+ * @param alarm ÄÖÖÓ¿ØÖÆ¿é
  *
- * @return é”™è¯¯å·
+ * @return ´íÎóºÅ
  */
 rt_err_t rt_alarm_start(rt_alarm_t alarm);
 
 /**
- * @brief åœæ­¢é—¹é’Ÿ
+ * @brief Í£Ö¹ÄÖÖÓ
  *
- * @param alarm é—¹é’Ÿæ§åˆ¶å—
+ * @param alarm ÄÖÖÓ¿ØÖÆ¿é
  *
- * @return é”™è¯¯å·
+ * @return ´íÎóºÅ
  */
 rt_err_t rt_alarm_stop(rt_alarm_t alarm);
 
 /**
- * @brief åˆå§‹åŒ–é—¹é’ŸæœåŠ¡ç³»ç»Ÿ
+ * @brief ³õÊ¼»¯ÄÖÖÓ·şÎñÏµÍ³
  *
  */
 void rt_alarm_system_init(void);

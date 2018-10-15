@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-Thread RTOS: rt_wqueue_node结构体 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-Thread RTOS
+   &#160;<span id="projectnumber">3.1.0</span>
+   </div>
+   <div id="projectbrief">An open source embedded real-time operating system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.10 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li class="current"><a href="annotated.html"><span>结构体</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li><a href="classes.html"><span>结构体索引</span></a></li>
+      <li><a href="functions.html"><span>成员变量</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-attribs">成员变量</a>  </div>
+  <div class="headertitle">
+<div class="title">rt_wqueue_node结构体 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;waitqueue.h&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+成员变量</h2></td></tr>
+<tr class="memitem:a5886a0d31ca55070eb0bdb49043bd5e4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5886a0d31ca55070eb0bdb49043bd5e4"></a>
+<a class="el" href="group___thread.html#gad617ac6bd69bf546743549542a86fbf9">rt_thread_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__wqueue__node.html#a5886a0d31ca55070eb0bdb49043bd5e4">polling_thread</a></td></tr>
+<tr class="memdesc:a5886a0d31ca55070eb0bdb49043bd5e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">等待队列轮询线程 <br /></td></tr>
+<tr class="separator:a5886a0d31ca55070eb0bdb49043bd5e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7dc71d6b013a5ed864bdf64b82051fd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae7dc71d6b013a5ed864bdf64b82051fd"></a>
+<a class="el" href="group__list.html#ga8e0e590336e9435f976bf672d844547c">rt_list_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__wqueue__node.html#ae7dc71d6b013a5ed864bdf64b82051fd">list</a></td></tr>
+<tr class="memdesc:ae7dc71d6b013a5ed864bdf64b82051fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">等待队列链表 <br /></td></tr>
+<tr class="separator:ae7dc71d6b013a5ed864bdf64b82051fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd7ae3a47fd6a57ccb27f66b88b4c478"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abd7ae3a47fd6a57ccb27f66b88b4c478"></a>
+rt_wqueue_func_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__wqueue__node.html#abd7ae3a47fd6a57ccb27f66b88b4c478">wakeup</a></td></tr>
+<tr class="memdesc:abd7ae3a47fd6a57ccb27f66b88b4c478"><td class="mdescLeft">&#160;</td><td class="mdescRight">唤醒回调函数 <br /></td></tr>
+<tr class="separator:abd7ae3a47fd6a57ccb27f66b88b4c478"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91dd8195e53b7db7b3210815f930260a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a91dd8195e53b7db7b3210815f930260a"></a>
+<a class="el" href="group___basic_def.html#ga909edcac80e5e3f93f63fcebc95922c7">rt_uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__wqueue__node.html#a91dd8195e53b7db7b3210815f930260a">key</a></td></tr>
+<tr class="memdesc:a91dd8195e53b7db7b3210815f930260a"><td class="mdescLeft">&#160;</td><td class="mdescRight">唤醒条件 <br /></td></tr>
+<tr class="separator:a91dd8195e53b7db7b3210815f930260a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>waitqueue 结构体定义 </p>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2018年 十月 15日 星期一 21:35:58 , 为 RT-Thread RTOS使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>
