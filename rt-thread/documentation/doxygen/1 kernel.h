@@ -5,7 +5,9 @@
 /**
  * @defgroup Kernel 内核
  *
- * 内核API是RT-Thread的核心API，它支持以下功能：
+ * @brief RT-Thread 内核API是RT-Thread的核心API
+ *
+ * 它支持以下功能：
  * - 多线程管理
  * - 同步机制
  * - 线程间通信
@@ -551,21 +553,6 @@ int interrupt_sample(void)
 MSH_CMD_EXPORT(interrupt_sample, interrupt sample);
 
   \endcode
- */
- 
- 
-/**
- * @defgroup Device 设备子系统
- * @brief I/O设备子系统
- *
- * 设备系统设计为简单且最小的层，用来协助应用程序和驱动程序之间的通信。
- *
- * 设备系统为驱动程序提供五个接口：
- * - 打开，打开设备
- * - 关闭，关闭设备
- * - 读取，读取设备中的一些数据
- * - 写入，将一些数据写入设备
- * - 控制，向设备发送一些控制命令
  */
 
 /**

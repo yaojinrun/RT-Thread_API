@@ -7,6 +7,13 @@ extern "C" {
 
 #include <rtthread.h>
 
+/**
+ * @addtogroup ringbuffer
+ */
+
+/**@{*/
+
+
 /* ring buffer */
 /**
  * ring buffer 结构体定义
@@ -36,29 +43,26 @@ struct rt_ringbuffer
      * But it should be enough for most of the cases.
      *
      * Ref: http://en.wikipedia.org/wiki/Circular_buffer#Mirroring */
-    rt_uint16_t read_mirror : 1;
-    rt_uint16_t read_index : 15;
-    rt_uint16_t write_mirror : 1;
-    rt_uint16_t write_index : 15;
+    rt_uint16_t read_mirror : 1;	/**< @brief 读取镜像 */
+    rt_uint16_t read_index : 15;	/**< @brief 读取位置 */
+    rt_uint16_t write_mirror : 1;	/**< @brief 写入镜像 */
+    rt_uint16_t write_index : 15;	/**< @brief 写入位置 */
     /* as we use msb of index as mirror bit, the size should be signed and
      * could only be positive. */
     rt_int16_t buffer_size;			/**< @brief 缓冲区大小 */
 };
 
+/**
+ * @brief 环形缓冲区状态
+ */
 enum rt_ringbuffer_state
 {
-    RT_RINGBUFFER_EMPTY,
-    RT_RINGBUFFER_FULL,
+    RT_RINGBUFFER_EMPTY,		/**< 环形缓冲区空 */
+    RT_RINGBUFFER_FULL,			/**< 环形缓冲区满 */
     /* half full is neither full nor empty */
-    RT_RINGBUFFER_HALFFULL,
+    RT_RINGBUFFER_HALFFULL,		/**< 环形缓冲区半满 */
 };
 
-
-/**
- * @addtogroup ringbuffer
- */
-
-/**@{*/
 
 /**
  * @brief 环形缓冲区初始化

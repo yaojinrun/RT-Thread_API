@@ -3,41 +3,44 @@
 
 #include <rtthread.h>
 
-#define RT_DATAQUEUE_EVENT_UNKNOWN   0x00
-#define RT_DATAQUEUE_EVENT_POP       0x01
-#define RT_DATAQUEUE_EVENT_PUSH      0x02
-#define RT_DATAQUEUE_EVENT_LWM       0x03
-
-struct rt_data_item;
-#define RT_DATAQUEUE_SIZE(dq)        ((dq)->put_index - (dq)->get_index)
-#define RT_DATAQUEUE_EMPTY(dq)       ((dq)->size - RT_DATAQUEUE_SIZE(dq))
-/* data queue implementation */
-/**
- * data queue 结构体
- */
-struct rt_data_queue
-{
-    rt_uint16_t size;
-    rt_uint16_t lwm;
-    rt_bool_t   waiting_lwm;
-
-    rt_uint16_t get_index;
-    rt_uint16_t put_index;
-
-    struct rt_data_item *queue;
-
-    rt_list_t suspended_push_list;
-    rt_list_t suspended_pop_list;
-
-    /* event notify */
-    void (*evt_notify)(struct rt_data_queue *queue, rt_uint32_t event);	/**< @brief 事件通知回调函数 */
-};
-
 /**
  * @addtogroup dataqueue
  */
 
 /**@{*/
+
+/*
+ * 数据队列事件命令
+ */
+#define RT_DATAQUEUE_EVENT_UNKNOWN   0x00            /**< @brief 未知数据队列事件 */
+#define RT_DATAQUEUE_EVENT_POP       0x01            /**< @brief 数据队列取出事件 */
+#define RT_DATAQUEUE_EVENT_PUSH      0x02            /**< @brief 数据队列压入事件 */
+#define RT_DATAQUEUE_EVENT_LWM       0x03            /**< @brief 数据队列数达到设定阈值事件 */
+
+struct rt_data_item;
+#define RT_DATAQUEUE_SIZE(dq)        ((dq)->put_index - (dq)->get_index)	            /**< @brief 数据队列使用数量 */
+#define RT_DATAQUEUE_EMPTY(dq)       ((dq)->size - RT_DATAQUEUE_SIZE(dq))            	/**< @brief 数据队列空闲数量 */
+/* data queue implementation */
+/**
+ * @brief data queue 结构体
+ */
+struct rt_data_queue
+{
+    rt_uint16_t size;					/**< @brief 数据队列的容量 */
+    rt_uint16_t lwm;					/**< @brief 阈值 */
+    rt_bool_t   waiting_lwm;			
+
+    rt_uint16_t get_index;				/**< @brief  数据队列读取位置*/
+    rt_uint16_t put_index;				/**< @brief  数据队列写入位置*/
+
+    struct rt_data_item *queue;			/**< @brief  数据队列中的数据信息，包含数据指针和大小信息*/
+
+    rt_list_t suspended_push_list;		/**< @brief  数据队列写入线程挂起链表*/
+    rt_list_t suspended_pop_list;		/**< @brief  数据队列读取线程挂起链表*/
+
+    /* event notify */
+    void (*evt_notify)(struct rt_data_queue *queue, rt_uint32_t event);	/**< @brief 事件通知回调函数 */
+};
 
 /*
  * DataQueue for DeviceDriver

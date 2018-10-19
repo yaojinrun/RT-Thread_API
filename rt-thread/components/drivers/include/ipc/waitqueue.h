@@ -28,14 +28,23 @@
 
 #include <rtthread.h>
 
-#define RT_WQ_FLAG_CLEAN    0x00
-#define RT_WQ_FLAG_WAKEUP   0x01
+/**
+ * @addtogroup waitqueue
+ */
+
+/**@{*/
+
+#define RT_WQ_FLAG_CLEAN    0x00	/**< @brief 等待队列清除 */
+#define RT_WQ_FLAG_WAKEUP   0x01	/**< @brief 等待队列唤醒 */
 
 struct rt_wqueue_node;
+/**
+ * @brief 等待队列回调函数类型定义
+ */
 typedef int (*rt_wqueue_func_t)(struct rt_wqueue_node *wait, void *key);
 
 /**
- * waitqueue 结构体定义
+ * @brief 等待队列节点结构体定义
  */
 struct rt_wqueue_node
 {
@@ -45,14 +54,12 @@ struct rt_wqueue_node
     rt_wqueue_func_t wakeup;		/**< @brief 唤醒回调函数 */
     rt_uint32_t key;				/**< @brief 唤醒条件 */
 };
+/**
+ * @brief 等待队列类型定义
+ */
 typedef struct rt_wqueue_node rt_wqueue_node_t;
 
 
-/**
- * @addtogroup waitqueue
- */
-
-/**@{*/
 
 int __wqueue_default_wake(struct rt_wqueue_node *wait, void *key);
 

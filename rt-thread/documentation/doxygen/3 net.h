@@ -3,7 +3,7 @@
  */
 
 /**
- * @defgroup NET ÍøÂç¿ò¼Ü
+ * @defgroup NET ÍøÂç
  *
  */
 
@@ -13,7 +13,7 @@
 /*@{*/
 
 /**
- * @defgroup SAL ÍøÂç¿ò¼Ü
+ * @defgroup SAL Ì×½Ó×Ö³éÏó²ã
  *
  */
 

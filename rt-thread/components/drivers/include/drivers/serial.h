@@ -162,17 +162,17 @@ struct rt_serial_device
 typedef struct rt_serial_device rt_serial_t;
 
 /**
- * uart operators
+ * @brief 串口操作集
  */
 struct rt_uart_ops
 {
-    rt_err_t (*configure)(struct rt_serial_device *serial, struct serial_configure *cfg);
-    rt_err_t (*control)(struct rt_serial_device *serial, int cmd, void *arg);
+    rt_err_t (*configure)(struct rt_serial_device *serial, struct serial_configure *cfg);	 /**< @brief 串口配置操作函数 */
+    rt_err_t (*control)(struct rt_serial_device *serial, int cmd, void *arg);		 /**< @brief 串口控制函数 */
 
-    int (*putc)(struct rt_serial_device *serial, char c);
-    int (*getc)(struct rt_serial_device *serial);
+    int (*putc)(struct rt_serial_device *serial, char c);		 /**< @brief 串口写入字符函数 */
+    int (*getc)(struct rt_serial_device *serial);	 /**< @brief 串口读取字符函数 */
 
-    rt_size_t (*dma_transmit)(struct rt_serial_device *serial, rt_uint8_t *buf, rt_size_t size, int direction);
+    rt_size_t (*dma_transmit)(struct rt_serial_device *serial, rt_uint8_t *buf, rt_size_t size, int direction);		 /**< @brief DMA模式数据传输函数 */
 };
 
 void rt_hw_serial_isr(struct rt_serial_device *serial, int event);

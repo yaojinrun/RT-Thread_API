@@ -1,9 +1,0 @@
-digraph "事件"
-{
-  edge [fontname="FreeSans.ttf",fontsize="10",labelfontname="FreeSans.ttf",labelfontsize="10"];
-  node [fontname="FreeSans.ttf",fontsize="10",shape=record];
-  rankdir=LR;
-  Node0 [label="事件",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node1 [label="线程间通讯",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$group___i_p_c.html",tooltip="线程间通讯 "];
-  Node1->Node0 [shape=plaintext, dir="back", style="solid"];
-}

@@ -1,6 +1,0 @@
-digraph "D:/yao/RTT/文档/stm32f429-api/rt-thread/include" {
-  compound=true
-  node [ fontsize="10", fontname="FreeSans.ttf"];
-  edge [ labelfontsize="10", labelfontname="FreeSans.ttf"];
-  dir_d44c64559bbebec7f509842c48db8b23 [shape=box, label="include", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_d44c64559bbebec7f509842c48db8b23.html"];
-}

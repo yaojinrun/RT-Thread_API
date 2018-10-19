@@ -3,8 +3,15 @@
 
 #include <rtthread.h>
 
+
 /**
- * Completion 结构体
+ * @addtogroup completion
+ */
+
+/**@{*/
+
+/**
+ * @brief Completion 结构体定义
  */
 
 struct rt_completion
@@ -14,13 +21,6 @@ struct rt_completion
     /* suspended list */
     rt_list_t suspended_list;	/**< @brief 挂起在该completion上的线程 */
 };
-
-
-/**
- * @addtogroup completion
- */
-
-/**@{*/
 
 /**
  * @brief 初始化completion

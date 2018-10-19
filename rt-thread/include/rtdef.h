@@ -359,7 +359,7 @@ typedef int (*init_fn_t)(void);
 /**
  * @ingroup list
  *
- * 双向链表结构体
+ * @brief 双向链表结构体
  */
 struct rt_list_node
 {
@@ -368,9 +368,8 @@ struct rt_list_node
 };
 /**
  * @ingroup list
- * @brief 双向链表类型定义
  */
-typedef struct rt_list_node rt_list_t;                  /**< 双向链表类型定义 */
+typedef struct rt_list_node rt_list_t;                  /**< @brief 双向链表类型定义 */
 
 /**
  * @ingroup slist
@@ -383,9 +382,8 @@ struct rt_slist_node
 };
 /**
  * @ingroup slist
- * @brief 单向链表类型定义
  */
-typedef struct rt_slist_node rt_slist_t;                /**< 单向链表类型 */
+typedef struct rt_slist_node rt_slist_t;                /**< @brief 单向链表类型定义 */
 
 /**
  * @addtogroup KernelObject
@@ -413,7 +411,7 @@ struct rt_object
     rt_list_t  list;                                    /**< @brief 内核对象管理链表 */
 };
 /**
- * @brief 内核对象类型定义
+ * @brief 内核对象类型指针定义
  */
 typedef struct rt_object *rt_object_t;                  /**< @brief 内核对象 */
 
@@ -478,7 +476,7 @@ struct rt_object_information
 
 /*@{*/
 
-/**
+/*
  * clock & timer macros
  */
 #define RT_TIMER_FLAG_DEACTIVATED       0x0             /**< @brief 定时器未激活 */
@@ -504,7 +502,7 @@ struct rt_object_information
 #endif
 
 /**
- * 定时器结构体定义
+ * @brief 定时器结构体定义
  */
 struct rt_timer
 {
@@ -519,7 +517,7 @@ struct rt_timer
     rt_tick_t        timeout_tick;                      /**< @brief 定时器超时时钟节拍数*/
 };
 /**
- * @brief 定时器类型定义
+ * @brief 定时器类型指针定义
  */
 typedef struct rt_timer *rt_timer_t;
 
@@ -635,7 +633,7 @@ struct rt_thread
     rt_uint32_t user_data;                              /**< @brief 线程的私有用户数据 */
 };
 /**
- * @brief 线程类型定义
+ * @brief 线程类型指针定义
  */
 typedef struct rt_thread *rt_thread_t;
 
@@ -688,7 +686,7 @@ struct rt_semaphore
     rt_uint16_t          value;                         /**< @brief 信号量的值 */
 };
 /**
- * @brief 信号量类型定义
+ * @brief 信号量类型指针定义
  */
 typedef struct rt_semaphore *rt_sem_t;
 
@@ -717,6 +715,9 @@ struct rt_mutex
 
     struct rt_thread    *owner;                         /**< @brief 当前该互斥量的持有者（线程） */
 };
+/**
+ * @brief 互斥量类型指针定义
+ */
 typedef struct rt_mutex *rt_mutex_t;
 
 /**@}*/
@@ -745,6 +746,9 @@ struct rt_event
 
     rt_uint32_t          set;                           /**< @brief 时间集 */
 };
+/**
+ * @brief 事件类型指针定义
+ */
 typedef struct rt_event *rt_event_t;
 
 /**@}*/
@@ -774,6 +778,9 @@ struct rt_mailbox
 
     rt_list_t            suspend_sender_thread;         /**< @brief 挂起在该邮箱上的发送线程 */
 };
+/**
+ * @brief 邮箱类型指针定义
+ */
 typedef struct rt_mailbox *rt_mailbox_t;
 
 /**@}*/
@@ -804,6 +811,9 @@ struct rt_messagequeue
     void                *msg_queue_tail;                /**< @brief 链表尾 */
     void                *msg_queue_free;                /**< @brief 指向队列中的空闲节点的指针 */
 };
+/**
+ * @brief 消息队列类型指针定义
+ */
 typedef struct rt_messagequeue *rt_mq_t;
 
 /**@}*/
@@ -889,6 +899,9 @@ struct rt_mempool
     rt_list_t        suspend_thread;                    /**< @brief 挂起线程链表 */
     rt_size_t        suspend_thread_count;              /**< @brief 挂起线程的数量 */
 };
+/**
+ * @brief 内存池类型指针定义
+ */
 typedef struct rt_mempool *rt_mp_t;
 #endif
 
@@ -981,6 +994,9 @@ enum rt_device_class_type
 #define RT_DEVICE_CTRL_RTC_GET_ALARM    0x12            /**< @brief 获取闹钟信息 */
 #define RT_DEVICE_CTRL_RTC_SET_ALARM    0x13            /**< @brief 设置闹钟 */
 
+/**
+ * @brief 设备类型指针定义
+ */
 typedef struct rt_device *rt_device_t;
 /**
  * 设备对象的操作设置
@@ -1004,6 +1020,9 @@ struct rt_wqueue
     rt_uint32_t flag;			/**< @brief 等待队列的参数 */
     rt_list_t waiting_list;		/**< @brief 等待队列的线程链表 */
 };
+/**
+ * @brief 等待队列类型指针定义
+ */
 typedef struct rt_wqueue rt_wqueue_t;
 
 /**

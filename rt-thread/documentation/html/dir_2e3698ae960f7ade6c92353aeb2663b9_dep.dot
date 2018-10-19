@@ -1,9 +1,0 @@
-digraph "D:/yao/RTT/文档/stm32f429-api/rt-thread/components/dfs/include" {
-  compound=true
-  node [ fontsize="10", fontname="FreeSans.ttf"];
-  edge [ labelfontsize="10", labelfontname="FreeSans.ttf"];
-  subgraph clusterdir_88fad670f0983a8d34917f1a982db765 {
-    graph [ bgcolor="#ddddee", pencolor="black", label="dfs" fontname="FreeSans.ttf", fontsize="10", URL="dir_88fad670f0983a8d34917f1a982db765.html"]
-  dir_2e3698ae960f7ade6c92353aeb2663b9 [shape=box, label="include", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_2e3698ae960f7ade6c92353aeb2663b9.html"];
-  }
-}

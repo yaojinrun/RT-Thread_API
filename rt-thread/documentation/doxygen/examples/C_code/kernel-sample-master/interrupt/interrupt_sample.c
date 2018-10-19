@@ -1,19 +1,14 @@
-/*
- * This file is only used for doxygen document generation.
- */
-
+/* 
+ * Copyright (c) 2006-2018, RT-Thread Development Team 
+ * 
+ * SPDX-License-Identifier: Apache-2.0 
+ * 
+ * Change Logs: 
+ * Date           Author       Notes 
+ * 2018-08-24     yangjie      the first version 
+ */ 
  
-/**
- * @addtogroup example
- */
-/*@{*/
-
-
- /**
- * @defgroup int ¹Ø±ÕÖĞ¶Ï½øĞĞÈ«¾Ö±äÁ¿µÄ·ÃÎÊ
- *
- * **Ô´Âë**
-  \code{.c}
+/* ç¨‹åºæ¸…å•ï¼šå…³é—­ä¸­æ–­è¿›è¡Œå…¨å±€å˜é‡çš„è®¿é—® */
 #include <rthw.h>
 #include <rtthread.h>
 
@@ -21,7 +16,7 @@
 #define THREAD_STACK_SIZE    512
 #define THREAD_TIMESLICE     5
 
-/* Í¬Ê±·ÃÎÊµÄÈ«¾Ö±äÁ¿ */
+/* åŒæ—¶è®¿é—®çš„å…¨å±€å˜é‡ */
 static rt_uint32_t cnt;
 void thread_entry(void *parameter)
 {
@@ -31,10 +26,10 @@ void thread_entry(void *parameter)
     no = (rt_uint32_t) parameter;
     while (1)
     {
-        /* ¹Ø±ÕÖĞ¶Ï */
+        /* å…³é—­ä¸­æ–­ */
         level = rt_hw_interrupt_disable();
         cnt += no;
-        /* »Ö¸´ÖĞ¶Ï */
+        /* æ¢å¤ä¸­æ–­ */
         rt_hw_interrupt_enable(level);
 
         rt_kprintf("protect thread[%d]'s counter is %d\n", no, cnt);
@@ -42,12 +37,12 @@ void thread_entry(void *parameter)
     }
 }
 
-/* ÓÃ»§Ó¦ÓÃ³ÌĞòÈë¿Ú */
+/* ç”¨æˆ·åº”ç”¨ç¨‹åºå…¥å£ */
 int interrupt_sample(void)
 {
     rt_thread_t thread;
 
-    /* ´´½¨t1Ïß³Ì */
+    /* åˆ›å»ºt1çº¿ç¨‹ */
     thread = rt_thread_create("thread1", thread_entry, (void *)10,
                               THREAD_STACK_SIZE,
                               THREAD_PRIORITY, THREAD_TIMESLICE);
@@ -55,7 +50,7 @@ int interrupt_sample(void)
         rt_thread_startup(thread);
 
 
-    /* ´´½¨t2Ïß³Ì */
+    /* åˆ›å»ºt2çº¿ç¨‹ */
     thread = rt_thread_create("thread2", thread_entry, (void *)20,
                               THREAD_STACK_SIZE,
                               THREAD_PRIORITY, THREAD_TIMESLICE);
@@ -65,12 +60,5 @@ int interrupt_sample(void)
     return 0;
 }
 
-/* µ¼³öµ½ msh ÃüÁîÁĞ±íÖĞ */
+/* å¯¼å‡ºåˆ° msh å‘½ä»¤åˆ—è¡¨ä¸­ */
 MSH_CMD_EXPORT(interrupt_sample, interrupt sample);
-
-  \endcode
- */
-
-
-/*@}*/
-

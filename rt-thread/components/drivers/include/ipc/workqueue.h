@@ -3,21 +3,27 @@
 
 #include <rtthread.h>
 
+/**
+ * @addtogroup workqueue
+ */
+
+/**@{*/
+
 /* workqueue implementation */
 /**
- * workqueue 结构体定义
+ * @brief 工作队列的结构体定义
  */
 struct rt_workqueue
 {
-    rt_list_t      work_list;	/**< @brief work链表 */
-    struct rt_work *work_current; /**< @brief 当前work指针 */
+    rt_list_t      work_list;		/**< @brief 工作队列链表 */
+    struct rt_work *work_current; 	/**< @brief 当前工作队列指针 */
 
-    struct rt_semaphore sem; 	/**< @brief 用于同步的信号量 */
-    rt_thread_t    work_thread;	/**< @brief work处理线程 */
+    struct rt_semaphore sem; 		/**< @brief 用于同步的信号量 */
+    rt_thread_t    work_thread;		/**< @brief 工作队列处理线程 */
 };
 
 /**
- * work 结构体定义
+ * @brief 工作的结构体定义
  */
 struct rt_work
 {
@@ -29,12 +35,6 @@ struct rt_work
 
 #ifdef RT_USING_HEAP
 
-
-/**
- * @addtogroup workqueue
- */
-
-/**@{*/
 
 /**
  * @brief 创建工作队列
