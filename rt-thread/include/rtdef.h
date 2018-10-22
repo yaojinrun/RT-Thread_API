@@ -374,7 +374,7 @@ typedef struct rt_list_node rt_list_t;                  /**< @brief 双向链表类型
 /**
  * @ingroup slist
  *
- * 单向链表结构体
+ * @brief 单向链表结构体
  */
 struct rt_slist_node
 {
@@ -382,6 +382,8 @@ struct rt_slist_node
 };
 /**
  * @ingroup slist
+ *
+ * @brief 单向链表节点类型定义
  */
 typedef struct rt_slist_node rt_slist_t;                /**< @brief 单向链表类型定义 */
 
@@ -658,7 +660,7 @@ typedef struct rt_thread *rt_thread_t;
 #define RT_WAITING_NO                   0               /**< @brief 无阻塞. */
 
 /**
- * IPC对象的基础结构体定义
+ * @brief IPC对象的基础结构体定义
  */
 struct rt_ipc_object
 {
@@ -677,7 +679,7 @@ struct rt_ipc_object
 /**@{*/
 
 /**
- * 信号量结构体定义
+ * @brief 信号量结构体定义
  */
 struct rt_semaphore
 {
@@ -702,7 +704,7 @@ typedef struct rt_semaphore *rt_sem_t;
 /**@{*/
 
 /**
- * 互斥量结构体定义
+ * @brief 互斥量结构体定义
  */
 struct rt_mutex
 {
@@ -738,7 +740,7 @@ typedef struct rt_mutex *rt_mutex_t;
 #define RT_EVENT_FLAG_CLEAR             0x04            /**< @brief 清除参数 */
 
 /**
- * 事件结构体定义
+ * @brief 事件结构体定义
  */
 struct rt_event
 {
@@ -762,7 +764,7 @@ typedef struct rt_event *rt_event_t;
 /**@{*/
 
 /**
- * 邮箱结构体定义
+ * @brief 邮箱结构体定义
  */
 struct rt_mailbox
 {
@@ -794,7 +796,7 @@ typedef struct rt_mailbox *rt_mailbox_t;
 /**@{*/
 
 /**
- * 消息队列结构体定义
+ * @brief 消息队列结构体定义
  */
 struct rt_messagequeue
 {
@@ -834,7 +836,7 @@ typedef struct rt_messagequeue *rt_mq_t;
 /*@{*/
 
 /**
- * 内存堆的item
+ * @brief 内存堆的item
  */
 struct rt_memheap_item
 {
@@ -849,7 +851,7 @@ struct rt_memheap_item
 };
 
 /**
- * 内存堆对象的基本结构
+ * @brief 内存堆对象的基本结构
  */
 struct rt_memheap
 {
@@ -881,7 +883,7 @@ struct rt_memheap
 
 #ifdef RT_USING_MEMPOOL
 /**
- * 内存池对象的基础结构
+ * @brief 内存池对象的基础结构
  */
 struct rt_mempool
 {
@@ -999,7 +1001,7 @@ enum rt_device_class_type
  */
 typedef struct rt_device *rt_device_t;
 /**
- * 设备对象的操作设置
+ * @brief 设备对象的操作设置
  */
 struct rt_device_ops
 {
@@ -1013,7 +1015,7 @@ struct rt_device_ops
 };
 
 /**
- * 等待队列的结构体定义
+ * @brief 等待队列的结构体定义
  */
 struct rt_wqueue
 {
@@ -1074,7 +1076,7 @@ struct rt_device_blk_geometry
 };
 
 /**
- * sector arrange struct on block device
+ * @brief 块设备的扇区分布结构体定义
  */
 struct rt_device_blk_sectors
 {
@@ -1123,7 +1125,7 @@ enum
 #define RTGRAPHIC_PIXEL_POSITION(x, y)  ((x << 16) | y)
 
 /**
- * 图形设备信息结构
+ * @brief 图形设备信息结构
  */
 struct rt_device_graphic_info
 {
@@ -1138,7 +1140,7 @@ struct rt_device_graphic_info
 };
 
 /**
- * 矩形信息结构
+ * @brief 矩形信息结构
  */
 struct rt_device_rect_info
 {
@@ -1148,7 +1150,7 @@ struct rt_device_rect_info
     rt_uint16_t height;                                 /**< @brief 高度 */
 };
 
-/**
+/*
  * 图形操作
  */
 struct rt_device_graphic_ops
@@ -1180,7 +1182,7 @@ struct rt_device_graphic_ops
 #define RT_MODULE_FLAG_WITHENTRY        0x00            /**< with entry point */
 #define RT_MODULE_FLAG_WITHOUTENTRY     0x01            /**< without entry point */
 
-/**
+/*
  * 应用模块结构
  */
 struct rt_module

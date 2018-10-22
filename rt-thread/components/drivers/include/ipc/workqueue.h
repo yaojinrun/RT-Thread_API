@@ -27,10 +27,10 @@ struct rt_workqueue
  */
 struct rt_work
 {
-    rt_list_t list;
+    rt_list_t list;					/**< @brief 工作链表 */
 
-    void (*work_func)(struct rt_work* work, void* work_data);
-    void *work_data;
+    void (*work_func)(struct rt_work* work, void* work_data);	/**< @brief 处理工作的回调函数 */
+    void *work_data;				/**< @brief 回调函数相关的数据指针 */
 };
 
 #ifdef RT_USING_HEAP

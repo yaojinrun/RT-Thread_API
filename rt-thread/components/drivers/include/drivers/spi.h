@@ -65,59 +65,62 @@ extern "C"{
 #define RT_SPI_READY    (1<<7)                             /* Slave pulls low to pause */
 
 /**
- * SPI message structure
+ * @brief SPI消息结构体定义
  */
 struct rt_spi_message
 {
-    const void *send_buf;
-    void *recv_buf;
-    rt_size_t length;
-    struct rt_spi_message *next;
+    const void *send_buf;				/**< @brief SPI发送缓冲区指针 */
+    void *recv_buf;						/**< @brief SPI接收缓冲区指针 */
+    rt_size_t length;					/**< @brief 数据长度 */
+    struct rt_spi_message *next;		/**< @brief 指向下一个SPI消息的指针 */
 
-    unsigned cs_take    : 1;
-    unsigned cs_release : 1;
+    unsigned cs_take    : 1;			/**< @brief SPI总线获取标志位 */
+    unsigned cs_release : 1;			/**< @brief SPI总线释放标志位 */
 };
 
 /**
- * SPI configuration structure
+ * @brief SPI配置参数结构体定义
  */
 struct rt_spi_configuration
 {
-    rt_uint8_t mode;
-    rt_uint8_t data_width;
-    rt_uint16_t reserved;
+    rt_uint8_t mode;					/**< @brief SPI的工作模式 */
+    rt_uint8_t data_width;				/**< @brief SPI的数据宽度 */
+    rt_uint16_t reserved;				/**< @brief 保留位 */
 
-    rt_uint32_t max_hz;
+    rt_uint32_t max_hz;					/**< @brief SPI总线的最大工作频率 */
 };
 
 struct rt_spi_ops;
+/**
+ * @brief SPI总线结构体定义
+ */
 struct rt_spi_bus
 {
-    struct rt_device parent;
-    const struct rt_spi_ops *ops;
+    struct rt_device parent;			/**< @brief 从 rt_device 继承 */
+    const struct rt_spi_ops *ops;		/**< @brief SPI总线的操作集 */
 
-    struct rt_mutex lock;
-    struct rt_spi_device *owner;
+    struct rt_mutex lock;				/**< @brief SPI总线的互斥锁 */
+    struct rt_spi_device *owner;		/**< @brief SPI总线的当前使用者 */
 };
 
 /**
- * SPI operators
+ * @brief SPI总线的操作集
  */
 struct rt_spi_ops
 {
-    rt_err_t (*configure)(struct rt_spi_device *device, struct rt_spi_configuration *configuration);
-    rt_uint32_t (*xfer)(struct rt_spi_device *device, struct rt_spi_message *message);
+    rt_err_t (*configure)(struct rt_spi_device *device, struct rt_spi_configuration *configuration);	/**< @brief SPI设备的配置函数 */
+    rt_uint32_t (*xfer)(struct rt_spi_device *device, struct rt_spi_message *message);					/**< @brief SPI设备的消息传送函数 */
 };
 
 /**
- * SPI Virtual BUS, one device must connected to a virtual BUS
+ * @brief SPI虚拟总线，肯定有一个设备连接到该虚拟总线
  */
 struct rt_spi_device
 {
-    struct rt_device parent;
-    struct rt_spi_bus *bus;
+    struct rt_device parent;				/**< @brief 从 rt_device 继承 */
+    struct rt_spi_bus *bus;					/**< @brief SPI总线指针 */
 
-    struct rt_spi_configuration config;
+    struct rt_spi_configuration config;		/**< @brief SPI配置参数 */
 };
 #define SPI_DEVICE(dev) ((struct rt_spi_device *)(dev))
 
