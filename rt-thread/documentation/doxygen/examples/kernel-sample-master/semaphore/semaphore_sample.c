@@ -9,17 +9,17 @@
  */ 
 
 /*
- * ³ÌĞòÇåµ¥£ºĞÅºÅÁ¿Àı³Ì
+ * ç¨‹åºæ¸…å•ï¼šä¿¡å·é‡ä¾‹ç¨‹
  *
- * ¸ÃÀı³Ì´´½¨ÁËÒ»¸ö¶¯Ì¬ĞÅºÅÁ¿£¬³õÊ¼»¯Á½¸öÏß³Ì£¬Ïß³Ì1ÔÚcountÃ¿¼ÆÊı10´ÎÊ±£¬
- * ·¢ËÍÒ»¸öĞÅºÅÁ¿£¬Ïß³Ì2ÔÚ½ÓÊÕĞÅºÅÁ¿ºó£¬¶Ônumber½øĞĞ¼Ó1²Ù×÷
+ * è¯¥ä¾‹ç¨‹åˆ›å»ºäº†ä¸€ä¸ªåŠ¨æ€ä¿¡å·é‡ï¼Œåˆå§‹åŒ–ä¸¤ä¸ªçº¿ç¨‹ï¼Œçº¿ç¨‹1åœ¨countæ¯è®¡æ•°10æ¬¡æ—¶ï¼Œ
+ * å‘é€ä¸€ä¸ªä¿¡å·é‡ï¼Œçº¿ç¨‹2åœ¨æ¥æ”¶ä¿¡å·é‡åï¼Œå¯¹numberè¿›è¡ŒåŠ 1æ“ä½œ
  */
 #include <rtthread.h>
 
 #define THREAD_PRIORITY         25
 #define THREAD_TIMESLICE        5
 
-/* Ö¸ÏòĞÅºÅÁ¿µÄÖ¸Õë */
+/* æŒ‡å‘ä¿¡å·é‡çš„æŒ‡é’ˆ */
 static rt_sem_t dynamic_sem = RT_NULL;
 
 ALIGN(RT_ALIGN_SIZE)
@@ -38,7 +38,7 @@ static void rt_thread1_entry(void *parameter)
         else
             return; 
         
-        /* countÃ¿¼ÆÊı10´Î£¬¾ÍÊÍ·ÅÒ»´ÎĞÅºÅÁ¿ */
+        /* countæ¯è®¡æ•°10æ¬¡ï¼Œå°±é‡Šæ”¾ä¸€æ¬¡ä¿¡å·é‡ */
          if(0 == (count % 10))
         {
             rt_kprintf("t1 release a dynamic semaphore.\n" ); 
@@ -56,7 +56,7 @@ static void rt_thread2_entry(void *parameter)
     static rt_uint8_t number = 0;
     while(1)
     {
-        /* ÓÀ¾Ã·½Ê½µÈ´ıĞÅºÅÁ¿£¬»ñÈ¡µ½ĞÅºÅÁ¿£¬ÔòÖ´ĞĞnumber×Ô¼ÓµÄ²Ù×÷ */
+        /* æ°¸ä¹…æ–¹å¼ç­‰å¾…ä¿¡å·é‡ï¼Œè·å–åˆ°ä¿¡å·é‡ï¼Œåˆ™æ‰§è¡Œnumberè‡ªåŠ çš„æ“ä½œ */
         result = rt_sem_take(dynamic_sem, RT_WAITING_FOREVER);
         if (result != RT_EOK)
         {        
@@ -72,10 +72,10 @@ static void rt_thread2_entry(void *parameter)
     }   
 }
 
-/* ĞÅºÅÁ¿Ê¾ÀıµÄ³õÊ¼»¯ */
+/* ä¿¡å·é‡ç¤ºä¾‹çš„åˆå§‹åŒ– */
 int semaphore_sample()
 {
-    /* ´´½¨Ò»¸ö¶¯Ì¬ĞÅºÅÁ¿£¬³õÊ¼ÖµÊÇ0 */
+    /* åˆ›å»ºä¸€ä¸ªåŠ¨æ€ä¿¡å·é‡ï¼Œåˆå§‹å€¼æ˜¯0 */
     dynamic_sem = rt_sem_create("dsem", 0, RT_IPC_FLAG_FIFO);
     if (dynamic_sem == RT_NULL)
     {
@@ -107,6 +107,6 @@ int semaphore_sample()
 
     return 0;
 }
-/* µ¼³öµ½ msh ÃüÁîÁĞ±íÖĞ */
+/* å¯¼å‡ºåˆ° msh å‘½ä»¤åˆ—è¡¨ä¸­ */
 MSH_CMD_EXPORT(semaphore_sample, semaphore sample);
 

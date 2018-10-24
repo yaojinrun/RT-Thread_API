@@ -113,9 +113,9 @@ static rt_err_t finsh_rx_ind(rt_device_t dev, rt_size_t size)
 /**
  * @ingroup finsh
  *
- * @brief 设置finsh shell的输入设备
+ * This function sets the input device of finsh shell.
  *
- * @param device_name 新的输入设备的名称
+ * @param device_name the name of new input device.
  */
 void finsh_set_device(const char *device_name)
 {
@@ -154,11 +154,9 @@ void finsh_set_device(const char *device_name)
 /**
  * @ingroup finsh
  *
- * @brief 获取finsh shell的输入设备
+ * This function returns current finsh shell input device.
  *
- * 该函数将返回当前finsh shell所使用的输入设备。
- *
- * @return 返回当前finsh shell的输入设备名称
+ * @return the finsh shell input device name is returned.
  */
 const char *finsh_get_device()
 {
@@ -170,13 +168,11 @@ const char *finsh_get_device()
 /**
  * @ingroup finsh
  *
- * @brief 设置回显模式
+ * This function set the echo mode of finsh shell.
  *
- * 该函数可以设置finsh shell的回显模式。
+ * FINSH_OPTION_ECHO=0x01 is echo mode, other values are none-echo mode.
  *
- * FINSH_OPTION_ECHO=0x01 时为回显模式, 其他值为不回显模式。
- *
- * @param echo 回显模式
+ * @param echo the echo mode
  */
 void finsh_set_echo(rt_uint32_t echo)
 {
@@ -187,11 +183,9 @@ void finsh_set_echo(rt_uint32_t echo)
 /**
  * @ingroup finsh
  *
- * @brief 获取回显模式
+ * This function gets the echo mode of finsh shell.
  *
- * 该函数可以获取finsh shell是否工作在回显模式。
- *
- * @return 回显模式参数值
+ * @return the echo mode
  */
 rt_uint32_t finsh_get_echo()
 {
@@ -202,13 +196,12 @@ rt_uint32_t finsh_get_echo()
 
 #ifdef FINSH_USING_AUTH
 /**
- * @brief 设置新密码
+ * set a new password for finsh
  *
- * 该函数可以为finsh设置一个新的密码。
+ * @param password new password
  *
- * @param password 新的密码
- *
- * @return 成功时返回RT_EOK, 当新的密码长度小于FINSH_PASSWORD_MIN或大于FINSH_PASSWORD_MAX时返回-RT_ERROR 。
+ * @return result, RT_EOK on OK, -RT_ERROR on the new password length is less than
+ *  FINSH_PASSWORD_MIN or greater than FINSH_PASSWORD_MAX
  */
 rt_err_t finsh_set_password(const char *password) {
     rt_ubase_t level;
@@ -225,9 +218,9 @@ rt_err_t finsh_set_password(const char *password) {
 }
 
 /**
- * @brief 获取finsh密码
+ * get the finsh password
  *
- * @return 密码
+ * @return password
  */
 const char *finsh_get_password(void)
 {

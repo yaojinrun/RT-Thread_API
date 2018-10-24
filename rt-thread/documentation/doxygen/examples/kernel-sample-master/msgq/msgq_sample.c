@@ -9,22 +9,22 @@
  */ 
 
 /*
- * ³ÌĞòÇåµ¥£ºÏûÏ¢¶ÓÁĞÀı³Ì
+ * ç¨‹åºæ¸…å•ï¼šæ¶ˆæ¯é˜Ÿåˆ—ä¾‹ç¨‹
  *
- * Õâ¸ö³ÌĞò»á´´½¨2¸ö¶¯Ì¬Ïß³Ì£¬Ò»¸öÏß³Ì»á´ÓÏûÏ¢¶ÓÁĞÖĞÊÕÈ¡ÏûÏ¢£»Ò»¸öÏß³Ì»á¶¨Ê±¸øÏû
- * Ï¢¶ÓÁĞ·¢ËÍ ÆÕÍ¨ÏûÏ¢ºÍ½ô¼±ÏûÏ¢¡£
+ * è¿™ä¸ªç¨‹åºä¼šåˆ›å»º2ä¸ªåŠ¨æ€çº¿ç¨‹ï¼Œä¸€ä¸ªçº¿ç¨‹ä¼šä»æ¶ˆæ¯é˜Ÿåˆ—ä¸­æ”¶å–æ¶ˆæ¯ï¼›ä¸€ä¸ªçº¿ç¨‹ä¼šå®šæ—¶ç»™æ¶ˆ
+ * æ¯é˜Ÿåˆ—å‘é€ æ™®é€šæ¶ˆæ¯å’Œç´§æ€¥æ¶ˆæ¯ã€‚
  */
 #include <rtthread.h>
 
-/* ÏûÏ¢¶ÓÁĞ¿ØÖÆ¿é */
+/* æ¶ˆæ¯é˜Ÿåˆ—æ§åˆ¶å— */
 static struct rt_messagequeue mq;
-/* ÏûÏ¢¶ÓÁĞÖĞÓÃµ½µÄ·ÅÖÃÏûÏ¢µÄÄÚ´æ³Ø */
+/* æ¶ˆæ¯é˜Ÿåˆ—ä¸­ç”¨åˆ°çš„æ”¾ç½®æ¶ˆæ¯çš„å†…å­˜æ±  */
 static rt_uint8_t msg_pool[2048];
 
 ALIGN(RT_ALIGN_SIZE)
 static char thread1_stack[1024];
 static struct rt_thread thread1;
-/* Ïß³Ì1Èë¿Úº¯Êı */
+/* çº¿ç¨‹1å…¥å£å‡½æ•° */
 static void thread1_entry(void *parameter)
 {
     char buf = 0;
@@ -32,7 +32,7 @@ static void thread1_entry(void *parameter)
 
     while (1)
     {
-        /* ´ÓÏûÏ¢¶ÓÁĞÖĞ½ÓÊÕÏûÏ¢ */
+        /* ä»æ¶ˆæ¯é˜Ÿåˆ—ä¸­æ¥æ”¶æ¶ˆæ¯ */
         if (rt_mq_recv(&mq, &buf, sizeof(buf), RT_WAITING_FOREVER) == RT_EOK)
         {
             rt_kprintf("thread1: recv msg from msg queue, the content:%c\n", buf);
@@ -41,7 +41,7 @@ static void thread1_entry(void *parameter)
                 break;
             }
         }
-        /* ÑÓÊ±50ms */
+        /* å»¶æ—¶50ms */
         cnt++;
         rt_thread_mdelay(50);
     }
@@ -52,7 +52,7 @@ static void thread1_entry(void *parameter)
 ALIGN(RT_ALIGN_SIZE)
 static char thread2_stack[1024];
 static struct rt_thread thread2;
-/* Ïß³Ì2Èë¿Ú */
+/* çº¿ç¨‹2å…¥å£ */
 static void thread2_entry(void *parameter)
 {
     int result;
@@ -63,7 +63,7 @@ static void thread2_entry(void *parameter)
     {
         if (cnt == 8)
         {
-            /* ·¢ËÍ½ô¼±ÏûÏ¢µ½ÏûÏ¢¶ÓÁĞÖĞ */
+            /* å‘é€ç´§æ€¥æ¶ˆæ¯åˆ°æ¶ˆæ¯é˜Ÿåˆ—ä¸­ */
             result = rt_mq_urgent(&mq, &buf, 1);
             if (result != RT_EOK)
             {
@@ -74,14 +74,14 @@ static void thread2_entry(void *parameter)
                 rt_kprintf("thread2: send urgent message - %c\n", buf);
             }
         }
-        else if (cnt >= 20)/* ·¢ËÍ20´ÎÏûÏ¢Ö®ºóÍË³ö */
+        else if (cnt >= 20)/* å‘é€20æ¬¡æ¶ˆæ¯ä¹‹åé€€å‡º */
         {
             rt_kprintf("message queue stop send, thread2 quit\n");
             break;
         }
         else
         {
-            /* ·¢ËÍÏûÏ¢µ½ÏûÏ¢¶ÓÁĞÖĞ */
+            /* å‘é€æ¶ˆæ¯åˆ°æ¶ˆæ¯é˜Ÿåˆ—ä¸­ */
             result = rt_mq_send(&mq, &buf, 1);
             if (result != RT_EOK)
             {
@@ -92,23 +92,23 @@ static void thread2_entry(void *parameter)
         }
         buf++;
         cnt++;
-        /* ÑÓÊ±5ms */
+        /* å»¶æ—¶5ms */
         rt_thread_mdelay(5);
     }
 }
 
-/* ÏûÏ¢¶ÓÁĞÊ¾ÀıµÄ³õÊ¼»¯ */
+/* æ¶ˆæ¯é˜Ÿåˆ—ç¤ºä¾‹çš„åˆå§‹åŒ– */
 int msgq_sample(void)
 {
     rt_err_t result;
 
-    /* ³õÊ¼»¯ÏûÏ¢¶ÓÁĞ */
+    /* åˆå§‹åŒ–æ¶ˆæ¯é˜Ÿåˆ— */
     result = rt_mq_init(&mq,
                         "mqt",
-                        &msg_pool[0],               /* ÄÚ´æ³ØÖ¸Ïòmsg_pool */
-                        1,                          /* Ã¿¸öÏûÏ¢µÄ´óĞ¡ÊÇ 1 ×Ö½Ú */
-                        sizeof(msg_pool),           /* ÄÚ´æ³ØµÄ´óĞ¡ÊÇmsg_poolµÄ´óĞ¡ */
-                        RT_IPC_FLAG_FIFO);          /* Èç¹ûÓĞ¶à¸öÏß³ÌµÈ´ı£¬°´ÕÕÏÈÀ´ÏÈµÃµ½µÄ·½·¨·ÖÅäÏûÏ¢ */
+                        &msg_pool[0],               /* å†…å­˜æ± æŒ‡å‘msg_pool */
+                        1,                          /* æ¯ä¸ªæ¶ˆæ¯çš„å¤§å°æ˜¯ 1 å­—èŠ‚ */
+                        sizeof(msg_pool),           /* å†…å­˜æ± çš„å¤§å°æ˜¯msg_poolçš„å¤§å° */
+                        RT_IPC_FLAG_FIFO);          /* å¦‚æœæœ‰å¤šä¸ªçº¿ç¨‹ç­‰å¾…ï¼ŒæŒ‰ç…§å…ˆæ¥å…ˆå¾—åˆ°çš„æ–¹æ³•åˆ†é…æ¶ˆæ¯ */
 
     if (result != RT_EOK)
     {
@@ -135,5 +135,5 @@ int msgq_sample(void)
     return 0;
 }
 
-/* µ¼³öµ½ msh ÃüÁîÁĞ±íÖĞ */
+/* å¯¼å‡ºåˆ° msh å‘½ä»¤åˆ—è¡¨ä¸­ */
 MSH_CMD_EXPORT(msgq_sample, msgq sample);

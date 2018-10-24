@@ -9,9 +9,9 @@
  */ 
  
  /*
- * ³ÌĞòÇåµ¥£ºÏàÍ¬ÓÅÏÈ¼¶Ïß³Ì°´ÕÕÊ±¼äÆ¬ÂÖ·¬µ÷¶È
+ * ç¨‹åºæ¸…å•ï¼šç›¸åŒä¼˜å…ˆçº§çº¿ç¨‹æŒ‰ç…§æ—¶é—´ç‰‡è½®ç•ªè°ƒåº¦
  *
- * Õâ¸öÀı×ÓÖĞ½«´´½¨Á½¸öÏß³Ì£¬Ã¿Ò»¸öÏß³Ì¶¼ÔÚ´òÓ¡ĞÅÏ¢
+ * è¿™ä¸ªä¾‹å­ä¸­å°†åˆ›å»ºä¸¤ä¸ªçº¿ç¨‹ï¼Œæ¯ä¸€ä¸ªçº¿ç¨‹éƒ½åœ¨æ‰“å°ä¿¡æ¯
  * 
  */
 
@@ -21,7 +21,7 @@
 #define THREAD_PRIORITY	    20
 #define THREAD_TIMESLICE    10
 
-/* Ïß³ÌÈë¿Ú */
+/* çº¿ç¨‹å…¥å£ */
 static void thread_entry(void* parameter)
 {
     rt_uint32_t value;
@@ -44,7 +44,7 @@ static void thread_entry(void* parameter)
 int timeslice_sample(void)
 {
     rt_thread_t tid;
-    /* ´´½¨Ïß³Ì1 */
+    /* åˆ›å»ºçº¿ç¨‹1 */
     tid = rt_thread_create("thread1", 
                             thread_entry, (void*)1, 
                             THREAD_STACK_SIZE, 
@@ -53,7 +53,7 @@ int timeslice_sample(void)
         rt_thread_startup(tid);
 
 
-    /* ´´½¨Ïß³Ì2 */
+    /* åˆ›å»ºçº¿ç¨‹2 */
     tid = rt_thread_create("thread2", 
                             thread_entry, (void*)2,
                             THREAD_STACK_SIZE, 
@@ -63,6 +63,6 @@ int timeslice_sample(void)
     return 0;
 }
 
-/* µ¼³öµ½ msh ÃüÁîÁĞ±íÖĞ */
+/* å¯¼å‡ºåˆ° msh å‘½ä»¤åˆ—è¡¨ä¸­ */
 MSH_CMD_EXPORT(timeslice_sample, timeslice sample);
 

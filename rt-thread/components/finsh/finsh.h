@@ -75,21 +75,21 @@
  * @addtogroup finsh
  */
 /*@{*/
-#define FINSH_ERROR_OK              0   /**< @brief 无错误             */
-#define FINSH_ERROR_INVALID_TOKEN   1   /**< @brief 无效令牌	        */
-#define FINSH_ERROR_EXPECT_TYPE     2   /**< @brief 已知类型           */
-#define FINSH_ERROR_UNKNOWN_TYPE    3   /**< @brief 未知类型           */
-#define FINSH_ERROR_VARIABLE_EXIST  4   /**< @brief 变量存在           */
-#define FINSH_ERROR_EXPECT_OPERATOR 5   /**< @brief Expect a operator  */
-#define FINSH_ERROR_MEMORY_FULL     6   /**< @brief 内存已满           */
-#define FINSH_ERROR_UNKNOWN_OP      7   /**< @brief Unknown operator   */
-#define FINSH_ERROR_UNKNOWN_NODE    8   /**< @brief Unknown node       */
-#define FINSH_ERROR_EXPECT_CHAR     9   /**< @brief Expect a character */
-#define FINSH_ERROR_UNEXPECT_END    10  /**< @brief Unexpect end       */
-#define FINSH_ERROR_UNKNOWN_TOKEN   11  /**< @brief Unknown token      */
-#define FINSH_ERROR_NO_FLOAT        12  /**< @brief 不支持浮点运算     */
-#define FINSH_ERROR_UNKNOWN_SYMBOL  13  /**< @brief Unknown symbol     */
-#define FINSH_ERROR_NULL_NODE       14  /**< @brief 空节点             */
+#define FINSH_ERROR_OK              0   /**< No error           */
+#define FINSH_ERROR_INVALID_TOKEN   1   /**< Invalid token      */
+#define FINSH_ERROR_EXPECT_TYPE     2   /**< Expect a type      */
+#define FINSH_ERROR_UNKNOWN_TYPE    3   /**< Unknown type       */
+#define FINSH_ERROR_VARIABLE_EXIST  4   /**< Variable exist     */
+#define FINSH_ERROR_EXPECT_OPERATOR 5   /**< Expect a operator  */
+#define FINSH_ERROR_MEMORY_FULL     6   /**< Memory full        */
+#define FINSH_ERROR_UNKNOWN_OP      7   /**< Unknown operator   */
+#define FINSH_ERROR_UNKNOWN_NODE    8   /**< Unknown node       */
+#define FINSH_ERROR_EXPECT_CHAR     9   /**< Expect a character */
+#define FINSH_ERROR_UNEXPECT_END    10  /**< Unexpect end       */
+#define FINSH_ERROR_UNKNOWN_TOKEN   11  /**< Unknown token      */
+#define FINSH_ERROR_NO_FLOAT        12  /**< Float not supported */
+#define FINSH_ERROR_UNKNOWN_SYMBOL  13  /**< Unknown symbol     */
+#define FINSH_ERROR_NULL_NODE       14  /**< Null node          */
 /*@}*/
 
 /* system call item */
@@ -192,7 +192,7 @@ struct finsh_parser
 /**
  * @ingroup finsh
  *
- * finsh shell的基本数据类型
+ * The basic data type in finsh shell
  */
 enum finsh_type {
     finsh_type_unknown = 0, /**< unknown data type */
@@ -243,23 +243,19 @@ const char* finsh_error_string(uint8_t type);
 /**
  * @ingroup finsh
  *
- * @brief 添加调用函数
- *
- * 该函数将添加一个系统调用到FinSH的运行环境中去。
- * @param name 系统调用的名称
- * @param func 系统调用的函数指针
+ * This function appends a system call to finsh runtime environment
+ * @param name the name of system call
+ * @param func the function pointer of system call
  */
 void finsh_syscall_append(const char* name, syscall_func func);
 
 /**
  * @ingroup finsh
  *
- * @brief 添加环境变量
- *
- * 该函数将添加一个系统变量到FinSH的运行环境中去。
- * @param name 系统变量的名称
- * @param type 系统变量的数据类型
- * @param addr 系统变量的地址
+ * This function appends a system variable to finsh runtime environment
+ * @param name the name of system variable
+ * @param type the data type of system variable
+ * @param addr the address of system variable
  */
 void finsh_sysvar_append(const char* name, uint8_t type, void* addr);
 #endif

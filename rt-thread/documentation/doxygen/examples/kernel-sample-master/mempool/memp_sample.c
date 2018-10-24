@@ -9,11 +9,11 @@
  */ 
 
 /*
- * ³ÌĞòÇåµ¥£ºÄÚ´æ³ØÀı³Ì
+ * ç¨‹åºæ¸…å•ï¼šå†…å­˜æ± ä¾‹ç¨‹
  *
- * Õâ¸ö³ÌĞò»á´´½¨Ò»¸ö¾²Ì¬µÄÄÚ´æ³Ø¶ÔÏó£¬2¸ö¶¯Ì¬Ïß³Ì¡£
- * Ò»¸öÏß³Ì»áÊÔÍ¼´ÓÄÚ´æ³ØÖĞ»ñµÃÄÚ´æ¿é£¬ÁíÒ»¸öÏß³ÌÊÍ·ÅÄÚ´æ¿é
- * ÄÚ´æ¿é
+ * è¿™ä¸ªç¨‹åºä¼šåˆ›å»ºä¸€ä¸ªé™æ€çš„å†…å­˜æ± å¯¹è±¡ï¼Œ2ä¸ªåŠ¨æ€çº¿ç¨‹ã€‚
+ * ä¸€ä¸ªçº¿ç¨‹ä¼šè¯•å›¾ä»å†…å­˜æ± ä¸­è·å¾—å†…å­˜å—ï¼Œå¦ä¸€ä¸ªçº¿ç¨‹é‡Šæ”¾å†…å­˜å—
+ * å†…å­˜å—
  */
 #include <rtthread.h>
 
@@ -25,11 +25,11 @@ static struct rt_mempool mp;
 #define THREAD_STACK_SIZE    512
 #define THREAD_TIMESLICE     5
 
-/* Ö¸ÏòÏß³Ì¿ØÖÆ¿éµÄÖ¸Õë */
+/* æŒ‡å‘çº¿ç¨‹æ§åˆ¶å—çš„æŒ‡é’ˆ */
 static rt_thread_t tid1 = RT_NULL;
 static rt_thread_t tid2 = RT_NULL;
 
-/* Ïß³Ì1Èë¿Ú */
+/* çº¿ç¨‹1å…¥å£ */
 static void thread1_mp_alloc(void *parameter)
 {
     int i;
@@ -37,8 +37,8 @@ static void thread1_mp_alloc(void *parameter)
     {
         if (ptr[i] == RT_NULL)
         {
-            /* ÊÔÍ¼ÉêÇëÄÚ´æ¿é50´Î£¬µ±ÉêÇë²»µ½ÄÚ´æ¿éÊ±£¬
-               Ïß³Ì1¹ÒÆğ£¬×ªÖÁÏß³Ì2ÔËĞĞ */
+            /* è¯•å›¾ç”³è¯·å†…å­˜å—50æ¬¡ï¼Œå½“ç”³è¯·ä¸åˆ°å†…å­˜å—æ—¶ï¼Œ
+               çº¿ç¨‹1æŒ‚èµ·ï¼Œè½¬è‡³çº¿ç¨‹2è¿è¡Œ */
             ptr[i] = rt_mp_alloc(&mp, RT_WAITING_FOREVER);
             if (ptr[i] != RT_NULL)
                 rt_kprintf("allocate No.%d\n", i);
@@ -46,7 +46,7 @@ static void thread1_mp_alloc(void *parameter)
     }
 }
 
-/* Ïß³Ì2Èë¿Ú£¬Ïß³Ì2µÄÓÅÏÈ¼¶±ÈÏß³Ì1µÍ£¬Ó¦¸ÃÏß³Ì1ÏÈ»ñµÃÖ´ĞĞ¡£*/
+/* çº¿ç¨‹2å…¥å£ï¼Œçº¿ç¨‹2çš„ä¼˜å…ˆçº§æ¯”çº¿ç¨‹1ä½ï¼Œåº”è¯¥çº¿ç¨‹1å…ˆè·å¾—æ‰§è¡Œã€‚*/
 static void thread2_mp_release(void *parameter)
 {
     int i;
@@ -54,7 +54,7 @@ static void thread2_mp_release(void *parameter)
     rt_kprintf("thread2 try to release block\n");
     for (i = 0; i < 50 ; i++)
     {
-        /* ÊÍ·ÅËùÓĞ·ÖÅä³É¹¦µÄÄÚ´æ¿é */
+        /* é‡Šæ”¾æ‰€æœ‰åˆ†é…æˆåŠŸçš„å†…å­˜å— */
         if (ptr[i] != RT_NULL)
         {
             rt_kprintf("release block %d\n", i);
@@ -69,10 +69,10 @@ int mempool_sample(void)
     int i;
     for (i = 0; i < 50; i ++) ptr[i] = RT_NULL;
 
-    /* ³õÊ¼»¯ÄÚ´æ³Ø¶ÔÏó */
+    /* åˆå§‹åŒ–å†…å­˜æ± å¯¹è±¡ */
     rt_mp_init(&mp, "mp1", &mempool[0], sizeof(mempool), 80);
 
-    /* ´´½¨Ïß³Ì1£ºÉêÇëÄÚ´æ³Ø */
+    /* åˆ›å»ºçº¿ç¨‹1ï¼šç”³è¯·å†…å­˜æ±  */
     tid1 = rt_thread_create("thread1", thread1_mp_alloc, RT_NULL,
                             THREAD_STACK_SIZE,
                             THREAD_PRIORITY, THREAD_TIMESLICE);
@@ -80,7 +80,7 @@ int mempool_sample(void)
         rt_thread_startup(tid1);
 
 
-    /* ´´½¨Ïß³Ì2£ºÊÍ·ÅÄÚ´æ³Ø*/
+    /* åˆ›å»ºçº¿ç¨‹2ï¼šé‡Šæ”¾å†…å­˜æ± */
     tid2 = rt_thread_create("thread2", thread2_mp_release, RT_NULL,
                             THREAD_STACK_SIZE,
                             THREAD_PRIORITY + 1, THREAD_TIMESLICE);
@@ -90,5 +90,5 @@ int mempool_sample(void)
     return 0;
 }
 
-/* µ¼³öµ½ msh ÃüÁîÁĞ±íÖĞ */
+/* å¯¼å‡ºåˆ° msh å‘½ä»¤åˆ—è¡¨ä¸­ */
 MSH_CMD_EXPORT(mempool_sample, mempool sample);

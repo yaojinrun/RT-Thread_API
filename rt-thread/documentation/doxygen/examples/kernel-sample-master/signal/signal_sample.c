@@ -9,9 +9,9 @@
  */ 
 
 /*
- * ³ÌĞòÇåµ¥£ºĞÅºÅÀı³Ì
+ * ç¨‹åºæ¸…å•ï¼šä¿¡å·ä¾‹ç¨‹
  *
- * Õâ¸öÀı×Ó»á´´½¨Ò»¸öÏß³Ì£¬Ïß³Ì°²×°ĞÅºÅ£¬È»ºó¸øÕâ¸öÏß³Ì·¢ËÍĞÅºÅ¡£
+ * è¿™ä¸ªä¾‹å­ä¼šåˆ›å»ºä¸€ä¸ªçº¿ç¨‹ï¼Œçº¿ç¨‹å®‰è£…ä¿¡å·ï¼Œç„¶åç»™è¿™ä¸ªçº¿ç¨‹å‘é€ä¿¡å·ã€‚
  *
  */
 #include <rtthread.h>
@@ -22,25 +22,25 @@
 
 static rt_thread_t tid1 = RT_NULL;
 
-/* Ïß³Ì1µÄĞÅºÅ´¦Àíº¯Êı */
+/* çº¿ç¨‹1çš„ä¿¡å·å¤„ç†å‡½æ•° */
 void thread1_signal_handler(int sig)
 {
     rt_kprintf("thread1 received signal %d\n", sig);
 }
 
-/* Ïß³Ì1µÄÈë¿Úº¯Êı */
+/* çº¿ç¨‹1çš„å…¥å£å‡½æ•° */
 static void thread1_entry(void *parameter)
 {
     int cnt = 0;
 
-    /* °²×°ĞÅºÅ */
+    /* å®‰è£…ä¿¡å· */
     rt_signal_install(SIGUSR1, thread1_signal_handler);
     rt_signal_unmask(SIGUSR1);
 
-    /* ÔËĞĞ10´Î */
+    /* è¿è¡Œ10æ¬¡ */
     while (cnt < 10)
     {
-        /* Ïß³Ì1²ÉÓÃµÍÓÅÏÈ¼¶ÔËĞĞ£¬Ò»Ö±´òÓ¡¼ÆÊıÖµ */
+        /* çº¿ç¨‹1é‡‡ç”¨ä½ä¼˜å…ˆçº§è¿è¡Œï¼Œä¸€ç›´æ‰“å°è®¡æ•°å€¼ */
         rt_kprintf("thread1 count : %d\n", cnt);
 
         cnt++;
@@ -48,10 +48,10 @@ static void thread1_entry(void *parameter)
     }
 }
 
-/* ĞÅºÅÊ¾ÀıµÄ³õÊ¼»¯ */
+/* ä¿¡å·ç¤ºä¾‹çš„åˆå§‹åŒ– */
 int signal_sample(void)
 {
-    /* ´´½¨Ïß³Ì1 */
+    /* åˆ›å»ºçº¿ç¨‹1 */
     tid1 = rt_thread_create("thread1",
                             thread1_entry, RT_NULL,
                             THREAD_STACK_SIZE,
@@ -62,11 +62,11 @@ int signal_sample(void)
 
     rt_thread_mdelay(300);
 
-    /* ·¢ËÍĞÅºÅ SIGUSR1 ¸øÏß³Ì1 */
+    /* å‘é€ä¿¡å· SIGUSR1 ç»™çº¿ç¨‹1 */
     rt_thread_kill(tid1, SIGUSR1);
 
     return 0;
 }
 
-/* µ¼³öµ½ msh ÃüÁîÁĞ±íÖĞ */
+/* å¯¼å‡ºåˆ° msh å‘½ä»¤åˆ—è¡¨ä¸­ */
 MSH_CMD_EXPORT(signal_sample, signal sample);
