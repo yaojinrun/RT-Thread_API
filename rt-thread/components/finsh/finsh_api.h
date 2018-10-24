@@ -190,10 +190,12 @@ struct finsh_syscall* finsh_syscall_lookup(const char* name);
 /**
  * @ingroup finsh
  *
- * This macro exports a system function to finsh shell.
+ * @brief 自定义msh 命令
  *
- * @param name the name of function.
- * @param desc the description of function, which will show in help.
+ * 自定义的msh 命令，可以在msh 模式下被运行，将一个命令导出到msh 模式可以使用如下宏该接口。
+ *
+ * @param name 要导出的命令
+ * @param desc 导出命令的描述
  */
 #define FINSH_FUNCTION_EXPORT(name, desc)   \
     FINSH_FUNCTION_EXPORT_CMD(name, name, desc)
@@ -201,11 +203,18 @@ struct finsh_syscall* finsh_syscall_lookup(const char* name);
 /**
  * @ingroup finsh
  *
- * This macro exports a system function with an alias name to finsh shell.
+ * @brief 自定义命令重命名
  *
- * @param name the name of function.
- * @param alias the alias name of function.
- * @param desc the description of function, which will show in help.
+ * FinSH 的函数名字长度有一定限制，它由finsh.h 中的宏定义FinSH_NAME_MAX 控制，默认
+ * 是16 字节，这意味着FinSH 命令长度不会超过16 字节。这里有个潜在的问题。当一个函数名长
+ * 度超过FinSH_NAME_MAX 时，使用FinSH_FUNCTION_EXPORT 导出这个函数到命令表中后，
+ * 在FinSH 符号表中看到完整的函数名，但是完整输入执行会出现null node 错误。这是因为虽然显
+ * 示了完整的函数名，但是实际上FinSH 中却保存了前16 字节作为命令，过多的输入会导致无法正
+ * 确找到命令，这时就可以使用FinSH_FUNCTION_EXPORT_ALIAS 来对导出的命令进行重命名。
+ *
+ * @param name 要导出的命令
+ * @param alias 导出到FinSH 时显示的名字
+ * @param desc 导出命令的描述
  */
 #define FINSH_FUNCTION_EXPORT_ALIAS(name, alias, desc)  \
         FINSH_FUNCTION_EXPORT_CMD(name, alias, desc)
@@ -213,10 +222,12 @@ struct finsh_syscall* finsh_syscall_lookup(const char* name);
 /**
  * @ingroup finsh
  *
- * This macro exports a command to module shell.
+ * @brief 自定义C-Style 命令和变量
  *
- * @param command the name of command.
- * @param desc the description of command, which will show in help.
+ * 该接口可以将自定义命令导出到C-Style 模式。
+ *
+ * @param command 要导出的命令
+ * @param desc 导出命令的描述
  */
 #ifdef FINSH_USING_MSH
 #define MSH_CMD_EXPORT(command, desc)   \

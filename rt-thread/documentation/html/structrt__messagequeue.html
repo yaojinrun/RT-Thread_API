@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-Thread RTOS: rt_messagequeue结构体 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-Thread RTOS
+   &#160;<span id="projectnumber">3.1.0</span>
+   </div>
+   <div id="projectbrief">An open source embedded real-time operating system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.10 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li class="current"><a href="annotated.html"><span>结构体</span></a></li>
+      <li><a href="examples.html"><span>示例</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li><a href="classes.html"><span>结构体索引</span></a></li>
+      <li><a href="functions.html"><span>成员变量</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-attribs">成员变量</a>  </div>
+  <div class="headertitle">
+<div class="title">rt_messagequeue结构体 参考<div class="ingroups"><a class="el" href="group___kernel.html">内核</a> &raquo; <a class="el" href="group___i_p_c.html">线程间通讯</a> &raquo; <a class="el" href="group__messagequeue.html">消息队列</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>消息队列结构体定义  
+ <a href="structrt__messagequeue.html#details">更多...</a></p>
+
+<p><code>#include &lt;rtdef.h&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+成员变量</h2></td></tr>
+<tr class="memitem:a24763c7e54bb3f4783daf3fb9c103dfe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a24763c7e54bb3f4783daf3fb9c103dfe"></a>
+struct <a class="el" href="structrt__ipc__object.html">rt_ipc_object</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__messagequeue.html#a24763c7e54bb3f4783daf3fb9c103dfe">parent</a></td></tr>
+<tr class="memdesc:a24763c7e54bb3f4783daf3fb9c103dfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">继承自 ipc_object <br /></td></tr>
+<tr class="separator:a24763c7e54bb3f4783daf3fb9c103dfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add66b801d59516f96b5657f820db545c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="add66b801d59516f96b5657f820db545c"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__messagequeue.html#add66b801d59516f96b5657f820db545c">msg_pool</a></td></tr>
+<tr class="memdesc:add66b801d59516f96b5657f820db545c"><td class="mdescLeft">&#160;</td><td class="mdescRight">消息队列的起始地址 <br /></td></tr>
+<tr class="separator:add66b801d59516f96b5657f820db545c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63b5552f40bacdf02983bf9cf4cad24d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a63b5552f40bacdf02983bf9cf4cad24d"></a>
+<a class="el" href="group___basic_def.html#ga5acba55f46553417996ac70828b874da">rt_uint16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__messagequeue.html#a63b5552f40bacdf02983bf9cf4cad24d">msg_size</a></td></tr>
+<tr class="memdesc:a63b5552f40bacdf02983bf9cf4cad24d"><td class="mdescLeft">&#160;</td><td class="mdescRight">每条消息的消息大小 <br /></td></tr>
+<tr class="separator:a63b5552f40bacdf02983bf9cf4cad24d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac14765aec551079b253e817ff8e5373b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac14765aec551079b253e817ff8e5373b"></a>
+<a class="el" href="group___basic_def.html#ga5acba55f46553417996ac70828b874da">rt_uint16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__messagequeue.html#ac14765aec551079b253e817ff8e5373b">max_msgs</a></td></tr>
+<tr class="memdesc:ac14765aec551079b253e817ff8e5373b"><td class="mdescLeft">&#160;</td><td class="mdescRight">最大消息数 <br /></td></tr>
+<tr class="separator:ac14765aec551079b253e817ff8e5373b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad92b222d4d0dce750c9055f0499988c1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad92b222d4d0dce750c9055f0499988c1"></a>
+<a class="el" href="group___basic_def.html#ga5acba55f46553417996ac70828b874da">rt_uint16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__messagequeue.html#ad92b222d4d0dce750c9055f0499988c1">entry</a></td></tr>
+<tr class="memdesc:ad92b222d4d0dce750c9055f0499988c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">队列中的消息索引 <br /></td></tr>
+<tr class="separator:ad92b222d4d0dce750c9055f0499988c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf1a21b9e2f00b53544ed695e4d2aacc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaf1a21b9e2f00b53544ed695e4d2aacc"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__messagequeue.html#aaf1a21b9e2f00b53544ed695e4d2aacc">msg_queue_head</a></td></tr>
+<tr class="memdesc:aaf1a21b9e2f00b53544ed695e4d2aacc"><td class="mdescLeft">&#160;</td><td class="mdescRight">链表头 <br /></td></tr>
+<tr class="separator:aaf1a21b9e2f00b53544ed695e4d2aacc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c28b474eea1aaacfc75e870dbd50162"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3c28b474eea1aaacfc75e870dbd50162"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__messagequeue.html#a3c28b474eea1aaacfc75e870dbd50162">msg_queue_tail</a></td></tr>
+<tr class="memdesc:a3c28b474eea1aaacfc75e870dbd50162"><td class="mdescLeft">&#160;</td><td class="mdescRight">链表尾 <br /></td></tr>
+<tr class="separator:a3c28b474eea1aaacfc75e870dbd50162"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af45a62f5084904df25be7d63b2252c85"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af45a62f5084904df25be7d63b2252c85"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__messagequeue.html#af45a62f5084904df25be7d63b2252c85">msg_queue_free</a></td></tr>
+<tr class="memdesc:af45a62f5084904df25be7d63b2252c85"><td class="mdescLeft">&#160;</td><td class="mdescRight">指向队列中的空闲节点的指针 <br /></td></tr>
+<tr class="separator:af45a62f5084904df25be7d63b2252c85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>消息队列结构体定义 </p>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2018年 十月 25日 星期四 00:39:49 , 为 RT-Thread RTOS使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>

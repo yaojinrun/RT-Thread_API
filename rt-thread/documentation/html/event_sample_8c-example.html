@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-Thread RTOS: event_sample.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-Thread RTOS
+   &#160;<span id="projectnumber">3.1.0</span>
+   </div>
+   <div id="projectbrief">An open source embedded real-time operating system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.10 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li><a href="examples.html"><span>示例</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">event_sample.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><span class="comment">/* </span></div>
+<div class="line"><span class="comment"> * Copyright (c) 2006-2018, RT-Thread Development Team </span></div>
+<div class="line"><span class="comment"> * </span></div>
+<div class="line"><span class="comment"> * SPDX-License-Identifier: Apache-2.0 </span></div>
+<div class="line"><span class="comment"> * </span></div>
+<div class="line"><span class="comment"> * Change Logs: </span></div>
+<div class="line"><span class="comment"> * Date           Author       Notes </span></div>
+<div class="line"><span class="comment"> * 2018-08-24     yangjie      the first version </span></div>
+<div class="line"><span class="comment"> */</span> </div>
+<div class="line"></div>
+<div class="line"><span class="comment">/*</span></div>
+<div class="line"><span class="comment"> * 程序清单：事件例程</span></div>
+<div class="line"><span class="comment"> *</span></div>
+<div class="line"><span class="comment"> * 程序会初始化2个线程及初始化一个静态事件对象</span></div>
+<div class="line"><span class="comment"> * 一个线程等待于事件对象上，以接收事件；</span></div>
+<div class="line"><span class="comment"> * 一个线程发送事件 (事件3/事件5)</span></div>
+<div class="line"><span class="comment">*/</span></div>
+<div class="line"><span class="preprocessor">#include &lt;rtthread.h&gt;</span></div>
+<div class="line"></div>
+<div class="line"><span class="preprocessor">#define THREAD_PRIORITY      9</span></div>
+<div class="line"><span class="preprocessor">#define THREAD_TIMESLICE     5</span></div>
+<div class="line"></div>
+<div class="line"><span class="preprocessor">#define EVENT_FLAG3 (1 &lt;&lt; 3)</span></div>
+<div class="line"><span class="preprocessor">#define EVENT_FLAG5 (1 &lt;&lt; 5)</span></div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* 事件控制块 */</span></div>
+<div class="line"><span class="keyword">static</span> <span class="keyword">struct </span><a name="_a0"></a><a class="code" href="structrt__event.html" title="事件结构体定义 ">rt_event</a> event;</div>
+<div class="line"></div>
+<div class="line">ALIGN(RT_ALIGN_SIZE)</div>
+<div class="line">static <span class="keywordtype">char</span> thread1_stack[1024];</div>
+<div class="line">static struct <a name="_a1"></a><a class="code" href="structrt__thread.html" title="线程对象控制块 ">rt_thread</a> thread1;</div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* 线程1入口函数 */</span></div>
+<div class="line">static <span class="keywordtype">void</span> thread1_recv_event(<span class="keywordtype">void</span> *param)</div>
+<div class="line">{</div>
+<div class="line">    <a class="code" href="group___basic_def.html#ga909edcac80e5e3f93f63fcebc95922c7" title="32位无符号整数类型 ">rt_uint32_t</a> e;</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 第一次接收事件，事件3或事件5任意一个可以触发线程1，接收完后清除事件标志 */</span></div>
+<div class="line">    <span class="keywordflow">if</span> (<a name="a2"></a><a class="code" href="group__event.html#ga77e0517918bc7dabd458c2a751a59263" title="接收事件 ">rt_event_recv</a>(&amp;event, (EVENT_FLAG3 | EVENT_FLAG5),</div>
+<div class="line">                      <a name="a3"></a><a class="code" href="group__event.html#ga1685d2d8ef3af705fdc297405eda02ba" title="逻辑或参数 ">RT_EVENT_FLAG_OR</a> | <a name="a4"></a><a class="code" href="group__event.html#gaf1c42d6c619445f9151e76c3242ef052" title="清除参数 ">RT_EVENT_FLAG_CLEAR</a>,</div>
+<div class="line">                      <a name="a5"></a><a class="code" href="group___i_p_c.html#ga923d8e409f9daa8843978d6805ebcdeb" title="永远阻塞直到获得资源。 ">RT_WAITING_FOREVER</a>, &amp;e) == <a name="a6"></a><a class="code" href="group___error.html#gaaaddfb31f867cc924e0220470aaaec5f" title="无错误 ">RT_EOK</a>)</div>
+<div class="line">    {</div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;thread1: OR recv event 0x%x\n&quot;</span>, e);</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    rt_kprintf(<span class="stringliteral">&quot;thread1: delay 1s to prepare the second event\n&quot;</span>);</div>
+<div class="line">    <a name="a7"></a><a class="code" href="group___thread.html#ga4ba0dbf06d5fa05f469da371ff6d2876" title="线程毫秒延时函数 ">rt_thread_mdelay</a>(1000);</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 第二次接收事件，事件3和事件5均发生时才可以触发线程1，接收完后清除事件标志 */</span></div>
+<div class="line">    <span class="keywordflow">if</span> (<a class="code" href="group__event.html#ga77e0517918bc7dabd458c2a751a59263" title="接收事件 ">rt_event_recv</a>(&amp;event, (EVENT_FLAG3 | EVENT_FLAG5),</div>
+<div class="line">                      <a name="a8"></a><a class="code" href="group__event.html#ga449614d0024ade7e81e53462bce12a60" title="逻辑与参数 ">RT_EVENT_FLAG_AND</a> | <a class="code" href="group__event.html#gaf1c42d6c619445f9151e76c3242ef052" title="清除参数 ">RT_EVENT_FLAG_CLEAR</a>,</div>
+<div class="line">                      <a class="code" href="group___i_p_c.html#ga923d8e409f9daa8843978d6805ebcdeb" title="永远阻塞直到获得资源。 ">RT_WAITING_FOREVER</a>, &amp;e) == <a class="code" href="group___error.html#gaaaddfb31f867cc924e0220470aaaec5f" title="无错误 ">RT_EOK</a>)</div>
+<div class="line">    {</div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;thread1: AND recv event 0x%x\n&quot;</span>, e);</div>
+<div class="line">    }</div>
+<div class="line">    rt_kprintf(<span class="stringliteral">&quot;thread1 leave.\n&quot;</span>);</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"></div>
+<div class="line">ALIGN(RT_ALIGN_SIZE)</div>
+<div class="line">static <span class="keywordtype">char</span> thread2_stack[1024];</div>
+<div class="line">static struct <a class="code" href="structrt__thread.html" title="线程对象控制块 ">rt_thread</a> thread2;</div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* 线程2入口 */</span></div>
+<div class="line">static <span class="keywordtype">void</span> thread2_send_event(<span class="keywordtype">void</span> *param)</div>
+<div class="line">{</div>
+<div class="line">    rt_kprintf(<span class="stringliteral">&quot;thread2: send event3\n&quot;</span>);</div>
+<div class="line">    <a name="a9"></a><a class="code" href="group__event.html#ga92efdf32aaf073d733f3bafd02d730e5" title="发送事件 ">rt_event_send</a>(&amp;event, EVENT_FLAG3);</div>
+<div class="line">    <a class="code" href="group___thread.html#ga4ba0dbf06d5fa05f469da371ff6d2876" title="线程毫秒延时函数 ">rt_thread_mdelay</a>(200);</div>
+<div class="line"></div>
+<div class="line">    rt_kprintf(<span class="stringliteral">&quot;thread2: send event5\n&quot;</span>);</div>
+<div class="line">    <a class="code" href="group__event.html#ga92efdf32aaf073d733f3bafd02d730e5" title="发送事件 ">rt_event_send</a>(&amp;event, EVENT_FLAG5);</div>
+<div class="line">    <a class="code" href="group___thread.html#ga4ba0dbf06d5fa05f469da371ff6d2876" title="线程毫秒延时函数 ">rt_thread_mdelay</a>(200);</div>
+<div class="line"></div>
+<div class="line">    rt_kprintf(<span class="stringliteral">&quot;thread2: send event3\n&quot;</span>);</div>
+<div class="line">    <a class="code" href="group__event.html#ga92efdf32aaf073d733f3bafd02d730e5" title="发送事件 ">rt_event_send</a>(&amp;event, EVENT_FLAG3);</div>
+<div class="line">    rt_kprintf(<span class="stringliteral">&quot;thread2 leave.\n&quot;</span>);</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="keywordtype">int</span> event_sample(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">    <a class="code" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950" title="错误号类型 ">rt_err_t</a> result;</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 初始化事件对象 */</span></div>
+<div class="line">    result = <a name="a10"></a><a class="code" href="group__event.html#gab0fad38227b1ebd616a807a09f2eb772" title="初始化事件集 ">rt_event_init</a>(&amp;event, <span class="stringliteral">&quot;event&quot;</span>, <a name="a11"></a><a class="code" href="group___i_p_c.html#ga1b618f6714ea8f49a45ea4d105aaf5d5" title="FIFOed IPC. 线程间通讯. ">RT_IPC_FLAG_FIFO</a>);</div>
+<div class="line">    <span class="keywordflow">if</span> (result != <a class="code" href="group___error.html#gaaaddfb31f867cc924e0220470aaaec5f" title="无错误 ">RT_EOK</a>)</div>
+<div class="line">    {</div>
+<div class="line">        rt_kprintf(<span class="stringliteral">&quot;init event failed.\n&quot;</span>);</div>
+<div class="line">        <span class="keywordflow">return</span> -1;</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    <a name="a12"></a><a class="code" href="group___thread.html#gacd985aa60939b95e510f144610f001b9" title="初始化线程 ">rt_thread_init</a>(&amp;thread1,</div>
+<div class="line">                   <span class="stringliteral">&quot;thread1&quot;</span>,</div>
+<div class="line">                   thread1_recv_event,</div>
+<div class="line">                   <a name="a13"></a><a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>,</div>
+<div class="line">                   &amp;thread1_stack[0],</div>
+<div class="line">                   <span class="keyword">sizeof</span>(thread1_stack),</div>
+<div class="line">                   THREAD_PRIORITY - 1, THREAD_TIMESLICE);</div>
+<div class="line">    <a name="a14"></a><a class="code" href="group___thread.html#ga04b743537fd099e204fc292e57b4aa5a" title="启动线程 ">rt_thread_startup</a>(&amp;thread1);</div>
+<div class="line"></div>
+<div class="line">    <a class="code" href="group___thread.html#gacd985aa60939b95e510f144610f001b9" title="初始化线程 ">rt_thread_init</a>(&amp;thread2,</div>
+<div class="line">                   <span class="stringliteral">&quot;thread2&quot;</span>,</div>
+<div class="line">                   thread2_send_event,</div>
+<div class="line">                   <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>,</div>
+<div class="line">                   &amp;thread2_stack[0],</div>
+<div class="line">                   <span class="keyword">sizeof</span>(thread2_stack),</div>
+<div class="line">                   THREAD_PRIORITY, THREAD_TIMESLICE);</div>
+<div class="line">    <a class="code" href="group___thread.html#ga04b743537fd099e204fc292e57b4aa5a" title="启动线程 ">rt_thread_startup</a>(&amp;thread2);</div>
+<div class="line"></div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* 导出到 msh 命令列表中 */</span></div>
+<div class="line"><a name="a15"></a><a class="code" href="group__finsh.html#ga8d756c1e1b9bd44c94a3f97ef62fb02b" title="自定义C-Style 命令和变量 ">MSH_CMD_EXPORT</a>(event_sample, event sample);</div>
+</div><!-- fragment --> </div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2018年 十月 25日 星期四 00:36:34 , 为 RT-Thread RTOS使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>

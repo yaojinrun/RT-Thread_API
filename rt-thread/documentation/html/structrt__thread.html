@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-Thread RTOS: rt_thread结构体 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-Thread RTOS
+   &#160;<span id="projectnumber">3.1.0</span>
+   </div>
+   <div id="projectbrief">An open source embedded real-time operating system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.10 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li class="current"><a href="annotated.html"><span>结构体</span></a></li>
+      <li><a href="examples.html"><span>示例</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li><a href="classes.html"><span>结构体索引</span></a></li>
+      <li><a href="functions.html"><span>成员变量</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-attribs">成员变量</a>  </div>
+  <div class="headertitle">
+<div class="title">rt_thread结构体 参考<div class="ingroups"><a class="el" href="group___kernel.html">内核</a> &raquo; <a class="el" href="group___thread.html">线程管理</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>线程对象控制块  
+ <a href="structrt__thread.html#details">更多...</a></p>
+
+<p><code>#include &lt;rtdef.h&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+成员变量</h2></td></tr>
+<tr class="memitem:a89b5c7fb22abb868056586e365b3fbd3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a89b5c7fb22abb868056586e365b3fbd3"></a>
+char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__thread.html#a89b5c7fb22abb868056586e365b3fbd3">name</a> [RT_NAME_MAX]</td></tr>
+<tr class="memdesc:a89b5c7fb22abb868056586e365b3fbd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">线程名称 <br /></td></tr>
+<tr class="separator:a89b5c7fb22abb868056586e365b3fbd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e66117dc5b76db6d0d78aa3077b57da"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9e66117dc5b76db6d0d78aa3077b57da"></a>
+<a class="el" href="group___basic_def.html#ga585e2ad0fbab0f83817cb61373465df6">rt_uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__thread.html#a9e66117dc5b76db6d0d78aa3077b57da">type</a></td></tr>
+<tr class="memdesc:a9e66117dc5b76db6d0d78aa3077b57da"><td class="mdescLeft">&#160;</td><td class="mdescRight">对象类型 <br /></td></tr>
+<tr class="separator:a9e66117dc5b76db6d0d78aa3077b57da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a62e2cba8609469b351472d615fd326"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0a62e2cba8609469b351472d615fd326"></a>
+<a class="el" href="group___basic_def.html#ga585e2ad0fbab0f83817cb61373465df6">rt_uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__thread.html#a0a62e2cba8609469b351472d615fd326">flags</a></td></tr>
+<tr class="memdesc:a0a62e2cba8609469b351472d615fd326"><td class="mdescLeft">&#160;</td><td class="mdescRight">线程的参数 <br /></td></tr>
+<tr class="separator:a0a62e2cba8609469b351472d615fd326"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30dd781aa72ce771beef5ed7a4cdbbd7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a30dd781aa72ce771beef5ed7a4cdbbd7"></a>
+<a class="el" href="group__list.html#ga8e0e590336e9435f976bf672d844547c">rt_list_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__thread.html#a30dd781aa72ce771beef5ed7a4cdbbd7">list</a></td></tr>
+<tr class="memdesc:a30dd781aa72ce771beef5ed7a4cdbbd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">链表对象 <br /></td></tr>
+<tr class="separator:a30dd781aa72ce771beef5ed7a4cdbbd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8484a36933357e7c6f871364d9f2d3a9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8484a36933357e7c6f871364d9f2d3a9"></a>
+<a class="el" href="group__list.html#ga8e0e590336e9435f976bf672d844547c">rt_list_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__thread.html#a8484a36933357e7c6f871364d9f2d3a9">tlist</a></td></tr>
+<tr class="memdesc:a8484a36933357e7c6f871364d9f2d3a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">线程链表 <br /></td></tr>
+<tr class="separator:a8484a36933357e7c6f871364d9f2d3a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc9d01c30e0fc9872df2fd5c044e31e0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abc9d01c30e0fc9872df2fd5c044e31e0"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__thread.html#abc9d01c30e0fc9872df2fd5c044e31e0">sp</a></td></tr>
+<tr class="memdesc:abc9d01c30e0fc9872df2fd5c044e31e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">栈指针 <br /></td></tr>
+<tr class="separator:abc9d01c30e0fc9872df2fd5c044e31e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcdaf75f05998c6485544c337526da52"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adcdaf75f05998c6485544c337526da52"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__thread.html#adcdaf75f05998c6485544c337526da52">entry</a></td></tr>
+<tr class="memdesc:adcdaf75f05998c6485544c337526da52"><td class="mdescLeft">&#160;</td><td class="mdescRight">入口函数指针 <br /></td></tr>
+<tr class="separator:adcdaf75f05998c6485544c337526da52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a153b0810eaeb3c0508f3fdc9027a301e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a153b0810eaeb3c0508f3fdc9027a301e"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__thread.html#a153b0810eaeb3c0508f3fdc9027a301e">parameter</a></td></tr>
+<tr class="memdesc:a153b0810eaeb3c0508f3fdc9027a301e"><td class="mdescLeft">&#160;</td><td class="mdescRight">线程入口参数 <br /></td></tr>
+<tr class="separator:a153b0810eaeb3c0508f3fdc9027a301e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bb90555aaff4a54699c88c2789e0407"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2bb90555aaff4a54699c88c2789e0407"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__thread.html#a2bb90555aaff4a54699c88c2789e0407">stack_addr</a></td></tr>
+<tr class="memdesc:a2bb90555aaff4a54699c88c2789e0407"><td class="mdescLeft">&#160;</td><td class="mdescRight">堆栈地址 <br /></td></tr>
+<tr class="separator:a2bb90555aaff4a54699c88c2789e0407"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf14bbabd599363a418c687a668fa164"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adf14bbabd599363a418c687a668fa164"></a>
+<a class="el" href="group___basic_def.html#ga909edcac80e5e3f93f63fcebc95922c7">rt_uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__thread.html#adf14bbabd599363a418c687a668fa164">stack_size</a></td></tr>
+<tr class="memdesc:adf14bbabd599363a418c687a668fa164"><td class="mdescLeft">&#160;</td><td class="mdescRight">堆栈大小 <br /></td></tr>
+<tr class="separator:adf14bbabd599363a418c687a668fa164"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32eec53f34cb610335b085a642e6e995"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a32eec53f34cb610335b085a642e6e995"></a>
+<a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__thread.html#a32eec53f34cb610335b085a642e6e995">error</a></td></tr>
+<tr class="memdesc:a32eec53f34cb610335b085a642e6e995"><td class="mdescLeft">&#160;</td><td class="mdescRight">错误代码 <br /></td></tr>
+<tr class="separator:a32eec53f34cb610335b085a642e6e995"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16a3dd776f8cfed732deda73535dbb00"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a16a3dd776f8cfed732deda73535dbb00"></a>
+<a class="el" href="group___basic_def.html#ga585e2ad0fbab0f83817cb61373465df6">rt_uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__thread.html#a16a3dd776f8cfed732deda73535dbb00">stat</a></td></tr>
+<tr class="memdesc:a16a3dd776f8cfed732deda73535dbb00"><td class="mdescLeft">&#160;</td><td class="mdescRight">线程状态 <br /></td></tr>
+<tr class="separator:a16a3dd776f8cfed732deda73535dbb00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90875799a0ea47e5558f104702a20548"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a90875799a0ea47e5558f104702a20548"></a>
+<a class="el" href="group___basic_def.html#ga585e2ad0fbab0f83817cb61373465df6">rt_uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__thread.html#a90875799a0ea47e5558f104702a20548">current_priority</a></td></tr>
+<tr class="memdesc:a90875799a0ea47e5558f104702a20548"><td class="mdescLeft">&#160;</td><td class="mdescRight">当前优先级 <br /></td></tr>
+<tr class="separator:a90875799a0ea47e5558f104702a20548"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a281785b80ad0dc2e7d0c5404d32c67f9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a281785b80ad0dc2e7d0c5404d32c67f9"></a>
+<a class="el" href="group___basic_def.html#ga585e2ad0fbab0f83817cb61373465df6">rt_uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__thread.html#a281785b80ad0dc2e7d0c5404d32c67f9">init_priority</a></td></tr>
+<tr class="memdesc:a281785b80ad0dc2e7d0c5404d32c67f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化优先级 <br /></td></tr>
+<tr class="separator:a281785b80ad0dc2e7d0c5404d32c67f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10123bbba9bac83b783aeaf0b9897150"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a10123bbba9bac83b783aeaf0b9897150"></a>
+rt_sigset_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__thread.html#a10123bbba9bac83b783aeaf0b9897150">sig_pending</a></td></tr>
+<tr class="memdesc:a10123bbba9bac83b783aeaf0b9897150"><td class="mdescLeft">&#160;</td><td class="mdescRight">待处理的信号 <br /></td></tr>
+<tr class="separator:a10123bbba9bac83b783aeaf0b9897150"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fe928396dbd5d5c11d5a4da92df83e4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5fe928396dbd5d5c11d5a4da92df83e4"></a>
+rt_sigset_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__thread.html#a5fe928396dbd5d5c11d5a4da92df83e4">sig_mask</a></td></tr>
+<tr class="memdesc:a5fe928396dbd5d5c11d5a4da92df83e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">信号的掩码位 <br /></td></tr>
+<tr class="separator:a5fe928396dbd5d5c11d5a4da92df83e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1cd47fed3fef13aa5bf71b8bf8836c9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac1cd47fed3fef13aa5bf71b8bf8836c9"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__thread.html#ac1cd47fed3fef13aa5bf71b8bf8836c9">sig_ret</a></td></tr>
+<tr class="memdesc:ac1cd47fed3fef13aa5bf71b8bf8836c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">信号返回的堆栈指针 <br /></td></tr>
+<tr class="separator:ac1cd47fed3fef13aa5bf71b8bf8836c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ed853def059b9f8e6f20c8bde0dda54"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2ed853def059b9f8e6f20c8bde0dda54"></a>
+rt_sighandler_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__thread.html#a2ed853def059b9f8e6f20c8bde0dda54">sig_vectors</a></td></tr>
+<tr class="memdesc:a2ed853def059b9f8e6f20c8bde0dda54"><td class="mdescLeft">&#160;</td><td class="mdescRight">信号处理的向量 <br /></td></tr>
+<tr class="separator:a2ed853def059b9f8e6f20c8bde0dda54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a636f6b568ba110e7c798f3a5fbfe6be5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a636f6b568ba110e7c798f3a5fbfe6be5"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__thread.html#a636f6b568ba110e7c798f3a5fbfe6be5">si_list</a></td></tr>
+<tr class="memdesc:a636f6b568ba110e7c798f3a5fbfe6be5"><td class="mdescLeft">&#160;</td><td class="mdescRight">信号列表 <br /></td></tr>
+<tr class="separator:a636f6b568ba110e7c798f3a5fbfe6be5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3da450b626778b5cf1125174783c1989"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3da450b626778b5cf1125174783c1989"></a>
+<a class="el" href="group___basic_def.html#ga958cc0f5d3f7bf59850cd8bd13a4aeb0">rt_ubase_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__thread.html#a3da450b626778b5cf1125174783c1989">init_tick</a></td></tr>
+<tr class="memdesc:a3da450b626778b5cf1125174783c1989"><td class="mdescLeft">&#160;</td><td class="mdescRight">线程的初始化时钟节拍 <br /></td></tr>
+<tr class="separator:a3da450b626778b5cf1125174783c1989"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a763db3299b6a4c69ad7aa5b7815f3daf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a763db3299b6a4c69ad7aa5b7815f3daf"></a>
+<a class="el" href="group___basic_def.html#ga958cc0f5d3f7bf59850cd8bd13a4aeb0">rt_ubase_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__thread.html#a763db3299b6a4c69ad7aa5b7815f3daf">remaining_tick</a></td></tr>
+<tr class="memdesc:a763db3299b6a4c69ad7aa5b7815f3daf"><td class="mdescLeft">&#160;</td><td class="mdescRight">剩余时钟节拍数 <br /></td></tr>
+<tr class="separator:a763db3299b6a4c69ad7aa5b7815f3daf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac787f3fbcdc5f8d012f2d6d9923f5560"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac787f3fbcdc5f8d012f2d6d9923f5560"></a>
+struct <a class="el" href="structrt__timer.html">rt_timer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__thread.html#ac787f3fbcdc5f8d012f2d6d9923f5560">thread_timer</a></td></tr>
+<tr class="memdesc:ac787f3fbcdc5f8d012f2d6d9923f5560"><td class="mdescLeft">&#160;</td><td class="mdescRight">线程的内置计时器 <br /></td></tr>
+<tr class="separator:ac787f3fbcdc5f8d012f2d6d9923f5560"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adff54753361e1c2a06d471d1cae5fea9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adff54753361e1c2a06d471d1cae5fea9"></a>
+void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__thread.html#adff54753361e1c2a06d471d1cae5fea9">cleanup</a> )(struct <a class="el" href="structrt__thread.html">rt_thread</a> *tid)</td></tr>
+<tr class="memdesc:adff54753361e1c2a06d471d1cae5fea9"><td class="mdescLeft">&#160;</td><td class="mdescRight">线程退出时的清理回调函数 <br /></td></tr>
+<tr class="separator:adff54753361e1c2a06d471d1cae5fea9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad237699b29310d61d8d709253782372b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad237699b29310d61d8d709253782372b"></a>
+<a class="el" href="group___basic_def.html#ga909edcac80e5e3f93f63fcebc95922c7">rt_uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__thread.html#ad237699b29310d61d8d709253782372b">user_data</a></td></tr>
+<tr class="memdesc:ad237699b29310d61d8d709253782372b"><td class="mdescLeft">&#160;</td><td class="mdescRight">线程的私有用户数据 <br /></td></tr>
+<tr class="separator:ad237699b29310d61d8d709253782372b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>线程对象控制块 </p>
+<dl><dt><b>示例: </b></dt><dd><a class="el" href="producer_consumer_8c-example.html#_a0">producer_consumer.c</a>, <a class="el" href="scheduler_hook_8c-example.html#_a3">scheduler_hook.c</a>, <a class="el" href="semaphore_sample_8c-example.html#_a2">semaphore_sample.c</a>, <a class="el" href="thread_8c-example.html#_a0">thread.c</a> , 以及 <a class="el" href="timeslice_sample_8c-example.html#_a2">timeslice_sample.c</a>.</dd>
+</dl></div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2018年 十月 25日 星期四 00:39:49 , 为 RT-Thread RTOS使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>

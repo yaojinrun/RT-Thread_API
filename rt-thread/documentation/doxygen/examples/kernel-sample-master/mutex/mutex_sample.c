@@ -9,18 +9,18 @@
  */ 
 
 /*
- * ç¨‹åºæ¸…å•ï¼šäº’æ–¥é”ä¾‹ç¨‹
+ * ³ÌĞòÇåµ¥£º»¥³âËøÀı³Ì
  *
- * äº’æ–¥é”æ˜¯ä¸€ç§ä¿æŠ¤å…±äº«èµ„æºçš„æ–¹æ³•ã€‚å½“ä¸€ä¸ªçº¿ç¨‹æ‹¥æœ‰äº’æ–¥é”çš„æ—¶å€™ï¼Œ
- * å¯ä»¥ä¿æŠ¤å…±äº«èµ„æºä¸è¢«å…¶ä»–çº¿ç¨‹ç ´åã€‚çº¿ç¨‹1å¯¹2ä¸ªnumberåˆ†åˆ«è¿›è¡ŒåŠ 1æ“ä½œ
- * çº¿ç¨‹2ä¹Ÿä¼šå¯¹2ä¸ªnumberåˆ†åˆ«è¿›è¡ŒåŠ 1æ“ä½œã€‚ä½¿ç”¨äº’æ–¥é‡ä¿è¯2ä¸ªnumberå€¼ä¿æŒä¸€è‡´
+ * »¥³âËøÊÇÒ»ÖÖ±£»¤¹²Ïí×ÊÔ´µÄ·½·¨¡£µ±Ò»¸öÏß³ÌÓµÓĞ»¥³âËøµÄÊ±ºò£¬
+ * ¿ÉÒÔ±£»¤¹²Ïí×ÊÔ´²»±»ÆäËûÏß³ÌÆÆ»µ¡£Ïß³Ì1¶Ô2¸önumber·Ö±ğ½øĞĞ¼Ó1²Ù×÷
+ * Ïß³Ì2Ò²»á¶Ô2¸önumber·Ö±ğ½øĞĞ¼Ó1²Ù×÷¡£Ê¹ÓÃ»¥³âÁ¿±£Ö¤2¸önumberÖµ±£³ÖÒ»ÖÂ
  */
 #include <rtthread.h>
 
 #define THREAD_PRIORITY         8
 #define THREAD_TIMESLICE        5
 
-/* æŒ‡å‘äº’æ–¥é‡çš„æŒ‡é’ˆ */
+/* Ö¸Ïò»¥³âÁ¿µÄÖ¸Õë */
 static rt_mutex_t dynamic_mutex = RT_NULL;
 static rt_uint8_t number1,number2 = 0;
 
@@ -31,7 +31,7 @@ static void rt_thread_entry1(void *parameter)
 {
       while(1)
       {
-          /* çº¿ç¨‹1è·å–åˆ°äº’æ–¥é‡åï¼Œå…ˆåå¯¹number1ã€number2è¿›è¡ŒåŠ 1æ“ä½œï¼Œç„¶åé‡Šæ”¾äº’æ–¥é‡ */
+          /* Ïß³Ì1»ñÈ¡µ½»¥³âÁ¿ºó£¬ÏÈºó¶Ônumber1¡¢number2½øĞĞ¼Ó1²Ù×÷£¬È»ºóÊÍ·Å»¥³âÁ¿ */
           rt_mutex_take(dynamic_mutex, RT_WAITING_FOREVER);          
           number1++;
           rt_thread_mdelay(10);
@@ -47,7 +47,7 @@ static void rt_thread_entry2(void *parameter)
 {     
       while(1)
       {
-          /* çº¿ç¨‹2è·å–åˆ°äº’æ–¥é‡åï¼Œæ£€æŸ¥number1ã€number2çš„å€¼æ˜¯å¦ç›¸åŒï¼Œç›¸åŒåˆ™è¡¨ç¤ºmutexèµ·åˆ°äº†é”çš„ä½œç”¨ */
+          /* Ïß³Ì2»ñÈ¡µ½»¥³âÁ¿ºó£¬¼ì²énumber1¡¢number2µÄÖµÊÇ·ñÏàÍ¬£¬ÏàÍ¬Ôò±íÊ¾mutexÆğµ½ÁËËøµÄ×÷ÓÃ */
           rt_mutex_take(dynamic_mutex, RT_WAITING_FOREVER);
           if(number1 != number2)
           {
@@ -67,10 +67,10 @@ static void rt_thread_entry2(void *parameter)
       }	  
 }
 
-/* äº’æ–¥é‡ç¤ºä¾‹çš„åˆå§‹åŒ– */
+/* »¥³âÁ¿Ê¾ÀıµÄ³õÊ¼»¯ */
 int mutex_sample(void)
 {
-    /* åˆ›å»ºä¸€ä¸ªåŠ¨æ€äº’æ–¥é‡ */
+    /* ´´½¨Ò»¸ö¶¯Ì¬»¥³âÁ¿ */
     dynamic_mutex = rt_mutex_create("dmutex", RT_IPC_FLAG_FIFO);
     if (dynamic_mutex == RT_NULL)
     {
@@ -98,5 +98,5 @@ int mutex_sample(void)
     return 0;
 }
 
-/* å¯¼å‡ºåˆ° msh å‘½ä»¤åˆ—è¡¨ä¸­ */
+/* µ¼³öµ½ msh ÃüÁîÁĞ±íÖĞ */
 MSH_CMD_EXPORT(mutex_sample, mutex sample);

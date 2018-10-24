@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-Thread RTOS: rt_workqueue结构体 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-Thread RTOS
+   &#160;<span id="projectnumber">3.1.0</span>
+   </div>
+   <div id="projectbrief">An open source embedded real-time operating system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.10 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li class="current"><a href="annotated.html"><span>结构体</span></a></li>
+      <li><a href="examples.html"><span>示例</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li><a href="classes.html"><span>结构体索引</span></a></li>
+      <li><a href="functions.html"><span>成员变量</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-attribs">成员变量</a>  </div>
+  <div class="headertitle">
+<div class="title">rt_workqueue结构体 参考<div class="ingroups"><a class="el" href="group___d_r_i_v_e_r.html">设备管理</a> &raquo; <a class="el" href="group__workqueue.html">工作队列</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>工作队列的结构体定义  
+ <a href="structrt__workqueue.html#details">更多...</a></p>
+
+<p><code>#include &lt;workqueue.h&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+成员变量</h2></td></tr>
+<tr class="memitem:ac3ef4d49ffaa9459f43537c380ee19f3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac3ef4d49ffaa9459f43537c380ee19f3"></a>
+<a class="el" href="group__list.html#ga8e0e590336e9435f976bf672d844547c">rt_list_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__workqueue.html#ac3ef4d49ffaa9459f43537c380ee19f3">work_list</a></td></tr>
+<tr class="memdesc:ac3ef4d49ffaa9459f43537c380ee19f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">工作队列链表 <br /></td></tr>
+<tr class="separator:ac3ef4d49ffaa9459f43537c380ee19f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6df1aa5b35733f395021da51b74e61a7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6df1aa5b35733f395021da51b74e61a7"></a>
+struct <a class="el" href="structrt__work.html">rt_work</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__workqueue.html#a6df1aa5b35733f395021da51b74e61a7">work_current</a></td></tr>
+<tr class="memdesc:a6df1aa5b35733f395021da51b74e61a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">当前工作队列指针 <br /></td></tr>
+<tr class="separator:a6df1aa5b35733f395021da51b74e61a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ec431edb5547bfd116b3b61017bb403"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0ec431edb5547bfd116b3b61017bb403"></a>
+struct <a class="el" href="structrt__semaphore.html">rt_semaphore</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__workqueue.html#a0ec431edb5547bfd116b3b61017bb403">sem</a></td></tr>
+<tr class="memdesc:a0ec431edb5547bfd116b3b61017bb403"><td class="mdescLeft">&#160;</td><td class="mdescRight">用于同步的信号量 <br /></td></tr>
+<tr class="separator:a0ec431edb5547bfd116b3b61017bb403"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4790f3354b207a5ccfcad01168374c1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac4790f3354b207a5ccfcad01168374c1"></a>
+<a class="el" href="group___thread.html#gad617ac6bd69bf546743549542a86fbf9">rt_thread_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__workqueue.html#ac4790f3354b207a5ccfcad01168374c1">work_thread</a></td></tr>
+<tr class="memdesc:ac4790f3354b207a5ccfcad01168374c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">工作队列处理线程 <br /></td></tr>
+<tr class="separator:ac4790f3354b207a5ccfcad01168374c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>工作队列的结构体定义 </p>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2018年 十月 25日 星期四 00:39:49 , 为 RT-Thread RTOS使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>

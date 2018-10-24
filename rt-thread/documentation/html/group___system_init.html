@@ -1,0 +1,249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-Thread RTOS: 系统初始化</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-Thread RTOS
+   &#160;<span id="projectnumber">3.1.0</span>
+   </div>
+   <div id="projectbrief">An open source embedded real-time operating system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.10 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li><a href="examples.html"><span>示例</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle">
+<div class="title">系统初始化<div class="ingroups"><a class="el" href="group___kernel.html">内核</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>RT-Thread 的启动流程  
+<a href="#details">更多...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:gae0dcacf89c3d97272b185f7162a3e0c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___system_init.html#gae0dcacf89c3d97272b185f7162a3e0c3">rt_thread_idle_init</a> (void)</td></tr>
+<tr class="memdesc:gae0dcacf89c3d97272b185f7162a3e0c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">空闲线程初始化  <a href="#gae0dcacf89c3d97272b185f7162a3e0c3">更多...</a><br /></td></tr>
+<tr class="separator:gae0dcacf89c3d97272b185f7162a3e0c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafa6feb60f6204d1783bc3bc324b886e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___system_init.html#gafa6feb60f6204d1783bc3bc324b886e7">rt_system_heap_init</a> (void *begin_addr, void *end_addr)</td></tr>
+<tr class="memdesc:gafa6feb60f6204d1783bc3bc324b886e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">系统内存堆的配置和初始化  <a href="#gafa6feb60f6204d1783bc3bc324b886e7">更多...</a><br /></td></tr>
+<tr class="separator:gafa6feb60f6204d1783bc3bc324b886e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5aa2c0c67999e20ce8693ad3c8e624f0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___system_init.html#ga5aa2c0c67999e20ce8693ad3c8e624f0">rt_system_scheduler_init</a> (void)</td></tr>
+<tr class="memdesc:ga5aa2c0c67999e20ce8693ad3c8e624f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化系统调度器  <a href="#ga5aa2c0c67999e20ce8693ad3c8e624f0">更多...</a><br /></td></tr>
+<tr class="separator:ga5aa2c0c67999e20ce8693ad3c8e624f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9aa8a561e0caf5e13126834c4f4bb681"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___system_init.html#ga9aa8a561e0caf5e13126834c4f4bb681">rt_system_scheduler_start</a> (void)</td></tr>
+<tr class="memdesc:ga9aa8a561e0caf5e13126834c4f4bb681"><td class="mdescLeft">&#160;</td><td class="mdescRight">启动系统调度器  <a href="#ga9aa8a561e0caf5e13126834c4f4bb681">更多...</a><br /></td></tr>
+<tr class="separator:ga9aa8a561e0caf5e13126834c4f4bb681"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9f109e873cdcf963059e968cedb76c36"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___system_init.html#ga9f109e873cdcf963059e968cedb76c36">rt_system_timer_init</a> (void)</td></tr>
+<tr class="memdesc:ga9f109e873cdcf963059e968cedb76c36"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化系统系统定时器  <a href="#ga9f109e873cdcf963059e968cedb76c36">更多...</a><br /></td></tr>
+<tr class="separator:ga9f109e873cdcf963059e968cedb76c36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac5298e02b109e4885723f6116fb11814"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___system_init.html#gac5298e02b109e4885723f6116fb11814">rt_system_timer_thread_init</a> (void)</td></tr>
+<tr class="memdesc:gac5298e02b109e4885723f6116fb11814"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化系统定时器线程  <a href="#gac5298e02b109e4885723f6116fb11814">更多...</a><br /></td></tr>
+<tr class="separator:gac5298e02b109e4885723f6116fb11814"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0bc341878c3dbb76bdb773fc9176f4f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___system_init.html#ga0bc341878c3dbb76bdb773fc9176f4f3">rt_application_init</a> ()</td></tr>
+<tr class="memdesc:ga0bc341878c3dbb76bdb773fc9176f4f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建用户线程  <a href="#ga0bc341878c3dbb76bdb773fc9176f4f3">更多...</a><br /></td></tr>
+<tr class="separator:ga0bc341878c3dbb76bdb773fc9176f4f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<p>RT-Thread 的启动流程 </p>
+<p>RT-Thread 的启动代码，大致可以分为四个部分：</p>
+<p>（1）初始化与系统相关的硬件；</p>
+<p>（2）初始化系统内核对象，例如定时器、调度器、信号；</p>
+<p>（3）创建main线程，在main线程中对各类模块依次进行初始化；</p>
+<p>（4）初始化定时器线程、空闲线程，并启动调度器。</p>
+<p>RT-Thread的启动流程如下图所示：</p>
+<div class="image">
+<img src="rtthread_startup.png" alt="rtthread_startup.png"/>
+<div class="caption">
+系统启动流程</div></div>
+<h2 class="groupheader">函数说明</h2>
+<a class="anchor" id="gae0dcacf89c3d97272b185f7162a3e0c3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rt_thread_idle_init </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>空闲线程初始化 </p>
+<p>该函数初始化空闲线程然后启动它。</p>
+<dl class="section note"><dt>注解</dt><dd>系统初始化时必须调用该函数。 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gafa6feb60f6204d1783bc3bc324b886e7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rt_system_heap_init </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>begin_addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>end_addr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>系统内存堆的配置和初始化 </p>
+<p>初始化系统堆内存。</p>
+<p>该函数将初始化系统内存堆。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">begin_addr</td><td>系统内存堆的起始地址 </td></tr>
+    <tr><td class="paramname">end_addr</td><td>系统内存堆的结束地址。</td></tr>
+    <tr><td class="paramname">begin_addr</td><td>系统堆内存的起始地址。 </td></tr>
+    <tr><td class="paramname">end_addr</td><td>系统堆内存的结束地址。 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga5aa2c0c67999e20ce8693ad3c8e624f0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rt_system_scheduler_init </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>初始化系统调度器 </p>
+<p>该函数将初始化系统调度器 </p>
+
+</div>
+</div>
+<a class="anchor" id="ga9aa8a561e0caf5e13126834c4f4bb681"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rt_system_scheduler_start </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>启动系统调度器 </p>
+<p>此函数将启动调度程序。 它将选择一个具有最高优先级的线程，然后切换运行。 </p>
+
+</div>
+</div>
+<a class="anchor" id="ga9f109e873cdcf963059e968cedb76c36"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rt_system_timer_init </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>初始化系统系统定时器 </p>
+<p>该函数将初始化系统定时器 </p>
+
+</div>
+</div>
+<a class="anchor" id="gac5298e02b109e4885723f6116fb11814"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rt_system_timer_thread_init </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>初始化系统定时器线程 </p>
+<p>根据超时函数执行时所处的上下文环境，当定时器设置为SOFT_TIMER模式时， 该函数将初始化系统的定时器线程。 </p>
+
+</div>
+</div>
+<a class="anchor" id="ga0bc341878c3dbb76bdb773fc9176f4f3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rt_application_init </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>创建用户线程 </p>
+<p>由此创建一个用户main()线程，而 main()函数是RT-Thread的用户代码入口， 用户可以在main()函数里添加自己的应用。 </p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2018年 十月 25日 星期四 00:39:49 , 为 RT-Thread RTOS使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>

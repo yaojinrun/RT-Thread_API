@@ -1,0 +1,517 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-Thread RTOS: 系统钩子函数</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-Thread RTOS
+   &#160;<span id="projectnumber">3.1.0</span>
+   </div>
+   <div id="projectbrief">An open source embedded real-time operating system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.10 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li><a href="examples.html"><span>示例</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle">
+<div class="title">系统钩子函数<div class="ingroups"><a class="el" href="group___kernel.html">内核</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>系统钩子函数  
+<a href="#details">更多...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:ga47689b07705c1e7892f6ec397152e9ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___hook.html#ga47689b07705c1e7892f6ec397152e9ac">rt_thread_idle_sethook</a> (void(*hook)(void))</td></tr>
+<tr class="memdesc:ga47689b07705c1e7892f6ec397152e9ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">空闲钩子函数设置  <a href="#ga47689b07705c1e7892f6ec397152e9ac">更多...</a><br /></td></tr>
+<tr class="separator:ga47689b07705c1e7892f6ec397152e9ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7fe1feee9c0028f9bb573f599394d765"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___hook.html#ga7fe1feee9c0028f9bb573f599394d765">rt_interrupt_enter_sethook</a> (void(*hook)(void))</td></tr>
+<tr class="memdesc:ga7fe1feee9c0028f9bb573f599394d765"><td class="mdescLeft">&#160;</td><td class="mdescRight">中断进入钩子函数设置  <a href="#ga7fe1feee9c0028f9bb573f599394d765">更多...</a><br /></td></tr>
+<tr class="separator:ga7fe1feee9c0028f9bb573f599394d765"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga958860e3d739bbf4f7390a2591a9cfc4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___hook.html#ga958860e3d739bbf4f7390a2591a9cfc4">rt_interrupt_leave_sethook</a> (void(*hook)(void))</td></tr>
+<tr class="memdesc:ga958860e3d739bbf4f7390a2591a9cfc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">中断退出钩子函数设置  <a href="#ga958860e3d739bbf4f7390a2591a9cfc4">更多...</a><br /></td></tr>
+<tr class="separator:ga958860e3d739bbf4f7390a2591a9cfc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga909761c80493569b64558225d7f89e77"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___hook.html#ga909761c80493569b64558225d7f89e77">rt_malloc_sethook</a> (void(*hook)(void *ptr, <a class="el" href="group___basic_def.html#ga8011d259fdfc54b8a9aa006b4d49ac14">rt_size_t</a> size))</td></tr>
+<tr class="memdesc:ga909761c80493569b64558225d7f89e77"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置分配钩子函数  <a href="#ga909761c80493569b64558225d7f89e77">更多...</a><br /></td></tr>
+<tr class="separator:ga909761c80493569b64558225d7f89e77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf556549fc541bfc634f37f2dca004547"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___hook.html#gaf556549fc541bfc634f37f2dca004547">rt_free_sethook</a> (void(*hook)(void *ptr))</td></tr>
+<tr class="memdesc:gaf556549fc541bfc634f37f2dca004547"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置内存释放钩子函数  <a href="#gaf556549fc541bfc634f37f2dca004547">更多...</a><br /></td></tr>
+<tr class="separator:gaf556549fc541bfc634f37f2dca004547"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga358d3559267d1c8c66c836ed2e08433b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___hook.html#ga358d3559267d1c8c66c836ed2e08433b">rt_mp_alloc_sethook</a> (void(*hook)(struct <a class="el" href="structrt__mempool.html">rt_mempool</a> *mp, void *block))</td></tr>
+<tr class="separator:ga358d3559267d1c8c66c836ed2e08433b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafd43b13db5623925756b7a3968aa3b01"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___hook.html#gafd43b13db5623925756b7a3968aa3b01">rt_mp_free_sethook</a> (void(*hook)(struct <a class="el" href="structrt__mempool.html">rt_mempool</a> *mp, void *block))</td></tr>
+<tr class="separator:gafd43b13db5623925756b7a3968aa3b01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8bac83f313b9fb0215c424bec05174bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___hook.html#ga8bac83f313b9fb0215c424bec05174bd">rt_object_attach_sethook</a> (void(*hook)(struct <a class="el" href="structrt__object.html">rt_object</a> *object))</td></tr>
+<tr class="separator:ga8bac83f313b9fb0215c424bec05174bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga28dd3af85707fc6c9bf548fe53460aca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___hook.html#ga28dd3af85707fc6c9bf548fe53460aca">rt_object_detach_sethook</a> (void(*hook)(struct <a class="el" href="structrt__object.html">rt_object</a> *object))</td></tr>
+<tr class="separator:ga28dd3af85707fc6c9bf548fe53460aca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabfce5c06de6e1cd6b661b05cb9dd6242"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___hook.html#gabfce5c06de6e1cd6b661b05cb9dd6242">rt_object_trytake_sethook</a> (void(*hook)(struct <a class="el" href="structrt__object.html">rt_object</a> *object))</td></tr>
+<tr class="separator:gabfce5c06de6e1cd6b661b05cb9dd6242"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga69054a027dcc8483b65fd48740eb3717"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___hook.html#ga69054a027dcc8483b65fd48740eb3717">rt_object_take_sethook</a> (void(*hook)(struct <a class="el" href="structrt__object.html">rt_object</a> *object))</td></tr>
+<tr class="separator:ga69054a027dcc8483b65fd48740eb3717"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad107a57fce56ef991d673fa21c6d065a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___hook.html#gad107a57fce56ef991d673fa21c6d065a">rt_object_put_sethook</a> (void(*hook)(struct <a class="el" href="structrt__object.html">rt_object</a> *object))</td></tr>
+<tr class="separator:gad107a57fce56ef991d673fa21c6d065a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaab5cba09f1bfbfc0e8b0838ee2682c62"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___hook.html#gaab5cba09f1bfbfc0e8b0838ee2682c62">rt_scheduler_sethook</a> (void(*hook)(struct <a class="el" href="structrt__thread.html">rt_thread</a> *from, struct <a class="el" href="structrt__thread.html">rt_thread</a> *to))</td></tr>
+<tr class="separator:gaab5cba09f1bfbfc0e8b0838ee2682c62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga83bae9e21b23cfbf2e1c4f09654e3012"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___hook.html#ga83bae9e21b23cfbf2e1c4f09654e3012">rt_thread_suspend_sethook</a> (void(*hook)(<a class="el" href="group___thread.html#gad617ac6bd69bf546743549542a86fbf9">rt_thread_t</a> thread))</td></tr>
+<tr class="memdesc:ga83bae9e21b23cfbf2e1c4f09654e3012"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置线程挂起钩子函数  <a href="#ga83bae9e21b23cfbf2e1c4f09654e3012">更多...</a><br /></td></tr>
+<tr class="separator:ga83bae9e21b23cfbf2e1c4f09654e3012"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae051e428ad5b79744249d2658d5084b5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___hook.html#gae051e428ad5b79744249d2658d5084b5">rt_thread_resume_sethook</a> (void(*hook)(<a class="el" href="group___thread.html#gad617ac6bd69bf546743549542a86fbf9">rt_thread_t</a> thread))</td></tr>
+<tr class="memdesc:gae051e428ad5b79744249d2658d5084b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置线程恢复钩子函数  <a href="#gae051e428ad5b79744249d2658d5084b5">更多...</a><br /></td></tr>
+<tr class="separator:gae051e428ad5b79744249d2658d5084b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac984b444fd358e15855a0236f196bd5e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___hook.html#gac984b444fd358e15855a0236f196bd5e">rt_thread_inited_sethook</a> (void(*hook)(<a class="el" href="group___thread.html#gad617ac6bd69bf546743549542a86fbf9">rt_thread_t</a> thread))</td></tr>
+<tr class="memdesc:gac984b444fd358e15855a0236f196bd5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置线程初始化钩子函数  <a href="#gac984b444fd358e15855a0236f196bd5e">更多...</a><br /></td></tr>
+<tr class="separator:gac984b444fd358e15855a0236f196bd5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf048118e9baee3eb9933a19a0ab80f69"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___hook.html#gaf048118e9baee3eb9933a19a0ab80f69">rt_timer_timeout_sethook</a> (void(*hook)(struct <a class="el" href="structrt__timer.html">rt_timer</a> *timer))</td></tr>
+<tr class="separator:gaf048118e9baee3eb9933a19a0ab80f69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<p>系统钩子函数 </p>
+<p>为了在运行时跟踪和记录RT-Thread的活动，引入了一种钩子机制。</p>
+<p>钩子函数是在一些特殊检查点调用的一类函数。 钩子函数包括：</p><ul>
+<li>对象钩子函数，在创建，删除，获取和放置等对象时调用。</li>
+<li>调度器钩子函数，在线程切换和空闲线程循环中调用。</li>
+<li>内存钩子函数，在分配或释放内存块时调用。</li>
+<li>定时器钩子函数，在定时器超时时调用。 </li>
+</ul>
+<h2 class="groupheader">函数说明</h2>
+<a class="anchor" id="ga47689b07705c1e7892f6ec397152e9ac"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rt_thread_idle_sethook </td>
+          <td>(</td>
+          <td class="paramtype">void(*)(void)&#160;</td>
+          <td class="paramname"><em>hook</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>空闲钩子函数设置 </p>
+<p>该函数将钩子函数设置为空闲线程循环。 当系统执行空闲循环时，会调用此钩子函数。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hook</td><td>指定的钩子函数</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd>钩子函数必须简单，并且永远不会被阻塞或挂起。 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga7fe1feee9c0028f9bb573f599394d765"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rt_interrupt_enter_sethook </td>
+          <td>(</td>
+          <td class="paramtype">void(*)(void)&#160;</td>
+          <td class="paramname"><em>hook</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>中断进入钩子函数设置 </p>
+<p>该函数将设置一个中断钩子函数，当系统进入中断时调用该函数。</p>
+<dl class="section note"><dt>注解</dt><dd>钩子函数必须简单，永远不会被阻塞或挂起。 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga958860e3d739bbf4f7390a2591a9cfc4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rt_interrupt_leave_sethook </td>
+          <td>(</td>
+          <td class="paramtype">void(*)(void)&#160;</td>
+          <td class="paramname"><em>hook</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>中断退出钩子函数设置 </p>
+<p>该函数将设置一个钩子函数，当系统退出中断时执行该函数。</p>
+<dl class="section note"><dt>注解</dt><dd>钩子函数必须简单，永远不会被阻塞或挂起。 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga909761c80493569b64558225d7f89e77"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rt_malloc_sethook </td>
+          <td>(</td>
+          <td class="paramtype">void(*)(void *ptr, <a class="el" href="group___basic_def.html#ga8011d259fdfc54b8a9aa006b4d49ac14">rt_size_t</a> size)&#160;</td>
+          <td class="paramname"><em>hook</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置分配钩子函数 </p>
+<p>该函数将设置一个钩子函数，当从堆内存中分配内存块时将调用该钩子函数。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hook</td><td>钩子函数 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gaf556549fc541bfc634f37f2dca004547"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rt_free_sethook </td>
+          <td>(</td>
+          <td class="paramtype">void(*)(void *ptr)&#160;</td>
+          <td class="paramname"><em>hook</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置内存释放钩子函数 </p>
+<p>该函数将设置一个钩子函数，当内存块被释放会内存堆时将调用该钩子函数。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hook</td><td>钩子函数 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga358d3559267d1c8c66c836ed2e08433b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rt_mp_alloc_sethook </td>
+          <td>(</td>
+          <td class="paramtype">void(*)(struct <a class="el" href="structrt__mempool.html">rt_mempool</a> *mp, void *block)&#160;</td>
+          <td class="paramname"><em>hook</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>该函数将设置一个钩子函数，当从内存池中分配内存块时将调用该钩子函数。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hook</td><td>钩子函数 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gafd43b13db5623925756b7a3968aa3b01"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rt_mp_free_sethook </td>
+          <td>(</td>
+          <td class="paramtype">void(*)(struct <a class="el" href="structrt__mempool.html">rt_mempool</a> *mp, void *block)&#160;</td>
+          <td class="paramname"><em>hook</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>该函数将设置一个钩子函数，当内存块被释放回内存池时将调用该钩子函数。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hook</td><td>钩子函数 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga8bac83f313b9fb0215c424bec05174bd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rt_object_attach_sethook </td>
+          <td>(</td>
+          <td class="paramtype">void(*)(struct <a class="el" href="structrt__object.html">rt_object</a> *object)&#160;</td>
+          <td class="paramname"><em>hook</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>该函数将设置一个钩子函数，当对象添加到内核对象系统时将调用该钩子函数。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hook</td><td>the hook function </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga28dd3af85707fc6c9bf548fe53460aca"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rt_object_detach_sethook </td>
+          <td>(</td>
+          <td class="paramtype">void(*)(struct <a class="el" href="structrt__object.html">rt_object</a> *object)&#160;</td>
+          <td class="paramname"><em>hook</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>该函数将设置一个钩子函数，当对象从内核对象系统脱离时将调用该钩子函数。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hook</td><td>the hook function </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gabfce5c06de6e1cd6b661b05cb9dd6242"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rt_object_trytake_sethook </td>
+          <td>(</td>
+          <td class="paramtype">void(*)(struct <a class="el" href="structrt__object.html">rt_object</a> *object)&#160;</td>
+          <td class="paramname"><em>hook</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>该函数将设置一个钩子函数，当对象从内核对象系统中被尝试获取时将调用该钩子函数。</p>
+<p>对象被获取指的是： semaphore - 信号量被线程获取 mutex - 互斥量被线程获取 event - 事件被线程接收 mailbox - 邮件被线程接收 message queue - 消息队列被线程接收</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hook</td><td>钩子函数 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga69054a027dcc8483b65fd48740eb3717"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rt_object_take_sethook </td>
+          <td>(</td>
+          <td class="paramtype">void(*)(struct <a class="el" href="structrt__object.html">rt_object</a> *object)&#160;</td>
+          <td class="paramname"><em>hook</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>该函数将设置一个钩子函数，当对象从内核对象系统中被获取后将调用该钩子函数。</p>
+<p>对象被获取指的是： semaphore - 信号量被线程获取 mutex - 互斥量被线程获取 event - 事件被线程接收 mailbox - 邮件被线程接收 message queue - 消息队列被线程接收 timer - 定时器被启动</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hook</td><td>钩子函数 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gad107a57fce56ef991d673fa21c6d065a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rt_object_put_sethook </td>
+          <td>(</td>
+          <td class="paramtype">void(*)(struct <a class="el" href="structrt__object.html">rt_object</a> *object)&#160;</td>
+          <td class="paramname"><em>hook</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>该函数将设置一个钩子函数，当对象被放到内核对象系统中时将运行该钩子函数。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hook</td><td>钩子函数 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gaab5cba09f1bfbfc0e8b0838ee2682c62"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rt_scheduler_sethook </td>
+          <td>(</td>
+          <td class="paramtype">void(*)(struct <a class="el" href="structrt__thread.html">rt_thread</a> *from, struct <a class="el" href="structrt__thread.html">rt_thread</a> *to)&#160;</td>
+          <td class="paramname"><em>hook</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>此函数将设置一个钩子函数，当发生线程切换时将调用该钩子函数。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hook</td><td>钩子函数 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>示例: </b></dt><dd><a class="el" href="scheduler_hook_8c-example.html#a6">scheduler_hook.c</a>.</dd>
+</dl>
+</div>
+</div>
+<a class="anchor" id="ga83bae9e21b23cfbf2e1c4f09654e3012"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rt_thread_suspend_sethook </td>
+          <td>(</td>
+          <td class="paramtype">void(*)(<a class="el" href="group___thread.html#gad617ac6bd69bf546743549542a86fbf9">rt_thread_t</a> thread)&#160;</td>
+          <td class="paramname"><em>hook</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置线程挂起钩子函数 </p>
+<p>该函数在系统挂起线程时设置钩子函数。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hook</td><td>指定的钩子函数</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd>钩子函数必须简单，并且永远不会被阻塞或挂起。 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gae051e428ad5b79744249d2658d5084b5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rt_thread_resume_sethook </td>
+          <td>(</td>
+          <td class="paramtype">void(*)(<a class="el" href="group___thread.html#gad617ac6bd69bf546743549542a86fbf9">rt_thread_t</a> thread)&#160;</td>
+          <td class="paramname"><em>hook</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置线程恢复钩子函数 </p>
+<p>该函数在系统恢复线程时设置钩子函数。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hook</td><td>指定的钩子函数</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>注解</dt><dd>钩子函数必须简单，并且永远不会被阻塞或挂起。 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gac984b444fd358e15855a0236f196bd5e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rt_thread_inited_sethook </td>
+          <td>(</td>
+          <td class="paramtype">void(*)(<a class="el" href="group___thread.html#gad617ac6bd69bf546743549542a86fbf9">rt_thread_t</a> thread)&#160;</td>
+          <td class="paramname"><em>hook</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设置线程初始化钩子函数 </p>
+<p>该函数在线程初始化的时候设置一个钩子函数。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hook</td><td>指定的钩子函数 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gaf048118e9baee3eb9933a19a0ab80f69"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rt_timer_timeout_sethook </td>
+          <td>(</td>
+          <td class="paramtype">void(*)(struct <a class="el" href="structrt__timer.html">rt_timer</a> *timer)&#160;</td>
+          <td class="paramname"><em>hook</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>该函数将设置一个钩子函数，当定时器超时时将调用该钩子函数。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">hook</td><td>钩子函数 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2018年 十月 25日 星期四 00:39:49 , 为 RT-Thread RTOS使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>

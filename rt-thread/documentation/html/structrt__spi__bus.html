@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-Thread RTOS: rt_spi_bus结构体 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-Thread RTOS
+   &#160;<span id="projectnumber">3.1.0</span>
+   </div>
+   <div id="projectbrief">An open source embedded real-time operating system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.10 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li class="current"><a href="annotated.html"><span>结构体</span></a></li>
+      <li><a href="examples.html"><span>示例</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li><a href="classes.html"><span>结构体索引</span></a></li>
+      <li><a href="functions.html"><span>成员变量</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-attribs">成员变量</a>  </div>
+  <div class="headertitle">
+<div class="title">rt_spi_bus结构体 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>SPI总线结构体定义  
+ <a href="structrt__spi__bus.html#details">更多...</a></p>
+
+<p><code>#include &lt;spi.h&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+成员变量</h2></td></tr>
+<tr class="memitem:a30db383251f7b14855fadfbbfc1714a2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a30db383251f7b14855fadfbbfc1714a2"></a>
+struct <a class="el" href="structrt__device.html">rt_device</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__spi__bus.html#a30db383251f7b14855fadfbbfc1714a2">parent</a></td></tr>
+<tr class="memdesc:a30db383251f7b14855fadfbbfc1714a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">从 <a class="el" href="structrt__device.html" title="设备结构体 ">rt_device</a> 继承 <br /></td></tr>
+<tr class="separator:a30db383251f7b14855fadfbbfc1714a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74a4b2fae4f0cbc13ab63dfeb04a3a5e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a74a4b2fae4f0cbc13ab63dfeb04a3a5e"></a>
+const struct <a class="el" href="structrt__spi__ops.html">rt_spi_ops</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__spi__bus.html#a74a4b2fae4f0cbc13ab63dfeb04a3a5e">ops</a></td></tr>
+<tr class="memdesc:a74a4b2fae4f0cbc13ab63dfeb04a3a5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">SPI总线的操作集 <br /></td></tr>
+<tr class="separator:a74a4b2fae4f0cbc13ab63dfeb04a3a5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46f4f2d60fee5ecbb9507215dcb3da9b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a46f4f2d60fee5ecbb9507215dcb3da9b"></a>
+struct <a class="el" href="structrt__mutex.html">rt_mutex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__spi__bus.html#a46f4f2d60fee5ecbb9507215dcb3da9b">lock</a></td></tr>
+<tr class="memdesc:a46f4f2d60fee5ecbb9507215dcb3da9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">SPI总线的互斥锁 <br /></td></tr>
+<tr class="separator:a46f4f2d60fee5ecbb9507215dcb3da9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c1731065bc9a1948c228f6692b3ee91"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2c1731065bc9a1948c228f6692b3ee91"></a>
+struct <a class="el" href="structrt__spi__device.html">rt_spi_device</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__spi__bus.html#a2c1731065bc9a1948c228f6692b3ee91">owner</a></td></tr>
+<tr class="memdesc:a2c1731065bc9a1948c228f6692b3ee91"><td class="mdescLeft">&#160;</td><td class="mdescRight">SPI总线的当前使用者 <br /></td></tr>
+<tr class="separator:a2c1731065bc9a1948c228f6692b3ee91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>SPI总线结构体定义 </p>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2018年 十月 25日 星期四 00:39:49 , 为 RT-Thread RTOS使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>

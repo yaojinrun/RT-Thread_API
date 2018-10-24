@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-Thread RTOS: timeslice_sample.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-Thread RTOS
+   &#160;<span id="projectnumber">3.1.0</span>
+   </div>
+   <div id="projectbrief">An open source embedded real-time operating system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.10 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li><a href="examples.html"><span>示例</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">timeslice_sample.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><span class="comment">/* </span></div>
+<div class="line"><span class="comment"> * Copyright (c) 2006-2018, RT-Thread Development Team </span></div>
+<div class="line"><span class="comment"> * </span></div>
+<div class="line"><span class="comment"> * SPDX-License-Identifier: Apache-2.0 </span></div>
+<div class="line"><span class="comment"> * </span></div>
+<div class="line"><span class="comment"> * Change Logs: </span></div>
+<div class="line"><span class="comment"> * Date           Author       Notes </span></div>
+<div class="line"><span class="comment"> * 2018-08-24     yangjie      the first version </span></div>
+<div class="line"><span class="comment"> */</span> </div>
+<div class="line"> </div>
+<div class="line"> <span class="comment">/*</span></div>
+<div class="line"><span class="comment"> * 程序清单：相同优先级线程按照时间片轮番调度</span></div>
+<div class="line"><span class="comment"> *</span></div>
+<div class="line"><span class="comment"> * 这个例子中将创建两个线程，每一个线程都在打印信息</span></div>
+<div class="line"><span class="comment"> * </span></div>
+<div class="line"><span class="comment"> */</span></div>
+<div class="line"></div>
+<div class="line"><span class="preprocessor">#include &lt;rtthread.h&gt;</span></div>
+<div class="line"></div>
+<div class="line"><span class="preprocessor">#define THREAD_STACK_SIZE   1024</span></div>
+<div class="line"><span class="preprocessor">#define THREAD_PRIORITY     20</span></div>
+<div class="line"><span class="preprocessor">#define THREAD_TIMESLICE    10</span></div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* 线程入口 */</span></div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span> thread_entry(<span class="keywordtype">void</span>* parameter)</div>
+<div class="line">{</div>
+<div class="line">    <a class="code" href="group___basic_def.html#ga909edcac80e5e3f93f63fcebc95922c7" title="32位无符号整数类型 ">rt_uint32_t</a> <a name="a0"></a><a class="code" href="structrt__semaphore.html#a320fc41815308456699a4d3efee49418" title="信号量的值 ">value</a>;</div>
+<div class="line">    <a class="code" href="group___basic_def.html#ga909edcac80e5e3f93f63fcebc95922c7" title="32位无符号整数类型 ">rt_uint32_t</a> count = 0;</div>
+<div class="line"></div>
+<div class="line">    value = (<a name="a1"></a><a class="code" href="group___basic_def.html#ga909edcac80e5e3f93f63fcebc95922c7" title="32位无符号整数类型 ">rt_uint32_t</a>)parameter;</div>
+<div class="line">    <span class="keywordflow">while</span> (1)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="keywordflow">if</span>(0 == (count % 5))</div>
+<div class="line">        {           </div>
+<div class="line">            rt_kprintf(<span class="stringliteral">&quot;thread %d is running ,thread %d count = %d\n&quot;</span>, value , value , count);      </div>
+<div class="line"></div>
+<div class="line">            <span class="keywordflow">if</span>(count &gt; 200)</div>
+<div class="line">                <span class="keywordflow">return</span>;            </div>
+<div class="line">        }</div>
+<div class="line">         count++;</div>
+<div class="line">     }  </div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="keywordtype">int</span> timeslice_sample(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">    <a name="_a2"></a><a class="code" href="structrt__thread.html" title="线程对象控制块 ">rt_thread_t</a> tid;</div>
+<div class="line">    <span class="comment">/* 创建线程1 */</span></div>
+<div class="line">    tid = <a name="a3"></a><a class="code" href="group___thread.html#gacb215b161f17c26b5e19c28cd0119e7b" title="创建线程 ">rt_thread_create</a>(<span class="stringliteral">&quot;thread1&quot;</span>, </div>
+<div class="line">                            thread_entry, (<span class="keywordtype">void</span>*)1, </div>
+<div class="line">                            THREAD_STACK_SIZE, </div>
+<div class="line">                            THREAD_PRIORITY, THREAD_TIMESLICE); </div>
+<div class="line">    <span class="keywordflow">if</span> (tid != <a name="a4"></a><a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>) </div>
+<div class="line">        <a name="a5"></a><a class="code" href="group___thread.html#ga04b743537fd099e204fc292e57b4aa5a" title="启动线程 ">rt_thread_startup</a>(tid);</div>
+<div class="line"></div>
+<div class="line"></div>
+<div class="line">    <span class="comment">/* 创建线程2 */</span></div>
+<div class="line">    tid = <a class="code" href="group___thread.html#gacb215b161f17c26b5e19c28cd0119e7b" title="创建线程 ">rt_thread_create</a>(<span class="stringliteral">&quot;thread2&quot;</span>, </div>
+<div class="line">                            thread_entry, (<span class="keywordtype">void</span>*)2,</div>
+<div class="line">                            THREAD_STACK_SIZE, </div>
+<div class="line">                            THREAD_PRIORITY, THREAD_TIMESLICE-5);</div>
+<div class="line">    <span class="keywordflow">if</span> (tid != <a class="code" href="group___basic_def.html#gab3633bbb2a09b3406b19463ffc634345">RT_NULL</a>) </div>
+<div class="line">        <a class="code" href="group___thread.html#ga04b743537fd099e204fc292e57b4aa5a" title="启动线程 ">rt_thread_startup</a>(tid);</div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="comment">/* 导出到 msh 命令列表中 */</span></div>
+<div class="line"><a name="a6"></a><a class="code" href="group__finsh.html#ga8d756c1e1b9bd44c94a3f97ef62fb02b" title="自定义C-Style 命令和变量 ">MSH_CMD_EXPORT</a>(timeslice_sample, timeslice sample);</div>
+<div class="line"></div>
+</div><!-- fragment --> </div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2018年 十月 25日 星期四 00:39:49 , 为 RT-Thread RTOS使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>

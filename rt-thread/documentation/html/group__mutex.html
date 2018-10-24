@@ -1,0 +1,303 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.10"/>
+<title>RT-Thread RTOS: 互斥量</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">RT-Thread RTOS
+   &#160;<span id="projectnumber">3.1.0</span>
+   </div>
+   <div id="projectbrief">An open source embedded real-time operating system</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.10 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="modules.html"><span>模块</span></a></li>
+      <li><a href="annotated.html"><span>结构体</span></a></li>
+      <li><a href="examples.html"><span>示例</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">结构体</a> &#124;
+<a href="#typedef-members">类型定义</a> &#124;
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle">
+<div class="title">互斥量<div class="ingroups"><a class="el" href="group___kernel.html">内核</a> &raquo; <a class="el" href="group___i_p_c.html">线程间通讯</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>互斥量  
+<a href="#details">更多...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+结构体</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrt__mutex.html">rt_mutex</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">互斥量结构体定义  <a href="structrt__mutex.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+类型定义</h2></td></tr>
+<tr class="memitem:gad8f835bf8b44455c44e67eb1f3a2383f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad8f835bf8b44455c44e67eb1f3a2383f"></a>
+typedef struct <a class="el" href="structrt__mutex.html">rt_mutex</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__mutex.html#gad8f835bf8b44455c44e67eb1f3a2383f">rt_mutex_t</a></td></tr>
+<tr class="memdesc:gad8f835bf8b44455c44e67eb1f3a2383f"><td class="mdescLeft">&#160;</td><td class="mdescRight">互斥量类型指针定义 <br /></td></tr>
+<tr class="separator:gad8f835bf8b44455c44e67eb1f3a2383f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:ga90c29e470fff8981a976ec7f9bb0546e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__mutex.html#ga90c29e470fff8981a976ec7f9bb0546e">rt_mutex_init</a> (<a class="el" href="group__mutex.html#gad8f835bf8b44455c44e67eb1f3a2383f">rt_mutex_t</a> mutex, const char *name, <a class="el" href="group___basic_def.html#ga585e2ad0fbab0f83817cb61373465df6">rt_uint8_t</a> flag)</td></tr>
+<tr class="memdesc:ga90c29e470fff8981a976ec7f9bb0546e"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化互斥量  <a href="#ga90c29e470fff8981a976ec7f9bb0546e">更多...</a><br /></td></tr>
+<tr class="separator:ga90c29e470fff8981a976ec7f9bb0546e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7a8b48c0e6884e2c22d08e9e7e98a613"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__mutex.html#ga7a8b48c0e6884e2c22d08e9e7e98a613">rt_mutex_detach</a> (<a class="el" href="group__mutex.html#gad8f835bf8b44455c44e67eb1f3a2383f">rt_mutex_t</a> mutex)</td></tr>
+<tr class="memdesc:ga7a8b48c0e6884e2c22d08e9e7e98a613"><td class="mdescLeft">&#160;</td><td class="mdescRight">脱离互斥量  <a href="#ga7a8b48c0e6884e2c22d08e9e7e98a613">更多...</a><br /></td></tr>
+<tr class="separator:ga7a8b48c0e6884e2c22d08e9e7e98a613"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5ce96ed48d83086aab6ecadebac6d0c6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__mutex.html#gad8f835bf8b44455c44e67eb1f3a2383f">rt_mutex_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__mutex.html#ga5ce96ed48d83086aab6ecadebac6d0c6">rt_mutex_create</a> (const char *name, <a class="el" href="group___basic_def.html#ga585e2ad0fbab0f83817cb61373465df6">rt_uint8_t</a> flag)</td></tr>
+<tr class="memdesc:ga5ce96ed48d83086aab6ecadebac6d0c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建互斥量  <a href="#ga5ce96ed48d83086aab6ecadebac6d0c6">更多...</a><br /></td></tr>
+<tr class="separator:ga5ce96ed48d83086aab6ecadebac6d0c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8a74f51362fc566500bec135599dd5a9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__mutex.html#ga8a74f51362fc566500bec135599dd5a9">rt_mutex_delete</a> (<a class="el" href="group__mutex.html#gad8f835bf8b44455c44e67eb1f3a2383f">rt_mutex_t</a> mutex)</td></tr>
+<tr class="memdesc:ga8a74f51362fc566500bec135599dd5a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">删除互斥量  <a href="#ga8a74f51362fc566500bec135599dd5a9">更多...</a><br /></td></tr>
+<tr class="separator:ga8a74f51362fc566500bec135599dd5a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga77845c9c0da68d07225c4c4699f114f0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__mutex.html#ga77845c9c0da68d07225c4c4699f114f0">rt_mutex_take</a> (<a class="el" href="group__mutex.html#gad8f835bf8b44455c44e67eb1f3a2383f">rt_mutex_t</a> mutex, <a class="el" href="group___basic_def.html#gae5c6ccee15f067714ca9c44e509c4047">rt_int32_t</a> time)</td></tr>
+<tr class="memdesc:ga77845c9c0da68d07225c4c4699f114f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">获取互斥量  <a href="#ga77845c9c0da68d07225c4c4699f114f0">更多...</a><br /></td></tr>
+<tr class="separator:ga77845c9c0da68d07225c4c4699f114f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad49c2ee6dc578e6687919f01a4ac5137"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__mutex.html#gad49c2ee6dc578e6687919f01a4ac5137">rt_mutex_release</a> (<a class="el" href="group__mutex.html#gad8f835bf8b44455c44e67eb1f3a2383f">rt_mutex_t</a> mutex)</td></tr>
+<tr class="memdesc:gad49c2ee6dc578e6687919f01a4ac5137"><td class="mdescLeft">&#160;</td><td class="mdescRight">释放互斥量  <a href="#gad49c2ee6dc578e6687919f01a4ac5137">更多...</a><br /></td></tr>
+<tr class="separator:gad49c2ee6dc578e6687919f01a4ac5137"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<p>互斥量 </p>
+<p>互斥量又叫相互排斥的信号量，是一种特殊的二值性信号量。它和信号量不同的是， 它支持互斥量所有权、递归访问以及防止优先级翻转的特性。</p>
+<p>互斥量的使用比较单一，因为它是信号量的一种，并且它是以锁的形式存在。 在初始化的时候，互斥量永远都处于开锁的状态，而被线程持有的时候则立刻转为 闭锁的状态。互斥量更适合于：</p>
+<ul>
+<li>线程多次持有互斥量的情况下。这样可以避免同一线程多次递归持有而造成死锁的问题；</li>
+<li>可能会由于多线程同步而造成优先级翻转的情况； </li>
+</ul>
+<h2 class="groupheader">函数说明</h2>
+<a class="anchor" id="ga90c29e470fff8981a976ec7f9bb0546e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a> rt_mutex_init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__mutex.html#gad8f835bf8b44455c44e67eb1f3a2383f">rt_mutex_t</a>&#160;</td>
+          <td class="paramname"><em>mutex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group___basic_def.html#ga585e2ad0fbab0f83817cb61373465df6">rt_uint8_t</a>&#160;</td>
+          <td class="paramname"><em>flag</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>初始化互斥量 </p>
+<p>该函数将初始化互斥锁并将其置于内核管理器的控制之下</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mutex</td><td>互斥量对象的句柄 </td></tr>
+    <tr><td class="paramname">name</td><td>互斥量的名称 </td></tr>
+    <tr><td class="paramname">flag</td><td>互斥量的标志位</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>RT_EOK 初始化成功 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga7a8b48c0e6884e2c22d08e9e7e98a613"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a> rt_mutex_detach </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__mutex.html#gad8f835bf8b44455c44e67eb1f3a2383f">rt_mutex_t</a>&#160;</td>
+          <td class="paramname"><em>mutex</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>脱离互斥量 </p>
+<p>该函数将把互斥量对象从内核对象管理器中删除，适用于静态初始化的互斥量。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mutex</td><td>互斥量对象的句柄</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>RT_EOK 成功</dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="group__mutex.html#ga8a74f51362fc566500bec135599dd5a9" title="删除互斥量 ">rt_mutex_delete</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga5ce96ed48d83086aab6ecadebac6d0c6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group__mutex.html#gad8f835bf8b44455c44e67eb1f3a2383f">rt_mutex_t</a> rt_mutex_create </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group___basic_def.html#ga585e2ad0fbab0f83817cb61373465df6">rt_uint8_t</a>&#160;</td>
+          <td class="paramname"><em>flag</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>创建互斥量 </p>
+<p>调用该函数创建一个互斥量时，内核首先创建一个互斥量控制块，然后完成对该控制块的初始化工作。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>互斥量的名称 </td></tr>
+    <tr><td class="paramname">flag</td><td>互斥量的标志位</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>返回创建的互斥量，失败时返回RT_NULL</dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="group__mutex.html#ga90c29e470fff8981a976ec7f9bb0546e" title="初始化互斥量 ">rt_mutex_init</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga8a74f51362fc566500bec135599dd5a9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a> rt_mutex_delete </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__mutex.html#gad8f835bf8b44455c44e67eb1f3a2383f">rt_mutex_t</a>&#160;</td>
+          <td class="paramname"><em>mutex</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>删除互斥量 </p>
+<p>当系统不再使用互斥量时，通过调用该函数删除互斥量以释放系统资源，适用于动态创建的互斥量。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mutex</td><td>互斥量对象的句柄</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>RT_EOK 删除成功</dd></dl>
+<dl class="section see"><dt>参见</dt><dd><a class="el" href="group__mutex.html#ga7a8b48c0e6884e2c22d08e9e7e98a613" title="脱离互斥量 ">rt_mutex_detach</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga77845c9c0da68d07225c4c4699f114f0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a> rt_mutex_take </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__mutex.html#gad8f835bf8b44455c44e67eb1f3a2383f">rt_mutex_t</a>&#160;</td>
+          <td class="paramname"><em>mutex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group___basic_def.html#gae5c6ccee15f067714ca9c44e509c4047">rt_int32_t</a>&#160;</td>
+          <td class="paramname"><em>time</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>获取互斥量 </p>
+<p>该函数将获取一个互斥量，如果互斥量没有被其他线程控制，那么申请该互斥量的线程将成功获得该互斥量。 如果互斥量已经被当前线程线程控制，则该互斥量的持有计数加 1，当前线程也不会挂起等待。如果互斥量 已经被其他线程占有，则当前线程在该互斥量上挂起等待，直到其他线程释放它或者等待时间超过指定的 超时时间。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mutex</td><td>互斥量对象的句柄 </td></tr>
+    <tr><td class="paramname">time</td><td>指定的等待时间</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>RT_EOK 成功获得互斥量；-RT_ETIMEOUT 超时；-RT_ERROR 获取失败 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gad49c2ee6dc578e6687919f01a4ac5137"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="group___basic_def.html#ga42df42aabf676f2a89f5af2208b79950">rt_err_t</a> rt_mutex_release </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__mutex.html#gad8f835bf8b44455c44e67eb1f3a2383f">rt_mutex_t</a>&#160;</td>
+          <td class="paramname"><em>mutex</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>释放互斥量 </p>
+<p>使用该函数接口时，只有已经拥有互斥量控制权的线程才能释放它，每释放一次该互斥量， 它的持有计数就减 1。当该互斥量的持有计数为零时（即持有线程已经释放所有的持有操作）， 它变为可用，等待在该信号量上的线程将被唤醒。如果线程的运行优先级被互斥量提升， 那么当互斥量被释放后，线程恢复为持有互斥量前的优先级。</p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mutex</td><td>互斥量对象的句柄</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>RT_EOK 成功 </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2018年 十月 25日 星期四 00:39:49 , 为 RT-Thread RTOS使用  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.10
+</small></address>
+</body>
+</html>

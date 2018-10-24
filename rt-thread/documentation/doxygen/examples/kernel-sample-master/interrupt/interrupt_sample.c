@@ -8,7 +8,7 @@
  * 2018-08-24     yangjie      the first version 
  */ 
  
-/* ç¨‹åºæ¸…å•ï¼šå…³é—­ä¸­æ–­è¿›è¡Œå…¨å±€å˜é‡çš„è®¿é—® */
+/* ³ÌĞòÇåµ¥£º¹Ø±ÕÖĞ¶Ï½øĞĞÈ«¾Ö±äÁ¿µÄ·ÃÎÊ */
 #include <rthw.h>
 #include <rtthread.h>
 
@@ -16,7 +16,7 @@
 #define THREAD_STACK_SIZE    512
 #define THREAD_TIMESLICE     5
 
-/* åŒæ—¶è®¿é—®çš„å…¨å±€å˜é‡ */
+/* Í¬Ê±·ÃÎÊµÄÈ«¾Ö±äÁ¿ */
 static rt_uint32_t cnt;
 void thread_entry(void *parameter)
 {
@@ -26,10 +26,10 @@ void thread_entry(void *parameter)
     no = (rt_uint32_t) parameter;
     while (1)
     {
-        /* å…³é—­ä¸­æ–­ */
+        /* ¹Ø±ÕÖĞ¶Ï */
         level = rt_hw_interrupt_disable();
         cnt += no;
-        /* æ¢å¤ä¸­æ–­ */
+        /* »Ö¸´ÖĞ¶Ï */
         rt_hw_interrupt_enable(level);
 
         rt_kprintf("protect thread[%d]'s counter is %d\n", no, cnt);
@@ -37,12 +37,12 @@ void thread_entry(void *parameter)
     }
 }
 
-/* ç”¨æˆ·åº”ç”¨ç¨‹åºå…¥å£ */
+/* ÓÃ»§Ó¦ÓÃ³ÌĞòÈë¿Ú */
 int interrupt_sample(void)
 {
     rt_thread_t thread;
 
-    /* åˆ›å»ºt1çº¿ç¨‹ */
+    /* ´´½¨t1Ïß³Ì */
     thread = rt_thread_create("thread1", thread_entry, (void *)10,
                               THREAD_STACK_SIZE,
                               THREAD_PRIORITY, THREAD_TIMESLICE);
@@ -50,7 +50,7 @@ int interrupt_sample(void)
         rt_thread_startup(thread);
 
 
-    /* åˆ›å»ºt2çº¿ç¨‹ */
+    /* ´´½¨t2Ïß³Ì */
     thread = rt_thread_create("thread2", thread_entry, (void *)20,
                               THREAD_STACK_SIZE,
                               THREAD_PRIORITY, THREAD_TIMESLICE);
@@ -60,5 +60,5 @@ int interrupt_sample(void)
     return 0;
 }
 
-/* å¯¼å‡ºåˆ° msh å‘½ä»¤åˆ—è¡¨ä¸­ */
+/* µ¼³öµ½ msh ÃüÁîÁĞ±íÖĞ */
 MSH_CMD_EXPORT(interrupt_sample, interrupt sample);
