@@ -22,8 +22,8 @@
  *
  */
 
-/*
- * @defgroup network_sample ÍøÂçÀı³Ì
+/**
+ * @defgroup network_example ÍøÂçÀı³Ì
  *
  */
 

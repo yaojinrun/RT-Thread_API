@@ -9,9 +9,9 @@
  */  
 
 /*
- * ç¨‹åºæ¸…å•ï¼šç©ºé—²ä»»åŠ¡é’©å­ä¾‹ç¨‹
+ * ³ÌĞòÇåµ¥£º¿ÕÏĞÈÎÎñ¹³×ÓÀı³Ì
  *
- * è¿™ä¸ªä¾‹ç¨‹åˆ›å»ºä¸€ä¸ªçº¿ç¨‹ï¼Œé€šè¿‡å»¶æ—¶è¿›å…¥ç©ºé—²ä»»åŠ¡é’©å­ï¼Œç”¨äºæ‰“å°è¿›å…¥ç©ºé—²é’©å­çš„æ¬¡æ•°
+ * Õâ¸öÀı³Ì´´½¨Ò»¸öÏß³Ì£¬Í¨¹ıÑÓÊ±½øÈë¿ÕÏĞÈÎÎñ¹³×Ó£¬ÓÃÓÚ´òÓ¡½øÈë¿ÕÏĞ¹³×ÓµÄ´ÎÊı
  */
 
 #include <rtthread.h>
@@ -21,13 +21,13 @@
 #define THREAD_STACK_SIZE    1024
 #define THREAD_TIMESLICE     5
 
-/* æŒ‡å‘çº¿ç¨‹æ§åˆ¶å—çš„æŒ‡é’ˆ */
+/* Ö¸ÏòÏß³Ì¿ØÖÆ¿éµÄÖ¸Õë */
 static rt_thread_t tid = RT_NULL;
 
-/* ç©ºé—²å‡½æ•°é’©å­å‡½æ•°æ‰§è¡Œæ¬¡æ•° */
+/* ¿ÕÏĞº¯Êı¹³×Óº¯ÊıÖ´ĞĞ´ÎÊı */
 volatile static int hook_times = 0;
 
-/* ç©ºé—²ä»»åŠ¡é’©å­å‡½æ•° */
+/* ¿ÕÏĞÈÎÎñ¹³×Óº¯Êı */
 static void idle_hook()
 {
     if (0 == (hook_times % 10000))
@@ -40,7 +40,7 @@ static void idle_hook()
     rt_exit_critical();
 }
 
-/* çº¿ç¨‹å…¥å£ */
+/* Ïß³ÌÈë¿Ú */
 static void thread_entry(void *parameter)
 {
     int i = 5;
@@ -51,23 +51,23 @@ static void thread_entry(void *parameter)
         hook_times = 0;
         rt_exit_critical();
 
-        /* ä¼‘çœ 500ms */
+        /* ĞİÃß500ms */
         rt_kprintf("thread1 delay 50 OS Tick.\n", hook_times);
         rt_thread_mdelay(500);
     }
     rt_kprintf("delete idle hook.\n");
     
-    /* åˆ é™¤ç©ºé—²é’©å­å‡½æ•° */
+    /* É¾³ı¿ÕÏĞ¹³×Óº¯Êı */
     rt_thread_idle_delhook(idle_hook);
     rt_kprintf("thread1 finish.\n");
 }
 
 int idle_hook_sample(void)
 {
-    /* è®¾ç½®ç©ºé—²çº¿ç¨‹é’©å­ */
+    /* ÉèÖÃ¿ÕÏĞÏß³Ì¹³×Ó */
     rt_thread_idle_sethook(idle_hook);
 
-    /* åˆ›å»ºçº¿ç¨‹ */
+    /* ´´½¨Ïß³Ì */
     tid = rt_thread_create("thread1",
                            thread_entry, RT_NULL, 
                            THREAD_STACK_SIZE, 
@@ -78,5 +78,5 @@ int idle_hook_sample(void)
     return 0;
 }
 
-/* å¯¼å‡ºåˆ° msh å‘½ä»¤åˆ—è¡¨ä¸­ */
+/* µ¼³öµ½ msh ÃüÁîÁĞ±íÖĞ */
 MSH_CMD_EXPORT(idle_hook_sample, idle hook sample);

@@ -9,11 +9,12 @@
  
 
  /**
- * @defgroup timer 定时器例程
+ * @defgroup memp_sample 内存池例程
  *
  * **源码**
- * @include timer_sample.c
- * @example timer_sample.c
+ * @include memp_sample.c
+ * @example memp_sample.c
  */
+
 
 /*@}*/

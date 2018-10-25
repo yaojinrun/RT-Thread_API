@@ -9,11 +9,12 @@
  
 
  /**
- * @defgroup timer 定时器例程
+ * @defgroup interrupt_sample 中断例程
  *
  * **源码**
- * @include timer_sample.c
- * @example timer_sample.c
+ * @include interrupt_sample.c
+ * @example interrupt_sample.c
  */
+
 
 /*@}*/

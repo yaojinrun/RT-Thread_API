@@ -9,11 +9,12 @@
  
 
  /**
- * @defgroup timer 定时器例程
+ * @defgroup idlehook_sample 空闲任务钩子例程
  *
  * **源码**
- * @include timer_sample.c
- * @example timer_sample.c
+ * @include idlehook_sample.c
+ * @example idlehook_sample.c
  */
+
 
 /*@}*/

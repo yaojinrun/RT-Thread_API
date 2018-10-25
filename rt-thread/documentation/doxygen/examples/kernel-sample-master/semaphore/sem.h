@@ -3,7 +3,7 @@
  */
 
 /**
- * @addtogroup sem_sample
+ * @addtogroup kernel_example
  */
 /*@{*/
  

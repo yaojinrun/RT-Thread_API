@@ -3,7 +3,7 @@
  */
 
 /**
- * @addtogroup thread_sample
+ * @addtogroup kernel_example
  */
 /*@{*/
  

@@ -9,11 +9,12 @@
  
 
  /**
- * @defgroup timer 定时器例程
+ * @defgroup mailbox_sample 邮箱例程
  *
  * **源码**
- * @include timer_sample.c
- * @example timer_sample.c
+ * @include mailbox_sample.c
+ * @example mailbox_sample.c
  */
+
 
 /*@}*/

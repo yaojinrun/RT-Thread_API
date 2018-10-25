@@ -9,11 +9,12 @@
  
 
  /**
- * @defgroup timer 定时器例程
+ * @defgroup event_sample 事件例程
  *
  * **源码**
- * @include timer_sample.c
- * @example timer_sample.c
+ * @include event_sample.c
+ * @example event_sample.c
  */
+
 
 /*@}*/

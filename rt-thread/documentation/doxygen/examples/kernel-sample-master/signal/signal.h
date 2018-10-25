@@ -9,11 +9,11 @@
  
 
  /**
- * @defgroup timer 定时器例程
+ * @defgroup signal 信号例程
  *
  * **源码**
- * @include timer_sample.c
- * @example timer_sample.c
+ * @include signal_sample.c
+ * @example signal_sample.c
  */
 
 /*@}*/

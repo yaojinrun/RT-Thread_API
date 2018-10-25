@@ -9,11 +9,12 @@
  
 
  /**
- * @defgroup timer 定时器例程
+ * @defgroup dynmem_sample 动态内存管理例程
  *
  * **源码**
- * @include timer_sample.c
- * @example timer_sample.c
+ * @include dynmem_sample.c
+ * @example dynmem_sample.c
  */
+
 
 /*@}*/

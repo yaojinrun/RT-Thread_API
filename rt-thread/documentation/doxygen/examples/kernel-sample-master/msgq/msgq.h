@@ -9,11 +9,12 @@
  
 
  /**
- * @defgroup timer 定时器例程
+ * @defgroup msgq_sample 消息队列例程
  *
  * **源码**
- * @include timer_sample.c
- * @example timer_sample.c
+ * @include msgq_sample.c
+ * @example msgq_sample.c
  */
+
 
 /*@}*/

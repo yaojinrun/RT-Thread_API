@@ -237,6 +237,12 @@
  * see @ref _rt_errno
  */
 
+/**
+ * @defgroup kernel_example 内核例程
+ *
+ * 提供内核API相关的使用例程：
+ */
+ 
 /*@}*/
 
 

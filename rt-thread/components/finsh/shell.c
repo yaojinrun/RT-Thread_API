@@ -113,9 +113,9 @@ static rt_err_t finsh_rx_ind(rt_device_t dev, rt_size_t size)
 /**
  * @ingroup finsh
  *
- * This function sets the input device of finsh shell.
+ * @brief 设置finsh shell的输入设备
  *
- * @param device_name the name of new input device.
+ * @param device_name 新的输入设备的名称
  */
 void finsh_set_device(const char *device_name)
 {
@@ -154,9 +154,11 @@ void finsh_set_device(const char *device_name)
 /**
  * @ingroup finsh
  *
- * This function returns current finsh shell input device.
+ * @brief 获取finsh shell的输入设备
  *
- * @return the finsh shell input device name is returned.
+ * 该函数将返回当前finsh shell所使用的输入设备。
+ *
+ * @return 返回当前finsh shell的输入设备名称
  */
 const char *finsh_get_device()
 {
@@ -168,11 +170,13 @@ const char *finsh_get_device()
 /**
  * @ingroup finsh
  *
- * This function set the echo mode of finsh shell.
+ * @brief 设置回显模式
  *
- * FINSH_OPTION_ECHO=0x01 is echo mode, other values are none-echo mode.
+ * 该函数可以设置finsh shell的回显模式。
  *
- * @param echo the echo mode
+ * FINSH_OPTION_ECHO=0x01 时为回显模式, 其他值为不回显模式。
+ *
+ * @param echo 回显模式
  */
 void finsh_set_echo(rt_uint32_t echo)
 {
@@ -183,9 +187,11 @@ void finsh_set_echo(rt_uint32_t echo)
 /**
  * @ingroup finsh
  *
- * This function gets the echo mode of finsh shell.
+ * @brief 获取回显模式
  *
- * @return the echo mode
+ * 该函数可以获取finsh shell是否工作在回显模式。
+ *
+ * @return 回显模式参数值
  */
 rt_uint32_t finsh_get_echo()
 {
@@ -196,12 +202,13 @@ rt_uint32_t finsh_get_echo()
 
 #ifdef FINSH_USING_AUTH
 /**
- * set a new password for finsh
+ * @brief 设置新密码
  *
- * @param password new password
+ * 该函数可以为finsh设置一个新的密码。
  *
- * @return result, RT_EOK on OK, -RT_ERROR on the new password length is less than
- *  FINSH_PASSWORD_MIN or greater than FINSH_PASSWORD_MAX
+ * @param password 新的密码
+ *
+ * @return 成功时返回RT_EOK, 当新的密码长度小于FINSH_PASSWORD_MIN或大于FINSH_PASSWORD_MAX时返回-RT_ERROR 。
  */
 rt_err_t finsh_set_password(const char *password) {
     rt_ubase_t level;
@@ -218,9 +225,9 @@ rt_err_t finsh_set_password(const char *password) {
 }
 
 /**
- * get the finsh password
+ * @brief 获取finsh密码
  *
- * @return password
+ * @return 密码
  */
 const char *finsh_get_password(void)
 {

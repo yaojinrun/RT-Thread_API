@@ -9,11 +9,11 @@
  */  
 
 /*
- * ç¨‹åºæ¸…å•ï¼šç”Ÿäº§è€…æ¶ˆè´¹è€…ä¾‹å­
+ * ³ÌĞòÇåµ¥£ºÉú²úÕßÏû·ÑÕßÀı×Ó
  *
- * è¿™ä¸ªä¾‹å­ä¸­å°†åˆ›å»ºä¸¤ä¸ªçº¿ç¨‹ç”¨äºå®ç°ç”Ÿäº§è€…æ¶ˆè´¹è€…é—®é¢˜
- *ï¼ˆ1ï¼‰ç”Ÿäº§è€…çº¿ç¨‹å°†cntå€¼æ¯æ¬¡åŠ 1å¹¶å¾ªç¯å­˜å…¥arrayæ•°ç»„çš„5ä¸ªæˆå‘˜å†…ï¼›
- *ï¼ˆ2ï¼‰æ¶ˆè´¹è€…çº¿ç¨‹å°†ç”Ÿäº§è€…ä¸­ç”Ÿäº§çš„æ•°å€¼æ‰“å°å‡ºæ¥ï¼Œå¹¶ç´¯åŠ æ±‚å’Œ
+ * Õâ¸öÀı×ÓÖĞ½«´´½¨Á½¸öÏß³ÌÓÃÓÚÊµÏÖÉú²úÕßÏû·ÑÕßÎÊÌâ
+ *£¨1£©Éú²úÕßÏß³Ì½«cntÖµÃ¿´Î¼Ó1²¢Ñ­»·´æÈëarrayÊı×éµÄ5¸ö³ÉÔ±ÄÚ£»
+ *£¨2£©Ïû·ÑÕßÏß³Ì½«Éú²úÕßÖĞÉú²úµÄÊıÖµ´òÓ¡³öÀ´£¬²¢ÀÛ¼ÓÇóºÍ
  */
 #include <rtthread.h>
 
@@ -21,75 +21,75 @@
 #define THREAD_STACK_SIZE     512
 #define THREAD_TIMESLICE      5
 
-/* å®šä¹‰æœ€å¤§5ä¸ªå…ƒç´ èƒ½å¤Ÿè¢«äº§ç”Ÿ */
+/* ¶¨Òå×î´ó5¸öÔªËØÄÜ¹»±»²úÉú */
 #define MAXSEM 5
 
-/* ç”¨äºæ”¾ç½®ç”Ÿäº§çš„æ•´æ•°æ•°ç»„ */
+/* ÓÃÓÚ·ÅÖÃÉú²úµÄÕûÊıÊı×é */
 rt_uint32_t array[MAXSEM];
 
-/* æŒ‡å‘ç”Ÿäº§è€…ã€æ¶ˆè´¹è€…åœ¨arrayæ•°ç»„ä¸­çš„è¯»å†™ä½ç½® */
+/* Ö¸ÏòÉú²úÕß¡¢Ïû·ÑÕßÔÚarrayÊı×éÖĞµÄ¶ÁĞ´Î»ÖÃ */
 static rt_uint32_t set, get;
 
-/* æŒ‡å‘çº¿ç¨‹æ§åˆ¶å—çš„æŒ‡é’ˆ */
+/* Ö¸ÏòÏß³Ì¿ØÖÆ¿éµÄÖ¸Õë */
 static rt_thread_t producer_tid = RT_NULL;
 static rt_thread_t consumer_tid = RT_NULL;
 
 struct rt_semaphore sem_lock;
 struct rt_semaphore sem_empty, sem_full;
 
-/* ç”Ÿäº§è€…çº¿ç¨‹å…¥å£ */
+/* Éú²úÕßÏß³ÌÈë¿Ú */
 void producer_thread_entry(void *parameter)
 {
     int cnt = 0;
 
-    /* è¿è¡Œ10æ¬¡ */
+    /* ÔËĞĞ10´Î */
     while (cnt < 10)
     {
-        /* è·å–ä¸€ä¸ªç©ºä½ */
+        /* »ñÈ¡Ò»¸ö¿ÕÎ» */
         rt_sem_take(&sem_empty, RT_WAITING_FOREVER);
 
-        /* ä¿®æ”¹arrayå†…å®¹ï¼Œä¸Šé” */
+        /* ĞŞ¸ÄarrayÄÚÈİ£¬ÉÏËø */
         rt_sem_take(&sem_lock, RT_WAITING_FOREVER);
         array[set % MAXSEM] = cnt + 1;
         rt_kprintf("the producer generates a number: %d\n", array[set % MAXSEM]);
         set++;
         rt_sem_release(&sem_lock);
 
-        /* å‘å¸ƒä¸€ä¸ªæ»¡ä½ */
+        /* ·¢²¼Ò»¸öÂúÎ» */
         rt_sem_release(&sem_full);
         cnt++;
 
-        /* æš‚åœä¸€æ®µæ—¶é—´ */
+        /* ÔİÍ£Ò»¶ÎÊ±¼ä */
         rt_thread_mdelay(20);
     }
 
     rt_kprintf("the producer exit!\n");
 }
 
-/* æ¶ˆè´¹è€…çº¿ç¨‹å…¥å£ */
+/* Ïû·ÑÕßÏß³ÌÈë¿Ú */
 void consumer_thread_entry(void *parameter)
 {
     rt_uint32_t sum = 0;
 
     while (1)
     {
-        /* è·å–ä¸€ä¸ªæ»¡ä½ */
+        /* »ñÈ¡Ò»¸öÂúÎ» */
         rt_sem_take(&sem_full, RT_WAITING_FOREVER);
 
-        /* ä¸´ç•ŒåŒºï¼Œä¸Šé”è¿›è¡Œæ“ä½œ */
+        /* ÁÙ½çÇø£¬ÉÏËø½øĞĞ²Ù×÷ */
         rt_sem_take(&sem_lock, RT_WAITING_FOREVER);
         sum += array[get % MAXSEM];
         rt_kprintf("the consumer[%d] get a number: %d\n", (get % MAXSEM), array[get % MAXSEM]);
         get++;
         rt_sem_release(&sem_lock);
 
-        /* é‡Šæ”¾ä¸€ä¸ªç©ºä½ */
+        /* ÊÍ·ÅÒ»¸ö¿ÕÎ» */
         rt_sem_release(&sem_empty);
 
-        /* ç”Ÿäº§è€…ç”Ÿäº§åˆ°10ä¸ªæ•°ç›®ï¼Œåœæ­¢ï¼Œæ¶ˆè´¹è€…çº¿ç¨‹ç›¸åº”åœæ­¢ */
+        /* Éú²úÕßÉú²úµ½10¸öÊıÄ¿£¬Í£Ö¹£¬Ïû·ÑÕßÏß³ÌÏàÓ¦Í£Ö¹ */
         if (get == 10) break;
 
-        /* æš‚åœä¸€å°ä¼šæ—¶é—´ */
+        /* ÔİÍ£Ò»Ğ¡»áÊ±¼ä */
         rt_thread_mdelay(50);
     }
 
@@ -102,12 +102,12 @@ int producer_consumer(void)
     set = 0;
     get = 0;
 
-    /* åˆå§‹åŒ–3ä¸ªä¿¡å·é‡ */
+    /* ³õÊ¼»¯3¸öĞÅºÅÁ¿ */
     rt_sem_init(&sem_lock, "lock",     1,      RT_IPC_FLAG_FIFO);
     rt_sem_init(&sem_empty, "empty",   MAXSEM, RT_IPC_FLAG_FIFO);
     rt_sem_init(&sem_full, "full",     0,      RT_IPC_FLAG_FIFO);
 
-    /* åˆ›å»ºç”Ÿäº§è€…çº¿ç¨‹ */
+    /* ´´½¨Éú²úÕßÏß³Ì */
     producer_tid = rt_thread_create("producer",
                                     producer_thread_entry, RT_NULL,
                                     THREAD_STACK_SIZE,
@@ -122,7 +122,7 @@ int producer_consumer(void)
         return -1;
     }
 
-    /* åˆ›å»ºæ¶ˆè´¹è€…çº¿ç¨‹ */
+    /* ´´½¨Ïû·ÑÕßÏß³Ì */
     consumer_tid = rt_thread_create("consumer",
                                     consumer_thread_entry, RT_NULL,
                                     THREAD_STACK_SIZE,
@@ -140,5 +140,5 @@ int producer_consumer(void)
     return 0;
 }
 
-/* å¯¼å‡ºåˆ° msh å‘½ä»¤åˆ—è¡¨ä¸­ */
+/* µ¼³öµ½ msh ÃüÁîÁĞ±íÖĞ */
 MSH_CMD_EXPORT(producer_consumer, producer_consumer sample);

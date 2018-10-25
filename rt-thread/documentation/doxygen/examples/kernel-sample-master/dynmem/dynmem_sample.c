@@ -9,10 +9,10 @@
  */ 
  
 /*
- * 程序清单：动态内存管理例程
+ * �����嵥����̬�ڴ��������
  *
- * 这个程序会创建一个动态的线程，这个线程会动态申请内存并释放
- * 每次申请更大的内存，当申请不到的时候就结束
+ * �������ᴴ��һ����̬���̣߳�����̻߳ᶯ̬�����ڴ沢�ͷ�
+ * ÿ�����������ڴ棬�����벻����ʱ��ͽ���
  */
 #include <rtthread.h>
 
@@ -20,22 +20,22 @@
 #define THREAD_STACK_SIZE    512
 #define THREAD_TIMESLICE     5
 
-/* 线程入口 */
+/* �߳���� */
 void thread1_entry(void *parameter)
 {
     int i;
-    char *ptr = RT_NULL; /* 内存块的指针 */
+    char *ptr = RT_NULL; /* �ڴ���ָ�� */
 
     for (i = 0; ; i++)
     {
-        /* 每次分配 (1 << i) 大小字节数的内存空间 */
+        /* ÿ�η��� (1 << i) ��С�ֽ������ڴ�ռ� */
         ptr = rt_malloc(1 << i);
 
-        /* 如果分配成功 */
+        /* �������ɹ� */
         if (ptr != RT_NULL)
         {
             rt_kprintf("get memory :%d byte\n", (1 << i));
-            /* 释放内存块 */
+            /* �ͷ��ڴ�� */
             rt_free(ptr);
             rt_kprintf("free memory :%d byte\n", (1 << i));
             ptr = RT_NULL;
@@ -52,7 +52,7 @@ int dynmem_sample(void)
 {
     rt_thread_t tid;
 
-    /* 创建线程1 */
+    /* �����߳�1 */
     tid = rt_thread_create("thread1",
                            thread1_entry, RT_NULL,
                            THREAD_STACK_SIZE,
@@ -63,5 +63,5 @@ int dynmem_sample(void)
 
     return 0;
 }
-/* 导出到 msh 命令列表中 */
+/* ������ msh �����б��� */
 MSH_CMD_EXPORT(dynmem_sample, dynmem sample);
