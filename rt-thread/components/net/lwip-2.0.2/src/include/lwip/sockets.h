@@ -65,11 +65,14 @@ typedef u16_t in_port_t;
 
 #if LWIP_IPV4
 /* members are in network byte order */
+/**
+ * @ingroup NET
+ */
 struct sockaddr_in {
-  u8_t            sin_len;
-  sa_family_t     sin_family;
-  in_port_t       sin_port;
-  struct in_addr  sin_addr;
+  u8_t            sin_len;		/**< @brief 地址长度 */
+  sa_family_t     sin_family;	/**< @brief 地址族 */
+  in_port_t       sin_port;		/**< @brief 16位TCP/UDP端口号 */
+  struct in_addr  sin_addr;		/**< @brief 32位IP地址 */
 #define SIN_ZERO_LEN 8
   char            sin_zero[SIN_ZERO_LEN];
 };

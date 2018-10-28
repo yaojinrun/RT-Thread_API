@@ -5,6 +5,7 @@
 /**
  * @defgroup NET 网络
  *
+ * @brief 网络相关API说明
  */
 
 /**
@@ -13,19 +14,82 @@
 /*@{*/
 
 /**
+typedef struct fd_set
+{
+  unsigned char fd_bits [(FD_SETSIZE+7)/8];
+} fd_set;
+ * struct sockaddr
+ */
+struct sockaddr {
+  u8_t        sa_len;		/**< @brief 地址长度 */
+  sa_family_t sa_family;	/**< @brief 地址族 */
+  char        sa_data[14];	/**< @brief 14字节，包含套接字中的目标地址和端口信息 */
+};
+
+
+/**
+ * struct in_addr
+ */
+struct in_addr {
+  in_addr_t s_addr;			/**< @brief 用来保存以十六进制表示的IP地址 */
+};
+
+/**
+ * struct sockaddr_in
+ */
+struct sockaddr_in {
+  u8_t            sin_len;		/**< @brief 地址长度 */
+  sa_family_t     sin_family;	/**< @brief 地址族 */
+  in_port_t       sin_port;		/**< @brief 16位TCP/UDP端口号 */
+  struct in_addr  sin_addr;		/**< @brief 32位IP地址 */
+#define SIN_ZERO_LEN 8
+  char            sin_zero[SIN_ZERO_LEN];
+};
+
+/**
+ * struct hostent
+ */
+struct hostent {
+    char  *h_name;      /**< @brief 主机名，即官方域名 */
+    char **h_aliases;   /**< @brief 主机所有别名构成的字符串数组，同一IP可绑定多个域名 */
+    int    h_addrtype;  /**< @brief 主机IP地址的类型，例如IPV4（AF_INET）还是IPV6 */
+    int    h_length;    /**< @brief 主机IP地址长度，IPV4地址为4，IPV6地址则为16 */
+    char **h_addr_list; /**< @brief 主机的ip地址，以网络字节序存储。若要打印出这个IP，需要调用inet_ntoa()。 */
+#define h_addr h_addr_list[0] /**< @brief 为了向后兼容 */
+};
+
+/**
+ * struct addrinfo
+ */
+struct addrinfo {
+    int               ai_flags;      /**< @brief 输入标志 */
+    int               ai_family;     /**< @brief 地址族套接字 */
+    int               ai_socktype;   /**< @brief 套接字类型 */
+    int               ai_protocol;   /**< @brief 套接字协议 */
+    socklen_t         ai_addrlen;    /**< @brief 套接字地址的长度 */
+    struct sockaddr  *ai_addr;       /**< @brief 套接字的套接字地址 */
+    char             *ai_canonname;  /**< @brief 服务地点的规范名称 */
+    struct addrinfo  *ai_next;       /**< @brief 指向下一个列表的指针 */
+};
+
+/**
  * @defgroup SAL 套接字抽象层
- *
+ * 
+ * @brief SAL组件初始化API说明
  */
 
 /**
  * @defgroup SOC 套接字使用
  *
+ * @brief 套接字使用方式相关API说明
  */
 
 /**
- * @defgroup network_example 网络例程
+ * @defgroup DNS 主机名到IP地址的解析
  *
+ * @brief 主机名到IP地址的解析相关API
  */
+
 
 
 /*@}*/
@@ -39,9 +103,7 @@
  *
  * @return 0 SAL组件初始化成功。
  */
-int sal_init(void)
-{
-}
+int sal_init(void);
 
 
 /**
@@ -55,9 +117,18 @@ int sal_init(void)
  *
  * @return 0 注册成功；失败返回 -1。
  */
-int sal_proto_family_register(const struct proto_family *pf)
+int sal_proto_family_register(const struct proto_family *pf);
+
+
+/**
+ * @ingroup SOC
+ *
+ * @brief fd_set
+ */
+typedef struct fd_set
 {
-}
+  unsigned char fd_bits [(FD_SETSIZE+7)/8];			/**< @brief 数组，每一个数组元素都能与一打开的文件句柄(socket、文件、管道、设备等)建立联系 */
+} fd_set;
 
 
 /**
@@ -73,9 +144,7 @@ int sal_proto_family_register(const struct proto_family *pf)
  *
  * @return 成功，返回一个代表套接字描述符的整数；失败返回 -1。
  */
-int socket(int domain, int type, int protocol)
-{
-}
+int socket(int domain, int type, int protocol);
 
 
 /**
@@ -91,9 +160,7 @@ int socket(int domain, int type, int protocol)
  *
  * @return 成功，返回一个代表套接字描述符的整数；失败返回 -1。
  */
-int socket(int domain, int type, int protocol)
-{
-}
+int socket(int domain, int type, int protocol);
 
 /**
  * @ingroup SOC
@@ -108,9 +175,7 @@ int socket(int domain, int type, int protocol)
  *
  * @return 0 成功；-1 失败。
  */
-int bind(int s, const struct sockaddr *name, socklen_t namelen)
-{
-}
+int bind(int s, const struct sockaddr *name, socklen_t namelen);
 
 /**
  * @ingroup SOC
@@ -124,9 +189,7 @@ int bind(int s, const struct sockaddr *name, socklen_t namelen)
  *
  * @return 0 成功；-1 失败。
  */
-int listen(int s, int backlog)
-{
-}
+int listen(int s, int backlog);
 
 /**
  * @ingroup SOC
@@ -142,9 +205,7 @@ int listen(int s, int backlog)
  *
  * @return 成功，返回新创建的套接字描述符；失败返回 -1。
  */
-int accept(int s, struct sockaddr *addr, socklen_t *addrlen)
-{
-}
+int accept(int s, struct sockaddr *addr, socklen_t *addrlen);
 
 
 /**
@@ -160,9 +221,7 @@ int accept(int s, struct sockaddr *addr, socklen_t *addrlen)
  *
  * @return 0 成功；-1 失败。
  */
-int connect(int s, const struct sockaddr *name, socklen_t namelen)
-{
-}
+int connect(int s, const struct sockaddr *name, socklen_t namelen);
 
 
 /**
@@ -177,9 +236,7 @@ int connect(int s, const struct sockaddr *name, socklen_t namelen)
  *
  * @return 成功，返回发送的数据的长度；<=0 失败。
  */
-int send(int s, const void *dataptr, size_t size, int flags)
-{
-}
+int send(int s, const void *dataptr, size_t size, int flags);
 
 
 /**
@@ -194,9 +251,7 @@ int send(int s, const void *dataptr, size_t size, int flags)
  *
  * @return 成功，返回接收的数据的长度；0 表示目标地址已传输完并关闭连接。
  */
-int recv(int s, void *mem, size_t len, int flags)
-{
-}
+int recv(int s, void *mem, size_t len, int flags);
 
 
 /**
@@ -213,9 +268,7 @@ int recv(int s, void *mem, size_t len, int flags)
  *
  * @return 成功，返回发送的数据的长度；小于等于0 失败。
  */
-int sendto(int s, const void *dataptr, size_t size, int flags, const struct sockaddr *to, socklen_t tolen)
-{
-}
+int sendto(int s, const void *dataptr, size_t size, int flags, const struct sockaddr *to, socklen_t tolen);
 
 
 /**
@@ -233,9 +286,7 @@ int sendto(int s, const void *dataptr, size_t size, int flags, const struct sock
  *
  * @return 成功，返回接收的数据的长度；0 接收地址已传输完并关闭连接；小于0 失败。
  */
-int recvfrom(int s, void *mem, size_t len, int flags, struct sockaddr *from, socklen_t *fromlen)
-{
-}
+int recvfrom(int s, void *mem, size_t len, int flags, struct sockaddr *from, socklen_t *fromlen);
 
 
 /**
@@ -247,9 +298,7 @@ int recvfrom(int s, void *mem, size_t len, int flags, struct sockaddr *from, soc
  *
  * @return 0 成功；-1 失败。
  */
-int closesocket(int s)
-{
-}
+int closesocket(int s);
 
 
 /**
@@ -262,9 +311,7 @@ int closesocket(int s)
  *
  * @return 0 成功；-1 失败。
  */
-int shutdown(int s, int how)
-{
-}
+int shutdown(int s, int how);
 
 
 /**
@@ -280,9 +327,7 @@ int shutdown(int s, int how)
  *
  * @return 0 成功；小于0 失败。
  */
-int getsockopt(int s, int level, int optname, void *optval, socklen_t *optlen)
-{
-}
+int getsockopt(int s, int level, int optname, void *optval, socklen_t *optlen);
 
 
 /**
@@ -296,9 +341,7 @@ int getsockopt(int s, int level, int optname, void *optval, socklen_t *optlen)
  *
  * @return 0 成功；小于0 失败。
  */
-int getpeername(int s, struct sockaddr *name, socklen_t *namelen)
-{
-}
+int getpeername(int s, struct sockaddr *name, socklen_t *namelen);
 
 
 /**
@@ -312,9 +355,7 @@ int getpeername(int s, struct sockaddr *name, socklen_t *namelen)
  *
  * @return 0 成功；小于0 失败。
  */
-int getsockname(int s, struct sockaddr *name, socklen_t *namelen)
-{
-}
+int getsockname(int s, struct sockaddr *name, socklen_t *namelen);
 
 
 /**
@@ -328,6 +369,19 @@ int getsockname(int s, struct sockaddr *name, socklen_t *namelen)
  *
  * @return 0 成功；小于0 失败。
  */
-int ioctlsocket(int s, long cmd, void *arg)
-{
-}
+int ioctlsocket(int s, long cmd, void *arg);
+
+
+/**
+ * @ingroup DNS
+ *
+ * @brief 获取主机地址
+ *
+ * @param hostname 一个字符串指针，包含域名或主机名
+ *
+ * 该函数可以使用域名或者主机名获取地址。
+ *
+ * @return 返回对应于给定主机名的包含主机名字和地址信息的hostent结构指针。
+ */
+struct hostent * gethostbyname(const char * hostname);
+

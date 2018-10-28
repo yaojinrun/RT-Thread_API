@@ -35,7 +35,7 @@
  *
  * 注：随着RT-Thread 3.0中的包管理器开启，越来越多的软件组件将以package方式出现在
  * RT-Thread平台中。而RT-Thread平台更多的是指：
- * - RT-Thread @ref Kernel内核；
+ * - RT-Thread @ref Kernel 内核：
  * - shell命令行；
  * - 虚拟文件系统；
  * - TCP/IP网络协议栈；

@@ -33,10 +33,13 @@
 /**
  * @defgroup Fd 文件描述符
  *
+ * @brief 文件描述符相关API的介绍说明
  */
 
 /**
  * @defgroup FsApi 文件系统
+ *
+ * @brief 文件系统相关API的说明
  */
 
 /*
@@ -45,11 +48,8 @@
 
 /**
  * @defgroup FsPosixApi 文件和目录
- */
- 
- 
-/**
- * @defgroup filesystem_example 文件系统例程
+ *
+ * @brief 文件和目录操作相关API的说明
  */
 
 /*@}*/

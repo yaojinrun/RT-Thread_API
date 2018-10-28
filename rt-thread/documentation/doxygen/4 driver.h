@@ -5,6 +5,7 @@
 /**
  * @defgroup DRIVER 设备管理
  *
+ * @brief 提供访问通用工具或硬件设备的接口，例如 环形缓冲区、管道等通用工具，GPIO、SPI、I2C等硬件设备 
  */
 
 /**
@@ -29,61 +30,73 @@
 /**
  * @defgroup ringbuffer 环形缓冲区
  *
+ * @brief 环形缓冲区的API说明
  */
 
 /**
  * @defgroup completion 完成信号量
  *
+ * @brief 完成信号量的API说明
  */
 
 /**
  * @defgroup pipe 管道
  *
+ * @brief 管道的API说明
  */
 
 /**
  * @defgroup dataqueue 数据队列
  *
+ * @brief 数据队列的API说明
  */
 
 /**
  * @defgroup workqueue 工作队列
  *
+ * @brief 工作队列的API说明
  */
 
 /**
  * @defgroup waitqueue 等待队列
  *
+ * @brief 等待队列的API说明
  */
 
 /**
  * @defgroup pin PIN
  *
+ * @brief PIN设备的API说明
  */
 
 /**
  * @defgroup i2c I2C
  *
+ * @brief I2C相关的API说明
  */
 
 /**
  * @defgroup spi SPI
  *
+ * @brief SPI相关的API说明
  */
 
 /**
  * @defgroup rtc RTC
  *
+ * @brief RTC相关的API说明
  */
 
 /**
  * @defgroup alarm Alarm
  *
+ * @brief Alarm相关的API说明
  */
 
 /**
  * @defgroup pwm PWM
  *
+ * @brief PWM设备的API说明
  */
 
 

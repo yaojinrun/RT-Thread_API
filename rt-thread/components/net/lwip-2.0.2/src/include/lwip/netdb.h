@@ -89,26 +89,34 @@ extern "C" {
 #endif /* LWIP_DNS_API_DEFINE_FLAGS */
 
 #if LWIP_DNS_API_DECLARE_STRUCTS
+/**
+ * @ingroup NET
+ *
+ * @brief 主机结构体
+ */
 struct hostent {
-    char  *h_name;      /* Official name of the host. */
-    char **h_aliases;   /* A pointer to an array of pointers to alternative host names,
-                           terminated by a null pointer. */
-    int    h_addrtype;  /* Address type. */
-    int    h_length;    /* The length, in bytes, of the address. */
-    char **h_addr_list; /* A pointer to an array of pointers to network addresses (in
-                           network byte order) for the host, terminated by a null pointer. */
-#define h_addr h_addr_list[0] /* for backward compatibility */
+    char  *h_name;      /**< @brief 主机名，即官方域名 */
+    char **h_aliases;   /**< @brief 主机所有别名构成的字符串数组，同一IP可绑定多个域名 */
+    int    h_addrtype;  /**< @brief 主机IP地址的类型，例如IPV4（AF_INET）还是IPV6 */
+    int    h_length;    /**< @brief 主机IP地址长度，IPV4地址为4，IPV6地址则为16 */
+    char **h_addr_list; /**< @brief 主机的ip地址，以网络字节序存储。若要打印出这个IP，需要调用inet_ntoa()。 */
+#define h_addr h_addr_list[0] /**< @brief 为了向后兼容 */
 };
 
+/**
+ * @ingroup NET
+ *
+ * @brief 地址信息结构体
+ */
 struct addrinfo {
-    int               ai_flags;      /* Input flags. */
-    int               ai_family;     /* Address family of socket. */
-    int               ai_socktype;   /* Socket type. */
-    int               ai_protocol;   /* Protocol of socket. */
-    socklen_t         ai_addrlen;    /* Length of socket address. */
-    struct sockaddr  *ai_addr;       /* Socket address of socket. */
-    char             *ai_canonname;  /* Canonical name of service location. */
-    struct addrinfo  *ai_next;       /* Pointer to next in list. */
+    int               ai_flags;      /**< @brief 输入标志 */
+    int               ai_family;     /**< @brief 地址族套接字 */
+    int               ai_socktype;   /**< @brief 套接字类型 */
+    int               ai_protocol;   /**< @brief 套接字协议 */
+    socklen_t         ai_addrlen;    /**< @brief 套接字地址的长度 */
+    struct sockaddr  *ai_addr;       /**< @brief 套接字的套接字地址 */
+    char             *ai_canonname;  /**< @brief 服务地点的规范名称 */
+    struct addrinfo  *ai_next;       /**< @brief 指向下一个列表的指针 */
 };
 #endif /* LWIP_DNS_API_DECLARE_STRUCTS */
 
