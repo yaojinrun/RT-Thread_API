@@ -461,7 +461,7 @@ struct rt_object_information
 };
 
 /**
- * The hook function call macro
+ * 钩子函数宏定义
  */
 #ifdef RT_USING_HOOK
 #define RT_OBJECT_HOOK_CALL(func, argv) \
@@ -564,13 +564,13 @@ typedef siginfo_t rt_siginfo_t;
 #define RT_THREAD_STAT_SIGNAL_WAIT      0x20
 #define RT_THREAD_STAT_SIGNAL_MASK      0xf0
 
-/**
+/*
  * 线程控制命令定义
  */
-#define RT_THREAD_CTRL_STARTUP          0x00                /**< @brief 启动线程. */
-#define RT_THREAD_CTRL_CLOSE            0x01                /**< @brief 关闭线程. */
-#define RT_THREAD_CTRL_CHANGE_PRIORITY  0x02                /**< @brief 改变线程优先级. */
-#define RT_THREAD_CTRL_INFO             0x03                /**< @brief 获取线程信息. */
+#define RT_THREAD_CTRL_STARTUP          0x00                /**< @brief 启动线程命令. */
+#define RT_THREAD_CTRL_CLOSE            0x01                /**< @brief 关闭线程命令. */
+#define RT_THREAD_CTRL_CHANGE_PRIORITY  0x02                /**< @brief 改变线程优先级命令. */
+#define RT_THREAD_CTRL_INFO             0x03                /**< @brief 获取线程信息命令. */
 
 /**
  * @brief 线程对象控制块
@@ -647,13 +647,13 @@ typedef struct rt_thread *rt_thread_t;
 
 /*@{*/
 
-/**
+/*
  * IPC标志和控制命令定义
  */
-#define RT_IPC_FLAG_FIFO                0x00            /**< @brief FIFOed IPC. @ref IPC. */
-#define RT_IPC_FLAG_PRIO                0x01            /**< @brief PRIOed IPC. @ref IPC. */
+#define RT_IPC_FLAG_FIFO                0x00            /**< @brief FIFO调度模式命令 @ref IPC. */
+#define RT_IPC_FLAG_PRIO                0x01            /**< @brief 优先级调度模式 @ref IPC. */
 
-#define RT_IPC_CMD_UNKNOWN              0x00            /**< @brief 位置的 IPC 命令 */
+#define RT_IPC_CMD_UNKNOWN              0x00            /**< @brief 未知的 IPC 命令 */
 #define RT_IPC_CMD_RESET                0x01            /**< @brief 复位 IPC 对象命令 */
 
 #define RT_WAITING_FOREVER              -1              /**< @brief 永远阻塞直到获得资源。 */
@@ -732,7 +732,7 @@ typedef struct rt_mutex *rt_mutex_t;
 
 /**@{*/
 
-/**
+/*
  * 事件参数
  */
 #define RT_EVENT_FLAG_AND               0x01            /**< @brief 逻辑与参数 */
@@ -840,14 +840,14 @@ typedef struct rt_messagequeue *rt_mq_t;
  */
 struct rt_memheap_item
 {
-    rt_uint32_t             magic;                      /**< @brief 内存对的幻数 */
+    rt_uint32_t             magic;                      /**< @brief 内存堆的幻数 */
     struct rt_memheap      *pool_ptr;                   /**< @brief 内存池的指针 */
 
-    struct rt_memheap_item *next;                       /**< @brief 下一个内存堆 item */
-    struct rt_memheap_item *prev;                       /**< @brief 上一个内存堆 item */
+    struct rt_memheap_item *next;                       /**< @brief 下一个内存块 */
+    struct rt_memheap_item *prev;                       /**< @brief 上一个内存块 */
 
-    struct rt_memheap_item *next_free;                  /**< @brief 下一个空闲内存堆 item */
-    struct rt_memheap_item *prev_free;                  /**< @brief 上一个空闲内存堆 item */
+    struct rt_memheap_item *next_free;                  /**< @brief 下一个空闲内存块 */
+    struct rt_memheap_item *prev_free;                  /**< @brief 上一个空闲内存块 */
 };
 
 /**
@@ -970,7 +970,7 @@ enum rt_device_class_type
 #define RT_DEVICE_OFLAG_OPEN            0x008           /**< @brief 设备已打开 */
 #define RT_DEVICE_OFLAG_MASK            0xf0f           /**< @brief 打开参数的掩码 */
 
-/**
+/*
  * 通用设备命令
  */
 #define RT_DEVICE_CTRL_RESUME           0x01            /**< @brief 设备恢复命令 */
@@ -981,7 +981,7 @@ enum rt_device_class_type
 #define RT_DEVICE_CTRL_CLR_INT          0x11            /**< @brief 中断清除命令 */
 #define RT_DEVICE_CTRL_GET_INT          0x12            /**< @brief 获取中断状态命令 */
 
-/**
+/*
  * 特殊设备命令
  */
 #define RT_DEVICE_CTRL_CHAR_STREAM      0x10            /**< @brief 字符设备上的流模式 */
@@ -1084,13 +1084,13 @@ struct rt_device_blk_sectors
     rt_uint32_t sector_end;                             /**< @brief 结束扇区   */
 };
 
-/**
+/*
  * cursor control command
  */
 #define RT_DEVICE_CTRL_CURSOR_SET_POSITION  0x10
 #define RT_DEVICE_CTRL_CURSOR_SET_TYPE      0x11
 
-/**
+/*
  * graphic device control command
  */
 #define RTGRAPHIC_CTRL_RECT_UPDATE      0

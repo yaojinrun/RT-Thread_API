@@ -63,7 +63,7 @@ extern void (*rt_object_put_hook)(struct rt_object *object);
 
 /**@{*/
 
-/**
+/*
  * @brief IPC对象初始化
  *
  * 该函数将初始化一个 IPC 对象。
@@ -80,7 +80,7 @@ rt_inline rt_err_t rt_ipc_object_init(struct rt_ipc_object *ipc)
     return RT_EOK;
 }
 
-/**
+/*
  * @brief 将线程挂起到对象链表
  *
  * 该函数将挂起一个线程到指定的链表。 IPC对象或某些双队列对象（邮箱等）包含这种链表。
@@ -136,7 +136,7 @@ rt_inline rt_err_t rt_ipc_list_suspend(rt_list_t        *list,
     return RT_EOK;
 }
 
-/**
+/*
  * @brief 恢复IPC对象上挂起的第一个线程
  *
  *此函数将恢复IPC对象列表中的第一个线程：
@@ -162,7 +162,7 @@ rt_inline rt_err_t rt_ipc_list_resume(rt_list_t *list)
     return RT_EOK;
 }
 
-/**
+/*
  * @brief 恢复IPC对象上挂起的所有线程
  *
  *此函数将恢复列表中所有挂起的线程，包括IPC对象的挂起链表和邮箱的私有链表等。

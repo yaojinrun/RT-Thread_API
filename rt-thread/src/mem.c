@@ -199,9 +199,9 @@ static void plug_holes(struct heap_mem *mem)
 /**
  * @ingroup SystemInit
  *
- * @brief 系统内存堆的配置和初始化
- *
  * 该函数将初始化系统内存堆。
+ *
+ * @brief 系统内存堆的配置和初始化
  *
  * @param begin_addr 系统内存堆的起始地址
  * @param end_addr 系统内存堆的结束地址。

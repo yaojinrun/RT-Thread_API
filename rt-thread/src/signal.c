@@ -50,12 +50,12 @@
 #define sig_valid(sig_no)   (sig_no >= 0 && sig_no < RT_SIG_MAX)
 
 /**
- * 信号对象结构体定义
+ * @brief 信号对象结构体定义
  */
 struct siginfo_node
 {
-    siginfo_t si;					/**< 信号值 */
-    struct rt_slist_node list;		/**< 信号链表 */
+    siginfo_t si;					/**< @brief 信号值 */
+    struct rt_slist_node list;		/**< @brief 信号链表 */
 };
 
 static struct rt_mempool *_rt_siginfo_pool;

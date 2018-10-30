@@ -14,16 +14,3 @@
 void rt_application_init()
 {
 }
-
-/**
- * @ingroup SystemInit
- *
- * @brief 初始化系统堆内存。
- *
- * @param begin_addr 系统堆内存的起始地址。
- * @param end_addr 系统堆内存的结束地址。
- *
- */
-void rt_system_heap_init(void* begin_addr, void* end_addr)
-{
-}
