@@ -36,7 +36,7 @@ static rt_tick_t rt_tick = 0;
 extern void rt_timer_check(void);
 
 /*
- * 该函数将初始化系统节拍时钟并将其值设置为0。
+ * 该函数将初始化系统节拍并将其值设置为0。
  * @ingroup SystemInit
  *
  * @deprecated 从1.1.0开始，不需要在系统初始化时调用此函数。
@@ -52,7 +52,9 @@ void rt_system_tick_init(void)
 /**@{*/
 
 /**
- * 该函数将返回自操作系统启动以来到当前的系统时钟计数值
+ * @brief 获取当前的系统节拍计数值
+ *
+ * 该函数将返回自操作系统启动以来到当前的系统节拍计数值
  *
  * @return 当前系统节拍计数值
  */
@@ -64,7 +66,9 @@ rt_tick_t rt_tick_get(void)
 RTM_EXPORT(rt_tick_get);
 
 /**
- * 该函数将设定当前的系统时钟节拍计数值。
+ * @brief 设置系统节拍计数值
+ *
+ * 该函数将设定当前的系统节拍计数值。
  */
 void rt_tick_set(rt_tick_t tick)
 {
@@ -76,7 +80,9 @@ void rt_tick_set(rt_tick_t tick)
 }
 
 /**
- * 该函数将通知内核经过了一个系统时钟的时间。通常该函数在时钟中断里调用。
+ * @brief 增加一个系统节拍
+ *
+ * 该函数将通知内核经过了一个系统节拍的时间。通常该函数在时钟中断里调用。
  */
 void rt_tick_increase(void)
 {
@@ -103,16 +109,16 @@ void rt_tick_increase(void)
 }
 
 /**
- * @brief 节拍到毫秒的转换
+ * @brief 毫秒到系统节拍的转换
  *
- * 该函数把毫秒转换为系统时钟节拍计数值。
+ * 该函数把毫秒转换为系统节拍计数值。
  *
  * @param ms 指定的时间（毫秒）
  *           - 为负数时将永远等待
  *           - 为0时不等待立即返回
  *           - 最大值为 0x7fffffff
  *
- * @return 计算后的系统时钟节拍数
+ * @return 计算后的系统节拍数
  */
 int rt_tick_from_millisecond(rt_int32_t ms)
 {

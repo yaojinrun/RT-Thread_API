@@ -29,7 +29,7 @@ struct rt_pipe_device
     rt_wqueue_t reader_queue;			/**< @brief 管道的读等待队列 */
     rt_wqueue_t writer_queue;			/**< @brief 管道的写等待队列 */
 
-    struct rt_mutex lock;				/**< @brief 管道的互斥锁 */
+    struct rt_mutex lock;				/**< @brief 管道的互斥量 */
 };
 /**
  * @brief 管道类型定义

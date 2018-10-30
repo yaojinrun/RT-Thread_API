@@ -174,9 +174,9 @@ void rt_timer_dump(rt_list_t timer_heads[])
  * @param name 定时器的名称
  * @param timeout 超时回调函数
  * @param parameter 超时回调函数的传入参数
- * @param time 定时器的超时滴答数
- * @param flag 定时器创建时的参数，支持的值包括单次定时、周期定时、
-  * 硬件定时器、软件定时器（可以用 “或” 关系取多个值）
+ * @param time 定时器的超时时间，单位是系统节拍
+ * @param flag 定时器创建时的参数，支持的值包括单次定时器、周期定时器、
+ * 硬件定时器、软件定时器（可以用 “或” 关系取多个值）
  */
 void rt_timer_init(rt_timer_t  timer,
                    const char *name,
@@ -203,7 +203,7 @@ RTM_EXPORT(rt_timer_init);
  *
  * @param timer 静态定时器对象句柄
  *
- * @return 成功 OK; 错误则返回 RT_ERROR
+ * @return RT_EOK
  */
 rt_err_t rt_timer_detach(rt_timer_t timer)
 {
@@ -235,10 +235,10 @@ RTM_EXPORT(rt_timer_detach);
  * @param name 定时器名称
  * @param timeout 超时回调函数
  * @param parameter 超时回调函数的传入参数
- * @param time 定时超时时间
+ * @param time 定时器的超时时间，单位是系统节拍
  * @param flag 定时器的标志位
  *
- * @return 创建的定时器句柄
+ * @return 成功返回创建的定时器句柄；错误则返回 RT_NULL
  */
 rt_timer_t rt_timer_create(const char *name,
                            void (*timeout)(void *parameter),
@@ -269,7 +269,7 @@ RTM_EXPORT(rt_timer_create);
  *
  * @param timer 将要被删除的定时器句柄
  *
- * @return 成功 RT_EOK ; 错误则返回 -RT_ERROR
+ * @return RT_EOK
  */
 rt_err_t rt_timer_delete(rt_timer_t timer)
 {
@@ -300,7 +300,7 @@ RTM_EXPORT(rt_timer_delete);
  *
  * @param timer 将要被启动的定时器
  *
- * @return 成功 RT_EOK ; 错误则返回 -RT_ERROR
+ * @return RT_EOK
  */
 rt_err_t rt_timer_start(rt_timer_t timer)
 {
@@ -427,7 +427,7 @@ RTM_EXPORT(rt_timer_start);
  *
  * @param timer 定时器句柄，指向要停止的定时器控制块
  *
- * @return 成功则返回 RT_EOK ; 返回 -RT_ERROR 时则说明已经处于停止状态
+ * @return 成功则返回 RT_EOK ; 返回 -RT_ERROR 时则说明定时器已经处于停止状态
  */
 rt_err_t rt_timer_stop(rt_timer_t timer)
 {

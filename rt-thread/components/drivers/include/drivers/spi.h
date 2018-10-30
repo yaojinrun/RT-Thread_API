@@ -99,7 +99,7 @@ struct rt_spi_bus
     struct rt_device parent;			/**< @brief 从 rt_device 继承 */
     const struct rt_spi_ops *ops;		/**< @brief SPI总线的操作集 */
 
-    struct rt_mutex lock;				/**< @brief SPI总线的互斥锁 */
+    struct rt_mutex lock;				/**< @brief SPI总线的互斥量 */
     struct rt_spi_device *owner;		/**< @brief SPI总线的当前使用者 */
 };
 
