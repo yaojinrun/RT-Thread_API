@@ -319,7 +319,7 @@ RTM_EXPORT(rt_thread_startup);
 /**
  * @brief 脱离线程
  *
- * 该函数将脱离一个线程。 线程对象将从线程队列中删除，并从系统内核对象管理中脱离。
+ * 该函数将脱离一个线程。 线程对象将从线程队列中删除，并从系统对象管理中脱离/删除。
  *
  * @param thread 线程句柄，它应该是由 rt_thread_init 进行初始化的线程句柄。
  *
@@ -377,7 +377,7 @@ RTM_EXPORT(rt_thread_detach);
  * @param priority 线程的优先级
  * @param tick 线程的时间片大小。当系统中存在相同优先级线程时，这个参数指定线程一次调度能够运行的最大时间长度。
  *
- * @return 成功返回被创建的线程对象句柄，失败返回RT_NULL
+ * @return 被创建的线程对象句柄
  *
  */
 rt_thread_t rt_thread_create(const char *name,
@@ -420,9 +420,9 @@ RTM_EXPORT(rt_thread_create);
 /**
  * @brief 删除线程
  *
- * 该函数将删除一个线程。线程对象将从线程队列中删除，并从系统内核对象管理中删除。
+ * 该函数将删除一个线程。 线程对象将从线程队列中删除，并从空闲线程中的系统对象管理中删除。
  *
- * @param thread 要删除的线程句柄，它应该是由 rt_thread_creat() 创建的线程
+ * @param thread 要删除的线程句柄
  *
  * @return 成功返回 RT_EOK, 失败则返回 -RT_ERROR
  */
@@ -507,7 +507,7 @@ RTM_EXPORT(rt_thread_yield);
 /**
  * @brief 使线程睡眠
  *
- * 该函数将使当前线程睡眠几个系统时钟节拍的时间
+ * 该函数将使当前线程睡眠几个系统始终节拍的时间
  *
  * @param tick 线程睡眠的时间
  *
@@ -546,9 +546,9 @@ rt_err_t rt_thread_sleep(rt_tick_t tick)
 /**
  * @brief 线程延时函数
  *
- * 该函数将使当前线程延时几个系统时钟节拍的时间。等同于 rt_thread_sleep()
+ * 该函数将使当前线程延时几个系统始终节拍的时间。
  *
- * @param tick 线程延时的时间
+ * @param tick 延时的系统节拍数
  *
  * @return RT_EOK
  */
@@ -561,7 +561,7 @@ RTM_EXPORT(rt_thread_delay);
 /**
  * @brief 线程毫秒延时函数
  *
- * 此函数将使当前线程延时指定的毫秒。
+ * 此函数将使当前线程延迟几毫秒。
  *
  * @param ms 延时时间
  *
@@ -589,7 +589,7 @@ RTM_EXPORT(rt_thread_mdelay);
  *  RT_THREAD_CTRL_CLOSE 删除线程
  * @param arg 控制命令相关的参数
  *
- * @return 成功返回 RT_EOK，失败返回-RT_ERROR
+ * @return RT_EOK
  */
 rt_err_t rt_thread_control(rt_thread_t thread, int cmd, void *arg)
 {

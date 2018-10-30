@@ -274,7 +274,7 @@ void rt_system_heap_init(void *begin_addr, void *end_addr)
  *
  * @param size 需要分配的内存块的大小，单位为字节。
  *
- * @return 成功则返回分配的内存块地址；失败则返回RT_NULL
+ * @return 成功则返回分配的内存块地址；失败则返回 失败
  */
 void *rt_malloc(rt_size_t size)
 {
@@ -426,7 +426,7 @@ RTM_EXPORT(rt_malloc);
  * @param rmem 指向已分配的内存块
  * @param newsize 重新分配的内存大小
  *
- * @return 成功则返回重新分配的内存块地址；失败则返回RT_NULL
+ * @return 重新分配的内存块地址
  */
 void *rt_realloc(void *rmem, rt_size_t newsize)
 {
@@ -525,8 +525,8 @@ RTM_EXPORT(rt_realloc);
  *
  * 此函数将从内存堆中分配连续内存地址的多个内存块，每个空间对象的内存大小为字节，并返回指向已分配内存的指针。
  *
- * @param count 内存块数量
- * @param size 内存块大小
+ * @param count 分配的空间对象的计数
+ * @param size 分配的空间对象的大小
  *
  * @return 成功则指向指向第一个内存块地址的指针，并且所有分配的内存块都被初始化成零；如果失败则返回 NULL。
  */

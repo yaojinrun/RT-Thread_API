@@ -70,7 +70,7 @@ extern void (*rt_object_put_hook)(struct rt_object *object);
  *
  * @param ipc 指定的 IPC 对象
  *
- * @return RT_EOK
+ * @return the operation status, RT_EOK on successful
  */
 rt_inline rt_err_t rt_ipc_object_init(struct rt_ipc_object *ipc)
 {
@@ -86,7 +86,7 @@ rt_inline rt_err_t rt_ipc_object_init(struct rt_ipc_object *ipc)
  * 该函数将挂起一个线程到指定的链表。 IPC对象或某些双队列对象（邮箱等）包含这种链表。
  *
  * @param list 该IPC上挂起的线程链表
- * @param thread 要挂起的线程对象
+ * @param thread 要刮起的线程对象
  * @param flag IPC对象的标志位，应为RT_IPC_FLAG_FIFO / RT_IPC_FLAG_PRIO。
  *
  * @return RT_EOK
@@ -213,12 +213,12 @@ rt_inline rt_err_t rt_ipc_list_resume_all(rt_list_t *list)
 /**
  * @brief 初始化信号量
  *
- * 该函数将初始化一个静态信号量并将其置于内核对象管理器中。
+ * 该函数将初始化信号量并将其置于内核管理器的控制之下。
  *
  * @param sem 指定的信号量对象句柄
  * @param name 信号量的名称
  * @param value 信号量初始化时的值
- * @param flag 信号量的等待标志，可取 RT_IPC_FLAG_FIFO 或者 RT_IPC_FLAG_PRIO
+ * @param flag 信号量的标志位
  *
  * @return RT_EOK
  */
@@ -248,11 +248,11 @@ RTM_EXPORT(rt_sem_init);
 /**
  * @brief 脱离信号量
  *
- * 该函数将把指定的静态信号量从内核对象管理器中脱离。
+ * 该函数将把指定的静态信号量从内核对象管理器中移除。
  *
- * @param sem 指定的信号量对象句柄
+ * @param sem 指定的信号量对象
  *
- * @return RT_EOK
+ * @return 脱离成功返回 RT_EOK
  *
  * @see rt_sem_delete
  */
@@ -274,13 +274,14 @@ RTM_EXPORT(rt_sem_detach);
 /**
  * @brief 创建信号量
  *
- * 调用该函数时，系统将从对象管理器中动态的分配一个信号量对象并初始化。
+ * 调用该函数时，系统将先从对象管理器中分配一个semaphore对象，并初始化这个对象，
+ * 然后初始化 IPC 对象以及与 semaphore 相关的部分。。
  *
  * @param name 信号量的名称
  * @param value 信号量初始化时的值
- * @param flag 信号量的标志位，可取 RT_IPC_FLAG_FIFO 或者 RT_IPC_FLAG_PRIO
+ * @param flag 信号量的标志位
  *
- * @return 成功返回信号量对象句柄, 失败则返回 RT_NULL
+ * @return 返回创建的信号量控制块, 当错误时返回 RT_NULL
  *
  * @see rt_sem_init
  */
@@ -312,10 +313,11 @@ RTM_EXPORT(rt_sem_create);
  * @brief 删除信号量
  *
  * 系统不再使用信号量时，可通过删除信号量以释放系统资源，适用于动态创建的信号量。
+ * 调用该函数将删除一个信号量对象，并释放其占用的内存空间。
  *
  * @param sem 信号量对象句柄
  *
- * @return RT_EOK
+ * @return RT_EOK删除成功
  *
  * @see rt_sem_detach
  */
@@ -554,11 +556,11 @@ RTM_EXPORT(rt_sem_control);
 /**
  * @brief 初始化互斥量
  *
- * 该函数将初始化一个静态互斥量并将其置于内核对象管理器中。
+ * 该函数将初始化互斥锁并将其置于内核管理器的控制之下
  *
- * @param mutex 互斥量对象句柄
+ * @param mutex 互斥量对象的句柄
  * @param name 互斥量的名称
- * @param flag 互斥量的等待标志，可取值： RT_IPC_FLAG_FIFO 或者 RT_IPC_FLAG_PRIO
+ * @param flag 互斥量的标志位
  *
  * @return RT_EOK 初始化成功
  */
@@ -587,7 +589,7 @@ RTM_EXPORT(rt_mutex_init);
 /**
  * @brief 脱离互斥量
  *
- * 该函数将把互斥量对象从内核对象管理器中脱离，适用于静态互斥量。
+ * 该函数将把互斥量对象从内核对象管理器中删除，适用于静态初始化的互斥量。
  *
  * @param mutex 互斥量对象的句柄
  *
@@ -613,12 +615,12 @@ RTM_EXPORT(rt_mutex_detach);
 /**
  * @brief 创建互斥量
  *
- * 调用该函数创建一个动态的互斥量，内核首先创建一个互斥量控制块，然后完成对该控制块的初始化工作。
+ * 调用该函数创建一个互斥量时，内核首先创建一个互斥量控制块，然后完成对该控制块的初始化工作。
  *
  * @param name 互斥量的名称
- * @param flag 互斥量的等待标志，可取值： RT_IPC_FLAG_FIFO 或者 RT_IPC_FLAG_PRIO
+ * @param flag 互斥量的标志位
  *
- * @return 成功返回互斥量句柄，失败则返回RT_NULL
+ * @return 返回创建的互斥量，失败时返回RT_NULL
  *
  * @see rt_mutex_init
  */
@@ -651,7 +653,7 @@ RTM_EXPORT(rt_mutex_create);
 /**
  * @brief 删除互斥量
  *
- * 当系统不再使用互斥量时，通过调用该函数删除互斥量以释放系统资源，适用于动态互斥量。
+ * 当系统不再使用互斥量时，通过调用该函数删除互斥量以释放系统资源，适用于动态创建的互斥量。
  *
  * @param mutex 互斥量对象的句柄
  *
@@ -685,7 +687,7 @@ RTM_EXPORT(rt_mutex_delete);
  * 超时时间。
  *
  * @param mutex 互斥量对象的句柄
- * @param time 指定的等待时间，单位是操作系统时钟节拍
+ * @param time 指定的等待时间
  *
  * @return RT_EOK 成功获得互斥量；-RT_ETIMEOUT 超时；-RT_ERROR 获取失败
  */
@@ -823,7 +825,7 @@ RTM_EXPORT(rt_mutex_take);
  * 它变为可用，等待在该信号量上的线程将被唤醒。如果线程的运行优先级被互斥量提升，
  * 那么当互斥量被释放后，线程恢复为持有互斥量前的优先级。
  *
- * @param mutex 互斥量对象句柄
+ * @param mutex 互斥量对象的句柄
  *
  * @return RT_EOK 成功
  */
@@ -947,13 +949,13 @@ RTM_EXPORT(rt_mutex_control);
 /**
  * @brief 初始化事件集
  *
- * 该函数将初始化一个静态的事件集对象，并加入到系统内核对象容器中进行管理。
+ * 该函数将初始化事件集对象，并加入到系统对象容器中进行管理。
  *
  * @param event 事件集对象的句柄
  * @param name 事件集的名称
- * @param flag 事件集的等待标志，可取 RT_IPC_FLAG_FIFO 或者 RT_IPC_FLAG_PRIO
+ * @param flag 事件集的标志，它可以取值：RT_IPC_FLAG_FIFO或RT_IPC_FLAG_PRIO
  *
- * @return RT_EOK 初始化成功
+ * @return RT_EOK
  */
 rt_err_t rt_event_init(rt_event_t event, const char *name, rt_uint8_t flag)
 {
@@ -978,12 +980,11 @@ RTM_EXPORT(rt_event_init);
 /**
  * @brief 脱离事件集
  *
- * 该函数将把一个事件集对象从内核对象管理器中脱离。调用这个函数时，系统首先唤醒所有挂在该事件集等待队列上的线程（线程的返回值是-RT_ERROR），
- * 然后将该事件集从内核对象管理器中脱离。
+ * 该函数将把一个事件从内核管理器中脱离
  *
  * @param event 事件对象的句柄
  *
- * @return RT_EOK 成功
+ * @return RT_EOK
  */
 rt_err_t rt_event_detach(rt_event_t event)
 {
@@ -1004,12 +1005,13 @@ RTM_EXPORT(rt_event_detach);
 /**
  * @brief 创建事件集
  *
- * 调用该函数接口时，系统会从内核对象管理器中分配事件集对象，然后进行对象的初始化，
+ * 调用该函数接口时，系统会从对象管理器中分配事件对象，然后进行对象的初始化，
+ * IPC对象初始化，并把set设置成0。
  *
  * @param name 事件集的名称
  * @param flag 事件集的标志，它可以取值：RT_IPC_FLAG_FIFO或RT_IPC_FLAG_PRIO
  *
- * @return 成功返回创建的事件对象的句柄，失败则返回 RT_NULL
+ * @return 返回创建的事件对象的句柄，创建失败返回 RT_NULL
  */
 rt_event_t rt_event_create(const char *name, rt_uint8_t flag)
 {
@@ -1038,9 +1040,8 @@ RTM_EXPORT(rt_event_create);
 /**
  * @brief 删除事件集
  *
- * 通过调用该函数可删除事件集对象并释放系统资源，适用于动态事件集。
- * 在删除一个事件集对象时，应该确保该事件集不再被使用。
- * 在删除前会唤醒所有挂起在该事件集上的线程（线程的返回值是 - RT_ERROR），然后将该事件集从内核对象管理器中删除，并释放事件集对象占用的内存块。
+ * 系统不再使用rt_event_create() 创建的事件集对象时，通过调用该函数删除事件集对象
+ * 控制块来释放系统资源。
  *
  * @param event 事件集对象的句柄
  *
@@ -1067,14 +1068,14 @@ RTM_EXPORT(rt_event_delete);
 /**
  * @brief 发送事件
  *
- * 使用该函数接口时，将向事件集 event 发送事件 set，也就是将事件集  event 对应的 set 位置位。
- * 然后遍历等待在 event 事件集对象上的等待线程链表，判断是否有线程等待的的事件集与当前
- * event对象事件集值匹配，如果有，则唤醒该线程。
+ * 使用该函数接口时，通过参数 set 指定的事件标志来设定 event 事件集对象的事件标志值，
+ * 然后遍历等待在event事件集对象上的等待线程链表，判断是否有线程的事件激活要求与当前 
+ * event对象事件标志值匹配，如果有，则唤醒该线程。
  *
  * @param event 事件集对象的句柄
  * @param set 发送的一个或多个事件的标志值
  *
- * @return RT_EOK 成功
+ * @return RT_EOK
  */
 rt_err_t rt_event_send(rt_event_t event, rt_uint32_t set)
 {
@@ -1171,8 +1172,8 @@ RTM_EXPORT(rt_event_send);
  *
  * @param event 事件集对象的句柄
  * @param set 接收线程感兴趣的事件
- * @param option 接收选项，可取值为：RT_EVENT_FLAG_AND或RT_EVENT_FLAG_OR。
- * @param timeout 指定超时时间，单位是操作系统时钟节拍
+ * @param option 接收选项，应设置接收选项RT_EVENT_FLAG_AND或RT_EVENT_FLAG_OR。
+ * @param timeout 指定超时时间
  * @param recved 指向收到的事件，如果不感兴趣，可以设置为 RT_NULL。
  *
  * @return RT_EOK 成功；-RT_ETIMEOUT 超时；-RT_ERROR 错误
@@ -1340,15 +1341,15 @@ RTM_EXPORT(rt_event_control);
 /**
 * @brief 初始化邮箱
  *
- * 该函数将初始化一个静态的邮箱并将其置于内核对象管理器中。如果 msgpool指向的缓冲区的字节数是 N，那么邮箱容量size值为 N/4。
+ * 该函数将初始化邮箱并将其置于内核管理器的控制之下。
  *
  * @param mb 邮箱对象的句柄
  * @param name 邮箱的名称
  * @param msgpool 缓冲区指针
- * @param size 邮箱容量，
- * @param flag 邮箱的等待标志，可取值：RT_IPC_FLAG_FIFO或RT_IPC_FLAG_PRIO
+ * @param size 邮箱容量
+ * @param flag 邮箱标志，它可以取数值：RT_IPC_FLAG_FIFO或RT_IPC_FLAG_PRIO
  *
- * @return RT_EOK 成功
+ * @return RT_EOK
  */
 rt_err_t rt_mb_init(rt_mailbox_t mb,
                     const char  *name,
@@ -1384,13 +1385,13 @@ RTM_EXPORT(rt_mb_init);
 /**
 * @brief 脱离邮箱
  *
- * 该函数将把静态初始化的邮箱对象从内核对象管理器中脱离。使用该函数接口后，
+ * 该函数将将把静态初始化的邮箱对象从内核对象管理器中删除。使用该函数接口后，
  * 内核先唤醒所有挂在该邮箱上的线程（线程获得返回值是 - RT_ERROR ），然后将
- * 该邮箱对象从内核对象管理器中脱离。
+ * 该邮箱对象从内核对象管理器中删除。
  *
  * @param mb 邮箱对象的句柄
  *
- * @return RT_EOK 成功
+ * @return RT_EOK
  */
 rt_err_t rt_mb_detach(rt_mailbox_t mb)
 {
@@ -1421,7 +1422,7 @@ RTM_EXPORT(rt_mb_detach);
  * @param size 邮箱容量
  * @param flag 邮箱标志，它可以取值：RT_IPC_FLAG_FIFO 或 RT_IPC_FLAG_PRIO
  *
-* @return 成功返回创建的邮箱对象的句柄，失败则返回 RT_NULL
+* @return 返回创建的邮箱对象，创建失败时返回 RT_NULL
  */
 rt_mailbox_t rt_mb_create(const char *name, rt_size_t size, rt_uint8_t flag)
 {
@@ -1464,13 +1465,14 @@ RTM_EXPORT(rt_mb_create);
 /**
  * @brief 删除邮箱
  *
- * 当动态创建的邮箱不再被使用时，应该调用该函数删除它来释放相应的系统资源，
- * 删除邮箱时，内核先唤醒挂起在该邮箱上的所有线程（线程返回值是- RT_ERROR），
- * 然后再释放邮箱使用的内存，最后删除邮箱对象。
+ * 当用rt_mb_create()创建的邮箱不再被使用时，应该调用该函数删除它来释放相应的系统资源，
+ * 一旦操作完成，邮箱将被永久性的删除。删除邮箱时，如果有线程被挂起在该邮箱对象上，
+ * 内核先唤醒挂起在该邮箱上的所有线程（线程返回值是- RT_ERROR），然后再释放邮箱使用的
+ * 内存，最后删除邮箱对象。
  *
  * @param mb 邮箱对象的句柄
  *
- * @return RT_EOK 成功
+ * @return 错误代码
  */
 rt_err_t rt_mb_delete(rt_mailbox_t mb)
 {
@@ -1501,14 +1503,14 @@ RTM_EXPORT(rt_mb_delete);
  *
  * 用户也可以通过调用该函数接口向指定邮箱发送邮件。它与 rt_mb_send()的区别在于，
  * 如果邮箱已经满了，那么发送线程将根据设定的timeout参数等待邮箱中因为收取邮件
- * 而空出空间。如果设置的超时时间到达依然没有空出空间，这时发送线程将被唤醒并返回
+ * 而空出空间。如果设置的超时时间到达依然没有空出空间，这时发送线程将被唤醒返回
  * 错误码。
  *
  * @param mb 邮箱对象的句柄
  * @param value 邮件内容
- * @param timeout 超时时间，单位为系统时钟节拍
+ * @param timeout 超时时间
  *
- * @return RT_EOK 发送成功；-RT_ETIMEOUT 超时；-RT_ERROR 失败
+ * @return RT_EOK 发送成功；-RT_ETIMEOUT 超时；-RT_ERROR 失败，返回错误号
  */
 rt_err_t rt_mb_send_wait(rt_mailbox_t mb,
                          rt_uint32_t  value,
@@ -1657,9 +1659,9 @@ RTM_EXPORT(rt_mb_send);
  *
  * @param mb 邮箱对象的句柄
  * @param value 邮件内容
- * @param timeout 超时时间，单位为系统时钟节拍
+ * @param timeout 超时时间
  *
- * @return RT_EOK 发送成功；-RT_ETIMEOUT 超时；-RT_ERROR 失败
+ * @return RT_EOK 发送成功；-RT_ETIMEOUT 超时；-RT_ERROR 失败，返回错误号
  */
 rt_err_t rt_mb_recv(rt_mailbox_t mb, rt_uint32_t *value, rt_int32_t timeout)
 {
@@ -1848,16 +1850,16 @@ struct rt_mq_message
 /**
  * @brief 初始化消息队列
  *
- * 该函数将初始化静态消息队列并将其置于内核对象管理器中。
+ * 该函数将初始化消息队列并将其置于内核管理器的控制之下。
  *
  * @param mq 消息队列对象句柄
  * @param name 消息队列的名称
  * @param msgpool 用于存放消息的缓冲区指针
  * @param msg_size 消息队列中一条消息的最大长度，单位字节
  * @param pool_size 存放消息的缓冲区大小
- * @param flag 消息队列的等待方式，可取值：RT_IPC_FLAG_FIFO或RT_IPC_FLAG_PRIO
+ * @param flag 消息队列采用的等待方式，它可以取值：RT_IPC_FLAG_FIFO或RT_IPC_FLAG_PRIO
  *
- * @return RT_EOK 成功
+ * @return RT_EOK
  */
 rt_err_t rt_mq_init(rt_mq_t     mq,
                     const char *name,
@@ -1912,13 +1914,13 @@ RTM_EXPORT(rt_mq_init);
 /**
  * @brief 脱离消息队列
  *
- * 该函数将使静态消息队列对象从内核对象管理器中脱离。使用该函数接口后，
+ * 该函数将使消息队列对象被从内核对象管理器中删除。使用该函数接口后，
  * 内核先唤醒所有挂在该消息等待队列对象上的线程（返回值是 - RT_ERROR ），
- * 然后将该消息队列对象从内核对象管理器中脱离除。
+ * 然后将该消息队列对象从内核对象管理器中删除。
  *
  * @param mq 消息队列对象句柄
  *
- * @return RT_EOK 成功
+ * @return RT_EOK
  */
 rt_err_t rt_mq_detach(rt_mq_t mq)
 {
@@ -1949,7 +1951,7 @@ RTM_EXPORT(rt_mq_detach);
  * @param max_msgs 消息队列的最大个数
  * @param flag 消息队列采用的等待方式，它可以取值：RT_IPC_FLAG_FIFO或RT_IPC_FLAG_PRIO
  *
- * @return 成功返回创建的消息队列对象的句柄，失败则返回 RT_NULL
+ * @return 返回创建的消息队列，当发生错误时返回 RT_NULL
  */
 rt_mq_t rt_mq_create(const char *name,
                      rt_size_t   msg_size,
@@ -2012,8 +2014,8 @@ RTM_EXPORT(rt_mq_create);
 /**
  * @brief 删除消息队列
  *
- * 当动态消息队列不再被使用时，应该调用该函数接口删除它以释放系统资源。
- * 删除消息队列时，如果有线程被挂起在该消息队列等待队列上，
+ * 当消息队列不再被使用时，应该调用该函数接口删除它以释放系统资源，一旦操作完成，
+ * 消息队列将被永久性地删除。删除消息队列时，如果有线程被挂起在该消息队列等待队列上，
  * 则内核先唤醒挂起在该消息等待队列上的所有线程（返回值是 -RT_ERROR），然后再释放
  * 消息队列使用的内存，最后删除消息队列对象。
  *
@@ -2056,7 +2058,7 @@ RTM_EXPORT(rt_mq_delete);
  * @param buffer 消息内容
  * @param size 消息大小
  *
- * @return RT_EOK 成功；-RT_EFULL 消息队列已满；-RT_ERROR 失败，发送的
+ * @return RT_EOK 成功；-RT_EFULL 消息队列已满；-RT_ERROR 失败，表示发送的
  * 消息长度大于消息队列中消息的最大长度
  */
 rt_err_t rt_mq_send(rt_mq_t mq, void *buffer, rt_size_t size)
@@ -2147,8 +2149,7 @@ RTM_EXPORT(rt_mq_send);
  * @param buffer 消息内容
  * @param size 消息大小
  *
- * @return RT_EOK 成功；-RT_EFULL 消息队列已满；-RT_ERROR 失败,发送的
- * 消息长度大于消息队列中消息的最大长度
+ * @return RT_EOK 成功；-RT_EFULL 消息队列已满；-RT_ERROR 失败
  */
 rt_err_t rt_mq_urgent(rt_mq_t mq, void *buffer, rt_size_t size)
 {
@@ -2230,7 +2231,7 @@ RTM_EXPORT(rt_mq_urgent);
  * @param mq 消息队列对象句柄
  * @param buffer 消息内容
  * @param size 消息大小
- * @param timeout 指定的超时时间,单位为系统时钟节拍
+ * @param timeout 指定的超时时间
  *
  * @return RT_EOK 成功；-RT_ETIMEOUT 超时；-RT_ERROR 失败
  */

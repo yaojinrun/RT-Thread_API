@@ -66,18 +66,19 @@
 
 /**
  * @ingroup MM
- * @brief 初始化内存堆
+ * @brief 初始化memheap
  *
- * 在使用内存堆时，必须要在系统初始化的时候进行堆的初始化。
+ * 在使用memheap堆内存时，必须要在系统初始化的时候进行堆内存的初始化，
+ * 可以通过调用该函数完成内存堆的初始化。
  *
- * @param memheap 内存堆句柄
+ * @param memheap memheap控制块
  * @param name 内存堆的名称
  * @param start_addr 堆内存区域起始地址
  * @param size 堆内存大小
  *
- * @return RT_EOK 成功
+ * @return RT_EOK
  *
- * @note 如果有多个不连续的内存堆可以多次调用该函数将其初始化并加入内存堆item链表。
+ * @note 如果有多个不连续的memheap可以多次调用该函数将其初始化并加入memheap_item链表。
  */
 rt_err_t rt_memheap_init(struct rt_memheap *memheap,
                          const char        *name,

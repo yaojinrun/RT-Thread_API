@@ -50,7 +50,7 @@
 #define sig_valid(sig_no)   (sig_no >= 0 && sig_no < RT_SIG_MAX)
 
 /**
- * @brief 信号对象结构体定义
+ * 信号对象结构体定义
  */
 struct siginfo_node
 {
@@ -163,11 +163,11 @@ static void _signal_deliver(rt_thread_t tid)
  * 哪个信号；该信号被传递给线程时，将执行何种操作。
  *
  * @param signo 信号值（只有 SIGUSR1 和 SIGUSR2 是开放给用户使用的）
- * @param handler 信号值的处理方式。可以忽略该信号（参数设为 SIG_IGN）；
+ * @param handler 信号值的处理。可以忽略该信号（参数设为 SIG_IGN）；
  * 可以采用系统默认方式处理信号 (参数设为 SIG_DFL)；也可以自己实现
  * 处理方式 (参数指定一个函数地址)。
  *
- * @return 成功返回安装信号前的 handler值，失败则返回SIG_ERR。
+ * @note 成功安装信号前的 handler 值，失败返回SIG_ERR。
  */
 rt_sighandler_t rt_signal_install(int signo, rt_sighandler_t handler)
 {
@@ -199,8 +199,7 @@ rt_sighandler_t rt_signal_install(int signo, rt_sighandler_t handler)
  * @ingroup Signal
  * @brief 信号阻塞
  *
- * 该函数将阻塞指定的信号，也可以理解为屏蔽信号。
- * 如果该信号被阻塞，则该信号将不会递达给安装此信号的线程，也不会引发软中断处理。
+ * 该函数将阻塞指定的信号。
  *
  * @param signo 指定的信号值
  *
@@ -222,7 +221,6 @@ void rt_signal_mask(int signo)
  * @brief 解除信号阻塞
  *
  * 该函数将解除指定信号的阻塞。
- * 线程中可以安装好几个信号，使用此函数可以对其中一些信号给予“关注”，那么发送这些信号都会引发该线程的软中断。
  *
  * @param signo 指定的信号值
  *
@@ -253,13 +251,12 @@ void rt_signal_unmask(int signo)
  * @brief 等待信号
  *
  * 该函数将等待 set 信号的到来，如果没有等到这个信号，则把线程给挂起来，
- * 直到等到这个信号或者等待时间超过指定的超时时间 timeout。如果等到了该信号，则将指向该信号的指针存入si。
+ * 直到等到这个信号或者等待时间超过指定的超时时间 timeout。
  *
  * @param set 指定等待的信号值
- * @param si 等到的信号句柄
- * @param timeout 指定的等待时间
+ * @param si 等待的信号句柄
+ * @param timeout 指定的超时时间
  *
- * @return RT_EOK 等到信号；-RT_ETIMEOUT 超时；-RT_EINVAL 参数错误
  */
 int rt_signal_wait(const rt_sigset_t *set, rt_siginfo_t *si, rt_int32_t timeout)
 {
@@ -468,14 +465,13 @@ void rt_thread_free_sig(rt_thread_t tid)
 
 /**
  * @ingroup Signal
- * @brief 发送信号
+ * @brief 信号的发送
  *
- * 调用该函数可以用来向任何线程发送任何信号。当需要进行异常处理时，可以发送信号给设定了处理异常的线程。
+ * 调用该函数可以用来向任何线程发送任何信号。
  *
  * @param tid 接收信号的线程
  * @param sig 指定的信号值
  *
- * @return RT_EOK 成功；-RT_EINVAL 参数错误
  */
 int rt_thread_kill(rt_thread_t tid, int sig)
 {

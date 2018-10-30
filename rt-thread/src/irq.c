@@ -34,7 +34,7 @@ static void (*rt_interrupt_leave_hook)(void);
 
 /**
  * @ingroup Hook
- * @brief 进入中断钩子函数设置
+ * @brief 中断进入钩子函数设置
  *
  * 该函数将设置一个中断钩子函数，当系统进入中断时调用该函数。
  *
@@ -69,15 +69,9 @@ void rt_interrupt_leave_sethook(void (*hook)(void))
 volatile rt_uint8_t rt_interrupt_nest;
 
 /**
- * @brief 进入中断
+ * @brief 中断进入
  *
- * 当进入中断服务程序时，需要调用此函数通知内核当前已经进入到中断状态。
- * 在中断服务程序中，如果调用了内核相关的函数（如释放信号量等操作），
- * 则可以通过判断当前中断状态，让内核及时调整相应的行为。
- * 例如：在中断中释放了一个信号量，唤醒了某线程，但通过判断发现当前系统处于中断上下文环境中，
- * 那么在进行线程切换时应该采取中断中线程切换的策略，而不是立即进行切换。
- *
- * 如果中断服务程序不会调用内核相关的函数（释放信号量等操作），则可以不用调用此函数。
+ * 当进入中断服务程序时，BSP将调用此函数
  *
  * @note 请不要在程序中调用此例程。
  *
@@ -98,9 +92,9 @@ void rt_interrupt_enter(void)
 RTM_EXPORT(rt_interrupt_enter);
 
 /**
- * @brief 离开中断
+ * @brief 中断离开
  *
- * 当离开中断服务程序时，需要调用此函数用于通知内核当前已经离开了中断状态。
+ * 当离开中断服务程序时，BSP将调用此函数
  *
  * @note 请不要在程序中调用此例程。
  *
@@ -121,13 +115,13 @@ void rt_interrupt_leave(void)
 RTM_EXPORT(rt_interrupt_leave);
 
 /**
- * @brief 获取中断嵌套层数
+ * @brief 中断嵌套层数获取
  *
- * 该函数将返回中断嵌套层数。
+ * 该函数将返回中断嵌套。
  *
- * 用户应用程序可以调用此函数来获取道当前已经进入到中断状态或当前嵌套的中断深度。
+ * 用户应用程序可以调用此函数来获取当前上下文是否是中断上下文。
  *
- * @return 中断嵌套层数。
+ * @return 嵌套中断的数量。
  */
 rt_uint8_t rt_interrupt_get_nest(void)
 {

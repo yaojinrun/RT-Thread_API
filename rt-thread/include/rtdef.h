@@ -79,7 +79,7 @@ typedef unsigned long                   rt_ubase_t;     /**< @brief NÎ»CPU Ïà¹ØÎ
 typedef rt_base_t                       rt_err_t;       /**< @brief ´íÎóºÅÀàĞÍ */
 typedef rt_uint32_t                     rt_time_t;      /**< @brief Ê±¼ä´ÁÀàĞÍ */
 typedef rt_uint32_t                     rt_tick_t;      /**< @brief ÏµÍ³Ê±ÖÓ½ÚÅÄ¼ÆÊıÀàĞÍ */
-/*typedef rt_base_t                       rt_flag_t;      /**< @brief ²ÎÊıÀàĞÍ(Ã»ÓĞÊ¹ÓÃ£¬²»Ìí¼Óµ½ÎÄµµ) */
+typedef rt_base_t                       rt_flag_t;      /**< @brief ²ÎÊıÀàĞÍ */
 typedef rt_ubase_t                      rt_size_t;      /**< @brief ×Ö½Ú´óĞ¡ÀàĞÍ */
 typedef rt_ubase_t                      rt_dev_t;       /**< @brief Éè±¸ÀàĞÍ */
 typedef rt_base_t                       rt_off_t;       /**< @brief ÊäÈëÆ«ÒÆÀàĞÍ */
@@ -226,7 +226,7 @@ typedef int (*init_fn_t)(void);
 /**
  * @brief ´¿Èí¼şº¯Êı×Ô¶¯³õÊ¼»¯
  *
- * Ö÷ÒªÊÇÓÃÓÚ´¿Èí¼şµÄ³õÊ¼»¯¡¢Ã»ÓĞÌ«¶àÒÀÀµµÄº¯Êı¡£
+ * ÕâÀïÍ¨³£ÕâÀï»áÔËĞĞÒ»Ğ©Ô¤³õÊ¼»¯º¯Êı¡£
  *
  * @param fn º¯ÊıÖ¸Õë
  *
@@ -236,7 +236,7 @@ typedef int (*init_fn_t)(void);
 /**
  * @brief Éè±¸×Ô¶¯³õÊ¼»¯
  *
- * ÕâÀïÍ¨³£»áÔËĞĞÒ»Ğ©Éè±¸Ïà¹ØµÄÓ¦ÓÃ³õÊ¼»¯º¯Êı£¬ÀıÈç£º´®¿ÚÍ¨Ñ¶ÉèÖÃ£¬...
+ * ÕâÀïÍ¨³£»áÔËĞĞÒ»Ğ©Éè±¸Ïà¹ØµÄÓ¦ÓÃ³õÊ¼»»º¯Êı£¬ÀıÈç£º´®¿ÚÍ¨Ñ¶ÉèÖÃ£¬...
  *
  * @param fn º¯ÊıÖ¸Õë
  *
@@ -396,7 +396,7 @@ typedef struct rt_slist_node rt_slist_t;                /**< @brief µ¥ÏòÁ´±íÀàĞÍ
 /*
  * kernel object macros
  */
-#define RT_OBJECT_FLAG_MODULE           0x80            /**< @brief ¶¯Ì¬Ä£¿é¶ÔÏó */
+#define RT_OBJECT_FLAG_MODULE           0x80            /**< @brief Ó¦ÓÃÄ£¿é¶ÔÏó */
 
 /**
  * @brief ÄÚºË¶ÔÏó¿ØÖÆ¿éµÄÊı¾İ½á¹¹
@@ -408,7 +408,7 @@ struct rt_object
     rt_uint8_t flag;                                    /**< @brief ÄÚºË¶ÔÏóµÄ²ÎÊı */
 
 #ifdef RT_USING_MODULE
-    void      *module_id;                               /**< @brief ¶¯Ì¬Ä£¿éµÄid */
+    void      *module_id;                               /**< @brief Ó¦ÓÃÄ£¿éµÄid */
 #endif
     rt_list_t  list;                                    /**< @brief ÄÚºË¶ÔÏó¹ÜÀíÁ´±í */
 };
@@ -461,10 +461,11 @@ struct rt_object_information
 };
 
 /**
- * ¹³×Óº¯Êıµ÷ÓÃºê¶¨Òå
+ * The hook function call macro
  */
 #ifdef RT_USING_HOOK
-#define RT_OBJECT_HOOK_CALL(func, argv) do { if ((func) != RT_NULL) func argv; } while (0)
+#define RT_OBJECT_HOOK_CALL(func, argv) \
+    do { if ((func) != RT_NULL) func argv; } while (0)
 #else
 #define RT_OBJECT_HOOK_CALL(func, argv)
 #endif
@@ -482,16 +483,16 @@ struct rt_object_information
  */
 #define RT_TIMER_FLAG_DEACTIVATED       0x0             /**< @brief ¶¨Ê±Æ÷Î´¼¤»î */
 #define RT_TIMER_FLAG_ACTIVATED         0x1             /**< @brief ¶¨Ê±Æ÷»î¶¯×´Ì¬ */
-#define RT_TIMER_FLAG_ONE_SHOT          0x0             /**< @brief µ¥´Î¶¨Ê±Æ÷ */
+#define RT_TIMER_FLAG_ONE_SHOT          0x0             /**< @brief Ò»´ÎĞÔ¼ÆÊ±Æ÷ */
 #define RT_TIMER_FLAG_PERIODIC          0x2             /**< @brief ÖÜÆÚĞÔ¶¨Ê±Æ÷ */
 
-#define RT_TIMER_FLAG_HARD_TIMER        0x0             /**< @brief Ó²¼ş¶¨Ê±Æ÷£¬¶¨Ê±Æ÷µÄ»Øµ÷º¯Êı½«ÔÚtick isrÖĞµ÷ÓÃ¡£ */
-#define RT_TIMER_FLAG_SOFT_TIMER        0x4             /**< @brief Èí¼ş¶¨Ê±Æ÷£¬¶¨Ê±Æ÷µÄ»Øµ÷º¯Êı½«ÔÚ¶¨Ê±Æ÷Ïß³ÌÖĞµ÷ÓÃ¡£ */
+#define RT_TIMER_FLAG_HARD_TIMER        0x0             /**< @brief Ó²¶¨Ê±Æ÷£¬¶¨Ê±Æ÷µÄ»Øµ÷º¯Êı½«ÔÚtick isrÖĞµ÷ÓÃ¡£ */
+#define RT_TIMER_FLAG_SOFT_TIMER        0x4             /**< @brief Èí¶¨Ê±Æ÷£¬¶¨Ê±Æ÷µÄ»Øµ÷º¯Êı½«ÔÚ¶¨Ê±Æ÷Ïß³ÌÖĞµ÷ÓÃ¡£ */
 
 #define RT_TIMER_CTRL_SET_TIME          0x0             /**< @brief ÉèÖÃ¶¨Ê±Æ÷¿ØÖÆÃüÁî */
 #define RT_TIMER_CTRL_GET_TIME          0x1             /**< @brief »ñÈ¡¶¨Ê±Æ÷¿ØÖÆÃüÁî */
-#define RT_TIMER_CTRL_SET_ONESHOT       0x2             /**< @brief ½«¶¨Ê±Æ÷¸ü¸ÄÎªÒ»´ÎĞÔ¶¨Ê± */
-#define RT_TIMER_CTRL_SET_PERIODIC      0x3             /**< @brief ½«¶¨Ê±Æ÷¸ü¸ÄÎªÖÜÆÚĞÔ¶¨Ê± */
+#define RT_TIMER_CTRL_SET_ONESHOT       0x2             /**< @brief ½«¼ÆÊ±Æ÷¸ü¸ÄÎªÒ»´ÎĞÔ¶¨Ê± */
+#define RT_TIMER_CTRL_SET_PERIODIC      0x3             /**< @brief ½«¼ÆÊ±Æ÷¸ü¸ÄÎªÖÜÆÚĞÔ¶¨Ê± */
 
 #ifndef RT_TIMER_SKIP_LIST_LEVEL
 #define RT_TIMER_SKIP_LIST_LEVEL          1
@@ -503,12 +504,7 @@ struct rt_object_information
 #endif
 
 /**
- * ÔÚ RT-Thread²Ù×÷ÏµÍ³ÖĞ£¬¶¨Ê±Æ÷¿ØÖÆ¿éÓÉ½á¹¹Ìåstruct rt_timer¶¨Òå²¢ĞÎ³É¶¨Ê±Æ÷ÄÚºË¶ÔÏó£¬
- * ÔÙÁ´½Óµ½ÄÚºË¶ÔÏóÈİÆ÷ÖĞ½øĞĞ¹ÜÀí¡£ÊÇ²Ù×÷ÏµÍ³ÓÃÓÚ¹ÜÀí¶¨Ê±Æ÷µÄÒ»¸öÊı¾İ½á¹¹£¬Ëü»á´æ´¢¶¨Ê±Æ÷µÄÒ»Ğ©ĞÅÏ¢£¬
- * ÀıÈç³õÊ¼½ÚÅÄÊı£¬³¬Ê±Ê±µÄ½ÚÅÄÊı£¬Ò²°üº¬¶¨Ê±Æ÷Óë¶¨Ê±Æ÷Ö®¼äÁ¬½ÓÓÃµÄÁ´±í½á¹¹£¬³¬Ê±»Øµ÷º¯ÊıµÈ¡£
- *
  * @brief ¶¨Ê±Æ÷½á¹¹Ìå¶¨Òå
- *
  */
 struct rt_timer
 {
@@ -587,7 +583,7 @@ struct rt_thread
     rt_uint8_t  flags;                                  /**< @brief Ïß³ÌµÄ²ÎÊı */
 
 #ifdef RT_USING_MODULE
-    void       *module_id;                              /**< @brief ¶¯Ì¬Ä£¿éµÄÊ¶±ğºÅ */
+    void       *module_id;                              /**< @brief Ó¦ÓÃÄ£¿éµÄÊ¶±ğºÅ */
 #endif
 
     rt_list_t   list;                                   /**< @brief Á´±í¶ÔÏó */
@@ -632,7 +628,7 @@ struct rt_thread
     rt_ubase_t  init_tick;                              /**< @brief Ïß³ÌµÄ³õÊ¼»¯Ê±ÖÓ½ÚÅÄ */
     rt_ubase_t  remaining_tick;                         /**< @brief Ê£ÓàÊ±ÖÓ½ÚÅÄÊı */
 
-    struct rt_timer thread_timer;                       /**< @brief Ïß³ÌµÄÄÚÖÃ¶¨Ê±Æ÷ */
+    struct rt_timer thread_timer;                       /**< @brief Ïß³ÌµÄÄÚÖÃ¼ÆÊ±Æ÷ */
 
     void (*cleanup)(struct rt_thread *tid);             /**< @brief Ïß³ÌÍË³öÊ±µÄÇåÀí»Øµ÷º¯Êı */
 
@@ -654,14 +650,14 @@ typedef struct rt_thread *rt_thread_t;
 /**
  * IPC±êÖ¾ºÍ¿ØÖÆÃüÁî¶¨Òå
  */
-#define RT_IPC_FLAG_FIFO                0x00            /**< @brief ÏÈ½øÏÈ³ö·½Ê½µÈ´ı×ÊÔ´  */
-#define RT_IPC_FLAG_PRIO                0x01            /**< @brief ÓÅÏÈ¼¶·½Ê½µÈ´ı×ÊÔ´  */
+#define RT_IPC_FLAG_FIFO                0x00            /**< @brief FIFOed IPC. @ref IPC. */
+#define RT_IPC_FLAG_PRIO                0x01            /**< @brief PRIOed IPC. @ref IPC. */
 
-/* #define RT_IPC_CMD_UNKNOWN              0x00            /**< @brief Î»ÖÃµÄ IPC ÃüÁî[Ã»ÓĞÊ¹ÓÃ£¬ÄÃµô] */
+#define RT_IPC_CMD_UNKNOWN              0x00            /**< @brief Î»ÖÃµÄ IPC ÃüÁî */
 #define RT_IPC_CMD_RESET                0x01            /**< @brief ¸´Î» IPC ¶ÔÏóÃüÁî */
 
-#define RT_WAITING_FOREVER              -1              /**< @brief ÓÀÔ¶×èÈûÖ±µ½»ñµÃ×ÊÔ´ */
-#define RT_WAITING_NO                   0               /**< @brief ÎŞ×èÈû */
+#define RT_WAITING_FOREVER              -1              /**< @brief ÓÀÔ¶×èÈûÖ±µ½»ñµÃ×ÊÔ´¡£ */
+#define RT_WAITING_NO                   0               /**< @brief ÎŞ×èÈû. */
 
 /**
  * @brief IPC¶ÔÏóµÄ»ù´¡½á¹¹Ìå¶¨Òå
@@ -683,12 +679,11 @@ struct rt_ipc_object
 /**@{*/
 
 /**
- *
  * @brief ĞÅºÅÁ¿½á¹¹Ìå¶¨Òå
  */
 struct rt_semaphore
 {
-    struct rt_ipc_object parent;                        /**< @brief ¼Ì³Ğ×Ô rt_ipc_object  */
+    struct rt_ipc_object parent;                        /**< @brief ¼Ì³Ğ×Ô ipc_object  */
 
     rt_uint16_t          value;                         /**< @brief ĞÅºÅÁ¿µÄÖµ */
 };
@@ -713,14 +708,14 @@ typedef struct rt_semaphore *rt_sem_t;
  */
 struct rt_mutex
 {
-    struct rt_ipc_object parent;                        /**< @brief ¼Ì³Ğ×Ô rt_ipc_object */
+    struct rt_ipc_object parent;                        /**< @brief ¼Ì³Ğ×Ô ipc_object */
 
     rt_uint16_t          value;                         /**< @brief »¥³âÁ¿µÄÖµ */
 
-    rt_uint8_t           original_priority;             /**< @brief ³ÖÓĞÏß³ÌµÄÔ­Ê¼ÓÅÏÈ¼¶ */
-    rt_uint8_t           hold;                          /**< @brief ³ÖÓĞÏß³ÌµÄ³ÖÓĞ´ÎÊı */
+    rt_uint8_t           original_priority;             /**< @brief ×îºóÒ»¸öÖ´ÓĞ¸Ã»¥³âÁ¿µÄÏß³ÌµÄÓÅÏÈ¼¶ */
+    rt_uint8_t           hold;                          /**< @brief Ïß³Ì³ÖÓĞ¸Ã»¥³âÁ¿µÄ´ÎÊı */
 
-    struct rt_thread    *owner;                         /**< @brief µ±Ç°³ÖÓĞ¸Ã»¥³âÁ¿µÄÏß³Ì */
+    struct rt_thread    *owner;                         /**< @brief µ±Ç°¸Ã»¥³âÁ¿µÄ³ÖÓĞÕß£¨Ïß³Ì£© */
 };
 /**
  * @brief »¥³âÁ¿ÀàĞÍÖ¸Õë¶¨Òå
@@ -749,9 +744,9 @@ typedef struct rt_mutex *rt_mutex_t;
  */
 struct rt_event
 {
-    struct rt_ipc_object parent;                        /**< @brief ¼Ì³Ğ×Ô rt_ipc_object */
+    struct rt_ipc_object parent;                        /**< @brief ¼Ì³Ğ×Ô ipc_object */
 
-    rt_uint32_t          set;                           /**< @brief ÊÂ¼ş¼¯ */
+    rt_uint32_t          set;                           /**< @brief Ê±¼ä¼¯ */
 };
 /**
  * @brief ÊÂ¼şÀàĞÍÖ¸Õë¶¨Òå
@@ -773,15 +768,15 @@ typedef struct rt_event *rt_event_t;
  */
 struct rt_mailbox
 {
-    struct rt_ipc_object parent;                        /**< @brief ¼Ì³Ğ×Ô rt_ipc_object */
+    struct rt_ipc_object parent;                        /**< @brief ¼Ì³Ğ×Ô ipc_object */
 
-    rt_uint32_t         *msg_pool;                      /**< @brief ÓÊÏä»º³åÇøµÄÆğÊ¼µØÖ· */
+    rt_uint32_t         *msg_pool;                      /**< @brief ÏûÏ¢»º³åÇøµÄÆğÊ¼µØÖ· */
 
-    rt_uint16_t          size;                          /**< @brief ÓÊÏä»º³åÇø´óĞ¡ */
+    rt_uint16_t          size;                          /**< @brief ÏûÏ¢³ØµÄ´óĞ¡ */
 
-    rt_uint16_t          entry;                         /**< @brief ÓÊÏäÖĞÓÊ¼şµÄÊıÄ¿ */
-    rt_uint16_t          in_offset;                     /**< @brief ÓÊÏä»º³åÇøµÄÊäÈëÆ«ÒÆÁ¿ */
-    rt_uint16_t          out_offset;                    /**< @brief ÓÊÏä»º³åÇøµÄÊä³öÆ«ÒÆÁ¿ */
+    rt_uint16_t          entry;                         /**< @brief msg_poolÖĞµÄÏûÏ¢Ë÷Òı */
+    rt_uint16_t          in_offset;                     /**< @brief ÏûÏ¢»º³åÇøµÄÊäÈëÆ«ÒÆÁ¿ */
+    rt_uint16_t          out_offset;                    /**< @brief ÏûÏ¢»º³åÇøµÄÊä³öÆ«ÒÆÁ¿ */
 
     rt_list_t            suspend_sender_thread;         /**< @brief ¹ÒÆğÔÚ¸ÃÓÊÏäÉÏµÄ·¢ËÍÏß³Ì */
 };
@@ -805,18 +800,18 @@ typedef struct rt_mailbox *rt_mailbox_t;
  */
 struct rt_messagequeue
 {
-    struct rt_ipc_object parent;                        /**< @brief ¼Ì³Ğ×Ô rt_ipc_object */
+    struct rt_ipc_object parent;                        /**< @brief ¼Ì³Ğ×Ô ipc_object */
 
     void                *msg_pool;                      /**< @brief ÏûÏ¢¶ÓÁĞµÄÆğÊ¼µØÖ· */
 
     rt_uint16_t          msg_size;                      /**< @brief Ã¿ÌõÏûÏ¢µÄÏûÏ¢´óĞ¡ */
     rt_uint16_t          max_msgs;                      /**< @brief ×î´óÏûÏ¢Êı */
 
-    rt_uint16_t          entry;                         /**< @brief ¶ÓÁĞÖĞµÄÒÑÓĞÏûÏ¢Êı */
+    rt_uint16_t          entry;                         /**< @brief ¶ÓÁĞÖĞµÄÏûÏ¢Ë÷Òı */
 
-    void                *msg_queue_head;                /**< @brief ÏûÏ¢¶ÓÁĞÁ´±íÍ· */
-    void                *msg_queue_tail;                /**< @brief ÏûÏ¢¶ÓÁĞÁ´±íÎ² */
-    void                *msg_queue_free;                /**< @brief ÏûÏ¢¶ÓÁĞ¿ÕÏĞµÄÁ´±í */
+    void                *msg_queue_head;                /**< @brief Á´±íÍ· */
+    void                *msg_queue_tail;                /**< @brief Á´±íÎ² */
+    void                *msg_queue_free;                /**< @brief Ö¸Ïò¶ÓÁĞÖĞµÄ¿ÕÏĞ½ÚµãµÄÖ¸Õë */
 };
 /**
  * @brief ÏûÏ¢¶ÓÁĞÀàĞÍÖ¸Õë¶¨Òå
@@ -841,13 +836,12 @@ typedef struct rt_messagequeue *rt_mq_t;
 /*@{*/
 
 /**
- *
  * @brief ÄÚ´æ¶ÑµÄitem
  */
 struct rt_memheap_item
 {
-    rt_uint32_t             magic;                      /**< @brief ÄÚ´æ¶ÑµÄ»ÃÊı */
-    struct rt_memheap      *pool_ptr;                   /**< @brief ÄÚ´æ¶Ñ¾ä±ú */
+    rt_uint32_t             magic;                      /**< @brief ÄÚ´æ¶ÔµÄ»ÃÊı */
+    struct rt_memheap      *pool_ptr;                   /**< @brief ÄÚ´æ³ØµÄÖ¸Õë */
 
     struct rt_memheap_item *next;                       /**< @brief ÏÂÒ»¸öÄÚ´æ¶Ñ item */
     struct rt_memheap_item *prev;                       /**< @brief ÉÏÒ»¸öÄÚ´æ¶Ñ item */
@@ -866,13 +860,13 @@ struct rt_memheap
     void                   *start_addr;                 /**< @brief ÄÚ´æ¶ÑµÄÆğÊ¼µØÖ· */
 
     rt_uint32_t             pool_size;                  /**< @brief ÄÚ´æ¶ÑµÄ´óĞ¡ */
-    rt_uint32_t             available_size;             /**< @brief ¿ÉÒÔÊ¹ÓÃµÄ´óĞ¡ */
-    rt_uint32_t             max_used_size;              /**< @brief ×î´ó¿ÉÊ¹ÓÃµÄ´óĞ¡ */
+    rt_uint32_t             available_size;             /**< @brief ¿ÉÒÔÓÃ´óĞ¡ */
+    rt_uint32_t             max_used_size;              /**< @brief ×î´ó¿É·ÖÅä´óĞ¡ */
 
     struct rt_memheap_item *block_list;                 /**< @brief ÒÑÊ¹ÓÃµÄ¿éÁ´±í*/
 
     struct rt_memheap_item *free_list;                  /**< @brief Î´Ê¹ÓÃµÄ¿éÁ´±í */
-    struct rt_memheap_item  free_header;                /**< @brief Î´Ê¹ÓÃµÄ¿éÁ´±í±íÍ· */
+    struct rt_memheap_item  free_header;                /**< @brief Î´Ê¹ÓÃµÄ¿ìÁ´±í±íÍ· */
 
     struct rt_semaphore     lock;                       /**< @brief ĞÅºÅÁ¿Ëø */
 };
@@ -889,7 +883,7 @@ struct rt_memheap
 
 #ifdef RT_USING_MEMPOOL
 /**
- * @brief ÄÚ´æ³Ø½á¹¹Ìå¶¨Òå
+ * @brief ÄÚ´æ³Ø¶ÔÏóµÄ»ù´¡½á¹¹
  */
 struct rt_mempool
 {
@@ -904,7 +898,7 @@ struct rt_mempool
     rt_size_t        block_total_count;                 /**< @brief ÄÚ´æ¿éµÄ×ÜÊıÁ¿ */
     rt_size_t        block_free_count;                  /**< @brief Î´Ê¹ÓÃÄÚ´æ¿éµÄÊıÁ¿ */
 
-    rt_list_t        suspend_thread;                    /**< @brief ÒòÄÚ´æ¿é²»¿ÉÓÃ¹ÒÆğµÄÏß³ÌÁ´±í */
+    rt_list_t        suspend_thread;                    /**< @brief ¹ÒÆğÏß³ÌÁ´±í */
     rt_size_t        suspend_thread_count;              /**< @brief ¹ÒÆğÏß³ÌµÄÊıÁ¿ */
 };
 /**
@@ -1189,7 +1183,7 @@ struct rt_device_graphic_ops
 #define RT_MODULE_FLAG_WITHOUTENTRY     0x01            /**< without entry point */
 
 /*
- * ¶¯Ì¬Ä£¿é½á¹¹
+ * Ó¦ÓÃÄ£¿é½á¹¹
  */
 struct rt_module
 {
