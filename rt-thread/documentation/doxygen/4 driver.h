@@ -99,5 +99,22 @@
  * @brief PWM设备的API说明
  */
 
+/**
+ * @defgroup PM 电源管理
+ *
+ * @brief 电源管理相关的API说明
+ */
+
+/**
+ * @defgroup WLAN WLAN 框架
+ *
+ * @brief WLAN框架相关的API说明
+ */
+
+/**
+ * @defgroup ulog 日志组件
+ *
+ * @brief 日志组件相关的 API 说明
+ */
 
 /*@}*/
