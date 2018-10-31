@@ -69,6 +69,9 @@ static void (*rt_scheduler_hook)(struct rt_thread *from, struct rt_thread *to);
 /**@{*/
 
 /**
+ *
+ * @brief 设置调度器钩子函数
+ *
  * 此函数将设置一个钩子函数，当发生线程切换时将调用该钩子函数。
  *
  * @param hook 钩子函数

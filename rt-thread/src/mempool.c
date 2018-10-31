@@ -46,6 +46,9 @@ static void (*rt_mp_free_hook)(struct rt_mempool *mp, void *block);
 /**@{*/
 
 /**
+ *
+ * @brief 设置内存池分配钩子函数
+ *
  * 该函数将设置一个钩子函数，当从内存池中分配内存块时将调用该钩子函数。
  *
  * @param hook 钩子函数
@@ -56,6 +59,9 @@ void rt_mp_alloc_sethook(void (*hook)(struct rt_mempool *mp, void *block))
 }
 
 /**
+ *
+ * @brief 设置内存池释放钩子函数
+ *
  * 该函数将设置一个钩子函数，当内存块被释放回内存池时将调用该钩子函数。
  *
  * @param hook 钩子函数

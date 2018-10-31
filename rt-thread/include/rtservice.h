@@ -41,7 +41,7 @@ extern "C" {
 /*@{*/
 
 /**
- * rt_container_of - 获取type结构体中member成员在这个结构体中的偏移。
+ * @brief 获取type结构体中member成员在这个结构体中的偏移。
  */
 #define rt_container_of(ptr, type, member) \
     ((type *)((char *)(ptr) - (unsigned long)(&((type *)0)->member)))
@@ -140,7 +140,7 @@ rt_inline unsigned int rt_list_len(const rt_list_t *l)
     rt_container_of(node, type, member)
 
 /**
- * rt_list_for_each_entry  -   循环遍历head链表中每一个pos中的member成员
+ * @brief 循环遍历head链表中每一个pos中的member成员
  * @param pos:    指向宿主结构的指针，在for循环中是一个迭代变量
  * @param head:   链表头
  * @param member: 结构体中链表的成员名
@@ -168,7 +168,7 @@ rt_inline unsigned int rt_list_len(const rt_list_t *l)
          pos = n, n = rt_list_entry(n->member.next, typeof(*n), member))
 
 /**
- * rt_list_first_entry - 获取链表中的第一个元素
+ * @brief 获取链表中的第一个元素
  * @param ptr:    链表头
  * @param type:   结构体类型
  * @param member: 结构体中链表的成员名
@@ -297,7 +297,7 @@ rt_inline int rt_slist_isempty(rt_slist_t *l)
 }
 
 /**
- * @brief get 单向链表节点的数据结构
+ * @brief 获取单向链表节点的数据结构
  * @param node 入口点
  * @param type 结构体类型
  * @param member 结构体中链表的成员名

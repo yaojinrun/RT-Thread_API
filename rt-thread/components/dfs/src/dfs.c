@@ -53,7 +53,7 @@ static int  fd_alloc(struct dfs_fdtable *fdt, int startfd);
 /*@{*/
 
 /**
- * @brief 初始化设备文件系统
+ * @brief 初始化文件系统
  */
 int dfs_init(void)
 {
@@ -89,7 +89,7 @@ int dfs_init(void)
 INIT_PREV_EXPORT(dfs_init);
 
 /**
- * @brief 锁定设备文件系统
+ * @brief 锁定文件系统
  *
  * @note 请不要在中断上下文中调用。
  */
@@ -109,7 +109,7 @@ void dfs_lock(void)
 }
 
 /**
- * @brief 解锁设备文件系统
+ * @brief 解锁文件系统
  *
  * @note 请不要在中断上下文中调用。
  */
@@ -209,7 +209,7 @@ __result:
  *
  * 该函数将根据文件描述符返回文件描述符结构。
  *
- * @return 文件描述符结构指针；NULL 失败。
+ * @return 成功返回文件描述符结构指针；失败则返回NULL
  */
 struct dfs_fd *fd_get(int fd)
 {
@@ -280,7 +280,7 @@ void fd_put(struct dfs_fd *fd)
  *
  * @param pathname 文件路径名
  *
- * @return 0 成功打开, -1 打开失败.
+ * @return 0 成功打开, -1 打开失败
  */
 int fd_is_open(const char *pathname)
 {
@@ -336,7 +336,7 @@ int fd_is_open(const char *pathname)
 
 /**
  * this function will return a sub-path name under directory.
- *
+ * @brief
  * @param directory the parent directory.
  * @param filename the filename.
  *
