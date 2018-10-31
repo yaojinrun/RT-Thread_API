@@ -56,13 +56,14 @@ static void (*rt_thread_idle_hook)();
 
 /**
  * @ingroup Hook
- * @brief 空闲钩子函数设置
+ * @brief 设置空闲线程钩子函数
  *
- * 该函数将钩子函数设置为空闲线程循环。 当系统执行空闲循环时，会调用此钩子函数。
+ * 系统运行空闲线程的时候会运行这个钩子函数。
  *
  * @param hook 指定的钩子函数
  *
- * @note 钩子函数必须简单，并且永远不会被阻塞或挂起。
+ * @note 空闲线程是一个线程状态永远为就绪态的线程，因此设置的钩子函数必须保证空闲线程在任何时刻都不会处于挂起状态，
+ * 例如rt_thread_delay() ， rt_sem_take() 等可能会导致线程挂起的函数都不能使用。
  */
 void rt_thread_idle_sethook(void (*hook)(void))
 {

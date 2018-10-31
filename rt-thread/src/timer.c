@@ -66,6 +66,7 @@ static void (*rt_timer_timeout_hook)(struct rt_timer *timer);
 /**@{*/
 
 /**
+ * @brief 设置定时器超时钩子函数
  * 该函数将设置一个钩子函数，当定时器超时时将调用该钩子函数。
  *
  * @param hook 钩子函数

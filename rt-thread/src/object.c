@@ -129,7 +129,9 @@ void (*rt_object_put_hook)(struct rt_object *object);
 /**@{*/
 
 /**
- * 该函数将设置一个钩子函数，当对象添加到内核对象系统时将调用该钩子函数。
+ * @brief 设置内核对象添加钩子函数
+ *
+ * 该函数将设置一个钩子函数，当对象添加到内核对象管理器时将调用该钩子函数。
  *
  * @param hook the hook function
  */
@@ -139,6 +141,8 @@ void rt_object_attach_sethook(void (*hook)(struct rt_object *object))
 }
 
 /**
+ * @brief 设置内核对象脱离钩子函数
+ *
  * 该函数将设置一个钩子函数，当对象从内核对象系统脱离时将调用该钩子函数。
  *
  * @param hook the hook function
@@ -149,9 +153,11 @@ void rt_object_detach_sethook(void (*hook)(struct rt_object *object))
 }
 
 /**
- * 该函数将设置一个钩子函数，当对象从内核对象系统中被尝试获取时将调用该钩子函数。
+ * @brief 设置线程尝试获取内核对象钩子函数
  *
- * 对象被获取指的是：
+ * 该函数将设置一个钩子函数，当线程尝试获取内核对象时将调用该钩子函数。
+ *
+ * 内核对象指的是：
  * semaphore - 信号量被线程获取
  * mutex - 互斥量被线程获取
  * event - 事件被线程接收
@@ -166,9 +172,10 @@ void rt_object_trytake_sethook(void (*hook)(struct rt_object *object))
 }
 
 /**
- * 该函数将设置一个钩子函数，当对象从内核对象系统中被获取后将调用该钩子函数。
+ * @brief 设置线程获取内核对象钩子函数
+ * 该函数将设置一个钩子函数，当线程获取到内核对象后将调用该钩子函数。
  *
- * 对象被获取指的是：
+ * 内核对象指的是：
  * semaphore - 信号量被线程获取
  * mutex - 互斥量被线程获取
  * event - 事件被线程接收
@@ -184,7 +191,16 @@ void rt_object_take_sethook(void (*hook)(struct rt_object *object))
 }
 
 /**
- * 该函数将设置一个钩子函数，当对象被放到内核对象系统中时将运行该钩子函数。
+ * @brief 设置线程发送内核对象钩子函数
+ * 该函数将设置一个钩子函数，当线程发送内核对象时将运行该钩子函数。
+ *
+ * * 内核对象指的是：
+ * semaphore - 信号量被线程获取
+ * mutex - 互斥量被线程获取
+ * event - 事件被线程接收
+ * mailbox - 邮件被线程接收
+ * message queue - 消息队列被线程接收
+ * timer - 定时器被启动
  *
  * @param hook 钩子函数
  */

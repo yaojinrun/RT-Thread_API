@@ -53,9 +53,10 @@ static rt_device_t _console_device = RT_NULL;
 #endif
 
 /**
+ * @brief 获取错误号
  * 该函数将获取错误号
  *
- * @return errno
+ * @return 错误号
  */
 rt_err_t rt_get_errno(void)
 {
@@ -76,6 +77,7 @@ rt_err_t rt_get_errno(void)
 RTM_EXPORT(rt_get_errno);
 
 /**
+ * @brief 设置错误号
  * 该函数将设置错误号
  *
  * @param error 将被设定的错误号
@@ -134,6 +136,7 @@ RTM_EXPORT(_rt_errno);
 
 
 /**
+ * @brief 设置内存数据
  * 此函数将内存的内容设置为指定的值
  *
  * @param s 源内存的地址
@@ -216,6 +219,7 @@ void *rt_memset(void *s, int c, rt_ubase_t count)
 RTM_EXPORT(rt_memset);
 
 /**
+ * @brief 复制内存数据
  * 此功能将内存内容从源地址复制到目标地址。
  *
  * @param dst 目标内存的地址
@@ -299,7 +303,8 @@ void *rt_memcpy(void *dst, const void *src, rt_ubase_t count)
 RTM_EXPORT(rt_memcpy);
 
 /**
- * 该函数将源内存的中的内容移动到目标内存地址中
+ * @brief 移动内存数据
+ * 该函数将源内存中的内容移动到目标内存地址中
  * address.
  *
  * @param dest 目标内存的地址
@@ -331,6 +336,7 @@ void *rt_memmove(void *dest, const void *src, rt_ubase_t n)
 RTM_EXPORT(rt_memmove);
 
 /**
+ * @brief 比较内存数据
  * 该函数将比较两个区域内存里的内容是否一致。
  *
  * @param cs 一个内存区域
@@ -362,12 +368,13 @@ RTM_EXPORT(rt_memcmp);
 /**@{*/
 
 /**
- * 该函数将返回第一次出现的字符串。
+ * @brief 判断字符串
+ * 该函数判断s1字符串中是否存在s2字符串。
  *
  * @param s1 源字符串
  * @param s2 寻找的字符串
  *
- * @return 返回在s1里出现的第一个字符串S2的地址，未找到则返回RT_NULL。
+ * @return 返回在s1里出现的第一个字符串s2的地址，未找到则返回RT_NULL。
  */
 char *rt_strstr(const char *s1, const char *s2)
 {
@@ -390,12 +397,13 @@ char *rt_strstr(const char *s1, const char *s2)
 RTM_EXPORT(rt_strstr);
 
 /**
+ * @brief 忽略大小写比较字符串
  * 此函数将比较两个字符串，同时忽略大小写的差异。
  *
  * @param a 被比较的字符串
  * @param b 被比较的字符串
  *
- * @return the result
+ * @return 0 相等；大于0 a大于b;小于0 a小于b
  */
 rt_uint32_t rt_strcasecmp(const char *a, const char *b)
 {
@@ -417,13 +425,14 @@ rt_uint32_t rt_strcasecmp(const char *a, const char *b)
 RTM_EXPORT(rt_strcasecmp);
 
 /**
+ * @brief 复制字符串
  * 该函数将复制不超过那个字节的字符串。
  *
- * @param dst 拷贝的字符串
- * @param src 被拷贝的字符串
+ * @param dst 复制的字符串地址
+ * @param src 源的字符串地址
  * @param n 最大拷贝的字符串长度
  *
- * @return the result
+ * @return 复制后字符串地址
  */
 char *rt_strncpy(char *dst, const char *src, rt_ubase_t n)
 {
@@ -449,13 +458,14 @@ char *rt_strncpy(char *dst, const char *src, rt_ubase_t n)
 RTM_EXPORT(rt_strncpy);
 
 /**
+ * @brief 比较指定长度字符串
  * 此函数将比较具有指定最大长度的两个字符串
  *
  * @param cs 被比较的源字符串
  * @param ct 被比较的目标字符串
  * @param count 字符串被比较的最大长度
  *
- * @return the result
+ * @return 0 相等；大于0 a大于b;小于0 a小于b
  */
 rt_int32_t rt_strncmp(const char *cs, const char *ct, rt_ubase_t count)
 {
@@ -473,6 +483,7 @@ rt_int32_t rt_strncmp(const char *cs, const char *ct, rt_ubase_t count)
 RTM_EXPORT(rt_strncmp);
 
 /**
+ * @brief 比较字符串
  * 此函数将比较两个没有指定长度的字符串
  *
  * @param cs 被比较的字符串
@@ -489,6 +500,7 @@ rt_int32_t rt_strcmp(const char *cs, const char *ct)
 }
 RTM_EXPORT(rt_strcmp);
 /**
+ * @brief 计算字符串长度
  * strnlen()函数返回s指向的字符串中的字符长度，不包括终止空字节（'\ 0'），
  * 但最多只能是maxlen。 在这样做时，strnlen()只查看s指向的字符串中的第一个
  * maxlen字符，并且永远不会超出s + maxlen。
@@ -507,6 +519,7 @@ rt_size_t rt_strnlen(const char *s, rt_ubase_t maxlen)
     return sc - s;
 }
 /**
+ * @brief 计算字符串长度
  * 此函数将返回字符串的长度，其终止符为null。
  *
  * @param s 指向字符串的指针
@@ -526,6 +539,7 @@ RTM_EXPORT(rt_strlen);
 
 #ifdef RT_USING_HEAP
 /**
+ * @brief 复制字符串
  * 此函数将复制一个字符串。
  *
  * @param s 将要被复制的字符串
@@ -1023,6 +1037,7 @@ rt_int32_t rt_vsnprintf(char       *buf,
 RTM_EXPORT(rt_vsnprintf);
 
 /**
+ * @brief 格式化字符串
  * 该函数将用格式化后的字符串填充缓冲区。
  *
  * @param buf 保存格式化后字符串的缓冲区
@@ -1043,6 +1058,7 @@ rt_int32_t rt_snprintf(char *buf, rt_size_t size, const char *fmt, ...)
 RTM_EXPORT(rt_snprintf);
 
 /**
+ * @brief 格式化字符串
  * 此函数将以格式化后的字符串填充缓冲区
  *
  * @param buf 保存格式化字符串的缓冲区
@@ -1056,6 +1072,7 @@ rt_int32_t rt_vsprintf(char *buf, const char *format, va_list arg_ptr)
 RTM_EXPORT(rt_vsprintf);
 
 /**
+ * @brief 格式化字符串
  * 此函数将以格式化后的字符串填充缓冲区
  *
  * @param buf 保存格式化字符串的缓冲区
@@ -1078,9 +1095,10 @@ RTM_EXPORT(rt_sprintf);
 
 #ifdef RT_USING_DEVICE
 /**
- * 该函数将返回控制台的设备对象句柄This function returns the device using in console.
+ * @brief 获取控制台设备句柄
+ * 该函数将返回控制台的设备对象句柄
  *
- * @return the device using in console or RT_NULL
+ * @return 控制台的设备对象句柄
  */
 rt_device_t rt_console_get_device(void)
 {
@@ -1089,12 +1107,13 @@ rt_device_t rt_console_get_device(void)
 RTM_EXPORT(rt_console_get_device);
 
 /**
- * 此功能将设备设置为控制台设备。 将设备设置为控制台后，
+ *@brief 设置控制台设备句柄
+ * 此功能将设置控制台设备。 将设备设置为控制台后，
  * rt_kprintf的所有输出都将重定向到此新设备。
  *
  * @param name 新控制台设备的名称
  *
- * @return 就控制台设备句柄
+ * @return 旧控制台设备句柄
  */
 rt_device_t rt_console_set_device(const char *name)
 {
@@ -1130,9 +1149,10 @@ RT_WEAK void rt_hw_console_output(const char *str)
 RTM_EXPORT(rt_hw_console_output);
 
 /**
+ * @brief 打印字符串
  * 该函数将打印字符串到控制台。
  *
- * @param str 输出到控制台的字符串。
+ * @param str 字符串。
  */
 void rt_kputs(const char *str)
 {
@@ -1157,6 +1177,7 @@ void rt_kputs(const char *str)
 }
 
 /**
+ * @brief 打印格式化字符串
  * 该函数将打印格式化的字符串到系统控制台。
  *
  * @param fmt 格式化字符串的格式
@@ -1209,12 +1230,13 @@ RTM_EXPORT(rt_kprintf);
 
 #ifdef RT_USING_HEAP
 /**
+ * @brief 对齐分配内存
  * 该函数将分配一各内存块，该地址与指定的对其大小对齐。
  *
  * @param size 分配的内存块大小
  * @param align 内存对齐大小
  *
- * @return 成功则返回分配的内存块地址，否则返回RT_NULL。
+ * @return 成功则返回分配的内存块地址，失败则返回RT_NULL。
  */
 void *rt_malloc_align(rt_size_t size, rt_size_t align)
 {
@@ -1252,6 +1274,7 @@ void *rt_malloc_align(rt_size_t size, rt_size_t align)
 RTM_EXPORT(rt_malloc_align);
 
 /**
+ * @brief 释放对齐分配的内存
  * 该函数将释放由rt_malloc_align函数分配的并且地址对齐的内存块。
  *
  * @param ptr 将要释放的内存块指针

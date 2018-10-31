@@ -40,7 +40,7 @@
  *
  * 在使用文件系统之前需要将文件系统注册到DFS框架中，可以调用该函数来实现。
  *
- * @param ops 所需注册文件系统的操作函数的集合
+ * @param ops 文件系统操作方法句柄
  *
  * @return 0 注册成功，-1 失败。
  */
@@ -83,13 +83,13 @@ int dfs_register(const struct dfs_filesystem_ops *ops)
 }
 
 /**
- * @brief 查找定路径上的文件系统
+ * @brief 查找指定路径上的文件系统
  *
  * 此函数将返回挂载在指定路径上的文件系统。
  *
- * @param path 指定的路径字符串。
+ * @param path 路径字符串。
  *
- * @return 找到的文件系统，如果没有在指定路径上挂载文件系统，则为NULL。
+ * @return 成功返回挂载的文件系统句柄，失败则返回NULL。
  */
 struct dfs_filesystem *dfs_filesystem_lookup(const char *path)
 {
@@ -136,7 +136,7 @@ struct dfs_filesystem *dfs_filesystem_lookup(const char *path)
  *
  * @param device 已挂载的设备对象。
  *
- * @return 已挂载路径；如果没有挂载设备，则为返回NULL。
+ * @return 成功返回已挂载路径；失败则返回NULL。
  */
 const char* dfs_filesystem_get_mounted_path(struct rt_device* device)
 {
@@ -167,7 +167,7 @@ const char* dfs_filesystem_get_mounted_path(struct rt_device* device)
  *
  * 此函数将获取指定缓冲区上的分区表。
  *
- * @param part 返回的分区结构。
+ * @param part 返回的分区表结构。
  * @param buf 存储分区表的缓冲区。
  * @param pindex 要获取的分区表的索引。
  *
@@ -229,7 +229,7 @@ int dfs_filesystem_get_partition(struct dfs_partition *part,
  * @param path 挂载文件系统的路径，即挂载点
  * @param filesystemtype 需要挂载的文件系统类型
  * @param rwflag 读写标志位
- * @param data 特定文件系统的私有数据
+ * @param data 文件系统的私有数据
  *
  * @return  0 挂载成功，-1 失败。
  */
@@ -443,7 +443,7 @@ err1:
 /**
  * @brief 格式化文件系统
  *
- * 使用文件系统功能前，要先在存储器中创建指定类型的文件系统。该功能由mkfs() 函数实现。
+ * 使用文件系统功能前，要先在存储器中创建指定类型的文件系统。
  *
  * @param fs_name 文件系统名
  * @param device_name 需要格式化文件系统的设备名
@@ -494,12 +494,15 @@ int dfs_mkfs(const char *fs_name, const char *device_name)
 }
 
 /*
- * this function will return the information about a mounted file system.
+ * @brief 获取文件系统信息
  *
- * @param path the path which mounted file system.
- * @param buffer the buffer to save the returned information.
+ * 该函数返回一个挂载的文件系统的信息。
  *
- * @return 0 on successful, others on failed.
+ * @param path 文件系统挂载的路径
+ * @param buffer 用于储存文件系统相关信息的结构体指针
+ *
+ * @return  0 格式化成功，-1 失败。
+ *
  */
 int dfs_statfs(const char *path, struct statfs *buffer)
 {

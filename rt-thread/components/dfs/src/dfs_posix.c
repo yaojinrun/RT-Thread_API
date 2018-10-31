@@ -47,11 +47,12 @@
  * ------------------|------------------------------------
  * O_RDONLY   | 只读方式打开
  * O_WRONLY  |  只写方式打开
- * O_RDWR       | 以读写方式打开
- * O_CREAT       | 如果要打开的文件不存在，咋建立该文件
- * O_APPEND    | 当读写文件时会从文件尾开始移动，也就是说写入的数据会以附加的方式添加到文件的尾部。
+ * O_RDWR    | 以读写方式打开
+ * O_CREAT   | 如果要打开的文件不存在，则建立该文件
+ * O_APPEND  | 当读写文件时会从文件尾开始移动，也就是说写入的数据会以附加的方式添加到文件的尾部。
+ * O_TRUNC    | 如果文件已经存在，则清空文件中的内容
  *
- * @return 成功则返回打开文件的描述符序号, 失败则分会-1。
+ * @return 成功则返回打开文件描述符, 失败则返回-1，错误代码将存入当前线程的errno中。
  */
 int open(const char *file, int flags, ...)
 {
@@ -90,11 +91,11 @@ RTM_EXPORT(open);
 /**
  * @brief 关闭文件
  *
- * 此函数是POSIX兼容版本，它将关闭指定的文件描述符。
+ * 此函数是POSIX兼容版本，它将关闭指定的文件。
  *
- * @param fd open()函数所返回的文件描述字
+ * @param fd 文件描述符
  *
- * @return 成功 0，失败 -1。
+ * @return 成功 0，失败 -1，错误代码将存入当前线程的errno中。
  */
 int close(int fd)
 {
@@ -128,15 +129,15 @@ RTM_EXPORT(close);
 /**
  * @brief 读取数据
  *
- * 该函数函数接口会把参数fd 所指的文件的count 个字节传送到buf 指针所指的内存中，
+ * 该函数接口会把参数fd 所指的文件的len 个字节读取到buf 指针所指的内存中，
  * 文件的读写位置会随读取到的字节移动。
  *
- * @param fd 文件描述字
+ * @param fd 文件描述符
  * @param buf 读取数据将要写入的缓存地址指针
- * @param len 预读取文件的字节数
+ * @param len 读取文件的字节数
  *
  * @return 实际读取到的字节数。 有两种情况会返回0值，一是读取数据已到达文件结尾，
- * 二是无可读取的数据（例如设定count为0）。
+ * 二是无可读取的数据（例如设定len为0）。读取失败则返回-1，错误代码将存入当前线程的errno中。
  */
 #ifdef RT_USING_NEWLIB
 _READ_WRITE_RETURN_TYPE _EXFUN(read, (int fd, void *buf, size_t len))
@@ -175,14 +176,14 @@ RTM_EXPORT(read);
 /**
  * @brief 写入数据
  *
- * 函数接口会把buf 指针所指向的内存中count 个字节写入到参数fd 所指的文件内，
+ * 函数接口会把buf 指针所指向的内存中len 个字节写入到参数fd 所指向的文件内，
  * 文件的读写位置会写入的字节移动。
  *
- * @param fd 文件描述字
+ * @param fd 文件描述符
  * @param buf 预写入数据的地址指针
  * @param len 预写入文件的字节数
  *
- * @return 实际写入文件的字节数
+ * @return 实际写入文件的字节数，失败则返回-1，错误代码将存入当前线程的errno中。
  */
 #ifdef RT_USING_NEWLIB
 _READ_WRITE_RETURN_TYPE _EXFUN(write, (int fd, const void *buf, size_t len))
@@ -230,7 +231,7 @@ RTM_EXPORT(write);
  * - SEEK_CUR 以目前的读写位置往后增加offset个位移量。
  * - SEEK_END 将读写位置指向文件尾后再增加offset个位移量。
  *
- * @return 文件中的当前读/写位置；失败时为-1。
+ * @return 文件中的当前读/写位置；失败则返回-1，错误代码将存入当前线程的errno中。
  */
 off_t lseek(int fd, off_t offset, int whence)
 {
@@ -291,13 +292,13 @@ RTM_EXPORT(lseek);
 /**
  * @brief 重命名
  *
- * 该函数会将参数old 所指定的文件名称改为参数new 所指的文件名称。若newpath 
+ * 该函数会将参数old 所指定的文件名称改为参数new 所指的文件名称。若new
  * 所指定的文件已经存在，则该文件将会被覆盖。
  *
- * @param old 需更改的文件名
- * @param new 更改成的文件名
+ * @param old 旧文件名
+ * @param new 新文件名
  *
- * @return 0 成功，-1 失败。
+ * @return 0 成功，-1 失败，错误代码将存入当前线程的errno中。
  *
  * @note: 旧文件名和新文件名必须属于同一文件系统。
  */
@@ -320,11 +321,11 @@ RTM_EXPORT(rename);
 /**
  * @brief 删除文件
  *
- * 该函数库删除指定目录下的文件。
+ * 该函数可删除指定目录下的文件。
  *
  * @param pathname 指定删除文件的绝对路径
  *
- * @return 0 成功，-1 失败。
+ * @return 0 成功，-1 失败，错误代码将存入当前线程的errno中。
  */
 int unlink(const char *pathname)
 {
@@ -349,9 +350,9 @@ RTM_EXPORT(unlink);
  * 调用此函数可获得文件状态。
  *
  * @param file 文件名
- * @param buf 结构指针，指向获取文件状态的结构
+ * @param buf 结构指针，指向一个存放文件状态信息的结构体
  *
- * @return 0 成功，-1 失败。
+ * @return 0 成功，-1 失败，错误代码将存入当前线程的errno中。
  */
 int stat(const char *file, struct stat *buf)
 {
@@ -374,10 +375,10 @@ RTM_EXPORT(stat);
  *
  * 该函数用来将参数fildes所指的文件状态，复制到参数buf所指的结构中(struct stat)。
  *
- * @param fildes 要检查的打开文件的文件描述符
- * @param buf struct stat结构体类型的变量
+ * @param fildes 已打开的文件的文件描述符
+ * @param buf 结构指针，指向一个存放文件状态信息的结构体
  *
- * @return 成功则返回0，失败返回-1。
+ * @return 成功则返回0，失败返回-1，错误代码将存入当前线程的errno中。
  *
  * @note 本函数与 stat() 函数相似，不同的是，它是作用于已打开的文件的文件描述符而不是文件名。
  */
@@ -420,10 +421,10 @@ RTM_EXPORT(fstat);
  *
  * 该函数可以同步内存中所有已修改的文件数据到储存设备。
  *
- * @param fildes 文件描述词
+ * @param fildes 文件描述符
  *
  * @return RT_EOK 同步文件成功，-RT_ERROR 同步文件失败
- * set to indicate the error.
+ *
  */
 int fsync(int fildes)
 {
@@ -522,7 +523,7 @@ RTM_EXPORT(ioctl);
  * @param path 需要查询信息的文件系统的文件路径名
  * @param buf 用于储存文件系统相关信息的结构体指针
  *
- * @return RT_EOK 查询文件系统信息成功，-RT_ERROR 失败
+ * @return 成功 0，失败 -1，错误代码将存入当前线程的errno中。
  */
 int statfs(const char *path, struct statfs *buf)
 {
@@ -544,9 +545,9 @@ RTM_EXPORT(statfs);
  * @brief 创建目录
  *
  * @param path 目录的绝对地址
- * @param mode 创建模式
+ * @param mode 创建模式，当前未启用，填入默认参数0x777即可。
  *
- * @return RT_EOK 创建成功，-RT_ERROR 失败
+ * @return 成功 0，失败 -1，错误代码将存入当前线程的errno中。
  */
 int mkdir(const char *path, mode_t mode)
 {
@@ -593,7 +594,7 @@ FINSH_FUNCTION_EXPORT(mkdir, create a directory);
  *
  * @param pathname 需要删除目录的绝对路径
  *
- * @return RT_EOK 目录删除成功，-RT_ERROR 失败
+ * @return 成功 0，失败 -1，错误代码将存入当前线程的errno中。
  */
 int rmdir(const char *pathname)
 {
@@ -673,7 +674,7 @@ RTM_EXPORT(opendir);
  *
  * @param d 目录路径名
  *
- * @return 读取成功返回指向目录entry的结构体指针，NULL 则表示已经读到目录尾。
+ * @return 读取成功返回保存目录信息的结构体指针，读取失败则返回NULL。
  */
 struct dirent *readdir(DIR *d)
 {
@@ -721,7 +722,7 @@ RTM_EXPORT(readdir);
 /**
  * @brief 获取目录流的读取位置
  *
- * 该函数函数的返回值记录着一个目录流的当前位置，此返回值代表距离目录文件开头的
+ * 该函数的返回值记录着一个目录流的当前位置，此返回值代表距离目录文件开头的
  * 偏移量，返回值返回下个读取位置。你可以在随后的seekdir() 函数调用中利用这个值
  * 来重置目录扫描到当前位置。也就是说telldir() 函数可以和seekdir() 函数配合使用，
  * 重新设置目录流的读取位置到指定的偏移量。
@@ -753,7 +754,7 @@ RTM_EXPORT(telldir);
 /**
  * @brief 设置下次读取目录的位置
  *
- * 该函数用来设置参数dir目录流目前的读取位置，在调用readdir() 时便从此新位置开始读取。
+ * 该函数用来设置参数d目录流目前的读取位置，在调用readdir() 时便从此新位置开始读取。
  *
  * @param d 目录路径名
  * @param offset 偏移值，距离本次目录的位移
@@ -806,11 +807,11 @@ RTM_EXPORT(rewinddir);
 /**
  * @brief 关闭目录
  *
- * 该函数用来关闭一个目录，该函数必须和opendir() 函数成对出现。
+ * 该函数用来关闭一个目录，该函数必须和opendir() 函数成对使用。
  *
  * @param d 目录路径名
  *
- * @return RT_EOK 目录关闭成功，-RT_ERROR 失败
+ * @return 成功 0，失败 -1，错误代码将存入当前线程的errno中。
  */
 int closedir(DIR *d)
 {
@@ -848,7 +849,7 @@ RTM_EXPORT(closedir);
  *
  * @param path 要更改的路径名。
  *
- * @return 0 成功，-1 失败。
+ * @return 成功 0，失败 -1，错误代码将存入当前线程的errno中。
  */
 int chdir(const char *path)
 {
@@ -914,8 +915,8 @@ FINSH_FUNCTION_EXPORT_ALIAS(chdir, cd, change current working directory);
  *
  * 该函数将根据amode中包含的位模式检查由path参数指向的路径名所指定的文件。
  *
- * @param path 指定的文件/目录路径.
- * @param amode 该值可以是要检查的访问权限（R_OK，W_OK，X_OK）或存在测试（F_OK）。
+ * @param path 指定的文件/目录路径
+ * @param amode 该值可以是要检查的访问权限（R_OK，W_OK，X_OK）或存在测试（F_OK）
  *
  * @return 允许访问请求，则返回0; 否则返回-1。
  */

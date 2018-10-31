@@ -80,11 +80,15 @@ static void (*rt_free_hook)(void *ptr);
 /**@{*/
 
 /**
- * @brief 设置分配钩子函数
+ * @brief 设置内存分配钩子函数
  *
  * 该函数将设置一个钩子函数，当从堆内存中分配内存块时将调用该钩子函数。
+ * 钩子函数会在内存分配完成后进行回调，并把分配到的内存块地址和大小做为参数传递给钩子函数。
  *
  * @param hook 钩子函数
+ *
+ * @param ptr 分配到的内存块指针
+ * @param hook 分配到的内存块大小
  */
 void rt_malloc_sethook(void (*hook)(void *ptr, rt_size_t size))
 {
@@ -94,9 +98,12 @@ void rt_malloc_sethook(void (*hook)(void *ptr, rt_size_t size))
 /**
  * @brief 设置内存释放钩子函数
  *
- *  该函数将设置一个钩子函数，当内存块被释放会内存堆时将调用该钩子函数。
+ * 该函数将设置一个钩子函数，当内存块被释放会内存堆时将调用该钩子函数。
+ * 钩子函数会在调用内存释放完成前进行回调。
+ * 回调时，释放的内存块地址会做为入口参数传递进去（此时内存块并没有被释放）。
  *
  * @param hook 钩子函数
+ * @param ptr 待释放的内存块指针
  */
 void rt_free_sethook(void (*hook)(void *ptr))
 {

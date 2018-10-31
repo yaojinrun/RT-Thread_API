@@ -57,7 +57,7 @@ static void (*rt_thread_inited_hook) (rt_thread_t thread);
  * @ingroup Hook
  * @brief 设置线程挂起钩子函数
  *
- * 该函数在系统挂起线程时设置钩子函数。
+ * 钩子函数会在系统挂起线程时调用。
  *
  * @param hook 指定的钩子函数
  *
@@ -72,7 +72,7 @@ void rt_thread_suspend_sethook(void (*hook)(rt_thread_t thread))
  * @ingroup Hook
  * @brief 设置线程恢复钩子函数
  *
- * 该函数在系统恢复线程时设置钩子函数。
+ * 钩子函数会在系统恢复线程调用。
  *
  * @param hook 指定的钩子函数
  *
@@ -87,7 +87,7 @@ void rt_thread_resume_sethook(void (*hook)(rt_thread_t thread))
  * @brief 设置线程初始化钩子函数
  *
  * @ingroup Hook
- * 该函数在线程初始化的时候设置一个钩子函数。
+ * 钩子函数会在线程初始化的时候调用。
  *
  * @param hook 指定的钩子函数
  */

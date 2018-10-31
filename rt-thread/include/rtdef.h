@@ -917,16 +917,16 @@ typedef struct rt_mempool *rt_mp_t;
 /*@{*/
 
 /**
- * (I/O)设备类类型
+ * (I/O)设备类型
  */
 enum rt_device_class_type
 {
-    RT_Device_Class_Char = 0,                           /**< 字符型设备 */
+    RT_Device_Class_Char = 0,                           /**< 字符设备 */
     RT_Device_Class_Block,                              /**< 块设备 */
     RT_Device_Class_NetIf,                              /**< 网络接口设备 */
     RT_Device_Class_MTD,                                /**< 存储设备 */
     RT_Device_Class_CAN,                                /**< CAN 设备 */
-    RT_Device_Class_RTC,                                /**< RTC device */
+    RT_Device_Class_RTC,                                /**< RTC 设备 */
     RT_Device_Class_Sound,                              /**< 音频设备 */
     RT_Device_Class_Graphic,                            /**< 图形设备 */
     RT_Device_Class_I2CBUS,                             /**< I2C 总线设备 */
@@ -934,10 +934,10 @@ enum rt_device_class_type
     RT_Device_Class_USBHost,                            /**< USB主机总线 */
     RT_Device_Class_SPIBUS,                             /**< SPI总线设备 */
     RT_Device_Class_SPIDevice,                          /**< SPI 设备 */
-    RT_Device_Class_SDIO,                               /**< SDIO 总线设备 */
-    RT_Device_Class_PM,                                 /**< PM pseudo device */
-    RT_Device_Class_Pipe,                               /**< Pipe 设备 */
-    RT_Device_Class_Portal,                             /**< Portal device */
+    RT_Device_Class_SDIO,                               /**< SDIO 设备 */
+    RT_Device_Class_PM,                                 /**< 电源管理设备 */
+    RT_Device_Class_Pipe,                               /**< 管道设备 */
+    RT_Device_Class_Portal,                             /**< 双向管道设备 */
     RT_Device_Class_Timer,                              /**< 定时器设备 */
     RT_Device_Class_Miscellaneous,                      /**< 杂项设备 */
     RT_Device_Class_Unknown                             /**< 未知设备 */
@@ -955,7 +955,7 @@ enum rt_device_class_type
 #define RT_DEVICE_FLAG_REMOVABLE        0x004           /**< @brief 可移除设备 */
 #define RT_DEVICE_FLAG_STANDALONE       0x008           /**< @brief 独立设备 */
 #define RT_DEVICE_FLAG_ACTIVATED        0x010           /**< @brief 设备已激活 */
-#define RT_DEVICE_FLAG_SUSPENDED        0x020           /**< @brief 设备已暂停 */
+#define RT_DEVICE_FLAG_SUSPENDED        0x020           /**< @brief 设备已挂起 */
 #define RT_DEVICE_FLAG_STREAM           0x040           /**< @brief 流模式 */
 
 #define RT_DEVICE_FLAG_INT_RX           0x100           /**< @brief 中断接收模式 */
@@ -1001,7 +1001,7 @@ enum rt_device_class_type
  */
 typedef struct rt_device *rt_device_t;
 /**
- * @brief 设备对象的操作设置
+ * @brief 设备对象的操作方法
  */
 struct rt_device_ops
 {
@@ -1009,8 +1009,8 @@ struct rt_device_ops
     rt_err_t  (*init)   (rt_device_t dev);			/**< @brief 初始化设备 */
     rt_err_t  (*open)   (rt_device_t dev, rt_uint16_t oflag);		/**< @brief 打开设备 */
     rt_err_t  (*close)  (rt_device_t dev);			/**< @brief 关闭设备 */
-    rt_size_t (*read)   (rt_device_t dev, rt_off_t pos, void *buffer, rt_size_t size);		/**< @brief 设备读取 */
-    rt_size_t (*write)  (rt_device_t dev, rt_off_t pos, const void *buffer, rt_size_t size);	/**< @brief 设备写入 */
+    rt_size_t (*read)   (rt_device_t dev, rt_off_t pos, void *buffer, rt_size_t size);		/**< @brief 读取设备数据 */
+    rt_size_t (*write)  (rt_device_t dev, rt_off_t pos, const void *buffer, rt_size_t size);	/**< @brief 向设备写入数据 */
     rt_err_t  (*control)(rt_device_t dev, int cmd, void *args);		/**< @brief 控制设备 */
 };
 
@@ -1039,14 +1039,14 @@ struct rt_device
     rt_uint16_t               open_flag;                /**< @brief 设备打开标志 */
 
     rt_uint8_t                ref_count;                /**< @brief 引用次数 */
-    rt_uint8_t                device_id;                /**< @brief 0 - 255 */
+    rt_uint8_t                device_id;                /**< @brief 设备id,0 - 255 */
 
     /* device call back */
-    rt_err_t (*rx_indicate)(rt_device_t dev, rt_size_t size);
-    rt_err_t (*tx_complete)(rt_device_t dev, void *buffer);
+    rt_err_t (*rx_indicate)(rt_device_t dev, rt_size_t size); /**< @brief 设备接收数据回调 */
+    rt_err_t (*tx_complete)(rt_device_t dev, void *buffer);  /**< @brief 设备发送数据回调 */
 
 #ifdef RT_USING_DEVICE_OPS
-    const struct rt_device_ops *ops;
+    const struct rt_device_ops *ops;	/**< @brief 设备对象的操作方法 */
 #else
     /* common device interface */
     rt_err_t  (*init)   (rt_device_t dev);
@@ -1058,8 +1058,8 @@ struct rt_device
 #endif
 
 #if defined(RT_USING_POSIX)
-    const struct dfs_file_ops *fops;
-    struct rt_wqueue wait_queue;
+    const struct dfs_file_ops *fops;	/**< @brief 文件系统文件的操作方法 */
+    struct rt_wqueue wait_queue;		/**< @brief 等待队列 */
 #endif
 
     void                     *user_data;                /**< @brief 设备私有数据 */
@@ -1087,20 +1087,20 @@ struct rt_device_blk_sectors
 /*
  * cursor control command
  */
-#define RT_DEVICE_CTRL_CURSOR_SET_POSITION  0x10
-#define RT_DEVICE_CTRL_CURSOR_SET_TYPE      0x11
+#define RT_DEVICE_CTRL_CURSOR_SET_POSITION  0x10		/**< @brief 设置光标位置 */
+#define RT_DEVICE_CTRL_CURSOR_SET_TYPE      0x11		/**< @brief 设置关闭类型 */
 
 /*
  * graphic device control command
  */
-#define RTGRAPHIC_CTRL_RECT_UPDATE      0
-#define RTGRAPHIC_CTRL_POWERON          1
-#define RTGRAPHIC_CTRL_POWEROFF         2
-#define RTGRAPHIC_CTRL_GET_INFO         3
-#define RTGRAPHIC_CTRL_SET_MODE         4
-#define RTGRAPHIC_CTRL_GET_EXT          5
+#define RTGRAPHIC_CTRL_RECT_UPDATE      0				/**< @brief 更新设备图形 */
+#define RTGRAPHIC_CTRL_POWERON          1				/**< @brief 打开设备电源 */
+#define RTGRAPHIC_CTRL_POWEROFF         2				/**< @brief 关闭设备电源 */
+#define RTGRAPHIC_CTRL_GET_INFO         3				/**< @brief 获取设备信息 */
+#define RTGRAPHIC_CTRL_SET_MODE         4				/**< @brief 设置工作模式 */
+#define RTGRAPHIC_CTRL_GET_EXT          5				/**< @brief 获取 */
 
-/* graphic deice */
+/* 图形设备像素格式 */
 enum
 {
     RTGRAPHIC_PIXEL_FORMAT_MONO = 0,
@@ -1119,10 +1119,7 @@ enum
     RTGRAPHIC_PIXEL_FORMAT_ALPHA,
 };
 
-/**
- * 根据（x，y）坐标构建像素位置。
- */
-#define RTGRAPHIC_PIXEL_POSITION(x, y)  ((x << 16) | y)
+#define RTGRAPHIC_PIXEL_POSITION(x, y)  ((x << 16) | y)		/**< @brief 根据（x，y）坐标构建像素位置 */
 
 /**
  * @brief 图形设备信息结构
@@ -1151,15 +1148,15 @@ struct rt_device_rect_info
 };
 
 /*
- * 图形操作
+ * @brief 图形设备的操作方法
  */
 struct rt_device_graphic_ops
 {
-    void (*set_pixel) (const char *pixel, int x, int y);
-    void (*get_pixel) (char *pixel, int x, int y);
+    void (*set_pixel) (const char *pixel, int x, int y);			/**< @brief 设置像素点颜色 */
+    void (*get_pixel) (char *pixel, int x, int y);					/**< @brief 获取像素点颜色 */
 
-    void (*draw_hline)(const char *pixel, int x1, int x2, int y);
-    void (*draw_vline)(const char *pixel, int x, int y1, int y2);
+    void (*draw_hline)(const char *pixel, int x1, int x2, int y);	/**< @brief 画水平线 */
+    void (*draw_vline)(const char *pixel, int x, int y1, int y2);	/**< @brief 画垂直线 */
 
     void (*blit_line) (const char *pixel, int x, int y, rt_size_t size);
 };
@@ -1183,7 +1180,7 @@ struct rt_device_graphic_ops
 #define RT_MODULE_FLAG_WITHOUTENTRY     0x01            /**< without entry point */
 
 /*
- * 应用模块结构
+ * 动态模块结构
  */
 struct rt_module
 {

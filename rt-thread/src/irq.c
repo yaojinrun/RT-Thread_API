@@ -34,9 +34,9 @@ static void (*rt_interrupt_leave_hook)(void);
 
 /**
  * @ingroup Hook
- * @brief 中断进入钩子函数设置
+ * @brief 设置进入中断钩子函数
  *
- * 该函数将设置一个中断钩子函数，当系统进入中断时调用该函数。
+ * 该函数将设置一个中断钩子函数，当系统进入中断时会调用该函数。
  *
  * @note 钩子函数必须简单，永远不会被阻塞或挂起。
  */
@@ -46,9 +46,9 @@ void rt_interrupt_enter_sethook(void (*hook)(void))
 }
 /**
  * @ingroup Hook
- * @brief 中断退出钩子函数设置
+ * @brief 设置中断退出钩子函数
  *
- * 该函数将设置一个钩子函数，当系统退出中断时执行该函数。
+ * 该函数将设置一个钩子函数，当系统退出中断时会调用该函数。
  *
  * @note 钩子函数必须简单，永远不会被阻塞或挂起。
  */
