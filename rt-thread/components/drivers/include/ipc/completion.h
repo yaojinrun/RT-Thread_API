@@ -27,7 +27,7 @@ struct rt_completion
  *
  * 该函数将初始化一个 completion 对象。
  *
- * @param completion completion 控制块
+ * @param completion completion 句柄
  *
  */
 void rt_completion_init(struct rt_completion *completion);
@@ -40,7 +40,7 @@ void rt_completion_init(struct rt_completion *completion);
  * @param completion completion 句柄
  * @param timeout 指定的超时时间
  *
- * @return RT_EOK 等到 completion 信号, -RT_ETIMEOUT 等待超时
+ * @return RT_EOK 等到 completion 信号； -RT_ETIMEOUT 等待超时
  */
 rt_err_t rt_completion_wait(struct rt_completion *completion,
                             rt_int32_t            timeout);
@@ -48,7 +48,7 @@ rt_err_t rt_completion_wait(struct rt_completion *completion,
 /**
 * @brief 发送 completion信号
  *
- * 该函数将使调用线程挂起指定的等待时间等待completion信号。
+ * 该函数将发送 completion信号。
  *
  * @param completion completion 句柄
  *

@@ -42,10 +42,10 @@ struct rt_work
  * 调用该函数接口后，内核首先从动态内存堆中分配一个工作队列控制块，然后对该控制块进行基本的初始化，并创建一个工作队列处理线程。
  *
  * @param name 工作队列名称
- * @param stack_size 工作队列堆栈空间大小
- * @param priority 工作队列的优先级
+ * @param stack_size 工作队列处理线程堆栈空间大小
+ * @param priority 工作队列处理线程的优先级
  *
- * @return 创建成功则返回workqueue控制块，失败则返回 RT_NULL
+ * @return 创建成功则返回工作队列句柄，失败则返回 RT_NULL
  */
 struct rt_workqueue *rt_workqueue_create(const char* name, rt_uint16_t stack_size, rt_uint8_t priority);
 
@@ -54,7 +54,7 @@ struct rt_workqueue *rt_workqueue_create(const char* name, rt_uint16_t stack_siz
  *
  * 调用这个函数接口后，系统会删除这个工作队列的处理线程，然后释放相应的工作队列控制块占有的内存。
  *
- * @param queue workqueue控制块
+ * @param queue 工作队列句柄
  *
  * @return RT_EOK
  */
@@ -65,10 +65,10 @@ rt_err_t rt_workqueue_destroy(struct rt_workqueue* queue);
  *
  * 调用该函数可以向指定的工作队列中添加任务。
  *
- * @param queue workqueue控制块
+ * @param queue 工作队列句柄
  * @param work 任务控制块
  *
- * @return -RT_EBUSY 任务已在执行中，请勿重复执行；RT_EOK 加入workqueue任务成功
+ * @return RT_EOK 加入任务成功；-RT_EBUSY 任务已在执行中，请勿重复执行。
  */
 rt_err_t rt_workqueue_dowork(struct rt_workqueue* queue, struct rt_work* work);
 
@@ -77,10 +77,10 @@ rt_err_t rt_workqueue_dowork(struct rt_workqueue* queue, struct rt_work* work);
  *
  * 调用该函数可以取消任务队列中尚未执行的任务。
  *
- * @param queue workqueue控制块
+ * @param queue 工作队列句柄
  * @param work 任务控制块
  *
- * @return -RT_EBUSY 任务已在执行中，不能取消；RT_EOK 取消成功
+ * @return RT_EOK 取消成功；-RT_EBUSY 任务已在执行中，不能取消。
  */
 rt_err_t rt_workqueue_cancel_work(struct rt_workqueue* queue, struct rt_work* work);
 
@@ -89,10 +89,10 @@ rt_err_t rt_workqueue_cancel_work(struct rt_workqueue* queue, struct rt_work* wo
  *
  * 调用该函数可以取消循环任务，如果任务正在执行中，则等待该次任务完成后取消。
  *
- * @param queue workqueue控制块
+ * @param queue 工作队列句柄
  * @param work 任务控制块
  *
- * @return 取消成功（如果任务已在执行中，等待任务完成后取消）
+ * @return RT_EOK（如果任务已在执行中，等待任务完成后取消）
  */
 rt_err_t rt_workqueue_cancel_work_sync(struct rt_workqueue* queue, struct rt_work* work);
 

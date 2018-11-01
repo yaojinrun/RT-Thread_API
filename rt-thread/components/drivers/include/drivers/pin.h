@@ -33,6 +33,13 @@
 extern "C" {
 #endif
 
+/**
+ * @addtogroup pin
+ */
+
+/**@{*/
+
+
 /* pin device and operations for RT-Thread */
 struct rt_device_pin
 {
@@ -90,60 +97,65 @@ struct rt_pin_ops
     rt_err_t (*pin_irq_enable)(struct rt_device *device, rt_base_t pin, rt_uint32_t enabled);
 };
 
-
 /**
- * @addtogroup pin
+ * @brief 注册PIN设备
+ *
+ * 此函数可以注册PIN设备到PIN驱动框架中。
+ *
+ * @param name PIN设备名称
+ * @param ops PIN设备操作方法对象指针
+ * @param user_data 用户数据，一般设为RT_NULL
+ *
+ * @return RT_EOK 注册成功;-RT_ERROR 注册失败，已有其他驱动使用该name注册。
  */
-
-/**@{*/
-
 int rt_device_pin_register(const char *name, const struct rt_pin_ops *ops, void *user_data);
 
 /**
- * @brief 管脚工作模式设置
+ * @brief 设置引脚设置
  *
- * 此函数可以设定指定管脚的工作模式。
+ * 此函数可以设定指定引脚的工作模式。
  *
- * @param pin 管脚编号
- * @param mode 管脚工作模式，可以去以下 5 种模式之一
+ * @param pin 引脚编号
+ * @param mode 引脚工作模式，可以取以下 5 种模式之一
  * 参数              | 说明
  * ------------------|------------------------------------
- * PIN_MODE_OUTPUT       |      输出，具体模式看 drv_gpio.c 源码实现
+ * PIN_MODE_OUTPUT       |      输出
  * PIN_MODE_INPUT       |       输入
  * PIN_MODE_INPUT_PULLUP    |   上拉输入
  * PIN_MODE_INPUT_PULLDOWN   |  下拉输入
  * PIN_MODE_OUTPUT_OD    |      开漏输出
  *
+ * @note 引脚编号需要和芯片的引脚号区分开来，它们并不是同一个概念，引脚编号由PIN设备驱动程序定义，和具体的芯片相关。
  */
 void rt_pin_mode(rt_base_t pin, rt_base_t mode);
 
 /**
- * @brief 设置管脚电平
+ * @brief 设置引脚电平
  *
- * 此函数可以设定指定管脚的输出电平。
+ * 此函数可以设定指定引脚的输出电平。
  *
- * @param pin 管脚编号
+ * @param pin 引脚编号
  * @param value 电平逻辑值，可取 2 种值之一，PIN_LOW 低电平，PIN_HIGH 高电平
  */
 void rt_pin_write(rt_base_t pin, rt_base_t value);
 
 /**
- * @brief 读管脚电平
+ * @brief 读引脚电平
  *
- * 该函数可以读取指定管脚的当前电平。
+ * 该函数可以读取指定引脚的当前电平。
  *
- * @param pin 管脚编号
+ * @param pin 引脚编号
  *
  * @return PIN_LOW 低电平；PIN_HIGH 高电平
  */
 int  rt_pin_read(rt_base_t pin);
 
 /**
- * @brief 绑定管脚中断
+ * @brief 绑定引脚中断回调函数
  *
- * 此函数可以设定指定管脚的中断出发模式，并可指定中断回调函数。
+ * 此函数可以设定指定引脚的中断触发模式，并可指定中断回调函数。
  *
- * @param pin 管脚编号
+ * @param pin 引脚编号
  * @param mode 中断触发模式，可取以下 5 种值之一
  *  参数              | 描述
  * ------------------|------------------------------------
@@ -156,31 +168,31 @@ int  rt_pin_read(rt_base_t pin);
  * @param hdr 中断回调函数，用户需要自行定义这个函数，其返回值为 void
  * @param args 中断回调函数的参数，不需要时设置为 RT_NULL
  *
- * @return RT_EOK 成功；RT_ENOSYS 无系统；RT_EBUSY 忙
+ * @return RT_EOK 成功；失败返回其他错误码。
  */
 rt_err_t rt_pin_attach_irq(rt_int32_t pin, rt_uint32_t mode,
                              void (*hdr)(void *args), void  *args);
 
 /**
- * @brief 解绑管脚中断
+ * @brief 脱离引脚中断回调函数
  *
- * 调用此函数可以解绑指定的管脚中断。
+ * 调用此函数可以脱离指定的引脚中断。
  *
- * @param pin 管脚编号
+ * @param pin 引脚编号
  *
- * @return RT_EOK 成功；RT_ENOSYS 出错
+ * @return RT_EOK 成功；失败返回其他错误码。
  */
 rt_err_t rt_pin_detach_irq(rt_int32_t pin);
 
 /**
- * @brief 失能 / 屏蔽管脚中断
+ * @brief 使能 / 屏蔽引脚中断
  *
- * 此函数可以使能/屏蔽指定管脚的中断。
+ * 此函数可以使能/屏蔽指定引脚的中断。
  *
- * @param pin 管脚编号
+ * @param pin 引脚编号
  * @param enabled 状态，可取 2 种值之一：PIN_IRQ_ENABLE  开启，PIN_IRQ_DISABLE  关闭
  *
- * @return RT_EOK 成功；RT_ENOSYS 出错
+ * @return RT_EOK 成功；失败返回其他错误码。
  */
 rt_err_t rt_pin_irq_enable(rt_base_t pin, rt_uint32_t enabled);
 

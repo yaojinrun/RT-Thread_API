@@ -17,17 +17,17 @@
  */
 struct rt_pipe_device
 {
-    struct rt_device parent;			/**< @brief 继承自 ipc_object */
+    struct rt_device parent;			/**< @brief 继承自 rt_device */
 
     /* ring buffer in pipe device */
-    struct rt_ringbuffer *fifo;			/**< @brief 管道所使用的环形缓冲区指针 */
+    struct rt_ringbuffer *fifo;			/**< @brief 管道所使用的环形缓冲区句柄 */
     rt_uint16_t bufsz;					/**< @brief 缓冲区的大小 */
 
     rt_uint8_t readers;					/**< @brief 管道读取者计数 */
     rt_uint8_t writers;					/**< @brief 管道写入者计数 */
 
-    rt_wqueue_t reader_queue;			/**< @brief 管道的读等待队列 */
-    rt_wqueue_t writer_queue;			/**< @brief 管道的写等待队列 */
+    rt_wqueue_t reader_queue;			/**< @brief 管道读等待队列 */
+    rt_wqueue_t writer_queue;			/**< @brief 管道写等待队列 */
 
     struct rt_mutex lock;				/**< @brief 管道的互斥锁 */
 };

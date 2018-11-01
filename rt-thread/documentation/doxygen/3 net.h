@@ -134,29 +134,13 @@ typedef struct fd_set
 /**
  * @ingroup SOC
  *
- * @brief 创建套接字（socket）
+ * @brief 创建套接字
  *
  * 该函数用于根据指定的地址族、数据类型和协议来分配一个套接字描述符及其所用的资源。
  *
  * @param domain 协议族
  * @param type 协议类型
- * @param protocol 实际使用的运输层
- *
- * @return 成功，返回一个代表套接字描述符的整数；失败返回 -1。
- */
-int socket(int domain, int type, int protocol);
-
-
-/**
- * @ingroup SOC
- *
- * @brief 创建套接字（socket）
- *
- * 该函数用于根据指定的地址族、数据类型和协议来分配一个套接字描述符及其所用的资源。
- *
- * @param domain 协议族
- * @param type 协议类型
- * @param protocol 实际使用的运输层
+ * @param protocol 实际使用的运输层协议
  *
  * @return 成功，返回一个代表套接字描述符的整数；失败返回 -1。
  */
@@ -167,7 +151,8 @@ int socket(int domain, int type, int protocol);
  *
  * @brief 绑定套接字
  *
- * 该函数用于根据指定的地址族、数据类型和协议来分配一个套接字描述符及其所用的资源。
+ * 用于将端口号和 IP 地址绑定带指定套接字上。当使用 socket() 创造一个套接字时,
+ * 只是给定了协议族，并没有分配地址，在套接字接收来自其他主机的连接前，必须用 bind() 给它绑定一个地址和端口号。
  *
  * @param s 套接字描述符
  * @param name 指向sockaddr结构体的指针，代表要绑定的地址
@@ -234,7 +219,7 @@ int connect(int s, const struct sockaddr *name, socklen_t namelen);
  * @param size 发送的数据长度
  * @param flags 标志，一般为0
  *
- * @return 成功，返回发送的数据的长度；<=0 失败。
+ * @return 大于0 成功，返回发送的数据的长度；小于等于0 失败。
  */
 int send(int s, const void *dataptr, size_t size, int flags);
 
@@ -249,7 +234,7 @@ int send(int s, const void *dataptr, size_t size, int flags);
  * @param len 接收的数据长度
  * @param flags 标志，一般为0
  *
- * @return 成功，返回接收的数据的长度；0 表示目标地址已传输完并关闭连接。
+ * @return 大于0 成功，返回接收的数据的长度；等于0 表示目标地址已传输完并关闭连接；小于0 失败。
  */
 int recv(int s, void *mem, size_t len, int flags);
 
@@ -266,7 +251,7 @@ int recv(int s, void *mem, size_t len, int flags);
  * @param to 目标地址结构体指针
  * @param tolen 目标地址结构体长度
  *
- * @return 成功，返回发送的数据的长度；小于等于0 失败。
+ * @return 大于0 成功，返回发送的数据的长度；小于等于0 失败。
  */
 int sendto(int s, const void *dataptr, size_t size, int flags, const struct sockaddr *to, socklen_t tolen);
 
@@ -280,11 +265,10 @@ int sendto(int s, const void *dataptr, size_t size, int flags, const struct sock
  * @param mem 接收的数据指针
  * @param len 接收的数据长度
  * @param flags 标志，一般为0
- * @param flags 标志，一般为0
  * @param from 接收地址结构体指针
  * @param fromlen 接收地址结构体长度
  *
- * @return 成功，返回接收的数据的长度；0 接收地址已传输完并关闭连接；小于0 失败。
+ * @return 大于0 成功，返回接收的数据的长度；等于0 接收地址已传输完并关闭连接；小于0 失败。
  */
 int recvfrom(int s, void *mem, size_t len, int flags, struct sockaddr *from, socklen_t *fromlen);
 
@@ -313,6 +297,22 @@ int closesocket(int s);
  */
 int shutdown(int s, int how);
 
+/**
+ * @ingroup SOC
+ *
+ * @brief 设置套接字选项
+ *
+ * @param s 套接字描述符
+ * @param level 协议栈配置选项
+ * @param optname 需要设置的选项名
+ * @param optval 获取选项值的缓冲区地址
+ * @param optlen 获取选项值的缓冲区长度地址
+ *
+ * @return 0 成功；小于0 失败。
+ */
+
+int setsockopt(int s, int level, int optname, const void *optval, socklen_t optlen);
+
 
 /**
  * @ingroup SOC
@@ -327,6 +327,7 @@ int shutdown(int s, int how);
  *
  * @return 0 成功；小于0 失败。
  */
+
 int getsockopt(int s, int level, int optname, void *optval, socklen_t *optlen);
 
 

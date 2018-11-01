@@ -32,6 +32,12 @@
 extern "C"{
 #endif
 
+/**
+ * @addtogroup spi
+ */
+
+/**@{*/
+
 #define RT_SPI_CPHA     (1<<0)                             /* bit[0]:CPHA, clock phase */
 #define RT_SPI_CPOL     (1<<1)                             /* bit[1]:CPOL, clock polarity */
 /**
@@ -96,15 +102,15 @@ struct rt_spi_ops;
  */
 struct rt_spi_bus
 {
-    struct rt_device parent;			/**< @brief 从 rt_device 继承 */
-    const struct rt_spi_ops *ops;		/**< @brief SPI总线的操作集 */
+    struct rt_device parent;			/**< @brief 继承 rt_device */
+    const struct rt_spi_ops *ops;		/**< @brief SPI总线的操作方法 */
 
     struct rt_mutex lock;				/**< @brief SPI总线的互斥锁 */
     struct rt_spi_device *owner;		/**< @brief SPI总线的当前使用者 */
 };
 
 /**
- * @brief SPI总线的操作集
+ * @brief SPI总线的操作方法
  */
 struct rt_spi_ops
 {
@@ -113,12 +119,12 @@ struct rt_spi_ops
 };
 
 /**
- * @brief SPI虚拟总线，肯定有一个设备连接到该虚拟总线
+ * @brief SPI从设备
  */
 struct rt_spi_device
 {
-    struct rt_device parent;				/**< @brief 从 rt_device 继承 */
-    struct rt_spi_bus *bus;					/**< @brief SPI总线指针 */
+    struct rt_device parent;				/**< @brief 继承 rt_device*/
+    struct rt_spi_bus *bus;					/**< @brief 指向挂载的SPI总线设备 */
 
     struct rt_spi_configuration config;		/**< @brief SPI配置参数 */
 };
@@ -126,22 +132,15 @@ struct rt_spi_device
 
 
 /**
- * @addtogroup spi
- */
-
-/**@{*/
-
-
-/**
- * @brief SPI 总线注册
+ * @brief 注册SPI 总线设备
  *
- * 调用此函数可以向系统中注册 SPI 总线。
+ * 调用此函数可以向系统中注册 SPI 总线设备。
  *
- * @param bus SPI 总线句柄
- * @param name SPI 总线名称，一般与硬件控制器名称一致，如：”spi0”
- * @param ops SPI 总线操作方法，即 SPI 驱动的实现
+ * @param bus SPI 总线设备句柄
+ * @param name SPI 总线设备名称，一般与硬件控制器名称一致，如：“spi0”
+ * @param ops SPI 总线设备的操作方法，即 SPI 驱动的实现
  *
- * @return RT_EOK 成功；-RT_ERROR bus 为空或者 name 已被注册。
+ * @return RT_EOK 成功；-RT_ERROR 注册失败，已有其他驱动使用该name注册。
  */
 rt_err_t rt_spi_bus_register(struct rt_spi_bus       *bus,
                              const char              *name,
@@ -149,16 +148,16 @@ rt_err_t rt_spi_bus_register(struct rt_spi_bus       *bus,
 
 
 /**
- * @brief 挂载 SPI 设备到总线上
+ * @brief 挂载 SPI 从设备到SPI总线设备上
  *
  * 此函数用于挂载一个SPI设备节点到指定的SPI总线，并内核注册SPI设备节点，并将user_data保存到SPI设备节点的user_data指针里。
  *
- * @param device SPI 设备句柄
- * @param name SPI 设备名称
- * @param bus_name SPI 总线名称
- * @param user_data 用户数据指针
+ * @param device SPI 从设备句柄
+ * @param name SPI 从设备名称，SPI从设备命名原则为spixy，如spi10表示挂载在总线spi1上的0号设备
+ * @param bus_name SPI 总线设备名称
+ * @param user_data 用户数据指针，一般为SPI从设备对应的CS引脚信息，进行数据传输时SPI控制器会操作此引脚进行片选
  *
- * @return RT_EOK 成功；-RT_ERROR bus_name 不存在、device 为空、name 已被注册。
+ * @return RT_EOK 成功；-RT_ERROR 已有其他驱动使用name挂载或者bus_name对应的SPI总线设备不存在。
  */
 rt_err_t rt_spi_bus_attach_device(struct rt_spi_device *device,
                                   const char           *name,
@@ -166,59 +165,58 @@ rt_err_t rt_spi_bus_attach_device(struct rt_spi_device *device,
                                   void                 *user_data);
 
 /**
- * @brief 获取 SPI 总线
+ * @brief 获取 SPI 总线设备
  *
- * 用户调用此函数来获取SPI总线，并设置SPI总线的工作模式和参数。
+ * 用户调用此函数来获取SPI总线设备，并设置SPI总线设备的工作模式和参数。
  *
- * @param device SPI 总线设备句柄
+ * @param device SPI 从设备句柄
  *
- * @return 成功则返回RT_EOK；错误则返回 错误码。
+ * @return 成功则返回RT_EOK；错误则返回错误码。
  */
 rt_err_t rt_spi_take_bus(struct rt_spi_device *device);
 
 
 /**
- * @brief 释放 SPI 总线
+ * @brief 释放 SPI 总线设备
  *
- * 用户可以调用此函数来释放SPI总线。
+ * 用户可以调用此函数来释放SPI总线设备。
  *
- * @param device SPI 总线设备句柄
+ * @param device SPI 从设备句柄
  *
- * @return 成功则返回RT_EOK；错误则返回 错误码。
+ * @return 成功则返回RT_EOK；错误则返回错误码。
  */
 rt_err_t rt_spi_release_bus(struct rt_spi_device *device);
 
 
 /**
- * @brief 获取 SPI 器件
+ * @brief 获取片选
  *
  * 调用此函数可以片选SPI设备。
  *
- * @param device SPI 总线设备句柄
+ * @param device SPI 从设备句柄
  *
  * @return 0 获取成功，片选开始。
  */
 rt_err_t rt_spi_take(struct rt_spi_device *device);
 
 /**
- * @brief 释放 SPI 器件
+ * @brief 释放片选
  *
  * 调用此函数可以释放被片选SPI设备。
  *
- * @param device SPI 总线设备句柄
+ * @param device SPI 从设备句柄
  *
  * @return 0 释放成功，片选结束。
  */
 rt_err_t rt_spi_release(struct rt_spi_device *device);
 
 /**
- * @brief SPI 总线配置
+ * @brief SPI 从设备配置
  *
- * 本函数用于配置SPI BUS以满足不同设备的时钟、数据宽度等要求，通常需要配置SPI模式、频率参数。
+ * 本函数用于配置SPI 从设备的时钟、数据宽度等要求，通常需要配置SPI模式、频率参数。
  *
- * @param device SPI 设备句柄
- * @param cfg SPI 传输配置参数指针
- * @param device SPI 设备句柄
+ * @param device SPI 从设备句柄
+ * @param cfg SPI 配置参数指针
  *
  * @return RT_EOK 配置成功。
  */
@@ -226,11 +224,11 @@ rt_err_t rt_spi_configure(struct rt_spi_device        *device,
                           struct rt_spi_configuration *cfg);
 
 /**
- * @brief SPI 发送一次数据后再接收一次数据
+ * @brief 先发送后接收数据
  *
  * 本函数适合从SPI外设中读取一块数据，本函数中会先发送一些数据（如命令和地址），然后再接收指定长度的数据。此函数等同于调用rt_spi_transfer_message()传输2条消息。
  *
- * @param device SPI 总线设备句柄
+ * @param device SPI 从设备句柄
  * @param send_buf 发送缓冲区数据指针
  * @param send_length 发送缓冲区数据字节数
  * @param recv_buf 接收缓冲区数据指针，spi 是全双工的，支持同时收发
@@ -245,11 +243,12 @@ rt_err_t rt_spi_send_then_recv(struct rt_spi_device *device,
                                rt_size_t             recv_length);
 
 /**
- * @brief SPI 连续发送两次数据
+ * @brief 连续发送两次数据
  *
- * 本函数适合向SPI外设中写入一块数据，本函数中会先发送一些数据（如命令和地址），然后再发送指定长度的数据。此函数等同于调用rt_spi_transfer_message()传输2条消息。
+ * 如果需要先后连续发送2个缓冲区的数据，并且中间片选不释放，可以调用此函数。
+ * 本函数适合向SPI从设备中写入一块数据，第一次先发送命令和地址等数据，第二次再发送指定长度的数据。
  *
- * @param device SPI 总线设备句柄
+ * @param device SPI 从设备句柄
  * @param send_buf1 发送缓冲区1数据指针
  * @param send_length1 发送缓冲区1数据字节数
  * @param send_buf2 发送缓冲区2数据指针
@@ -264,11 +263,11 @@ rt_err_t rt_spi_send_then_send(struct rt_spi_device *device,
                                rt_size_t             send_length2);
 
 /**
- * @brief SPI 单个消息传输
+ * @brief 传输一次数据
  *
- * 调用此函数将发送一次数据，同于调用rt_spi_transfer_message()传输一条消息。
+ * 此函数可以传输传输一次数据。此函数等同于调用rt_spi_transfer_message()传输一条消息，开始发送数据时片选选中，函数返回时释放片选。
  *
- * @param device SPI 设备句柄
+ * @param device SPI 从设备句柄
  * @param send_buf 发送缓冲区指针
  * @param recv_buf 接收缓冲区指针
  * @param length 发送 / 接收 数据字节数
@@ -281,26 +280,25 @@ rt_size_t rt_spi_transfer(struct rt_spi_device *device,
                           rt_size_t             length);
 
 /**
- * @brief SPI 多个消息连续传输
+ * @brief 多个消息连续传输
  *
  * 此函数可以传输一连串消息，用户可以很灵活的设置message结构体各参数的数值，从而可以很方便的控制数据传输方式。
  *
- * @param device SPI 设备句柄
+ * @param device SPI 从设备句柄
  * @param message 消息指针
  *
- * @return RT_NULL 消息列表发送成功，发送失败则返回当前的消息指针。
+ * @return RT_NULL 消息列表发送成功，发送失败返回指向剩余未发送的消息的指针。
  */
 struct rt_spi_message *rt_spi_transfer_message(struct rt_spi_device  *device,
                                                struct rt_spi_message *message);
 
 /**
- * @brief SPI 消息接收函数
+ * @brief 接收数据
  *
- * 调用此函数接受数据并保存到recv_buf指向的缓冲区。是对rt_spi_transfer()函数的封装。
- * SPI协议里面只能由MASTER主动产生时钟，因此，在接收数据时，会发送dummy。此函数等同于
- * 调用rt_spi_transfer_message()传输一条消息。
+ * 调用此函数接受数据并保存到recv_buf指向的缓冲区。此函数是对rt_spi_transfer()函数的封装。
+ * SPI协议里面只能由MASTER主动产生时钟，因此，在接收数据时，会发送dummy。
  *
- * @param device SPI 设备句柄
+ * @param device SPI 从设备句柄
  * @param recv_buf 接收缓冲区指针
  * @param length 接受数据的字节数
  *
@@ -314,12 +312,12 @@ rt_inline rt_size_t rt_spi_recv(struct rt_spi_device *device,
 }
 
 /**
- * @brief SPI 消息接收函数
+ * @brief 发送数据
  *
- * 调用此函数发送send_buf指向的缓冲区的数据，忽略接收到的数据。是对rt_spi_transfer()函数的封装。
- * 此函数等同于调用rt_spi_transfer_message()传输一条消息。
+ * 调用此函数发送send_buf指向的缓冲区的数据，忽略接收到的数据。
+ * 此函数是对rt_spi_transfer()函数的封装，开始发送数据时片选选中，函数返回时释放片选。
  *
- * @param device SPI 设备句柄
+ * @param device SPI 从设备句柄
  * @param send_buf 发送缓冲区指针
  * @param length 发送数据的字节数
  *
@@ -353,9 +351,10 @@ rt_inline rt_uint16_t rt_spi_sendrecv16(struct rt_spi_device *device,
 }
 
 /**
- * @brief SPI 消息追加
+ * @brief 增加一条消息
  *
- * 调用此函数可以向SPI消息发送链表中增加一条消息。
+ * 使用rt_spi_transfer_message()传输消息时，
+ * 所有待传输的消息都是以单向链表的形式连接起来的，可使用如下函数往消息链表里增加一条新的待传输消息。
  *
  * @param list 消息链表指针
  * @param message 消息指针
