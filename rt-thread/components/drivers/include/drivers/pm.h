@@ -178,7 +178,7 @@ struct rt_pm
 };
 
 /**
- * @brief PM 模式进入
+ * @brief 进入PM 模式
  *
  * 该函数尝试进入更低的模式，如果没有请求任何运行模式，就进入休眠模式。这个函数已经在 PM 组件
  * 初始化函数里注册到 IDLE HOOK 里，所以不需要另外的调用。
@@ -186,7 +186,7 @@ struct rt_pm
 void rt_pm_enter(void);
 
 /**
- * @brief PM 模式退出
+ * @brief 退出PM 模式
  *
  * 该函数在从休眠模式唤醒的时候被在rt_pm_enter()调用。在从休眠唤醒时，有可能先进入唤醒中断的中断
  * 处理函数里由。用户也可以在这里主动调用用户主动调用rt_pm_exit()。从休眠唤醒之后可能多次调用
@@ -223,7 +223,7 @@ void rt_pm_release(rt_ubase_t mode);
  * - 如果是切换到新的休眠模式，将会在进入休眠时调用设备的suspend()函数，在进入休眠被唤醒之后
  * 调用设备的resume()。
  *
- * @param device 具体对模式变化敏感的设备
+ * @param device 具体对模式变化敏感的设备句柄
  * @param ops 设备的函数集合
  */
 void rt_pm_register_device(struct rt_device* device, const struct rt_device_pm_ops* ops);
@@ -233,7 +233,7 @@ void rt_pm_register_device(struct rt_device* device, const struct rt_device_pm_o
  *
  * 该函数取消已经注册的 PM 模式变化敏感设备。
  *
- * @param device 具体对模式变化敏感的设备
+ * @param device 具体对模式变化敏感的设备句柄
  */
 void rt_pm_unregister_device(struct rt_device* device);
 

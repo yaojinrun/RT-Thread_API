@@ -60,13 +60,13 @@
 /**
  * @brief 注册设备
  *
- * 此函数注册具有指定名称的设备驱动。
+ * 此函数注册具有指定名称的设备。设备需要注册到I/O设备管理器中，应用程序才能够访问。
  *
- * @param dev 指向设备驱动控制块的指针
+ * @param dev 设备句柄
  * @param name 设备名称
- * @param flags 设备的功能标志位
+ * @param flags 设备模式标志位
  *
- * @return 失败返回错误代码，注册成功则返回 RT_EOK 。
+ * @return 注册成功返回 RT_EOK，失败则返回-RT_ERROR。
  */
 rt_err_t rt_device_register(rt_device_t dev,
                             const char *name,
@@ -93,13 +93,14 @@ rt_err_t rt_device_register(rt_device_t dev,
 RTM_EXPORT(rt_device_register);
 
 /**
- * @brief 设备删除
+ * @brief 删除设备
  *
- * 该函数将删除已注册的设备驱动程序
+ * 该函数将删除已注册的设备。当设备注销后的，设备将从设备管理器中移除，
+ * 也就不能再通过设备查找搜索到该设备。注销设备不会释放设备控制块占用的内存。
  *
- * @param dev 指向设备驱动控制块的指针
+ * @param dev 设备句柄
  *
- * @return 失败返回错误代码，注册成功则返回 RT_EOK 。
+ * @return 注册成功返回 RT_EOK。
  */
 rt_err_t rt_device_unregister(rt_device_t dev)
 {
@@ -126,13 +127,13 @@ rt_err_t rt_device_init_all(void)
 }
 
 /**
- * @brief 设备查找函数
+ * @brief 查找设备
  *
- * 该函数通过指定的名称查找设备
+ * 该函数通过指定的名称查找设备。应用程序根据设备名称获取设备句柄，进而可以操作设备。
  *
  * @param name 设备的名称
  *
- * @return 成功则返回已注册的设备控制块, 失败则返回 RT_NULL 。
+ * @return 成功则返回已注册的设备句柄, 失败则返回 RT_NULL 。
  */
 rt_device_t rt_device_find(const char *name)
 {
@@ -173,14 +174,16 @@ RTM_EXPORT(rt_device_find);
 
 #ifdef RT_USING_HEAP
 /**
- * @brief 设备创建
+ * @brief 创建设备
  *
- * 此函数根据用户数据大小创建一个设备对象。
+ * 此函数根据用户指定的设备类型动态的创建一个设备对象。
+ * 调用该接口时，系统会从动态堆内存中分配一个设备控制块，
+ * 大小为struct rt_device和attach_size的和，设备的类型由参数type设定。
  *
- * @param type 该设备对象的类型
+ * @param type 设备类型
  * @param attach_size 用户数据的大小
  *
- * @return 成功则分配的设备对象句柄，失败则返回RT_NULL
+ * @return 成功则返回设备句柄，失败则返回RT_NULL。
  */
 rt_device_t rt_device_create(int type, int attach_size)
 {
@@ -204,11 +207,11 @@ rt_device_t rt_device_create(int type, int attach_size)
 RTM_EXPORT(rt_device_create);
 
 /**
- * @brief 设备销毁函数
+ * @brief 销毁设备
  *
- * 该函数将销毁指定的设备对象。
+ * 该函数将销毁动态创建的设备对象。
  *
- * @param device 指定的设备对象
+ * @param device 设备句柄
  */
 void rt_device_destroy(rt_device_t device)
 {
@@ -222,13 +225,13 @@ RTM_EXPORT(rt_device_destroy);
 #endif
 
 /**
- * @brief 设备初始化
+ * @brief 初始化设备
  *
- * 该函数将初始化指定的设备
+ * 该函数将初始化指定的设备。当一个设备已经初始化成功后，调用这个接口将不再重复做初始化。
  *
- * @param dev 指向设备驱动结构体的指针
+ * @param dev 设备句柄
  *
- * @return the result
+ * @return 成功返回RT_EOK；失败返回错误码。
  */
 rt_err_t rt_device_init(rt_device_t dev)
 {
@@ -260,12 +263,13 @@ rt_err_t rt_device_init(rt_device_t dev)
 /**
  * @brief 打开设备
  *
- * This function will open a device
+ * 通过设备句柄，应用程序可以打开和关闭设备，
+ * 打开设备时会检测设备是否已经初始化，没有初始化则会默认调用初始化接口初始化设备。
  *
- * @param dev 指向设备驱动控制块
- * @param oflag 设备的打开功能标志位
+ * @param dev 设备句柄
+ * @param oflag 设备的打开模式标志位
  *
- * @return the result
+ * @return 成功返回RT_EOK；失败则返回错误码。
  */
 rt_err_t rt_device_open(rt_device_t dev, rt_uint16_t oflag)
 {
@@ -327,11 +331,11 @@ RTM_EXPORT(rt_device_open);
 /**
  * @brief 关闭设备
  *
- * 该函数将关闭指定的设备
+ * 该函数将关闭指定的设备。
  *
- * @param dev 指向设备驱动控制块
+ * @param dev 设备句柄
  *
- * @return the result
+ * @return 成功返回RT_EOK；失败则返回错误码。
  */
 rt_err_t rt_device_close(rt_device_t dev)
 {
@@ -362,18 +366,17 @@ rt_err_t rt_device_close(rt_device_t dev)
 RTM_EXPORT(rt_device_close);
 
 /**
- * @brief 设备读取
+ * @brief 读取设备
  *
- * 该函数将从设备读取数据
+ * 该函数将从设备读取数据。
  *
- * @param dev 指向设备驱动控制块
+ * @param dev 设备句柄
  * @param pos 读取的偏移量
  * @param buffer 用于保存读取数据的数据缓冲区
  * @param size 缓冲区的大小
  *
- * @return 成功时返回实际读取的大小，否则返回负数。
+ * @return 成功返回实际读取的大小，如果是字符设备，返回大小以字节为单位，如果是块设备，返回的大小以块为单位；失败则返回0。
  *
- * @note 从0.4.0开始，size / pos代表的是块设备的块。
  */
 rt_size_t rt_device_read(rt_device_t dev,
                          rt_off_t    pos,
@@ -402,16 +405,16 @@ rt_size_t rt_device_read(rt_device_t dev,
 RTM_EXPORT(rt_device_read);
 
 /**
- * @brief 设备写入
+ * @brief 写设备
  *
- * 该函数将向设备写入数据
+ * 该函数将向设备写入数据。
  *
- * @param dev 指向设备驱动控制块
+ * @param dev 设备句柄
  * @param pos 写入的偏移量
  * @param buffer 要写入设备的数据缓冲区
-* @param size 发送缓冲区的大小
+* @param size 写入数据的大小
  *
- * @return 成功时返回实际写入数据的大小，否则返回负数。
+ * @return 成功返回实际写入数据的大小，如果是字符设备，返回大小以字节为单位；如果是块设备，返回的大小以块为单位；失败则返回0。
  *
  * @note 从0.4.0开始，size / pos代表的是块设备的块。
  */
@@ -442,15 +445,15 @@ rt_size_t rt_device_write(rt_device_t dev,
 RTM_EXPORT(rt_device_write);
 
 /**
- * @brief 设备控制
+ * @brief 控制设备
  *
  * 该函数将在设备上执行各种控制功能。
  *
- * @param dev 指向设备驱动控制块
-* @param cmd 发送给设备的命令
+ * @param dev 设备句柄
+ * @param cmd 命令控制字，这个参数通常与设备驱动程序相关。
  * @param arg 控制命令相关的参数
  *
- * @return the result
+ * @return 成功返回RT_EOK；失败则返回错误码。
  */
 rt_err_t rt_device_control(rt_device_t dev, int cmd, void *arg)
 {
@@ -469,10 +472,12 @@ RTM_EXPORT(rt_device_control);
 /**
  * @brief 设置设备接收回调函数
  *
- * 此函数将设置接收指示回调函数。 当此设备接收数据时，将调用此回调函数。
+ * 此函数将设置设备接收回调函数。该函数的回调函数由调用者提供。
+ * 当硬件设备接收到数据时，会回调这个函数并把收到的数据长度放在size参数中传递给上层应用。
+ * 上层应用线程应在收到指示后，立刻从设备中读取数据。
  *
- * @param dev 指向设备驱动控制块
- * @param rx_ind 指示回调函数
+ * @param dev 设备句柄
+ * @param rx_ind 回调函数
  *
  * @return RT_EOK
  */
@@ -489,11 +494,13 @@ rt_device_set_rx_indicate(rt_device_t dev,
 RTM_EXPORT(rt_device_set_rx_indicate);
 
 /**
- * @brief 设置传输完成回调函数
+ * @brief 设置设备发送完成回调函数
  *
- * 此函数将设置发送完成指示回调函数。 当向实际的物理设备完成写入数据时，将调用此回调函数。
+ * 此函数将设置发送完成回调函数。调用这个函数时，回调函数由调用者提供，当硬件设备发送完数据时，
+ * 由驱动程序回调这个函数并把发送完成的数据块地址buffer作为参数传递给上层应用。
+ * 上层应用（线程）在收到指示时会根据发送buffer的情况，释放buffer内存块或将其作为下一个写数据的缓存。
  *
- * @param dev 指向设备驱动控制块
+ * @param dev 设备句柄
  * @param tx_done 指示回调函数
  *
  * @return RT_EOK

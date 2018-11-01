@@ -331,10 +331,10 @@ static const struct dfs_file_ops pipe_fops =
  *
  * 此函数打开管道，实际创建管道缓冲区。
  *
- * @param device 设备控制块
+ * @param device 设备句柄
  * @param oflag 打开方式
  *
- * @return -RT_EINVAL 设备控制块为空；RT_EOK 打开成功
+ * @return -RT_EINVAL 设备句柄为空；RT_EOK 打开成功
  */
 rt_err_t  rt_pipe_open (rt_device_t device, rt_uint16_t oflag)
 {
@@ -358,9 +358,9 @@ rt_err_t  rt_pipe_open (rt_device_t device, rt_uint16_t oflag)
  *
  * 此函数关闭指定管道，销毁其数据缓冲区。
  *
- * @param device 设备控制块
+ * @param device 设备句柄
  *
- * @return -RT_EINVAL 设备控制块为空；RT_EOK 关闭成功
+ * @return -RT_EINVAL 设备句柄为空；RT_EOK 关闭成功
  */
 rt_err_t  rt_pipe_close  (rt_device_t device)
 {
@@ -381,16 +381,16 @@ rt_err_t  rt_pipe_close  (rt_device_t device)
 }
 
 /**
- * @brief 读管道
+ * @brief 从管道读取数据
  *
- * 此函数关闭指定管道，销毁其数据缓冲区。
+ * 往管道中读取指定长度数据。
  *
- * @param device 设备控制块
+ * @param device 设备句柄
  * @param pos 与POSIX 标准接口兼容的参数（目前没有意义，传入0即可）
- * @param buffer 读管道数据的存储地址的指针
+ * @param buffer 读管道数据的存储区的指针
  * @param count 待读取数据的大小
  *
- * @return -RT_EINVAL 设备控制块为空；RT_EOK 关闭成功
+ * @return 成功返回读取数据字节数；设备句柄为空或待读取数据字节数为0时返回0。
  */
 rt_size_t rt_pipe_read   (rt_device_t device, rt_off_t pos, void *buffer, rt_size_t count)
 {
@@ -421,16 +421,16 @@ rt_size_t rt_pipe_read   (rt_device_t device, rt_off_t pos, void *buffer, rt_siz
 }
 
 /**
- * @brief 写管道
+ * @brief 向管道写入数据
  *
  * 往管道中写入指定长度数据。
  *
- * @param device 设备控制块
+ * @param device 设备句柄
  * @param pos 与POSIX 标准接口兼容的参数（目前没有意义，传入0即可）
- * @param buffer 待写入数据的地址指针
+ * @param buffer 待写入数据的缓冲区指针
  * @param count 待写入数据的大小
  *
- * @return 设备控制块为空或待读取数据字节数为0时返回0；写入成功则返回实际写入的字节数
+ * @return 成功返回实际写入的字节数；设备句柄为空或待读取数据字节数为0时返回0。
  */
 rt_size_t rt_pipe_write  (rt_device_t device, rt_off_t pos, const void *buffer, rt_size_t count)
 {
@@ -483,9 +483,9 @@ const static struct rt_device_ops pipe_ops =
  * 调用该函数创建管道，系统会从动态堆内存中分配一个管道句柄，并对管道句柄按照指定值初始化，然后向系统注册管道设备。
  *
  * @param name 管道名称
- * @param bufsz 待创建管道的大小
+ * @param bufsz 缓冲区大小
  *
- * @return 创建失败时返回RT_NULL；创建成功则返回管道控制块
+ * @return 创建成功则返回管道控制块；创建失败时返回RT_NULL。
  */
 rt_pipe_t *rt_pipe_create(const char *name, int bufsz)
 {
@@ -534,11 +534,11 @@ rt_pipe_t *rt_pipe_create(const char *name, int bufsz)
 /**
  * @brief 删除管道
  *
- * 调用该函数删除定制名称的管道设备，并释放其所占的内存空间。
+ * 调用该函数删除指定名称的管道设备，并释放其所占的内存空间。
  *
  * @param name 管道名称
  *
- * @return -RT_EBUSY 使用中，删除失败；-ENODEV 为找到设备或设备部位管道类型；0 删除成功
+ * @return 0 删除成功；-RT_EBUSY 使用中，删除失败；-ENODEV 为找到设备或设备部位管道类型。
  */
 int rt_pipe_delete(const char *name)
 {

@@ -77,9 +77,9 @@ void rt_wqueue_remove(struct rt_wqueue_node *node);
 /**
  * @brief 加入等待队列
  * 
- * 在指定等待队列上挂起等待被唤醒或超时返回。
+ * 在指定等待队列上挂起等待或超时返回。
  *
- * @param queue 	等待队列控制块
+ * @param queue 	等待队列句柄
  * @param condition 与POSIX 标准接口兼容的参数（目前没有意义，传入0即可）。
  * @param timeout	指定的等待时间。
  *
@@ -92,7 +92,7 @@ int  rt_wqueue_wait(rt_wqueue_t *queue, int condition, int timeout);
  * 
  * 唤醒指定等待队列上符合条件的被挂起的线程。
  *
- * @param queue 等待队列控制块
+ * @param queue 等待队列句柄
  * @param key 	唤醒条件
  */
 void rt_wqueue_wakeup(rt_wqueue_t *queue, void *key);

@@ -33,7 +33,7 @@
 /**@{*/
 
 /**
- * @brief 管设置系统日期但不修改时间
+ * @brief 设置系统日期但不修改时间
  *
  * @param year 年
  * @param month 月(1~12).
@@ -45,7 +45,7 @@
 rt_err_t set_date(rt_uint32_t year, rt_uint32_t month, rt_uint32_t day);
 
 /**
- * @brief 管设置系统时间但不修改日期
+ * @brief 设置系统时间但不修改日期
  *
  * @param hour  小时（0~23）
  * @param minute 分钟（0~59）

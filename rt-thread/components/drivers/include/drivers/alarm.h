@@ -89,7 +89,7 @@ struct rt_alarm_container
  * @param callback 闹钟回调函数
  * @param setup 闹钟的设置参数
  *
- * @return 错误号
+ * @return 成功则返回闹钟句柄，失败则返回RT_NULL。
  */
 rt_alarm_t rt_alarm_create(rt_alarm_callback_t    callback,
                            struct rt_alarm_setup *setup);
@@ -106,9 +106,9 @@ rt_alarm_t rt_alarm_create(rt_alarm_callback_t    callback,
 rt_err_t rt_alarm_control(rt_alarm_t alarm, int cmd, void *arg);
 
 /**
- * @brief 发送rtc闹钟事件
+ * @brief 发送闹钟事件
  *
- * @param dev 指向RTC设备的指针（当前未使用，可以忽略）
+ * @param dev 指向闹钟设备的指针（当前未使用，可以忽略）
  * @param event RTC事件（当前未使用）
  */
 void rt_alarm_update(rt_device_t dev, rt_uint32_t event);
@@ -118,7 +118,7 @@ void rt_alarm_update(rt_device_t dev, rt_uint32_t event);
  *
  * 调用此函数可以删除指定的闹钟并释放其占用的系统内存空间。
  *
- * @param alarm 闹钟控制块
+ * @param alarm 闹钟句柄
  *
  * @return 错误号
  */
@@ -138,7 +138,7 @@ rt_err_t rt_alarm_start(rt_alarm_t alarm);
  *
  * @param alarm 闹钟控制块
  *
- * @return 错误号
+ * @return RT_EOK 成功；错误号 失败。
  */
 rt_err_t rt_alarm_stop(rt_alarm_t alarm);
 
