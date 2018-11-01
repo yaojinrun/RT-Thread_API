@@ -30,24 +30,6 @@
 #define PWM_CMD_SET         (128 + 2)
 #define PWM_CMD_GET         (128 + 3)
 
-struct rt_pwm_configuration
-{
-    rt_uint32_t channel; /* 0-n */
-    rt_uint32_t period;  /* unit:ns 1ns~4.29s:1Ghz~0.23hz */
-    rt_uint32_t pulse;   /* unit:ns (pulse<=period) */
-};
-
-struct rt_device_pwm;
-struct rt_pwm_ops
-{
-    rt_err_t (*control)(struct rt_device_pwm *device, int cmd, void *arg);
-};
-
-struct rt_device_pwm
-{
-    struct rt_device parent;
-    const struct rt_pwm_ops *ops;
-};
 
 /**
  * @addtogroup pwm
@@ -55,7 +37,33 @@ struct rt_device_pwm
 
 /**@{*/
 
-/*
+/**
+ * @brief PWM参数配置结构体
+ */
+struct rt_pwm_configuration
+{
+    rt_uint32_t channel; /**< @brief 通道 */
+    rt_uint32_t period;  /**< @brief 周期 */
+    rt_uint32_t pulse;   /**< @brief 占空比 */
+};
+
+struct rt_device_pwm;
+/**
+ * @brief PWM操作函数集
+ */
+struct rt_pwm_ops
+{
+    rt_err_t (*control)(struct rt_device_pwm *device, int cmd, void *arg);	/**< @brief PWM配置更改函数 */
+};
+
+struct rt_device_pwm
+{
+    struct rt_device parent;			/**< @brief 继承自 rt_device */
+    const struct rt_pwm_ops *ops;		/**< @brief PWM操作函数集 */
+};
+
+
+/**
  * @brief PWM设备注册
  *
  * 调用此函数可以解绑指定的管脚中断。
@@ -67,7 +75,7 @@ struct rt_device_pwm
  *
  * @return 注册结果
  */
-extern rt_err_t rt_device_pwm_register(struct rt_device_pwm *device, const char *name, const struct rt_pwm_ops *ops, const void *user_data);
+rt_err_t rt_device_pwm_register(struct rt_device_pwm *device, const char *name, const struct rt_pwm_ops *ops, const void *user_data);
 
 /**
  * @brief 打开指定的PWM通道
@@ -81,9 +89,20 @@ extern rt_err_t rt_device_pwm_register(struct rt_device_pwm *device, const char 
 rt_err_t rt_pwm_enable(int channel);
 
 /**
+ * @brief 关闭指定的PWM通道
+ *
+ * 调用此函数可以关闭指定的PWM通道
+ *
+ * @param channel 指定的PWM通道
+ *
+ * @return -RT_EIO 未找到pwm设备，RT_OK 打开成功
+ */
+rt_err_t rt_pwm_disable(struct rt_device_pwm *device, int channel);
+
+/**
  * @brief 设置PWM参数
  *
- * 调用此函数可以使能指定的PWM通道
+ * 该函数可以设定指定PWM通道的周期和占空参数。
  *
  * @param channel 指定的PWM通道
  * @param period 周期

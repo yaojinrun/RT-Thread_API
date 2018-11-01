@@ -31,47 +31,64 @@
 extern "C" {
 #endif
 
-#define RT_I2C_WR                0x0000
-#define RT_I2C_RD               (1u << 0)
-#define RT_I2C_ADDR_10BIT       (1u << 2)  /* this is a ten bit chip address */
-#define RT_I2C_NO_START         (1u << 4)
-#define RT_I2C_IGNORE_NACK      (1u << 5)
-#define RT_I2C_NO_READ_ACK      (1u << 6)  /* when I2C reading, we do not ACK */
 
+/**
+ * @addtogroup i2c
+ */
+
+/**@{*/
+
+
+#define RT_I2C_WR                0x0000		/**< @brief I2C写命令 */
+#define RT_I2C_RD               (1u << 0)	/**< @brief I2C读命令 */
+#define RT_I2C_ADDR_10BIT       (1u << 2)  	/**< @brief 10位的设备地址 */
+#define RT_I2C_NO_START         (1u << 4)	/**< @brief 无总线启动命令 */
+#define RT_I2C_IGNORE_NACK      (1u << 5)	/**< @brief 忽略无响应 */
+#define RT_I2C_NO_READ_ACK      (1u << 6)  	/**< @brief 写总线时不响应ACK */
+
+/**
+ * @brief I2C消息结构体
+ */
 struct rt_i2c_msg
 {
-    rt_uint16_t addr;
-    rt_uint16_t flags;
-    rt_uint16_t len;
-    rt_uint8_t  *buf;
+    rt_uint16_t addr;		/**< @brief I2C器件地址 */
+    rt_uint16_t flags;		/**< @brief I2C的配置参数 */
+    rt_uint16_t len;		/**< @brief 消息长度 */
+    rt_uint8_t  *buf;		/**< @brief 消息的缓冲地址 */
 };
 
 struct rt_i2c_bus_device;
 
+/**
+ * @brief I2C设备操作函数集
+ */
 struct rt_i2c_bus_device_ops
 {
     rt_size_t (*master_xfer)(struct rt_i2c_bus_device *bus,
                              struct rt_i2c_msg msgs[],
-                             rt_uint32_t num);
+                             rt_uint32_t num);				/**< @brief I2C主机数据传发送命令 */
     rt_size_t (*slave_xfer)(struct rt_i2c_bus_device *bus,
                             struct rt_i2c_msg msgs[],
-                            rt_uint32_t num);
+                            rt_uint32_t num);				/**< @brief I2C从器件数据传输命令 */
     rt_err_t (*i2c_bus_control)(struct rt_i2c_bus_device *bus,
                                 rt_uint32_t,
-                                rt_uint32_t);
+                                rt_uint32_t);				/**< @brief I2C总线控制命令 */
 };
 
 /*for i2c bus driver*/
+/**
+ * @brief I2C设备管理结构体
+ */
 struct rt_i2c_bus_device
 {
-    struct rt_device parent;
-    const struct rt_i2c_bus_device_ops *ops;
-    rt_uint16_t  flags;
-    rt_uint16_t  addr;
-    struct rt_mutex lock;
-    rt_uint32_t  timeout;
-    rt_uint32_t  retries;
-    void *priv;
+    struct rt_device parent;					/**< @brief 继承自 rt_device */
+    const struct rt_i2c_bus_device_ops *ops;	/**< @brief I2C设备操作函数集 */
+    rt_uint16_t  flags;							/**< @brief I2C设备参数 */
+    rt_uint16_t  addr;							/**< @brief I2C设备地址 */
+    struct rt_mutex lock;						/**< @brief I2C设备操作锁*/
+    rt_uint32_t  timeout;						/**< @brief I2C设备获取等待时间 */
+    rt_uint32_t  retries;						/**< @brief I2C设备获取次数 */
+    void *priv;									/**< @brief I2C设备的私有数据指针 */
 };
 
 #ifdef RT_I2C_DEBUG
@@ -79,12 +96,6 @@ struct rt_i2c_bus_device
 #else
 #define i2c_dbg(fmt, ...)
 #endif
-
-/**
- * @addtogroup i2c
- */
-
-/**@{*/
 
 
 /**

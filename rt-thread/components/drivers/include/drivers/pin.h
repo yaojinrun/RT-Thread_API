@@ -47,54 +47,69 @@ struct rt_device_pin
     const struct rt_pin_ops *ops;
 };
 
-#define PIN_LOW                 0x00
-#define PIN_HIGH                0x01
+#define PIN_LOW                 0x00	/**< @brief 低电平设定命令 */
+#define PIN_HIGH                0x01	/**< @brief 高电平设定命令 */
 
-#define PIN_MODE_OUTPUT         0x00
-#define PIN_MODE_INPUT          0x01
-#define PIN_MODE_INPUT_PULLUP   0x02
-#define PIN_MODE_INPUT_PULLDOWN 0x03
-#define PIN_MODE_OUTPUT_OD      0x04
+#define PIN_MODE_OUTPUT         0x00	/**< @brief 普通输出模式命令 */
+#define PIN_MODE_INPUT          0x01	/**< @brief 输入模式命令 */
+#define PIN_MODE_INPUT_PULLUP   0x02	/**< @brief 输入上拉模式命令 */
+#define PIN_MODE_INPUT_PULLDOWN 0x03	/**< @brief 输入下拉模式命令 */
+#define PIN_MODE_OUTPUT_OD      0x04	/**< @brief 开漏输出模式命令 */
 
-#define PIN_IRQ_MODE_RISING             0x00
-#define PIN_IRQ_MODE_FALLING            0x01
-#define PIN_IRQ_MODE_RISING_FALLING     0x02
-#define PIN_IRQ_MODE_HIGH_LEVEL         0x03
-#define PIN_IRQ_MODE_LOW_LEVEL          0x04
+#define PIN_IRQ_MODE_RISING             0x00	/**< @brief 上升沿触发模式 */
+#define PIN_IRQ_MODE_FALLING            0x01	/**< @brief 下降沿触发模式 */
+#define PIN_IRQ_MODE_RISING_FALLING     0x02	/**< @brief 电平变化触发模式 */
+#define PIN_IRQ_MODE_HIGH_LEVEL         0x03	/**< @brief 高电平触发模式 */
+#define PIN_IRQ_MODE_LOW_LEVEL          0x04	/**< @brief 低电平触发模式 */
 
-#define PIN_IRQ_DISABLE                 0x00
-#define PIN_IRQ_ENABLE                  0x01
+#define PIN_IRQ_DISABLE                 0x00	/**< @brief 引脚中断禁止命令 */
+#define PIN_IRQ_ENABLE                  0x01	/**< @brief 引脚中断使能命令 */
 
-#define PIN_IRQ_PIN_NONE                -1
+#define PIN_IRQ_PIN_NONE                -1		/**< @brief 引脚无中断 */
 
+/**
+ * @brief 引脚模式配置结构体
+ */
 struct rt_device_pin_mode
 {
-    rt_uint16_t pin;
-    rt_uint16_t mode;
+    rt_uint16_t pin;		/**< @brief 引脚号 */
+    rt_uint16_t mode;		/**< @brief 工作模式 */
 };
+
+/**
+ * @brief 引脚状态结构体
+ */
 struct rt_device_pin_status
 {
-    rt_uint16_t pin;
-    rt_uint16_t status;
+    rt_uint16_t pin;		/**< @brief 引脚号 */
+    rt_uint16_t status;		/**< @brief 引脚状态 */
 };
+
+/**
+ * @brief 引脚中断配置结构体
+ */
 struct rt_pin_irq_hdr
 {
-    rt_int16_t        pin;
-    rt_uint16_t       mode;
-    void (*hdr)(void *args);
-    void             *args;
+    rt_int16_t        pin;		/**< @brief 引脚号 */
+    rt_uint16_t       mode;		/**< @brief 中断模式 */
+    void (*hdr)(void *args);	/**< @brief 中断回调函数 */
+    void             *args;		/**< @brief 回调函数相关参数 */
 };
+
+/**
+ * @brief 引脚操作结构体
+ */
 struct rt_pin_ops
 {
-    void (*pin_mode)(struct rt_device *device, rt_base_t pin, rt_base_t mode);
-    void (*pin_write)(struct rt_device *device, rt_base_t pin, rt_base_t value);
-    int (*pin_read)(struct rt_device *device, rt_base_t pin);
+    void (*pin_mode)(struct rt_device *device, rt_base_t pin, rt_base_t mode);		/**< @brief 模式设置函数 */
+    void (*pin_write)(struct rt_device *device, rt_base_t pin, rt_base_t value);	/**< @brief 引脚写函数 */
+    int (*pin_read)(struct rt_device *device, rt_base_t pin);						/**< @brief 引脚度函数 */
 
     /* TODO: add GPIO interrupt */
     rt_err_t (*pin_attach_irq)(struct rt_device *device, rt_int32_t pin,
-                      rt_uint32_t mode, void (*hdr)(void *args), void *args);
-    rt_err_t (*pin_detach_irq)(struct rt_device *device, rt_int32_t pin);
-    rt_err_t (*pin_irq_enable)(struct rt_device *device, rt_base_t pin, rt_uint32_t enabled);
+                      rt_uint32_t mode, void (*hdr)(void *args), void *args);		/**< @brief 引脚中断配置加载函数 */
+    rt_err_t (*pin_detach_irq)(struct rt_device *device, rt_int32_t pin);			/**< @brief 引脚中断配置卸载函数 */
+    rt_err_t (*pin_irq_enable)(struct rt_device *device, rt_base_t pin, rt_uint32_t enabled);	/**< @brief 引脚中断使能函数 */
 };
 
 /**

@@ -71,7 +71,7 @@
 #define FINSH_VERSION_MAJOR         1
 #define FINSH_VERSION_MINOR         0
 
-/**
+/*
  * @addtogroup finsh
  */
 /*@{*/

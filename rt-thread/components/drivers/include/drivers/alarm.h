@@ -27,59 +27,78 @@
 
 #include <time.h>
 
-#define RT_ALARM_TM_NOW        -1    /* set the alarm tm_day,tm_mon,tm_sec,etc.
-                                        to now.we also call it "don't care" value */
-
-/* alarm flags */
-#define RT_ALARM_ONESHOT       0x000 /* only alarm onece */
-#define RT_ALARM_DAILY         0x100 /* alarm everyday */
-#define RT_ALARM_WEEKLY        0x200 /* alarm weekly at Monday or Friday etc. */
-#define RT_ALARM_MONTHLY       0x400 /* alarm monthly at someday */
-#define RT_ALARM_YAERLY        0x800 /* alarm yearly at a certain date */
-
-/* alarm control cmd */
-#define RT_ALARM_CTRL_MODIFY       1 /* modify alarm time or alarm flag */
-
-typedef struct rt_alarm *rt_alarm_t;
-typedef void (*rt_alarm_callback_t)(rt_alarm_t alarm, time_t timestamp);
-
-/* used for low level RTC driver */
-struct rt_rtc_wkalarm
-{
-    rt_bool_t  enable;               /* 0 = alarm disabled, 1 = alarm enabled */
-    rt_int32_t tm_sec;               /* alarm at tm_sec */
-    rt_int32_t tm_min;               /* alarm at tm_min */
-    rt_int32_t tm_hour;              /* alarm at tm_hour */
-};
-
-struct rt_alarm
-{
-    rt_list_t list;
-    rt_uint32_t flag;
-    rt_alarm_callback_t callback;
-    struct tm wktime;
-};
-
-struct rt_alarm_setup
-{
-    rt_uint32_t flag;                /* alarm flag */
-    struct tm wktime;                /* when will the alarm wake up user */
-};
-
-struct rt_alarm_container
-{
-    rt_list_t head;
-    struct rt_mutex mutex;
-    struct rt_event event;
-    struct rt_alarm *current;
-};
-
-
 /**
  * @addtogroup alarm
  */
 
 /**@{*/
+
+#define RT_ALARM_TM_NOW        -1    /* set the alarm tm_day,tm_mon,tm_sec,etc.
+                                        to now.we also call it "don't care" value */
+
+/* alarm flags */
+#define RT_ALARM_ONESHOT       0x000 /**< @brief 一次设定命令*/
+#define RT_ALARM_DAILY         0x100 /**< @brief 天设定命令 */
+#define RT_ALARM_WEEKLY        0x200 /**< @brief 周设定命令 */
+#define RT_ALARM_MONTHLY       0x400 /**< @brief 月设定命令 */
+#define RT_ALARM_YAERLY        0x800 /**< @brief 年设定命令 */
+
+/* alarm control cmd */
+#define RT_ALARM_CTRL_MODIFY       1 /**< @brief 修改闹钟时间或参数命令 */
+
+/**
+ * @brief 闹钟类型指针定义
+ */
+typedef struct rt_alarm *rt_alarm_t;
+/**
+ * @brief 闹钟定时回调函数指针定义
+ */
+typedef void (*rt_alarm_callback_t)(rt_alarm_t alarm, time_t timestamp);
+
+/* used for low level RTC driver */
+/**
+ * @brief 闹钟时间参数结构体
+ */
+struct rt_rtc_wkalarm
+{
+    rt_bool_t  enable;               /**< @brief 使能标志位 */
+    rt_int32_t tm_sec;               /**< @brief 秒 */
+    rt_int32_t tm_min;               /**< @brief 分 */
+    rt_int32_t tm_hour;              /**< @brief 时 */
+};
+
+/**
+ * @brief 闹钟管理结构体
+ */
+struct rt_alarm
+{
+    rt_list_t list;					/**< @brief 闹钟链表 */
+    rt_uint32_t flag;				/**< @brief 闹钟的参数 */
+    rt_alarm_callback_t callback;	/**< @brief 闹钟的定时回调函数 */
+    struct tm wktime;				/**< @brief 闹钟的时间参数 */
+};
+
+/**
+ * @brief 闹钟设置结构体
+ */
+struct rt_alarm_setup
+{
+    rt_uint32_t flag;                /**< @brief 闹钟的参数 */
+    struct tm wktime;                /**< @brief 闹钟的定时时间 */
+};
+
+/**
+ * @brief 闹钟管理容器结构体
+ */
+struct rt_alarm_container
+{
+    rt_list_t head;				/**< @brief 闹钟链表 */
+    struct rt_mutex mutex;		/**< @brief 互斥量 */
+    struct rt_event event;		/**< @brief 闹钟事件 */
+    struct rt_alarm *current;	/**< @brief 当前闹钟的管理控制块 */
+};
+
+
 
 /**
  * @brief 创建闹钟
