@@ -68,7 +68,7 @@ struct rt_device_pwm
  *
  * 调用此函数可以解绑指定的管脚中断。
  *
- * @param pin 管脚编号
+ * @param device 设备控制块
  * @param name 设备名称
  * @param ops PWM设备的私有操作集
  * @param user_data PWM设备的私有数据
