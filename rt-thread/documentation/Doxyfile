@@ -785,7 +785,8 @@ INPUT                  = ../src \
                          ../components/drivers/src \
                          ../components/finsh/ \
                          ../src \
-                         ../components/drivers/wlan
+                         ../components/drivers/wlan \
+                         ../components/utilities/ulog
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding. Doxygen uses
@@ -2057,7 +2058,8 @@ PREDEFINED             = RT_USING_SEMAPHORE \
                          RT_USING_MEMHEAP \
                          RT_USING_COMPONENTS_INIT \
                          FINSH_USING_AUTH \
-                         RT_USING_CONSOLE
+                         RT_USING_CONSOLE \
+                         ULOG_USING_FILTER
 
 # If the MACRO_EXPANSION and EXPAND_ONLY_PREDEF tags are set to YES then this
 # tag can be used to specify a list of macro names that should be expanded. The

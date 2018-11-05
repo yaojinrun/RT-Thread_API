@@ -125,6 +125,17 @@ void ulog_deinit(void);
 /*
  * backend register and unregister
  */
+ /**
+ * @brief 注册后端设备
+ *
+ * 将后端设备注册到 ulog 中，注册前确保后端设备结构体中的函数成员已设置。
+ * 
+ * @param backend AT 客户端使用设备名称
+ * @param name 后端设备名称
+ * @param support_color 是否支持彩色日志
+ *
+ * @return >=0 成功
+ */
 rt_err_t ulog_backend_register(ulog_backend_t backend, const char *name, rt_bool_t support_color);
 rt_err_t ulog_backend_unregister(ulog_backend_t backend);
 
@@ -132,10 +143,54 @@ rt_err_t ulog_backend_unregister(ulog_backend_t backend);
 /*
  * log filter setting
  */
+ /**
+ * @brief 按模块/标签的级别过滤日志
+ *
+ * 通过这个 API 可以按照标签的级别来过滤日志。
+ * 
+ * @param tag 日志的标签
+ * @param level 设定的日志级别，详见 ulog_def.h
+ *
+ * @return >=0 成功；-5 失败，没有足够的内存。
+ */
 int ulog_tag_lvl_filter_set(const char *tag, rt_uint32_t level);
 rt_uint32_t ulog_tag_lvl_filter_get(const char *tag);
+
+ /**
+ * @brief 按级别过滤日志（全局）
+ *
+ * 设定全局的日志过滤器级别，低于这个级别的日志都将停止输出。可设定的级别包括：
+ * 
+ * | 级别                  | 名称             |
+ * | --------------------- | ---------------- |
+ * | LOG_LVL_ASSERT        | 断言             |
+ * | LOG_LVL_ERROR         | 错误             |
+ * | LOG_LVL_WARNING       | 警告             |
+ * | LOG_LVL_INFO          | 信息             |
+ * | LOG_LVL_DBG           | 调试             |
+ * | LOG_FILTER_LVL_SILENT | 静默（停止输出） |
+ * | LOG_FILTER_LVL_ALL    | 全部             |
+ * 
+ * @param level 设定的级别，详见上面的表格，也可见 ulog_def.h
+ */
 void ulog_global_filter_lvl_set(rt_uint32_t level);
+
+ /**
+ * @brief 按标签过滤日志（全局）
+ *
+ * 设定全局的日志过滤器标签，只有日志的标签内容中?**包含**?该设定字符串时，才会允许输出。 
+ * 
+ * @param tag 设定的过滤标签
+ */
 void ulog_global_filter_tag_set(const char *tag);
+
+ /**
+ * @brief 按关键词过滤日志（全局）
+ *
+ * 设定全局的日志过滤器关键词，只有内容中包含该关键词的日志才会允许输出。
+ * 
+ * @param keyword 设定的过滤关键词
+ */
 void ulog_global_filter_kw_set(const char *keyword);
 #endif /* ULOG_USING_FILTER */
 
@@ -147,6 +202,11 @@ void ulog_flush(void);
 #ifdef ULOG_USING_ASYNC_OUTPUT
 /*
  * asynchronous output API
+ */
+ /**
+ * @brief 异步模式下输出全部日志
+ *
+ * 在异步模式下，如果想要使用其他非 idle 线程作为日志输出线程时，则需要在输出线程中循环调用该 API ，输出缓冲区中日志至所有的后端设备。
  */
 void ulog_async_output(void);
 void ulog_async_waiting_log(rt_int32_t time);
