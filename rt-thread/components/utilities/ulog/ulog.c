@@ -8,6 +8,8 @@
  * 2018-08-25     armink       the first version
  */
 
+#define RT_USING_ULOG
+
 #include <stdarg.h>
 #include "ulog.h"
 #include "rthw.h"

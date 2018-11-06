@@ -30,6 +30,13 @@
 
 #include <rtthread.h>
 
+/**
+ * @addtogroup UART
+ */
+
+/**@{*/
+
+
 #define BAUD_RATE_2400                  2400
 #define BAUD_RATE_4800                  4800
 #define BAUD_RATE_9600                  9600
@@ -72,11 +79,11 @@
 #define RT_SERIAL_RB_BUFSZ              64
 #endif
 
-#define RT_SERIAL_EVENT_RX_IND          0x01    /* Rx indication */
-#define RT_SERIAL_EVENT_TX_DONE         0x02    /* Tx complete   */
-#define RT_SERIAL_EVENT_RX_DMADONE      0x03    /* Rx DMA transfer done */
-#define RT_SERIAL_EVENT_TX_DMADONE      0x04    /* Tx DMA transfer done */
-#define RT_SERIAL_EVENT_RX_TIMEOUT      0x05    /* Rx timeout    */
+#define RT_SERIAL_EVENT_RX_IND          0x01    /**< @brief 接收 */
+#define RT_SERIAL_EVENT_TX_DONE         0x02    /**< @brief 发送完成 */
+#define RT_SERIAL_EVENT_RX_DMADONE      0x03    /**< @brief DMA接收完成 */
+#define RT_SERIAL_EVENT_TX_DMADONE      0x04    /**< @brief DMA发送完成 */
+#define RT_SERIAL_EVENT_RX_TIMEOUT      0x05    /**< @brief 接收超时 */
 
 #define RT_SERIAL_DMA_RX                0x01
 #define RT_SERIAL_DMA_TX                0x02
@@ -91,7 +98,9 @@
 #define RT_SERIAL_TX_DATAQUEUE_SIZE     2048
 #define RT_SERIAL_TX_DATAQUEUE_LWM      30
 
-/* Default config for serial_configure structure */
+/**
+ * @brief 串口设备默认的配置参数
+ */
 #define RT_SERIAL_CONFIG_DEFAULT           \
 {                                          \
     BAUD_RATE_115200, /* 115200 bits/s */  \
@@ -104,17 +113,21 @@
     0                                      \
 }
 
+/**
+ * @brief 串口配置参数结构体定义
+ */
+
 struct serial_configure
 {
-    rt_uint32_t baud_rate;
+    rt_uint32_t baud_rate;						/**< @brief 波特率 */
 
-    rt_uint32_t data_bits               :4;
-    rt_uint32_t stop_bits               :2;
-    rt_uint32_t parity                  :2;
-    rt_uint32_t bit_order               :1;
-    rt_uint32_t invert                  :1;
-    rt_uint32_t bufsz                   :16;
-    rt_uint32_t reserved                :4;
+    rt_uint32_t data_bits               :4;		/**< @brief 数据位 */
+    rt_uint32_t stop_bits               :2;		/**< @brief 停止位 */
+    rt_uint32_t parity                  :2;		/**< @brief 奇偶校验 */
+    rt_uint32_t bit_order               :1;		/**< @brief 位顺序 */
+    rt_uint32_t invert                  :1;		/**< @brief 模式 */
+    rt_uint32_t bufsz                   :16;	/**< @brief 接收数据缓冲区大小 */
+    rt_uint32_t reserved                :4;		/**< @brief 保留 */
 };
 
 /*
@@ -149,12 +162,16 @@ struct rt_serial_tx_dma
     struct rt_data_queue data_queue;
 };
 
+/**
+ * @brief 串口设备结构体定义
+ */
+
 struct rt_serial_device
 {
-    struct rt_device          parent;
+    struct rt_device          parent;	/**< @brief 继承 rt_device */
 
-    const struct rt_uart_ops *ops;
-    struct serial_configure   config;
+    const struct rt_uart_ops *ops;		/**< @brief 串口设备的操作方法 */
+    struct serial_configure   config;	/**< @brief 串口设备的配置参数 */
 
     void *serial_rx;
     void *serial_tx;
@@ -162,24 +179,49 @@ struct rt_serial_device
 typedef struct rt_serial_device rt_serial_t;
 
 /**
- * @brief 串口操作集
+ * @brief 串口设备的操作方法
  */
 struct rt_uart_ops
 {
     rt_err_t (*configure)(struct rt_serial_device *serial, struct serial_configure *cfg);	 /**< @brief 串口配置操作函数 */
-    rt_err_t (*control)(struct rt_serial_device *serial, int cmd, void *arg);		 /**< @brief 串口控制函数 */
+    rt_err_t (*control)(struct rt_serial_device *serial, int cmd, void *arg);		 		/**< @brief 串口控制函数 */
 
-    int (*putc)(struct rt_serial_device *serial, char c);		 /**< @brief 串口写入字符函数 */
-    int (*getc)(struct rt_serial_device *serial);	 /**< @brief 串口读取字符函数 */
+    int (*putc)(struct rt_serial_device *serial, char c);									 /**< @brief 发送一个字符数据 */
+    int (*getc)(struct rt_serial_device *serial);											 /**< @brief 接收一个字符数据 */
 
     rt_size_t (*dma_transmit)(struct rt_serial_device *serial, rt_uint8_t *buf, rt_size_t size, int direction);		 /**< @brief DMA模式数据传输函数 */
 };
 
+/**
+ * @brief 串口中断事件
+ *
+ * 调用此函数可以根据指定的事件执行对应的回调函数。
+ *
+ * @param serial 串口设备句柄
+ * @param event 事件标志
+ */
+
 void rt_hw_serial_isr(struct rt_serial_device *serial, int event);
+
+/**
+ * @brief 注册串口设备
+ *
+ * 调用此函数可以注册串口设备到串口驱动框架。
+ *
+ * @param serial 串口设备句柄
+ * @param name 串口设备名称
+ * @param flag 串口设备模式标志
+ * @param data 串口设备私有数据
+ *
+ * @return RT_EOK 成功；-RT_ERROR 注册失败，已有其他驱动使用该name注册。
+ */
 
 rt_err_t rt_hw_serial_register(struct rt_serial_device *serial,
                                const char              *name,
                                rt_uint32_t              flag,
                                void                    *data);
+
+
+/**@}*/
 
 #endif
