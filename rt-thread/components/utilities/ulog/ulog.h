@@ -38,16 +38,16 @@ extern "C" {
  * @return 
  *| 返回  | 描述           |
  *| ----- | -------------- |
- *| `>=0` | 成功           |
- *| -5    | 失败，内存不足 |
+ *| `0` | 成功           |
+ *| -RT_ENOMEM    | 失败，内存不足 |
  *
  */
 int ulog_init(void);
 
 /**
- * @brief ULOG 反初始化
+ * @brief ULOG 去初始化
  *
- * 当 ulog 不再使用时，可以执行该 deinit 释放资源。
+ * 当 ulog 不再使用时，可以执行该函数释放资源。
  */
 void ulog_deinit(void);
 
@@ -65,20 +65,11 @@ void ulog_deinit(void);
  * LOG_D("this is a debug log!");
  * LOG_E("this is a error log!");
  */
+
  /**
  * @brief 错误级别日志
  *
- * 'E'为LOG_LVL_ERROR的缩写，表示发生严重的、**不可修复**?的错误时输出的日志属于错误级别日志 。
- * 
- * 日志级别代表了日志的重要性，在 ulog 中 **由高到低** ，有如下几个日志级别
- * 
- * | 级别            | 名称 | 描述                                                         |
- * | --------------- | ---- | ------------------------------------------------------------ |
- * | LOG_LVL_ASSERT  | 断言 | 发生无法处理、致命性的的错误，以至于系统无法继续运行的断言日志 |
- * | LOG_LVL_ERROR   | 错误 | 发生严重的、 **不可修复** 的错误时输出的日志属于错误级别日志  |
- * | LOG_LVL_WARNING | 警告 | 出现一些不太重要的、具有 **可修复性** 的错误时，会输出这些警告日志 |
- * | LOG_LVL_INFO    | 信息 | 给本模块上层使用人员查看的重要提示信息日志，例如：初始化成功，当前工作状态等。该级别日志一般在量产时依旧 **保留** |
- * | LOG_LVL_DBG     | 调试 | 给本模块开发人员查看的调试日志，该级别日志一般在量产时 **关闭** |
+ * 'E'为LOG_LVL_ERROR的缩写，表示发生严重的、**不可修复**的错误时输出的日志属于错误级别日志 。
  * 
  * @param ... 日志内容，格式与 printf 一致
  */
@@ -88,8 +79,6 @@ void ulog_deinit(void);
  *
  * 'W'为 LOG_LVL_WARNING 的缩写，表示出现一些不太重要的、具有?**可修复性**?的错误时，会输出这些警告日志。
  * 
- * @see LOG_E
- * 
  * @param ... 日志内容，格式与 printf 一致
  */
 #define LOG_W(...)                     ulog_w(LOG_TAG, __VA_ARGS__)
@@ -98,7 +87,6 @@ void ulog_deinit(void);
  *
  * 'I'为 LOG_LVL_INFO 的缩写，表示给本模块上层使用人员查看的重要提示信息日志，例如：初始化成功，当前工作状态等。该级别日志一般在量产时依旧?**保留** 。
  * 
- * @see LOG_E
  * 
  * @param ... 日志内容，格式与 printf 一致
  */
@@ -108,7 +96,6 @@ void ulog_deinit(void);
  *
  * 'D'为 LOG_LVL_DBG 的缩写，表示给本模块开发人员查看的调试日志，该级别日志一般在量产时?**关闭** 。
  * 
- * @see LOG_E
  * 
  * @param ... 日志内容，格式与 printf 一致
  */
@@ -130,13 +117,24 @@ void ulog_deinit(void);
  *
  * 将后端设备注册到 ulog 中，注册前确保后端设备结构体中的函数成员已设置。
  * 
- * @param backend AT 客户端使用设备名称
+ * @param backend 后端设备对象
  * @param name 后端设备名称
  * @param support_color 是否支持彩色日志
  *
- * @return >=0 成功
+ * @return RT_EOK 成功
  */
 rt_err_t ulog_backend_register(ulog_backend_t backend, const char *name, rt_bool_t support_color);
+
+/**
+* @brief 注销后端设备
+*
+* 将后端设备从 ulog 中移除。
+*
+* @param backend 后端设备对象
+*
+* @return RT_EOK 成功
+*/
+
 rt_err_t ulog_backend_unregister(ulog_backend_t backend);
 
 #ifdef ULOG_USING_FILTER
@@ -159,7 +157,10 @@ rt_uint32_t ulog_tag_lvl_filter_get(const char *tag);
  /**
  * @brief 按级别过滤日志（全局）
  *
- * 设定全局的日志过滤器级别，低于这个级别的日志都将停止输出。可设定的级别包括：
+ * 设定全局的日志过滤器级别，低于这个级别的日志都将停止输出。
+ *
+ *
+ * @param level 设定的级别，可设定的级别包括：
  * 
  * | 级别                  | 名称             |
  * | --------------------- | ---------------- |
@@ -170,8 +171,6 @@ rt_uint32_t ulog_tag_lvl_filter_get(const char *tag);
  * | LOG_LVL_DBG           | 调试             |
  * | LOG_FILTER_LVL_SILENT | 静默（停止输出） |
  * | LOG_FILTER_LVL_ALL    | 全部             |
- * 
- * @param level 设定的级别，详见上面的表格，也可见 ulog_def.h
  */
 void ulog_global_filter_lvl_set(rt_uint32_t level);
 
@@ -179,6 +178,9 @@ void ulog_global_filter_lvl_set(rt_uint32_t level);
  * @brief 按标签过滤日志（全局）
  *
  * 设定全局的日志过滤器标签，只有日志的标签内容中?**包含**?该设定字符串时，才会允许输出。 
+ * 例如：有 wifi.driver 、 wifi.mgnt 、audio.driver 3 种标签的日志，当设定过滤标签为 wifi 时，
+ * 只有标签为 wifi.driver 及 wifi.mgnt 的日志会输出。同理，当设置过滤标签为 driver 时，
+ * 只有标签为 wifi.driver 及 audio.driver 的日志会输出。
  * 
  * @param tag 设定的过滤标签
  */
@@ -194,9 +196,14 @@ void ulog_global_filter_tag_set(const char *tag);
 void ulog_global_filter_kw_set(const char *keyword);
 #endif /* ULOG_USING_FILTER */
 
-/*
- * flush all backends's log
- */
+/**
+* @brief 输出缓冲区日志到后端
+*
+* 由于 ulog 的异步模式具有缓存机制，注册进来的后端内部也可能具有缓存。
+* 如果系统出现了 hardfault 、断言等错误情况，但缓存中还有日志没有输出出来，
+* 这可能会导致日志丢失的问题，对于查找异常的原因会无从入手。
+* 当出现异常时，输出异常信息日志时，同时再调用该函数，即可保证缓存中剩余的日志也能够输出到后端中去。
+*/
 void ulog_flush(void);
 
 #ifdef ULOG_USING_ASYNC_OUTPUT
@@ -232,6 +239,16 @@ void ulog_hexdump(const char *name, rt_size_t width, rt_uint8_t *buf, rt_size_t 
  */
 void ulog_voutput(rt_uint32_t level, const char *tag, rt_bool_t newline, const char *format, va_list args);
 void ulog_output(rt_uint32_t level, const char *tag, rt_bool_t newline, const char *format, ...);
+
+/**
+* @brief 输出 raw 日志
+*
+* 有些时候需要输出不带任何格式的日志时，可以使用`LOG_RAW` 或 `void ulog_raw(const char *format, ...)` 函数。
+*
+* @param ... 日志内容，格式与 printf 一致
+*
+* @see LOG_RAW(...)
+*/
 void ulog_raw(const char *format, ...);
 
 /*@}*/

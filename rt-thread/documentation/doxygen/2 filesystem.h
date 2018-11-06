@@ -5,7 +5,7 @@
 /**
  * @defgroup DFS 文件系统
  *
- * @brief DFS 是RT-Thread系统里的虚拟文件系统接口
+ * @brief 虚拟文件系统接口
  *
  * DFS是一种抽象的文件机制，RT-Thread中对文件系统的相关操作系统实际上都通过
  * 操作DFS实现，也就是说DFS是对各具体文件系统的抽象。DFS使得其他部分无须关心
@@ -33,13 +33,13 @@
 /**
  * @defgroup Fd 文件描述符
  *
- * @brief 文件描述符相关API的介绍说明
+ * @brief 文件描述符接口
  */
 
 /**
  * @defgroup FsApi 文件系统
  *
- * @brief 文件系统相关API的说明
+ * @brief 文件系统接口
  */
 
 /*
@@ -49,7 +49,7 @@
 /**
  * @defgroup FsPosixApi 文件和目录
  *
- * @brief 文件和目录操作相关API的说明
+ * @brief 文件和目录操作接口
  */
 
 /*@}*/

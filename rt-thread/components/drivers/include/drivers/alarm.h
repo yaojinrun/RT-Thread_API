@@ -33,15 +33,14 @@
 
 /**@{*/
 
-#define RT_ALARM_TM_NOW        -1    /* set the alarm tm_day,tm_mon,tm_sec,etc.
-                                        to now.we also call it "don't care" value */
+#define RT_ALARM_TM_NOW        -1   /**< @brief 设置闹钟的时间参数为现在的时间*/
 
-/* alarm flags */
-#define RT_ALARM_ONESHOT       0x000 /**< @brief 一次设定命令*/
-#define RT_ALARM_DAILY         0x100 /**< @brief 天设定命令 */
-#define RT_ALARM_WEEKLY        0x200 /**< @brief 周设定命令 */
-#define RT_ALARM_MONTHLY       0x400 /**< @brief 月设定命令 */
-#define RT_ALARM_YAERLY        0x800 /**< @brief 年设定命令 */
+/**< @brief 闹钟类型宏定义 */
+#define RT_ALARM_ONESHOT       0x000 /**< @brief 单次闹钟*/
+#define RT_ALARM_DAILY         0x100 /**< @brief 每天闹钟 */
+#define RT_ALARM_WEEKLY        0x200 /**< @brief 每周闹钟 */
+#define RT_ALARM_MONTHLY       0x400 /**< @brief 每月闹钟 */
+#define RT_ALARM_YAERLY        0x800 /**< @brief 每年闹钟 */
 
 /* alarm control cmd */
 #define RT_ALARM_CTRL_MODIFY       1 /**< @brief 修改闹钟时间或参数命令 */
@@ -73,7 +72,7 @@ struct rt_rtc_wkalarm
 struct rt_alarm
 {
     rt_list_t list;					/**< @brief 闹钟链表 */
-    rt_uint32_t flag;				/**< @brief 闹钟的参数 */
+    rt_uint32_t flag;				/**< @brief 闹钟类型 */
     rt_alarm_callback_t callback;	/**< @brief 闹钟的定时回调函数 */
     struct tm wktime;				/**< @brief 闹钟的时间参数 */
 };

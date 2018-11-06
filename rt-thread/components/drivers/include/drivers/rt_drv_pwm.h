@@ -38,7 +38,7 @@
 /**@{*/
 
 /**
- * @brief PWM参数配置结构体
+ * @brief PWM设备参数配置结构体
  */
 struct rt_pwm_configuration
 {
@@ -49,7 +49,7 @@ struct rt_pwm_configuration
 
 struct rt_device_pwm;
 /**
- * @brief PWM操作函数集
+ * @brief PWM设备的操作方法
  */
 struct rt_pwm_ops
 {
@@ -59,43 +59,45 @@ struct rt_pwm_ops
 struct rt_device_pwm
 {
     struct rt_device parent;			/**< @brief 继承自 rt_device */
-    const struct rt_pwm_ops *ops;		/**< @brief PWM操作函数集 */
+    const struct rt_pwm_ops *ops;		/**< @brief PWM设备的操作方法 */
 };
 
 
 /**
- * @brief PWM设备注册
+ * @brief 注册PWM设备
  *
- * 调用此函数可以解绑指定的管脚中断。
+ * 调用此函数可以注册PWM设备到系统。
  *
- * @param device 设备控制块
+ * @param device PWM设备句柄
  * @param name 设备名称
- * @param ops PWM设备的私有操作集
+ * @param ops PWM设备的操作方法
  * @param user_data PWM设备的私有数据
  *
- * @return 注册结果
+ * @return RT_EOK 注册成功；-RT_ERROR	注册失败，已有其他驱动使用该name注册。
  */
 rt_err_t rt_device_pwm_register(struct rt_device_pwm *device, const char *name, const struct rt_pwm_ops *ops, const void *user_data);
 
 /**
- * @brief 打开指定的PWM通道
+ * @brief 打开PWM通道
  *
  * 调用此函数可以使能指定的PWM通道
  *
+ * @param device PWM设备句柄
  * @param channel 指定的PWM通道
  *
- * @return -RT_EIO 未找到pwm设备，RT_OK 打开成功
+ * @return RT_OK 成功；-RT_EIO 未找到pwm设备。
  */
-rt_err_t rt_pwm_enable(int channel);
+rt_err_t rt_pwm_enable(struct rt_device_pwm *device, int channel);
 
 /**
- * @brief 关闭指定的PWM通道
+ * @brief 关闭PWM通道
  *
  * 调用此函数可以关闭指定的PWM通道
  *
+ * @param device PWM设备句柄
  * @param channel 指定的PWM通道
  *
- * @return -RT_EIO 未找到pwm设备，RT_OK 打开成功
+ * @return RT_OK 打开成功；-RT_EIO 未找到pwm设备。
  */
 rt_err_t rt_pwm_disable(struct rt_device_pwm *device, int channel);
 
@@ -104,13 +106,14 @@ rt_err_t rt_pwm_disable(struct rt_device_pwm *device, int channel);
  *
  * 该函数可以设定指定PWM通道的周期和占空参数。
  *
+ * @param device PWM设备句柄
  * @param channel 指定的PWM通道
  * @param period 周期
  * @param pulse 占空比
  *
- * @return -RT_EIO 未找到pwm设备，RT_OK 设置成功
+ * @return RT_OK 设置成功；-RT_EIO 未找到pwm设备。
  */
-rt_err_t rt_pwm_set(int channel, rt_uint32_t period, rt_uint32_t pulse);
+rt_err_t rt_pwm_set(struct rt_device_pwm *device, int channel, rt_uint32_t period, rt_uint32_t pulse);
 
 /**@}*/
 

@@ -39,53 +39,53 @@ extern "C" {
 /**@{*/
 
 
-#define RT_I2C_WR                0x0000		/**< @brief I2C写命令 */
-#define RT_I2C_RD               (1u << 0)	/**< @brief I2C读命令 */
+#define RT_I2C_WR                0x0000		/**< @brief I2C写标志 */
+#define RT_I2C_RD               (1u << 0)	/**< @brief I2C读标志 */
 #define RT_I2C_ADDR_10BIT       (1u << 2)  	/**< @brief 10位的设备地址 */
-#define RT_I2C_NO_START         (1u << 4)	/**< @brief 无总线启动命令 */
-#define RT_I2C_IGNORE_NACK      (1u << 5)	/**< @brief 忽略无响应 */
-#define RT_I2C_NO_READ_ACK      (1u << 6)  	/**< @brief 写总线时不响应ACK */
+#define RT_I2C_NO_START         (1u << 4)	/**< @brief 无开始条件 */
+#define RT_I2C_IGNORE_NACK      (1u << 5)	/**< @brief 忽略NACK */
+#define RT_I2C_NO_READ_ACK      (1u << 6)  	/**< @brief 读的时候不发送ACK */
 
 /**
  * @brief I2C消息结构体
  */
 struct rt_i2c_msg
 {
-    rt_uint16_t addr;		/**< @brief I2C器件地址 */
-    rt_uint16_t flags;		/**< @brief I2C的配置参数 */
-    rt_uint16_t len;		/**< @brief 消息长度 */
-    rt_uint8_t  *buf;		/**< @brief 消息的缓冲地址 */
+    rt_uint16_t addr;		/**< @brief I2C从机地址 */
+    rt_uint16_t flags;		/**< @brief 读、写标志等 */
+    rt_uint16_t len;		/**< @brief 读写数据字节数 */
+    rt_uint8_t  *buf;		/**< @brief 读写数据缓冲区指针 */
 };
 
 struct rt_i2c_bus_device;
 
 /**
- * @brief I2C设备操作函数集
+ * @brief I2C总线设备的操作方法
  */
 struct rt_i2c_bus_device_ops
 {
     rt_size_t (*master_xfer)(struct rt_i2c_bus_device *bus,
                              struct rt_i2c_msg msgs[],
-                             rt_uint32_t num);				/**< @brief I2C主机数据传发送命令 */
+                             rt_uint32_t num);				/**< @brief I2C作为主机模式的数据传输接口 */
     rt_size_t (*slave_xfer)(struct rt_i2c_bus_device *bus,
                             struct rt_i2c_msg msgs[],
-                            rt_uint32_t num);				/**< @brief I2C从器件数据传输命令 */
+                            rt_uint32_t num);				/**< @brief I2C作为从机模式的数据传输接口 */
     rt_err_t (*i2c_bus_control)(struct rt_i2c_bus_device *bus,
                                 rt_uint32_t,
-                                rt_uint32_t);				/**< @brief I2C总线控制命令 */
+                                rt_uint32_t);				/**< @brief I2C总线控制接口 */
 };
 
 /*for i2c bus driver*/
 /**
- * @brief I2C设备管理结构体
+ * @brief I2C总线设备结构体
  */
 struct rt_i2c_bus_device
 {
     struct rt_device parent;					/**< @brief 继承自 rt_device */
-    const struct rt_i2c_bus_device_ops *ops;	/**< @brief I2C设备操作函数集 */
+    const struct rt_i2c_bus_device_ops *ops;	/**< @brief I2C设备的操作方法 */
     rt_uint16_t  flags;							/**< @brief I2C设备参数 */
     rt_uint16_t  addr;							/**< @brief I2C设备地址 */
-    struct rt_mutex lock;						/**< @brief I2C设备操作锁*/
+    struct rt_mutex lock;						/**< @brief 互斥量*/
     rt_uint32_t  timeout;						/**< @brief I2C设备获取等待时间 */
     rt_uint32_t  retries;						/**< @brief I2C设备获取次数 */
     void *priv;									/**< @brief I2C设备的私有数据指针 */

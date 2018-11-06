@@ -38,8 +38,8 @@ extern "C"{
 
 /**@{*/
 
-#define RT_SPI_CPHA     (1<<0)                             /* bit[0]:CPHA, clock phase */
-#define RT_SPI_CPOL     (1<<1)                             /* bit[1]:CPOL, clock polarity */
+#define RT_SPI_CPHA     (1<<0)                             /**< @brief bit[0]:CPHA, 时钟极性 */
+#define RT_SPI_CPOL     (1<<1)                             /**< @brief bit[1]:CPOL, 时钟相位 */
 /**
  * At CPOL=0 the base value of the clock is zero
  *  - For CPHA=0, data are captured on the clock's rising edge (low→high transition)
@@ -52,23 +52,23 @@ extern "C"{
  *  - For CPHA=1, data are captured on clock's rising edge and data are propagated
  *    on a falling edge.
  */
-#define RT_SPI_LSB      (0<<2)                             /* bit[2]: 0-LSB */
-#define RT_SPI_MSB      (1<<2)                             /* bit[2]: 1-MSB */
+#define RT_SPI_LSB      (0<<2)                             /**< @brief bit[2]: LSB位在前 */
+#define RT_SPI_MSB      (1<<2)                             /**< @brief bit[2]: MSB位在前 */
 
-#define RT_SPI_MASTER   (0<<3)                             /* SPI master device */
-#define RT_SPI_SLAVE    (1<<3)                             /* SPI slave device */
+#define RT_SPI_MASTER   (0<<3)                             /**< @brief SPI 做主设备 */
+#define RT_SPI_SLAVE    (1<<3)                             /**< @brief SPI 做从设备 */
 
-#define RT_SPI_MODE_0       (0 | 0)                        /* CPOL = 0, CPHA = 0 */
-#define RT_SPI_MODE_1       (0 | RT_SPI_CPHA)              /* CPOL = 0, CPHA = 1 */
-#define RT_SPI_MODE_2       (RT_SPI_CPOL | 0)              /* CPOL = 1, CPHA = 0 */
-#define RT_SPI_MODE_3       (RT_SPI_CPOL | RT_SPI_CPHA)    /* CPOL = 1, CPHA = 1 */
+#define RT_SPI_MODE_0       (0 | 0)                        /**< @brief CPOL = 0, CPHA = 0 */
+#define RT_SPI_MODE_1       (0 | RT_SPI_CPHA)              /**< @brief CPOL = 0, CPHA = 1 */
+#define RT_SPI_MODE_2       (RT_SPI_CPOL | 0)              /**< @brief CPOL = 1, CPHA = 0 */
+#define RT_SPI_MODE_3       (RT_SPI_CPOL | RT_SPI_CPHA)    /**< @brief CPOL = 1, CPHA = 1 */
 
 #define RT_SPI_MODE_MASK    (RT_SPI_CPHA | RT_SPI_CPOL | RT_SPI_MSB)
 
-#define RT_SPI_CS_HIGH  (1<<4)                             /* Chipselect active high */
-#define RT_SPI_NO_CS    (1<<5)                             /* No chipselect */
-#define RT_SPI_3WIRE    (1<<6)                             /* SI/SO pin shared */
-#define RT_SPI_READY    (1<<7)                             /* Slave pulls low to pause */
+#define RT_SPI_CS_HIGH  (1<<4)                             /**< @brief 片选高电平有效 */
+#define RT_SPI_NO_CS    (1<<5)                             /**< @brief 不使用片选 */
+#define RT_SPI_3WIRE    (1<<6)                             /**< @brief MOSI和MISO共用一根数据线 */
+#define RT_SPI_READY    (1<<7)                             /**< @brief 从设备拉低暂停 */
 
 /**
  * @brief SPI消息结构体定义

@@ -156,9 +156,9 @@ rt_country_code_t rt_wlan_ap_get_country(void);
 rt_err_t rt_wlan_scan(void);
 int rt_wlan_init(void);
 /**
- * @brief 注册WLAN设备到WLAN设备框架
+ * @brief 同步扫描热点
  *
- * @return rt_wlan_scan_result结构体的扫描结果
+ * @return 扫描结果
  */
 struct rt_wlan_scan_result *rt_wlan_scan_sync(void);
 struct rt_wlan_scan_result *rt_wlan_scan_with_info(struct rt_wlan_info *info);

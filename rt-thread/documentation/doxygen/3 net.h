@@ -5,7 +5,7 @@
 /**
  * @defgroup NET 网络
  *
- * @brief 网络相关API说明
+ * @brief 网络相关接口
  */
 
 /**
@@ -20,6 +20,10 @@ typedef struct fd_set
 } fd_set;
  * struct sockaddr
  */
+
+/**
+ * @brief sockaddr结构体定义
+ */
 struct sockaddr {
   u8_t        sa_len;		/**< @brief 地址长度 */
   sa_family_t sa_family;	/**< @brief 地址族 */
@@ -28,14 +32,14 @@ struct sockaddr {
 
 
 /**
- * struct in_addr
+ * @brief in_addr结构体定义
  */
 struct in_addr {
   in_addr_t s_addr;			/**< @brief 用来保存以十六进制表示的IP地址 */
 };
 
 /**
- * struct sockaddr_in
+ * @brief sockaddr_in结构体定义
  */
 struct sockaddr_in {
   u8_t            sin_len;		/**< @brief 地址长度 */
@@ -43,11 +47,11 @@ struct sockaddr_in {
   in_port_t       sin_port;		/**< @brief 16位TCP/UDP端口号 */
   struct in_addr  sin_addr;		/**< @brief 32位IP地址 */
 #define SIN_ZERO_LEN 8
-  char            sin_zero[SIN_ZERO_LEN];
+  char            sin_zero[SIN_ZERO_LEN]; /**< @brief 通常全为 0，主要功能是为了与 sockaddr 结构在长度上保持一致。 */
 };
 
 /**
- * struct hostent
+ * @brief hostent结构体定义
  */
 struct hostent {
     char  *h_name;      /**< @brief 主机名，即官方域名 */
@@ -55,11 +59,11 @@ struct hostent {
     int    h_addrtype;  /**< @brief 主机IP地址的类型，例如IPV4（AF_INET）还是IPV6 */
     int    h_length;    /**< @brief 主机IP地址长度，IPV4地址为4，IPV6地址则为16 */
     char **h_addr_list; /**< @brief 主机的ip地址，以网络字节序存储。若要打印出这个IP，需要调用inet_ntoa()。 */
-#define h_addr h_addr_list[0] /**< @brief 为了向后兼容 */
+#define h_addr h_addr_list[0] /**< @brief 保 持 向 后 兼 容 */
 };
 
 /**
- * struct addrinfo
+ * @brief addrinfo结构体定义
  */
 struct addrinfo {
     int               ai_flags;      /**< @brief 输入标志 */
@@ -75,19 +79,19 @@ struct addrinfo {
 /**
  * @defgroup SAL 套接字抽象层
  * 
- * @brief SAL组件初始化API说明
+ * @brief SAL组件初始化接口
  */
 
 /**
  * @defgroup SOC 套接字使用
  *
- * @brief 套接字使用方式相关API说明
+ * @brief 套接字接口
  */
 
 /**
  * @defgroup DNS 主机名到IP地址的解析
  *
- * @brief 主机名到IP地址的解析相关API
+ * @brief 主机名到IP地址的解析接口
  */
 
 
