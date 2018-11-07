@@ -22,7 +22,7 @@ typedef struct fd_set
  */
 
 /**
- * @brief sockaddr结构体定义
+ * @brief sockaddr结构体
  */
 struct sockaddr {
   u8_t        sa_len;		/**< @brief 地址长度 */
@@ -32,14 +32,14 @@ struct sockaddr {
 
 
 /**
- * @brief in_addr结构体定义
+ * @brief in_addr结构体
  */
 struct in_addr {
   in_addr_t s_addr;			/**< @brief 用来保存以十六进制表示的IP地址 */
 };
 
 /**
- * @brief sockaddr_in结构体定义
+ * @brief sockaddr_in结构体
  */
 struct sockaddr_in {
   u8_t            sin_len;		/**< @brief 地址长度 */
@@ -51,7 +51,7 @@ struct sockaddr_in {
 };
 
 /**
- * @brief hostent结构体定义
+ * @brief hostent结构体
  */
 struct hostent {
     char  *h_name;      /**< @brief 主机名，即官方域名 */
@@ -63,7 +63,7 @@ struct hostent {
 };
 
 /**
- * @brief addrinfo结构体定义
+ * @brief addrinfo结构体
  */
 struct addrinfo {
     int               ai_flags;      /**< @brief 输入标志 */

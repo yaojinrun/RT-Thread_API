@@ -114,7 +114,7 @@
 }
 
 /**
- * @brief 串口配置参数结构体定义
+ * @brief 串口配置参数结构体
  */
 
 struct serial_configure
@@ -163,7 +163,7 @@ struct rt_serial_tx_dma
 };
 
 /**
- * @brief 串口设备结构体定义
+ * @brief 串口设备结构体
  */
 
 struct rt_serial_device

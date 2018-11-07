@@ -50,7 +50,7 @@
 #define sig_valid(sig_no)   (sig_no >= 0 && sig_no < RT_SIG_MAX)
 
 /**
- * @brief 信号对象结构体定义
+ * @brief 信号对象结构体
  */
 struct siginfo_node
 {

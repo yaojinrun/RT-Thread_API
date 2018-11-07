@@ -133,7 +133,7 @@ struct rt_pm_ops
 };
 
 /**
- * @brief 电源模式操作集
+ * @brief 电源管理设备的操作方法
  */
 struct rt_device_pm_ops
 {
@@ -224,7 +224,7 @@ void rt_pm_release(rt_ubase_t mode);
  * 调用设备的resume()。
  *
  * @param device 具体对模式变化敏感的设备句柄
- * @param ops 设备的函数集合
+ * @param ops 设备的函数集
  */
 void rt_pm_register_device(struct rt_device* device, const struct rt_device_pm_ops* ops);
 
@@ -247,7 +247,7 @@ void rt_pm_unregister_device(struct rt_device* device);
  * 一个默认休眠模式PM_SLEEP_MODE_DEFAULT和最低的模式PM_MODE_MAX。默认运行模式和休眠模式的值，
  * 我们可以根据需要来定义，默认值是第一个模式。
  *
- * @param ops 底层 PM 驱动的函数集合
+ * @param ops 底层 PM 驱动的函数集
  * @param timer_mask 指定哪些模式包含了低功耗定时器
  * @param user_data 可以被底层 PM 驱动使用的一个指针
  */

@@ -44,7 +44,7 @@ struct rt_wqueue_node;
 typedef int (*rt_wqueue_func_t)(struct rt_wqueue_node *wait, void *key);
 
 /**
- * @brief 等待队列节点结构体定义
+ * @brief 等待队列节点结构体
  */
 struct rt_wqueue_node
 {

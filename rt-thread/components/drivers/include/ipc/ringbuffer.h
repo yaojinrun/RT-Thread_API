@@ -16,7 +16,7 @@ extern "C" {
 
 /* ring buffer */
 /**
- * @brief 环形缓冲区结构体定义
+ * @brief 环形缓冲区结构体
  */
 struct rt_ringbuffer
 {

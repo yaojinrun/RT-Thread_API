@@ -71,7 +71,7 @@ extern "C"{
 #define RT_SPI_READY    (1<<7)                             /**< @brief 从设备拉低暂停 */
 
 /**
- * @brief SPI消息结构体定义
+ * @brief SPI消息结构体
  */
 struct rt_spi_message
 {
@@ -85,7 +85,7 @@ struct rt_spi_message
 };
 
 /**
- * @brief SPI配置参数结构体定义
+ * @brief SPI配置参数结构体
  */
 struct rt_spi_configuration
 {
@@ -98,7 +98,7 @@ struct rt_spi_configuration
 
 struct rt_spi_ops;
 /**
- * @brief SPI总线结构体定义
+ * @brief SPI总线结构体
  */
 struct rt_spi_bus
 {

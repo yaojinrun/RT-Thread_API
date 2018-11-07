@@ -504,7 +504,7 @@ struct rt_object_information
 #endif
 
 /**
- * @brief 定时器结构体定义
+ * @brief 定时器结构体
  */
 struct rt_timer
 {
@@ -660,7 +660,7 @@ typedef struct rt_thread *rt_thread_t;
 #define RT_WAITING_NO                   0               /**< @brief 无阻塞. */
 
 /**
- * @brief IPC对象的基础结构体定义
+ * @brief IPC对象的基础结构体
  */
 struct rt_ipc_object
 {
@@ -679,7 +679,7 @@ struct rt_ipc_object
 /**@{*/
 
 /**
- * @brief 信号量结构体定义
+ * @brief 信号量结构体
  */
 struct rt_semaphore
 {
@@ -704,7 +704,7 @@ typedef struct rt_semaphore *rt_sem_t;
 /**@{*/
 
 /**
- * @brief 互斥量结构体定义
+ * @brief 互斥量结构体
  */
 struct rt_mutex
 {
@@ -740,7 +740,7 @@ typedef struct rt_mutex *rt_mutex_t;
 #define RT_EVENT_FLAG_CLEAR             0x04            /**< @brief 清除参数 */
 
 /**
- * @brief 事件结构体定义
+ * @brief 事件结构体
  */
 struct rt_event
 {
@@ -764,7 +764,7 @@ typedef struct rt_event *rt_event_t;
 /**@{*/
 
 /**
- * @brief 邮箱结构体定义
+ * @brief 邮箱结构体
  */
 struct rt_mailbox
 {
@@ -796,7 +796,7 @@ typedef struct rt_mailbox *rt_mailbox_t;
 /**@{*/
 
 /**
- * @brief 消息队列结构体定义
+ * @brief 消息队列结构体
  */
 struct rt_messagequeue
 {
@@ -1015,7 +1015,7 @@ struct rt_device_ops
 };
 
 /**
- * @brief 等待队列的结构体定义
+ * @brief 等待队列的结构体
  */
 struct rt_wqueue
 {
@@ -1076,7 +1076,7 @@ struct rt_device_blk_geometry
 };
 
 /**
- * @brief 块设备的扇区分布结构体定义
+ * @brief 块设备的扇区分布结构体
  */
 struct rt_device_blk_sectors
 {
