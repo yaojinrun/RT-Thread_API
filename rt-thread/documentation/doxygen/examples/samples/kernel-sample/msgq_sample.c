@@ -9,26 +9,26 @@
  */ 
 
 /*
- * ç¨‹åºæ¸…å•ï¼šæ¶ˆæ¯é˜Ÿåˆ—ä¾‹ç¨‹
+ * ³ÌĞòÇåµ¥£ºÏûÏ¢¶ÓÁĞÀı³Ì
  *
- * è¿™ä¸ªç¨‹åºä¼šåˆ›å»º2ä¸ªåŠ¨æ€çº¿ç¨‹ï¼Œä¸€ä¸ªçº¿ç¨‹ä¼šä»æ¶ˆæ¯é˜Ÿåˆ—ä¸­æ”¶å–æ¶ˆæ¯ï¼›ä¸€ä¸ªçº¿ç¨‹ä¼šå®šæ—¶ç»™æ¶ˆ
- * æ¯é˜Ÿåˆ—å‘é€ æ™®é€šæ¶ˆæ¯å’Œç´§æ€¥æ¶ˆæ¯ã€‚
+ * Õâ¸ö³ÌĞò»á´´½¨2¸ö¶¯Ì¬Ïß³Ì£¬Ò»¸öÏß³Ì»á´ÓÏûÏ¢¶ÓÁĞÖĞÊÕÈ¡ÏûÏ¢£»Ò»¸öÏß³Ì»á¶¨Ê±¸øÏû
+ * Ï¢¶ÓÁĞ·¢ËÍ ÆÕÍ¨ÏûÏ¢ºÍ½ô¼±ÏûÏ¢¡£
  */
 #include <rtthread.h>
 
 #define THREAD_PRIORITY      25
 #define THREAD_TIMESLICE     5
 
-/* æ¶ˆæ¯é˜Ÿåˆ—æ§åˆ¶å— */
+/* ÏûÏ¢¶ÓÁĞ¿ØÖÆ¿é */
 static struct rt_messagequeue mq;
-/* æ¶ˆæ¯é˜Ÿåˆ—ä¸­ç”¨åˆ°çš„æ”¾ç½®æ¶ˆæ¯çš„å†…å­˜æ±  */
+/* ÏûÏ¢¶ÓÁĞÖĞÓÃµ½µÄ·ÅÖÃÏûÏ¢µÄÄÚ´æ³Ø */
 static rt_uint8_t msg_pool[2048];
 
 ALIGN(RT_ALIGN_SIZE)
 static char thread1_stack[1024];
 static struct rt_thread thread1;
 
-/* çº¿ç¨‹1å…¥å£å‡½æ•° */
+/* Ïß³Ì1Èë¿Úº¯Êı */
 static void thread1_entry(void *parameter)
 {
     char buf = 0;
@@ -36,7 +36,7 @@ static void thread1_entry(void *parameter)
 
     while (1)
     {
-        /* ä»æ¶ˆæ¯é˜Ÿåˆ—ä¸­æ¥æ”¶æ¶ˆæ¯ */
+        /* ´ÓÏûÏ¢¶ÓÁĞÖĞ½ÓÊÕÏûÏ¢ */
         if (rt_mq_recv(&mq, &buf, sizeof(buf), RT_WAITING_FOREVER) == RT_EOK)
         {
             rt_kprintf("thread1: recv msg from msg queue, the content:%c\n", buf);
@@ -45,7 +45,7 @@ static void thread1_entry(void *parameter)
                 break;
             }
         }
-        /* å»¶æ—¶50ms */
+        /* ÑÓÊ±50ms */
         cnt++;
         rt_thread_mdelay(50);
     }
@@ -57,7 +57,7 @@ ALIGN(RT_ALIGN_SIZE)
 static char thread2_stack[1024];
 static struct rt_thread thread2;
 
-/* çº¿ç¨‹2å…¥å£ */
+/* Ïß³Ì2Èë¿Ú */
 static void thread2_entry(void *parameter)
 {
     int result;
@@ -68,7 +68,7 @@ static void thread2_entry(void *parameter)
     {
         if (cnt == 8)
         {
-            /* å‘é€ç´§æ€¥æ¶ˆæ¯åˆ°æ¶ˆæ¯é˜Ÿåˆ—ä¸­ */
+            /* ·¢ËÍ½ô¼±ÏûÏ¢µ½ÏûÏ¢¶ÓÁĞÖĞ */
             result = rt_mq_urgent(&mq, &buf, 1);
             if (result != RT_EOK)
             {
@@ -79,14 +79,14 @@ static void thread2_entry(void *parameter)
                 rt_kprintf("thread2: send urgent message - %c\n", buf);
             }
         }
-        else if (cnt >= 20)/* å‘é€20æ¬¡æ¶ˆæ¯ä¹‹åé€€å‡º */
+        else if (cnt >= 20)/* ·¢ËÍ20´ÎÏûÏ¢Ö®ºóÍË³ö */
         {
             rt_kprintf("message queue stop send, thread2 quit\n");
             break;
         }
         else
         {
-            /* å‘é€æ¶ˆæ¯åˆ°æ¶ˆæ¯é˜Ÿåˆ—ä¸­ */
+            /* ·¢ËÍÏûÏ¢µ½ÏûÏ¢¶ÓÁĞÖĞ */
             result = rt_mq_send(&mq, &buf, 1);
             if (result != RT_EOK)
             {
@@ -97,23 +97,23 @@ static void thread2_entry(void *parameter)
         }
         buf++;
         cnt++;
-        /* å»¶æ—¶5ms */
+        /* ÑÓÊ±5ms */
         rt_thread_mdelay(5);
     }
 }
 
-/* æ¶ˆæ¯é˜Ÿåˆ—ç¤ºä¾‹çš„åˆå§‹åŒ– */
+/* ÏûÏ¢¶ÓÁĞÊ¾ÀıµÄ³õÊ¼»¯ */
 int msgq_sample(void)
 {
     rt_err_t result;
 
-    /* åˆå§‹åŒ–æ¶ˆæ¯é˜Ÿåˆ— */
+    /* ³õÊ¼»¯ÏûÏ¢¶ÓÁĞ */
     result = rt_mq_init(&mq,
                         "mqt",
-                        &msg_pool[0],               /* å†…å­˜æ± æŒ‡å‘msg_pool */
-                        1,                          /* æ¯ä¸ªæ¶ˆæ¯çš„å¤§å°æ˜¯ 1 å­—èŠ‚ */
-                        sizeof(msg_pool),           /* å†…å­˜æ± çš„å¤§å°æ˜¯msg_poolçš„å¤§å° */
-                        RT_IPC_FLAG_FIFO);          /* å¦‚æœæœ‰å¤šä¸ªçº¿ç¨‹ç­‰å¾…ï¼ŒæŒ‰ç…§å…ˆæ¥å…ˆå¾—åˆ°çš„æ–¹æ³•åˆ†é…æ¶ˆæ¯ */
+                        &msg_pool[0],               /* ÄÚ´æ³ØÖ¸Ïòmsg_pool */
+                        1,                          /* Ã¿¸öÏûÏ¢µÄ´óĞ¡ÊÇ 1 ×Ö½Ú */
+                        sizeof(msg_pool),           /* ÄÚ´æ³ØµÄ´óĞ¡ÊÇmsg_poolµÄ´óĞ¡ */
+                        RT_IPC_FLAG_FIFO);          /* Èç¹ûÓĞ¶à¸öÏß³ÌµÈ´ı£¬°´ÕÕÏÈÀ´ÏÈµÃµ½µÄ·½·¨·ÖÅäÏûÏ¢ */
 
     if (result != RT_EOK)
     {
@@ -142,5 +142,5 @@ int msgq_sample(void)
     return 0;
 }
 
-/* å¯¼å‡ºåˆ° msh å‘½ä»¤åˆ—è¡¨ä¸­ */
+/* µ¼³öµ½ msh ÃüÁîÁĞ±íÖĞ */
 MSH_CMD_EXPORT(msgq_sample, msgq sample);

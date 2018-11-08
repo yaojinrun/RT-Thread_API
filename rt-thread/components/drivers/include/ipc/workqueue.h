@@ -11,7 +11,7 @@
 
 /* workqueue implementation */
 /**
- * @brief 工作队列的结构体
+ * @brief 工作队列控制块
  */
 struct rt_workqueue
 {
@@ -23,7 +23,7 @@ struct rt_workqueue
 };
 
 /**
- * @brief 工作的结构体
+ * @brief 工作回调函数信息
  */
 struct rt_work
 {

@@ -11,6 +11,7 @@
 /**
  * @addtogroup example
  */
+ 
 /*@{*/
 
 /**
@@ -48,7 +49,7 @@
 /*@{*/
 
 /**
- * @defgroup thread 线程
+ * @defgroup thread_example 线程
  * @brief 创建、初始化/脱离线程
  *
  * **源码**
@@ -58,15 +59,16 @@
  */
 
 /**
- * @defgroup timeslice 时间片调度
+ * @defgroup timeslice_example 时间片调度
  * @brief 相同优先级线程按照时间片轮番调度
+ *
  * **源码**
  * @include timeslice_sample.c
  * @example timeslice_sample.c
  */
  
 /**
- * @defgroup timer 定时器
+ * @defgroup timer_example 定时器
  * @brief 单次定时器和周期性定时器的使用
  *
  * **源码**
@@ -75,7 +77,7 @@
  */
 
 /**
- * @defgroup interrupt 中断
+ * @defgroup interrupt_example 中断
  * @brief 关闭中断进行全局变量的访问
  *
  * **源码**
@@ -84,7 +86,7 @@
  */
 
 /**
- * @defgroup signal 信号
+ * @defgroup signal_example 信号
  * @brief 给线程发送信号
  *
  * **源码**
@@ -93,7 +95,7 @@
  */
 
 /**
- * @defgroup dynmem 动态内存
+ * @defgroup dynmem_example 动态内存
  * @brief 线程动态申请内存并释放
  *
  * **源码**
@@ -102,7 +104,7 @@
  */
 
 /**
- * @defgroup memp 内存池
+ * @defgroup memp_example 内存池
  * @brief 线程从内存池中获得内存块与释放内存块
  *
  * **源码**
@@ -111,7 +113,7 @@
  */
 
 /**
- * @defgroup idlehook 空闲线程钩子函数
+ * @defgroup idlehook_example 空闲线程钩子函数
  * @brief 打印空闲线程钩子函数的运行次数
  *
  * **源码**
@@ -120,7 +122,7 @@
  */
  
 /**
- * @defgroup scheduler 调度器钩子函数
+ * @defgroup scheduler_example 调度器钩子函数
  * @brief 在调度器钩子中打印线程切换信息
  *
  * **源码**
@@ -129,7 +131,7 @@
  */
 
 /**
- * @defgroup semaphore 信号量
+ * @defgroup semaphore_example 信号量
  * @brief 一个线程发送信号量，另外一个线程接收信号量
  *
  * **源码**
@@ -139,7 +141,7 @@
  */
 
 /**
- * @defgroup producer 生产者消费者模型
+ * @defgroup producer_example 生产者消费者模型
  * @brief 生产者线程与消费者线程使用信号量同步
  *
  * **源码**
@@ -148,7 +150,7 @@
  */
 
 /**
- * @defgroup mutex 互斥量
+ * @defgroup mutex_example 互斥量
  * @brief 线程使用互斥量保护共享资源
  *
  * **源码**
@@ -158,7 +160,7 @@
  */
 
 /**
- * @defgroup priority 优先级反转
+ * @defgroup priority_example 优先级反转
  * @brief 互斥量反正线程优先级反转功能
  *
  * **源码**
@@ -167,7 +169,7 @@
  */
  
 /**
- * @defgroup event 事件
+ * @defgroup event_example 事件
  * @brief 一个线程等待事件，另一个线程发送事件
  *
  * **源码**
@@ -176,7 +178,7 @@
  */
 
 /**
- * @defgroup mailbox 邮箱
+ * @defgroup mailbox_example 邮箱
  * @brief 一个线程往邮箱中发送邮件，另外一个线程往邮箱中收取邮件
  *
  * **源码**
@@ -185,7 +187,7 @@
  */
 
 /**
- * @defgroup msgq 消息队列
+ * @defgroup msgq_example 消息队列
  * @brief 一个线程会从消息队列中收取消息，另一个线程会定时给消息队列发送普通消息和紧急消息
  * 
  *
@@ -203,7 +205,7 @@
 /*@{*/
  
 /**
- * @defgroup mkdir 创建目录
+ * @defgroup mkdir_example 创建目录
  * @brief 创建目录
  *
  * **源码**
@@ -212,7 +214,7 @@
  */
 
 /**
- * @defgroup opendir 打开目录
+ * @defgroup opendir_example 打开目录
  * @brief 打开和关闭目录
  *
  * **源码**
@@ -221,7 +223,7 @@
  */
 
 /**
- * @defgroup readdir 读取目录
+ * @defgroup readdir_example 读取目录
  * @brief 读取目录
  *
  * **源码**
@@ -230,7 +232,7 @@
  */
 
 /**
- * @defgroup readwrite 文件读写
+ * @defgroup readwrite_example 文件读写
  * @brief 打开文件及文件读写
  *
  * **源码**
@@ -239,7 +241,7 @@
  */
 
 /**
- * @defgroup rename 文件重命名
+ * @defgroup rename_example 文件重命名
  * @brief 文件重命名
  *
  * **源码**
@@ -248,7 +250,7 @@
  */
 
 /**
- * @defgroup stat 文件状态
+ * @defgroup stat_example 文件状态
  * @brief 查看文件大小
  *
  * **源码**
@@ -257,7 +259,7 @@
  */
 
 /**
- * @defgroup tell_seek_dir 目录位置操作
+ * @defgroup tell_seek_dir_example 目录位置操作
  * @brief 保存与设置读取目录位置
  *
  * **源码**
@@ -303,7 +305,7 @@
 
 
  /**
- * @defgroup tcpclient_select_sample 利用 select 实现的 tcp 客户端
+ * @defgroup tcpclient_select_sample select实现的tcp客户端
  * @brief 利用 select 实现的 tcp 客户端
  *
  * **源码**
@@ -377,7 +379,7 @@
  */
 
 /**
- * @defgroup sd_sample 块设备SD卡
+ * @defgroup sd_sample SD卡
  * @brief SD卡设备的使用
  *
  * **源码**

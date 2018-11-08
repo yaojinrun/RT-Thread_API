@@ -9,11 +9,11 @@
  */ 
 
 /*
- * 程序清单：事件例程
+ * �����嵥���¼�����
  *
- * 程序会初始化2个线程及初始化一个静态事件对象
- * 一个线程等待于事件对象上，以接收事件；
- * 一个线程发送事件 (事件3/事件5)
+ * ������ʼ��2���̼߳���ʼ��һ����̬�¼�����
+ * һ���̵߳ȴ����¼������ϣ��Խ����¼���
+ * һ���̷߳����¼� (�¼�3/�¼�5)
 */
 #include <rtthread.h>
 
@@ -23,19 +23,19 @@
 #define EVENT_FLAG3 (1 << 3)
 #define EVENT_FLAG5 (1 << 5)
 
-/* 事件控制块 */
+/* �¼����ƿ� */
 static struct rt_event event;
 
 ALIGN(RT_ALIGN_SIZE)
 static char thread1_stack[1024];
 static struct rt_thread thread1;
 
-/* 线程1入口函数 */
+/* �߳�1��ں��� */
 static void thread1_recv_event(void *param)
 {
     rt_uint32_t e;
 
-    /* 第一次接收事件，事件3或事件5任意一个可以触发线程1，接收完后清除事件标志 */
+    /* ��һ�ν����¼����¼�3���¼�5����һ�����Դ����߳�1�������������¼���־ */
     if (rt_event_recv(&event, (EVENT_FLAG3 | EVENT_FLAG5),
                       RT_EVENT_FLAG_OR | RT_EVENT_FLAG_CLEAR,
                       RT_WAITING_FOREVER, &e) == RT_EOK)
@@ -46,7 +46,7 @@ static void thread1_recv_event(void *param)
     rt_kprintf("thread1: delay 1s to prepare the second event\n");
     rt_thread_mdelay(1000);
 
-    /* 第二次接收事件，事件3和事件5均发生时才可以触发线程1，接收完后清除事件标志 */
+    /* �ڶ��ν����¼����¼�3���¼�5������ʱ�ſ��Դ����߳�1�������������¼���־ */
     if (rt_event_recv(&event, (EVENT_FLAG3 | EVENT_FLAG5),
                       RT_EVENT_FLAG_AND | RT_EVENT_FLAG_CLEAR,
                       RT_WAITING_FOREVER, &e) == RT_EOK)
@@ -60,7 +60,7 @@ ALIGN(RT_ALIGN_SIZE)
 static char thread2_stack[1024];
 static struct rt_thread thread2;
 
-/* 线程2入口 */
+/* �߳�2��� */
 static void thread2_send_event(void *param)
 {
     rt_kprintf("thread2: send event3\n");
@@ -80,7 +80,7 @@ int event_sample(void)
 {
     rt_err_t result;
 
-    /* 初始化事件对象 */
+    /* ��ʼ���¼����� */
     result = rt_event_init(&event, "event", RT_IPC_FLAG_FIFO);
     if (result != RT_EOK)
     {
@@ -109,5 +109,5 @@ int event_sample(void)
     return 0;
 }
 
-/* 导出到 msh 命令列表中 */
+/* ������ msh �����б��� */
 MSH_CMD_EXPORT(event_sample, event sample);

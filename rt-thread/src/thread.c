@@ -505,7 +505,7 @@ rt_err_t rt_thread_yield(void)
 RTM_EXPORT(rt_thread_yield);
 
 /**
- * @brief 使线程睡眠
+ * @brief 线程睡眠
  *
  * 该函数将使当前线程睡眠几个系统始终节拍的时间
  *
@@ -544,7 +544,7 @@ rt_err_t rt_thread_sleep(rt_tick_t tick)
 }
 
 /**
- * @brief 线程延时函数
+ * @brief 线程延时
  *
  * 该函数将使当前线程延时几个系统始终节拍的时间。
  *
@@ -559,7 +559,7 @@ rt_err_t rt_thread_delay(rt_tick_t tick)
 RTM_EXPORT(rt_thread_delay);
 
 /**
- * @brief 线程毫秒延时函数
+ * @brief 线程毫秒延时
  *
  * 此函数将使当前线程延迟几毫秒。
  *

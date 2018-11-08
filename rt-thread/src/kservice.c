@@ -39,14 +39,15 @@
 /* use precision */
 #define RT_PRINTF_PRECISION
 
+
+/* global errno in RT-Thread */
+static volatile int __rt_errno;
+
 /**
  * @addtogroup Error
  */
 
 /**@{*/
-
-/* global errno in RT-Thread */
-static volatile int __rt_errno;
 
 #if defined(RT_USING_DEVICE) && defined(RT_USING_CONSOLE)
 static rt_device_t _console_device = RT_NULL;
@@ -54,6 +55,7 @@ static rt_device_t _console_device = RT_NULL;
 
 /**
  * @brief 获取错误号
+ *
  * 该函数将获取错误号
  *
  * @return 错误号
@@ -78,6 +80,7 @@ RTM_EXPORT(rt_get_errno);
 
 /**
  * @brief 设置错误号
+ *
  * 该函数将设置错误号
  *
  * @param error 将被设定的错误号
@@ -106,11 +109,7 @@ void rt_set_errno(rt_err_t error)
 }
 RTM_EXPORT(rt_set_errno);
 
-/*
- * 该函数返回错误号
- *
- * @return 返回系统的错误
- */
+
 int *_rt_errno(void)
 {
     rt_thread_t tid;
@@ -137,6 +136,7 @@ RTM_EXPORT(_rt_errno);
 
 /**
  * @brief 设置内存数据
+ *
  * 此函数将内存的内容设置为指定的值
  *
  * @param s 源内存的地址
@@ -220,6 +220,7 @@ RTM_EXPORT(rt_memset);
 
 /**
  * @brief 复制内存数据
+ *
  * 此功能将内存内容从源地址复制到目标地址。
  *
  * @param dst 目标内存的地址
@@ -304,8 +305,9 @@ RTM_EXPORT(rt_memcpy);
 
 /**
  * @brief 移动内存数据
+ *
  * 该函数将源内存中的内容移动到目标内存地址中
- * address.
+ *
  *
  * @param dest 目标内存的地址
  * @param src  源内存的地址
@@ -337,6 +339,7 @@ RTM_EXPORT(rt_memmove);
 
 /**
  * @brief 比较内存数据
+ *
  * 该函数将比较两个区域内存里的内容是否一致。
  *
  * @param cs 一个内存区域
@@ -369,6 +372,7 @@ RTM_EXPORT(rt_memcmp);
 
 /**
  * @brief 判断字符串
+ *
  * 该函数判断s1字符串中是否存在s2字符串。
  *
  * @param s1 源字符串
@@ -398,6 +402,7 @@ RTM_EXPORT(rt_strstr);
 
 /**
  * @brief 忽略大小写比较字符串
+ *
  * 此函数将比较两个字符串，同时忽略大小写的差异。
  *
  * @param a 被比较的字符串
@@ -426,6 +431,7 @@ RTM_EXPORT(rt_strcasecmp);
 
 /**
  * @brief 复制字符串
+ *
  * 该函数将复制不超过那个字节的字符串。
  *
  * @param dst 复制的字符串地址
@@ -459,7 +465,8 @@ RTM_EXPORT(rt_strncpy);
 
 /**
  * @brief 比较指定长度字符串
- * 此函数将比较具有指定最大长度的两个字符串
+ *
+ * 此函数将比较具有指定最大长度的两个字符串。
  *
  * @param cs 被比较的源字符串
  * @param ct 被比较的目标字符串
@@ -484,7 +491,8 @@ RTM_EXPORT(rt_strncmp);
 
 /**
  * @brief 比较字符串
- * 此函数将比较两个没有指定长度的字符串
+ *
+ * 此函数将比较两个没有指定长度的字符串。
  *
  * @param cs 被比较的字符串
  * @param ct 被比较的字符串
@@ -501,6 +509,7 @@ rt_int32_t rt_strcmp(const char *cs, const char *ct)
 RTM_EXPORT(rt_strcmp);
 /**
  * @brief 计算字符串长度
+ *
  * strnlen()函数返回s指向的字符串中的字符长度，不包括终止空字节（'\ 0'），
  * 但最多只能是maxlen。 在这样做时，strnlen()只查看s指向的字符串中的第一个
  * maxlen字符，并且永远不会超出s + maxlen。
@@ -520,6 +529,7 @@ rt_size_t rt_strnlen(const char *s, rt_ubase_t maxlen)
 }
 /**
  * @brief 计算字符串长度
+ *
  * 此函数将返回字符串的长度，其终止符为null。
  *
  * @param s 指向字符串的指针
@@ -540,6 +550,7 @@ RTM_EXPORT(rt_strlen);
 #ifdef RT_USING_HEAP
 /**
  * @brief 复制字符串
+ *
  * 此函数将复制一个字符串。
  *
  * @param s 将要被复制的字符串
@@ -561,18 +572,8 @@ char *rt_strdup(const char *s)
 RTM_EXPORT(rt_strdup);
 #endif
 
-/**
- * 该函数将打印 rt-thread rtos 的版本。
- */
-void rt_show_version(void)
-{
-    rt_kprintf("\n \\ | /\n");
-    rt_kprintf("- RT -     Thread Operating System\n");
-    rt_kprintf(" / | \\     %d.%d.%d build %s\n",
-               RT_VERSION, RT_SUBVERSION, RT_REVISION, __DATE__);
-    rt_kprintf(" 2006 - 2018 Copyright by rt-thread team\n");
-}
-RTM_EXPORT(rt_show_version);
+
+
 
 /* private function */
 #define isdigit(c)  ((unsigned)((c) - '0') < 10)
@@ -1038,6 +1039,7 @@ RTM_EXPORT(rt_vsnprintf);
 
 /**
  * @brief 格式化字符串
+ *
  * 该函数将用格式化后的字符串填充缓冲区。
  *
  * @param buf 保存格式化后字符串的缓冲区
@@ -1059,6 +1061,7 @@ RTM_EXPORT(rt_snprintf);
 
 /**
  * @brief 格式化字符串
+ *
  * 此函数将以格式化后的字符串填充缓冲区
  *
  * @param buf 保存格式化字符串的缓冲区
@@ -1073,6 +1076,7 @@ RTM_EXPORT(rt_vsprintf);
 
 /**
  * @brief 格式化字符串
+ *
  * 此函数将以格式化后的字符串填充缓冲区
  *
  * @param buf 保存格式化字符串的缓冲区
@@ -1091,11 +1095,34 @@ rt_int32_t rt_sprintf(char *buf, const char *format, ...)
 }
 RTM_EXPORT(rt_sprintf);
 
+/**@}*/
+
+/**
+ * @addtogroup KernelService
+ */
+
+/**@{*/
+
+/**
+ *
+ * @brief 该函数将打印 rt-thread rtos 的版本信息。
+ */
+void rt_show_version(void)
+{
+    rt_kprintf("\n \\ | /\n");
+    rt_kprintf("- RT -     Thread Operating System\n");
+    rt_kprintf(" / | \\     %d.%d.%d build %s\n",
+               RT_VERSION, RT_SUBVERSION, RT_REVISION, __DATE__);
+    rt_kprintf(" 2006 - 2018 Copyright by rt-thread team\n");
+}
+RTM_EXPORT(rt_show_version);
+
 #ifdef RT_USING_CONSOLE
 
 #ifdef RT_USING_DEVICE
 /**
  * @brief 获取控制台设备句柄
+ *
  * 该函数将返回控制台的设备对象句柄
  *
  * @return 控制台的设备对象句柄
@@ -1108,6 +1135,7 @@ RTM_EXPORT(rt_console_get_device);
 
 /**
  *@brief 设置控制台设备句柄
+ *
  * 此功能将设置控制台设备。 将设备设置为控制台后，
  * rt_kprintf的所有输出都将重定向到此新设备。
  *
@@ -1150,6 +1178,7 @@ RTM_EXPORT(rt_hw_console_output);
 
 /**
  * @brief 打印字符串
+ *
  * 该函数将打印字符串到控制台。
  *
  * @param str 字符串。
@@ -1178,6 +1207,7 @@ void rt_kputs(const char *str)
 
 /**
  * @brief 打印格式化字符串
+ *
  * 该函数将打印格式化的字符串到系统控制台。
  *
  * @param fmt 格式化字符串的格式
@@ -1231,6 +1261,7 @@ RTM_EXPORT(rt_kprintf);
 #ifdef RT_USING_HEAP
 /**
  * @brief 对齐分配内存
+ *
  * 该函数将分配一各内存块，该地址与指定的对其大小对齐。
  *
  * @param size 分配的内存块大小
@@ -1275,6 +1306,7 @@ RTM_EXPORT(rt_malloc_align);
 
 /**
  * @brief 释放对齐分配的内存
+ *
  * 该函数将释放由rt_malloc_align函数分配的并且地址对齐的内存块。
  *
  * @param ptr 将要释放的内存块指针
@@ -1313,6 +1345,10 @@ const rt_uint8_t __lowest_bit_bitmap[] =
 };
 
 /**
+ * @ingroup KernelService
+ *
+ * @brief 获取最低有效位索引
+ *
  * 此函数在值中查找第一个位集（从最低有效位开始）并返回该位的索引。
  *
  * 位从第位1位开始编号（最低有效位）。 任何这些函数的返回值为零意味着参数为零。
@@ -1408,4 +1444,4 @@ int vsprintf(char *buf, const char *format, va_list arg_ptr) __attribute__((weak
 
 #endif
 
-/**@}*/
+

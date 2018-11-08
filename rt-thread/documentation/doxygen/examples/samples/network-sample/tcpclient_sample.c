@@ -8,23 +8,23 @@
  * 
  */
 /*
- * ç¨‹åºæ¸…å•ï¼štcp å®¢æˆ·ç«¯
+ * ³ÌĞòÇåµ¥£ºtcp ¿Í»§¶Ë
  *
- * è¿™æ˜¯ä¸€ä¸ª tcp å®¢æˆ·ç«¯çš„ä¾‹ç¨‹
- * å¯¼å‡º tcpclient å‘½ä»¤åˆ°æ§åˆ¶ç»ˆç«¯
- * å‘½ä»¤è°ƒç”¨æ ¼å¼ï¼štcpclient URL PORT
- * URLï¼šæœåŠ¡å™¨åœ°å€ PORT:ï¼šç«¯å£å·
- * ç¨‹åºåŠŸèƒ½ï¼šæ¥æ”¶å¹¶æ˜¾ç¤ºä»æœåŠ¡ç«¯å‘é€è¿‡æ¥çš„ä¿¡æ¯ï¼Œæ¥æ”¶åˆ°å¼€å¤´æ˜¯ 'q' æˆ– 'Q' çš„ä¿¡æ¯é€€å‡ºç¨‹åº
+ * ÕâÊÇÒ»¸ö tcp ¿Í»§¶ËµÄÀı³Ì
+ * µ¼³ö tcpclient ÃüÁîµ½¿ØÖÆÖÕ¶Ë
+ * ÃüÁîµ÷ÓÃ¸ñÊ½£ºtcpclient URL PORT
+ * URL£º·şÎñÆ÷µØÖ· PORT:£º¶Ë¿ÚºÅ
+ * ³ÌĞò¹¦ÄÜ£º½ÓÊÕ²¢ÏÔÊ¾´Ó·şÎñ¶Ë·¢ËÍ¹ıÀ´µÄĞÅÏ¢£¬½ÓÊÕµ½¿ªÍ·ÊÇ 'q' »ò 'Q' µÄĞÅÏ¢ÍË³ö³ÌĞò
 */
 #include <rtthread.h>
-#include <sys/socket.h> /* ä½¿ç”¨BSD socketï¼Œéœ€è¦åŒ…å«socket.hå¤´æ–‡ä»¶ */
+#include <sys/socket.h> /* Ê¹ÓÃBSD socket£¬ĞèÒª°üº¬socket.hÍ·ÎÄ¼ş */
 #include <netdb.h>
 #include <string.h>
 #include <finsh.h>
 
 #define BUFSZ   1024
 
-static const char send_data[] = "This is TCP Client from RT-Thread."; /* å‘é€ç”¨åˆ°çš„æ•°æ® */
+static const char send_data[] = "This is TCP Client from RT-Thread."; /* ·¢ËÍÓÃµ½µÄÊı¾İ */
 void tcpclient(int argc, char **argv)
 {
     int ret;
@@ -45,10 +45,10 @@ void tcpclient(int argc, char **argv)
     url = argv[1];
     port = strtoul(argv[2], 0, 10);
 
-    /* é€šè¿‡å‡½æ•°å…¥å£å‚æ•°urlè·å¾—hoståœ°å€ï¼ˆå¦‚æœæ˜¯åŸŸåï¼Œä¼šåšåŸŸåè§£æï¼‰ */
+    /* Í¨¹ıº¯ÊıÈë¿Ú²ÎÊıurl»ñµÃhostµØÖ·£¨Èç¹ûÊÇÓòÃû£¬»á×öÓòÃû½âÎö£© */
     host = gethostbyname(url);
 
-    /* åˆ†é…ç”¨äºå­˜æ”¾æ¥æ”¶æ•°æ®çš„ç¼“å†² */
+    /* ·ÖÅäÓÃÓÚ´æ·Å½ÓÊÕÊı¾İµÄ»º³å */
     recv_data = rt_malloc(BUFSZ);
     if (recv_data == RT_NULL)
     {
@@ -56,84 +56,84 @@ void tcpclient(int argc, char **argv)
         return;
     }
 
-    /* åˆ›å»ºä¸€ä¸ªsocketï¼Œç±»å‹æ˜¯SOCKET_STREAMï¼ŒTCPç±»å‹ */
+    /* ´´½¨Ò»¸ösocket£¬ÀàĞÍÊÇSOCKET_STREAM£¬TCPÀàĞÍ */
     if ((sock = socket(AF_INET, SOCK_STREAM, 0)) == -1)
     {
-        /* åˆ›å»ºsocketå¤±è´¥ */
+        /* ´´½¨socketÊ§°Ü */
         rt_kprintf("Socket error\n");
 
-        /* é‡Šæ”¾æ¥æ”¶ç¼“å†² */
+        /* ÊÍ·Å½ÓÊÕ»º³å */
         rt_free(recv_data);
         return;
     }
 
-    /* åˆå§‹åŒ–é¢„è¿æ¥çš„æœåŠ¡ç«¯åœ°å€ */
+    /* ³õÊ¼»¯Ô¤Á¬½ÓµÄ·şÎñ¶ËµØÖ· */
     server_addr.sin_family = AF_INET;
     server_addr.sin_port = htons(port);
     server_addr.sin_addr = *((struct in_addr *)host->h_addr);
     rt_memset(&(server_addr.sin_zero), 0, sizeof(server_addr.sin_zero));
 
-    /* è¿æ¥åˆ°æœåŠ¡ç«¯ */
+    /* Á¬½Óµ½·şÎñ¶Ë */
     if (connect(sock, (struct sockaddr *)&server_addr, sizeof(struct sockaddr)) == -1)
     {
-        /* è¿æ¥å¤±è´¥ */
+        /* Á¬½ÓÊ§°Ü */
         rt_kprintf("Connect fail!\n");
         closesocket(sock);
 
-        /*é‡Šæ”¾æ¥æ”¶ç¼“å†² */
+        /*ÊÍ·Å½ÓÊÕ»º³å */
         rt_free(recv_data);
         return;
     }
 
     while (1)
     {
-        /* ä»sockè¿æ¥ä¸­æ¥æ”¶æœ€å¤§BUFSZ - 1å­—èŠ‚æ•°æ® */
+        /* ´ÓsockÁ¬½ÓÖĞ½ÓÊÕ×î´óBUFSZ - 1×Ö½ÚÊı¾İ */
         bytes_received = recv(sock, recv_data, BUFSZ - 1, 0);
         if (bytes_received < 0)
         {
-            /* æ¥æ”¶å¤±è´¥ï¼Œå…³é—­è¿™ä¸ªè¿æ¥ */
+            /* ½ÓÊÕÊ§°Ü£¬¹Ø±ÕÕâ¸öÁ¬½Ó */
             closesocket(sock);
             rt_kprintf("\nreceived error,close the socket.\r\n");
 
-            /* é‡Šæ”¾æ¥æ”¶ç¼“å†² */
+            /* ÊÍ·Å½ÓÊÕ»º³å */
             rt_free(recv_data);
             break;
         }
         else if (bytes_received == 0)
         {
-            /* é»˜è®¤ recv ä¸ºé˜»å¡æ¨¡å¼ï¼Œæ­¤æ—¶æ”¶åˆ°0è®¤ä¸ºè¿æ¥å‡ºé”™ï¼Œå…³é—­è¿™ä¸ªè¿æ¥ */
+            /* Ä¬ÈÏ recv Îª×èÈûÄ£Ê½£¬´ËÊ±ÊÕµ½0ÈÏÎªÁ¬½Ó³ö´í£¬¹Ø±ÕÕâ¸öÁ¬½Ó */
             closesocket(sock);
             rt_kprintf("\nreceived error,close the socket.\r\n");
 
-            /* é‡Šæ”¾æ¥æ”¶ç¼“å†² */
+            /* ÊÍ·Å½ÓÊÕ»º³å */
             rt_free(recv_data);
             break;
         }
 
-        /* æœ‰æ¥æ”¶åˆ°æ•°æ®ï¼ŒæŠŠæœ«ç«¯æ¸…é›¶ */
+        /* ÓĞ½ÓÊÕµ½Êı¾İ£¬°ÑÄ©¶ËÇåÁã */
         recv_data[bytes_received] = '\0';
 
         if (strncmp(recv_data, "q", 1) == 0 || strncmp(recv_data, "Q", 1) == 0)
         {
-            /* å¦‚æœæ˜¯é¦–å­—æ¯æ˜¯qæˆ–Qï¼Œå…³é—­è¿™ä¸ªè¿æ¥ */
+            /* Èç¹ûÊÇÊ××ÖÄ¸ÊÇq»òQ£¬¹Ø±ÕÕâ¸öÁ¬½Ó */
             closesocket(sock);
             rt_kprintf("\n got a 'q' or 'Q',close the socket.\r\n");
 
-            /* é‡Šæ”¾æ¥æ”¶ç¼“å†² */
+            /* ÊÍ·Å½ÓÊÕ»º³å */
             rt_free(recv_data);
             break;
         }
         else
         {
-            /* åœ¨æ§åˆ¶ç»ˆç«¯æ˜¾ç¤ºæ”¶åˆ°çš„æ•°æ® */
+            /* ÔÚ¿ØÖÆÖÕ¶ËÏÔÊ¾ÊÕµ½µÄÊı¾İ */
             rt_kprintf("\nReceived data = %s ", recv_data);
         }
 
-        /* å‘é€æ•°æ®åˆ°sockè¿æ¥ */
+        /* ·¢ËÍÊı¾İµ½sockÁ¬½Ó */
         ret = send(sock, send_data, strlen(send_data), 0);
         if (ret < 0)
         {
-            /* æ¥æ”¶å¤±è´¥ï¼Œå…³é—­è¿™ä¸ªè¿æ¥ */
+            /* ½ÓÊÕÊ§°Ü£¬¹Ø±ÕÕâ¸öÁ¬½Ó */
             closesocket(sock);
             rt_kprintf("\nsend error,close the socket.\r\n");
 
@@ -142,7 +142,7 @@ void tcpclient(int argc, char **argv)
         }
         else if (ret == 0)
         {
-            /* æ‰“å°sendå‡½æ•°è¿”å›å€¼ä¸º0çš„è­¦å‘Šä¿¡æ¯ */
+            /* ´òÓ¡sendº¯Êı·µ»ØÖµÎª0µÄ¾¯¸æĞÅÏ¢ */
             rt_kprintf("\n Send warning,send function return 0.\r\n");
         }
     }

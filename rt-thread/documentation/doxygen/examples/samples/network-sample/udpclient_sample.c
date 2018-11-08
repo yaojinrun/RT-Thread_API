@@ -8,21 +8,21 @@
  * 
  */
 /*
- * ç¨‹åºæ¸…å•ï¼šudp å®¢æˆ·ç«¯
+ * ³ÌĞòÇåµ¥£ºudp ¿Í»§¶Ë
  *
- * è¿™æ˜¯ä¸€ä¸ª udp å®¢æˆ·ç«¯çš„ä¾‹ç¨‹
- * å¯¼å‡º udpclient å‘½ä»¤åˆ°æ§åˆ¶ç»ˆç«¯
- * å‘½ä»¤è°ƒç”¨æ ¼å¼ï¼šudpclient URL PORT [COUNT = 10]
- * URLï¼šæœåŠ¡å™¨åœ°å€  PORTï¼šç«¯å£å·  COUNTï¼šå¯é€‰å‚æ•° é»˜è®¤ä¸º 10 
- * ç¨‹åºåŠŸèƒ½ï¼šå‘é€ COUNT æ¡æ•°æ®åˆ°æœåŠ¡è¿œç«¯
+ * ÕâÊÇÒ»¸ö udp ¿Í»§¶ËµÄÀı³Ì
+ * µ¼³ö udpclient ÃüÁîµ½¿ØÖÆÖÕ¶Ë
+ * ÃüÁîµ÷ÓÃ¸ñÊ½£ºudpclient URL PORT [COUNT = 10]
+ * URL£º·şÎñÆ÷µØÖ·  PORT£º¶Ë¿ÚºÅ  COUNT£º¿ÉÑ¡²ÎÊı Ä¬ÈÏÎª 10 
+ * ³ÌĞò¹¦ÄÜ£º·¢ËÍ COUNT ÌõÊı¾İµ½·şÎñÔ¶¶Ë
 */
 #include <rtthread.h>
-#include <sys/socket.h> /* ä½¿ç”¨BSD socketï¼Œéœ€è¦åŒ…å«sockets.hå¤´æ–‡ä»¶ */
+#include <sys/socket.h> /* Ê¹ÓÃBSD socket£¬ĞèÒª°üº¬sockets.hÍ·ÎÄ¼ş */
 #include <netdb.h>
 #include <string.h>
 #include <finsh.h>
 
-const char send_data[] = "This is UDP Client from RT-Thread.\n"; /* å‘é€ç”¨åˆ°çš„æ•°æ® */
+const char send_data[] = "This is UDP Client from RT-Thread.\n"; /* ·¢ËÍÓÃµ½µÄÊı¾İ */
 void udpclient(int argc, char **argv)
 {
     int sock, port, count;
@@ -45,37 +45,37 @@ void udpclient(int argc, char **argv)
     else
         count = 10;
 
-    /* é€šè¿‡å‡½æ•°å…¥å£å‚æ•°urlè·å¾—hoståœ°å€ï¼ˆå¦‚æœæ˜¯åŸŸåï¼Œä¼šåšåŸŸåè§£æï¼‰ */
+    /* Í¨¹ıº¯ÊıÈë¿Ú²ÎÊıurl»ñµÃhostµØÖ·£¨Èç¹ûÊÇÓòÃû£¬»á×öÓòÃû½âÎö£© */
     host = (struct hostent *) gethostbyname(url);
 
-    /* åˆ›å»ºä¸€ä¸ªsocketï¼Œç±»å‹æ˜¯SOCK_DGRAMï¼ŒUDPç±»å‹ */
+    /* ´´½¨Ò»¸ösocket£¬ÀàĞÍÊÇSOCK_DGRAM£¬UDPÀàĞÍ */
     if ((sock = socket(AF_INET, SOCK_DGRAM, 0)) == -1)
     {
         rt_kprintf("Socket error\n");
         return;
     }
 
-    /* åˆå§‹åŒ–é¢„è¿æ¥çš„æœåŠ¡ç«¯åœ°å€ */
+    /* ³õÊ¼»¯Ô¤Á¬½ÓµÄ·şÎñ¶ËµØÖ· */
     server_addr.sin_family = AF_INET;
     server_addr.sin_port = htons(port);
     server_addr.sin_addr = *((struct in_addr *)host->h_addr);
     rt_memset(&(server_addr.sin_zero), 0, sizeof(server_addr.sin_zero));
 
-    /* æ€»è®¡å‘é€countæ¬¡æ•°æ® */
+    /* ×Ü¼Æ·¢ËÍcount´ÎÊı¾İ */
     while (count)
     {
-        /* å‘é€æ•°æ®åˆ°æœåŠ¡è¿œç«¯ */
+        /* ·¢ËÍÊı¾İµ½·şÎñÔ¶¶Ë */
         sendto(sock, send_data, strlen(send_data), 0,
                (struct sockaddr *)&server_addr, sizeof(struct sockaddr));
 
-        /* çº¿ç¨‹ä¼‘çœ ä¸€æ®µæ—¶é—´ */
+        /* Ïß³ÌĞİÃßÒ»¶ÎÊ±¼ä */
         rt_thread_delay(50);
 
-        /* è®¡æ•°å€¼å‡ä¸€ */
+        /* ¼ÆÊıÖµ¼õÒ» */
         count --;
     }
 
-    /* å…³é—­è¿™ä¸ªsocket */
+    /* ¹Ø±ÕÕâ¸ösocket */
     closesocket(sock);
 }
 

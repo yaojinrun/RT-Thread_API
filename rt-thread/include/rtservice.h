@@ -41,7 +41,7 @@ extern "C" {
 /*@{*/
 
 /**
- * @brief 获取type结构体中member成员在这个结构体中的偏移。
+ * @brief 获取type结构体中member成员在这个结构体中的偏移
  */
 #define rt_container_of(ptr, type, member) \
     ((type *)((char *)(ptr) - (unsigned long)(&((type *)0)->member)))
@@ -132,6 +132,7 @@ rt_inline unsigned int rt_list_len(const rt_list_t *l)
 
 /**
  * @brief 获取结构体变量的地址
+ *
  * @param node 入口点
  * @param type 结构体的类型
  * @param member 结构体中链表的成员名
@@ -141,6 +142,7 @@ rt_inline unsigned int rt_list_len(const rt_list_t *l)
 
 /**
  * @brief 循环遍历head链表中每一个pos中的member成员
+ *
  * @param pos:    指向宿主结构的指针，在for循环中是一个迭代变量
  * @param head:   链表头
  * @param member: 结构体中链表的成员名
@@ -156,6 +158,7 @@ rt_inline unsigned int rt_list_len(const rt_list_t *l)
  * 所以如果在遍历链表的时候可能要删除链表中的当前项，用list_for_each_entry_safe
  * 可以安全的删除，而不会影响接下来的遍历过程（用n 指针可以继续完成接下来的遍历， 
  * 而list_for_each_entry则无法继续遍历）。
+ *
  * @param pos:    指向宿主结构的指针，在for循环中是一个迭代变量
  * @param n:      用于临时存储下一个数据结构的指针变量
  * @param head:   链表头
@@ -306,7 +309,8 @@ rt_inline int rt_slist_isempty(rt_slist_t *l)
     rt_container_of(node, type, member)
 
 /**
- * rt_slist_for_each_entry  -   循环遍历单向链表head中每一个pos中的member成员
+ * @brief 循环遍历单向链表head中每一个pos中的member成员
+ *
  * @param pos:    指向宿主结构的指针，在for循环中是一个迭代变量
  * @param head:   单链表的链表头
  * @param member: 结构体中链表的成员名
@@ -317,7 +321,7 @@ rt_inline int rt_slist_isempty(rt_slist_t *l)
          pos = rt_slist_entry(pos->member.next, typeof(*pos), member))
 
 /**
- * rt_slist_first_entry - 获取链表中的第一个元素
+ * @brief 获取链表中的第一个元素
  * @param ptr:    链表头
  * @param type:   结构体类型
  * @param member: 结构体中链表的成员名

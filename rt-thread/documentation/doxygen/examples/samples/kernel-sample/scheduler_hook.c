@@ -9,8 +9,8 @@
  */ 
  
  /*
- * ç¨‹åºæ¸…å•ï¼šè°ƒåº¦å™¨é’©å­
- * åœ¨è°ƒåº¦å™¨é’©å­ä¸­æ‰“å°çº¿ç¨‹åˆ‡æ¢ä¿¡æ¯
+ * ³ÌĞòÇåµ¥£ºµ÷¶ÈÆ÷¹³×Ó
+ * ÔÚµ÷¶ÈÆ÷¹³×ÓÖĞ´òÓ¡Ïß³ÌÇĞ»»ĞÅÏ¢
  */
 
 #include <rtthread.h>
@@ -19,10 +19,10 @@
 #define THREAD_PRIORITY	    20
 #define THREAD_TIMESLICE    10
 
-/* é’ˆå¯¹æ¯ä¸ªçº¿ç¨‹çš„è®¡æ•°å™¨ */
+/* Õë¶ÔÃ¿¸öÏß³ÌµÄ¼ÆÊıÆ÷ */
 volatile rt_uint32_t count[2];
 
-/* çº¿ç¨‹1ã€2å…±ç”¨ä¸€ä¸ªå…¥å£ï¼Œä½†å…¥å£å‚æ•°ä¸åŒ */
+/* Ïß³Ì1¡¢2¹²ÓÃÒ»¸öÈë¿Ú£¬µ«Èë¿Ú²ÎÊı²»Í¬ */
 static void thread_entry(void* parameter)
 {
     rt_uint32_t value;
@@ -31,7 +31,7 @@ static void thread_entry(void* parameter)
     while (1)
     {
         rt_kprintf("thread %d is running\n", value);
-        rt_thread_mdelay(1000); //å»¶æ—¶ä¸€æ®µæ—¶é—´
+        rt_thread_mdelay(1000); //ÑÓÊ±Ò»¶ÎÊ±¼ä
     }
 }
 
@@ -45,10 +45,10 @@ static void hook_of_scheduler(struct rt_thread* from, struct rt_thread* to)
 
 int scheduler_hook(void)
 {   
-    /* è®¾ç½®è°ƒåº¦å™¨é’©å­ */
+    /* ÉèÖÃµ÷¶ÈÆ÷¹³×Ó */
     rt_scheduler_sethook(hook_of_scheduler);
     
-    /* åˆ›å»ºçº¿ç¨‹1 */
+    /* ´´½¨Ïß³Ì1 */
     tid1 = rt_thread_create("thread1", 
                             thread_entry, (void*)1, 
                             THREAD_STACK_SIZE, 
@@ -56,7 +56,7 @@ int scheduler_hook(void)
     if (tid1 != RT_NULL) 
         rt_thread_startup(tid1);
 
-    /* åˆ›å»ºçº¿ç¨‹2 */
+    /* ´´½¨Ïß³Ì2 */
     tid2 = rt_thread_create("thread2", 
                             thread_entry, (void*)2, 
                             THREAD_STACK_SIZE, 
@@ -66,5 +66,5 @@ int scheduler_hook(void)
     return 0;
 }
 
-/* å¯¼å‡ºåˆ° msh å‘½ä»¤åˆ—è¡¨ä¸­ */
+/* µ¼³öµ½ msh ÃüÁîÁĞ±íÖĞ */
 MSH_CMD_EXPORT(scheduler_hook, scheduler_hook sample);

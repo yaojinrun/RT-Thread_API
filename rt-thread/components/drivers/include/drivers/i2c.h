@@ -47,7 +47,7 @@ extern "C" {
 #define RT_I2C_NO_READ_ACK      (1u << 6)  	/**< @brief 读的时候不发送ACK */
 
 /**
- * @brief I2C消息结构体
+ * @brief I2C消息
  */
 struct rt_i2c_msg
 {
@@ -77,7 +77,7 @@ struct rt_i2c_bus_device_ops
 
 /*for i2c bus driver*/
 /**
- * @brief I2C总线设备结构体
+ * @brief I2C总线设备控制块
  */
 struct rt_i2c_bus_device
 {

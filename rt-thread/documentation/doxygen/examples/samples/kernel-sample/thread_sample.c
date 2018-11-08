@@ -9,10 +9,10 @@
  */ 
 
 /*
- * ç¨‹åºæ¸…å•ï¼šåˆ›å»ºã€åˆå§‹åŒ–/è„±ç¦»çº¿ç¨‹
+ * ³ÌĞòÇåµ¥£º´´½¨¡¢³õÊ¼»¯/ÍÑÀëÏß³Ì
  *
- * è¿™ä¸ªä¾‹å­ä¼šåˆ›å»ºä¸¤ä¸ªçº¿ç¨‹ï¼Œä¸€ä¸ªåŠ¨æ€çº¿ç¨‹ï¼Œä¸€ä¸ªé™æ€çº¿ç¨‹ã€‚
- * é™æ€çº¿ç¨‹åœ¨è¿è¡Œå®Œæ¯•åè‡ªåŠ¨è¢«ç³»ç»Ÿè„±ç¦»ï¼ŒåŠ¨æ€çº¿ç¨‹ä¸€ç›´æ‰“å°è®¡æ•°ã€‚
+ * Õâ¸öÀı×Ó»á´´½¨Á½¸öÏß³Ì£¬Ò»¸ö¶¯Ì¬Ïß³Ì£¬Ò»¸ö¾²Ì¬Ïß³Ì¡£
+ * ¾²Ì¬Ïß³ÌÔÚÔËĞĞÍê±Ïºó×Ô¶¯±»ÏµÍ³ÍÑÀë£¬¶¯Ì¬Ïß³ÌÒ»Ö±´òÓ¡¼ÆÊı¡£
  */
 #include <rtthread.h>
 
@@ -22,14 +22,14 @@
 
 static rt_thread_t tid1 = RT_NULL;
 
-/* çº¿ç¨‹1çš„å…¥å£å‡½æ•° */
+/* Ïß³Ì1µÄÈë¿Úº¯Êı */
 static void thread1_entry(void *parameter)
 {
     rt_uint32_t count = 0;
 
     while (1)
     {
-        /* çº¿ç¨‹1é‡‡ç”¨ä½ä¼˜å…ˆçº§è¿è¡Œï¼Œä¸€ç›´æ‰“å°è®¡æ•°å€¼ */
+        /* Ïß³Ì1²ÉÓÃµÍÓÅÏÈ¼¶ÔËĞĞ£¬Ò»Ö±´òÓ¡¼ÆÊıÖµ */
         rt_kprintf("thread1 count: %d\n", count ++);
         rt_thread_mdelay(500);
     }
@@ -39,36 +39,36 @@ ALIGN(RT_ALIGN_SIZE)
 static char thread2_stack[1024];
 static struct rt_thread thread2;
 
-/* çº¿ç¨‹2å…¥å£ */
+/* Ïß³Ì2Èë¿Ú */
 static void thread2_entry(void *param)
 {
     rt_uint32_t count = 0;
 
-    /* çº¿ç¨‹2æ‹¥æœ‰è¾ƒé«˜çš„ä¼˜å…ˆçº§ï¼Œä»¥æŠ¢å çº¿ç¨‹1è€Œè·å¾—æ‰§è¡Œ */
+    /* Ïß³Ì2ÓµÓĞ½Ï¸ßµÄÓÅÏÈ¼¶£¬ÒÔÇÀÕ¼Ïß³Ì1¶ø»ñµÃÖ´ĞĞ */
     for (count = 0; count < 10 ; count++)
     {
-        /* çº¿ç¨‹2æ‰“å°è®¡æ•°å€¼ */
+        /* Ïß³Ì2´òÓ¡¼ÆÊıÖµ */
         rt_kprintf("thread2 count: %d\n", count);
     }
     rt_kprintf("thread2 exit\n");
-    /* çº¿ç¨‹2è¿è¡Œç»“æŸåä¹Ÿå°†è‡ªåŠ¨è¢«ç³»ç»Ÿåˆ é™¤
-    (çº¿ç¨‹æ§åˆ¶å—å’Œçº¿ç¨‹æ ˆä¾ç„¶åœ¨idleçº¿ç¨‹ä¸­é‡Šæ”¾) */
+    /* Ïß³Ì2ÔËĞĞ½áÊøºóÒ²½«×Ô¶¯±»ÏµÍ³É¾³ı
+    (Ïß³Ì¿ØÖÆ¿éºÍÏß³ÌÕ»ÒÀÈ»ÔÚidleÏß³ÌÖĞÊÍ·Å) */
 }
 
-/* çº¿ç¨‹ç¤ºä¾‹ */
+/* Ïß³ÌÊ¾Àı */
 int thread_sample(void)
 {
-    /* åˆ›å»ºçº¿ç¨‹1ï¼Œåç§°æ˜¯thread1ï¼Œå…¥å£æ˜¯thread1_entry*/
+    /* ´´½¨Ïß³Ì1£¬Ãû³ÆÊÇthread1£¬Èë¿ÚÊÇthread1_entry*/
     tid1 = rt_thread_create("thread1",
                             thread1_entry, RT_NULL,
                             THREAD_STACK_SIZE,
                             THREAD_PRIORITY, THREAD_TIMESLICE);
     
-    /* å¦‚æœè·å¾—çº¿ç¨‹æ§åˆ¶å—ï¼Œå¯åŠ¨è¿™ä¸ªçº¿ç¨‹ */
+    /* Èç¹û»ñµÃÏß³Ì¿ØÖÆ¿é£¬Æô¶¯Õâ¸öÏß³Ì */
     if (tid1 != RT_NULL)
         rt_thread_startup(tid1);
 
-    /* åˆå§‹åŒ–çº¿ç¨‹2ï¼Œåç§°æ˜¯thread2ï¼Œå…¥å£æ˜¯thread2_entry */
+    /* ³õÊ¼»¯Ïß³Ì2£¬Ãû³ÆÊÇthread2£¬Èë¿ÚÊÇthread2_entry */
     rt_thread_init(&thread2,
                    "thread2",
                    thread2_entry,
@@ -81,5 +81,5 @@ int thread_sample(void)
     return 0;
 }
 
-/* å¯¼å‡ºåˆ° msh å‘½ä»¤åˆ—è¡¨ä¸­ */
+/* µ¼³öµ½ msh ÃüÁîÁĞ±íÖĞ */
 MSH_CMD_EXPORT(thread_sample, thread sample);

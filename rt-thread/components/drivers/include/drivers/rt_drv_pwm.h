@@ -38,7 +38,7 @@
 /**@{*/
 
 /**
- * @brief PWM设备参数配置结构体
+ * @brief PWM设备配置参数
  */
 struct rt_pwm_configuration
 {
@@ -56,6 +56,9 @@ struct rt_pwm_ops
     rt_err_t (*control)(struct rt_device_pwm *device, int cmd, void *arg);	/**< @brief PWM配置更改函数 */
 };
 
+/**
+ * @brief PWM设备控制块
+ */
 struct rt_device_pwm
 {
     struct rt_device parent;			/**< @brief 继承自 rt_device */

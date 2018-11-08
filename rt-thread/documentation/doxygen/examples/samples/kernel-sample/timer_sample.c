@@ -9,24 +9,24 @@
  */ 
 
 /*
-* ç¨‹åºæ¸…å•ï¼šå®šæ—¶å™¨ä¾‹ç¨‹
+* ³ÌĞòÇåµ¥£º¶¨Ê±Æ÷Àı³Ì
 *
-* è¿™ä¸ªä¾‹ç¨‹ä¼šåˆ›å»ºä¸¤ä¸ªåŠ¨æ€å®šæ—¶å™¨ï¼Œä¸€ä¸ªæ˜¯å•æ¬¡å®šæ—¶ï¼Œä¸€ä¸ªæ˜¯å‘¨æœŸæ€§å®šæ—¶
-* å¹¶è®©å‘¨æœŸå®šæ—¶å™¨è¿è¡Œä¸€æ®µæ—¶é—´ååœæ­¢è¿è¡Œ
+* Õâ¸öÀı³Ì»á´´½¨Á½¸ö¶¯Ì¬¶¨Ê±Æ÷£¬Ò»¸öÊÇµ¥´Î¶¨Ê±£¬Ò»¸öÊÇÖÜÆÚĞÔ¶¨Ê±
+* ²¢ÈÃÖÜÆÚ¶¨Ê±Æ÷ÔËĞĞÒ»¶ÎÊ±¼äºóÍ£Ö¹ÔËĞĞ
 */
 #include <rtthread.h>
 
-/* å®šæ—¶å™¨çš„æ§åˆ¶å— */
+/* ¶¨Ê±Æ÷µÄ¿ØÖÆ¿é */
 static rt_timer_t timer1;
 static rt_timer_t timer2;
 static int cnt = 0;
 
-/* å®šæ—¶å™¨1è¶…æ—¶å‡½æ•° */
+/* ¶¨Ê±Æ÷1³¬Ê±º¯Êı */
 static void timeout1(void *parameter)
 {
     rt_kprintf("periodic timer is timeout %d\n", cnt);
 
-    /* è¿è¡Œç¬¬10æ¬¡ï¼Œåœæ­¢å‘¨æœŸå®šæ—¶å™¨ */
+    /* ÔËĞĞµÚ10´Î£¬Í£Ö¹ÖÜÆÚ¶¨Ê±Æ÷ */
     if (cnt++ >= 9)
     {
         rt_timer_stop(timer1);
@@ -34,7 +34,7 @@ static void timeout1(void *parameter)
     }
 }
 
-/* å®šæ—¶å™¨2è¶…æ—¶å‡½æ•° */
+/* ¶¨Ê±Æ÷2³¬Ê±º¯Êı */
 static void timeout2(void *parameter)
 {
     rt_kprintf("one shot timer is timeout\n");
@@ -42,26 +42,26 @@ static void timeout2(void *parameter)
 
 int timer_sample(void)
 {
-    /* åˆ›å»ºå®šæ—¶å™¨1  å‘¨æœŸå®šæ—¶å™¨ */
+    /* ´´½¨¶¨Ê±Æ÷1  ÖÜÆÚ¶¨Ê±Æ÷ */
     timer1 = rt_timer_create("timer1", timeout1,
                              RT_NULL, 10,
                              RT_TIMER_FLAG_PERIODIC);
 
-    /* å¯åŠ¨å®šæ—¶å™¨1 */
+    /* Æô¶¯¶¨Ê±Æ÷1 */
     if (timer1 != RT_NULL) 
         rt_timer_start(timer1);
 
-    /* åˆ›å»ºå®šæ—¶å™¨2 å•æ¬¡å®šæ—¶å™¨ */
+    /* ´´½¨¶¨Ê±Æ÷2 µ¥´Î¶¨Ê±Æ÷ */
     timer2 = rt_timer_create("timer2", timeout2,
                              RT_NULL,  30,
                              RT_TIMER_FLAG_ONE_SHOT);
 
-    /* å¯åŠ¨å®šæ—¶å™¨2 */
+    /* Æô¶¯¶¨Ê±Æ÷2 */
     if (timer2 != RT_NULL) 
         rt_timer_start(timer2);
         
     return 0;
 }
 
-/* å¯¼å‡ºåˆ° msh å‘½ä»¤åˆ—è¡¨ä¸­ */
+/* µ¼³öµ½ msh ÃüÁîÁĞ±íÖĞ */
 MSH_CMD_EXPORT(timer_sample, timer sample);

@@ -117,7 +117,7 @@
  */
 
 /**
- * @defgroup WLAN WLAN ¿ò¼Ü
+ * @defgroup WLAN WLAN¿ò¼Ü
  *
  * @brief WLAN¿ò¼Ü½Ó¿Ú
  *

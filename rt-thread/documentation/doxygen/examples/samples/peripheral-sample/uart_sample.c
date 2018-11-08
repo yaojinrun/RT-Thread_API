@@ -8,24 +8,24 @@
  * 2018-08-15     misonyo      first implementation.
  */
 /* 
- * ç¨‹åºæ¸…å•ï¼šè¿™æ˜¯ä¸€ä¸ª ä¸²å£ è®¾å¤‡ä½¿ç”¨ä¾‹ç¨‹
- * ä¾‹ç¨‹å¯¼å‡ºäº† uart_sample å‘½ä»¤åˆ°æ§åˆ¶ç»ˆç«¯
- * å‘½ä»¤è°ƒç”¨æ ¼å¼ï¼šuart_sample uart2
- * å‘½ä»¤è§£é‡Šï¼šå‘½ä»¤ç¬¬äºŒä¸ªå‚æ•°æ˜¯è¦ä½¿ç”¨çš„ä¸²å£è®¾å¤‡åç§°ï¼Œä¸ºç©ºåˆ™ä½¿ç”¨é»˜è®¤çš„ä¸²å£è®¾å¤‡
- * ç¨‹åºåŠŸèƒ½ï¼šé€šè¿‡ä¸²å£è¾“å‡ºå­—ç¬¦ä¸²"hello RT-Thread!"ï¼Œç„¶åé”™ä½è¾“å‡ºè¾“å…¥çš„å­—ç¬¦
+ * ³ÌĞòÇåµ¥£ºÕâÊÇÒ»¸ö ´®¿Ú Éè±¸Ê¹ÓÃÀı³Ì
+ * Àı³Ìµ¼³öÁË uart_sample ÃüÁîµ½¿ØÖÆÖÕ¶Ë
+ * ÃüÁîµ÷ÓÃ¸ñÊ½£ºuart_sample uart2
+ * ÃüÁî½âÊÍ£ºÃüÁîµÚ¶ş¸ö²ÎÊıÊÇÒªÊ¹ÓÃµÄ´®¿ÚÉè±¸Ãû³Æ£¬Îª¿ÕÔòÊ¹ÓÃÄ¬ÈÏµÄ´®¿ÚÉè±¸
+ * ³ÌĞò¹¦ÄÜ£ºÍ¨¹ı´®¿ÚÊä³ö×Ö·û´®"hello RT-Thread!"£¬È»ºó´íÎ»Êä³öÊäÈëµÄ×Ö·û
 */
 
 #include <rtthread.h>
 
 #define SAMPLE_UART_NAME       "uart2"
 
-/* ç”¨äºæ¥æ”¶æ¶ˆæ¯çš„ä¿¡å·é‡ */
+/* ÓÃÓÚ½ÓÊÕÏûÏ¢µÄĞÅºÅÁ¿ */
 static struct rt_semaphore rx_sem;
 static char uart_name[RT_NAME_MAX];
-/* æ¥æ”¶æ•°æ®å›è°ƒå‡½æ•° */
+/* ½ÓÊÕÊı¾İ»Øµ÷º¯Êı */
 static rt_err_t uart_input(rt_device_t dev, rt_size_t size)
 {
-    /* ä¸²å£æ¥æ”¶åˆ°æ•°æ®åäº§ç”Ÿä¸­æ–­ï¼Œè°ƒç”¨æ­¤å›è°ƒå‡½æ•°ï¼Œç„¶åå‘é€æ¥æ”¶ä¿¡å·é‡ */
+    /* ´®¿Ú½ÓÊÕµ½Êı¾İºó²úÉúÖĞ¶Ï£¬µ÷ÓÃ´Ë»Øµ÷º¯Êı£¬È»ºó·¢ËÍ½ÓÊÕĞÅºÅÁ¿ */
     rt_sem_release(&rx_sem);
 
     return RT_EOK;
@@ -37,28 +37,28 @@ static void serial_thread_entry(void* parameter)
     rt_device_t serial;
     char str[] = "hello RT-Thread!\r\n";
 
-    /* æŸ¥æ‰¾ç³»ç»Ÿä¸­çš„ä¸²å£è®¾å¤‡ */
+    /* ²éÕÒÏµÍ³ÖĞµÄ´®¿ÚÉè±¸ */
     serial = rt_device_find(uart_name);
 
     if (serial != RT_NULL)
     {
         rt_sem_init(&rx_sem, "rx_sem", 0, RT_IPC_FLAG_FIFO);
-        /* ä»¥è¯»å†™åŠä¸­æ–­æ¥æ”¶æ–¹å¼æ‰“å¼€ä¸²å£è®¾å¤‡ */
+        /* ÒÔ¶ÁĞ´¼°ÖĞ¶Ï½ÓÊÕ·½Ê½´ò¿ª´®¿ÚÉè±¸ */
         rt_device_open(serial, RT_DEVICE_OFLAG_RDWR|RT_DEVICE_FLAG_INT_RX);
-        /* è®¾ç½®æ¥æ”¶å›è°ƒå‡½æ•° */
+        /* ÉèÖÃ½ÓÊÕ»Øµ÷º¯Êı */
         rt_device_set_rx_indicate(serial, uart_input);
-        /* å‘é€å­—ç¬¦ä¸² */
+        /* ·¢ËÍ×Ö·û´® */
         rt_device_write(serial, 0, str, (sizeof(str) - 1));
         
         while (1)
         {
-            /* ä»ä¸²å£è¯»å–ä¸€ä¸ªå­—èŠ‚çš„æ•°æ®ï¼Œæ²¡æœ‰è¯»å–åˆ°åˆ™ç­‰å¾…æ¥æ”¶ä¿¡å·é‡ */
+            /* ´Ó´®¿Ú¶ÁÈ¡Ò»¸ö×Ö½ÚµÄÊı¾İ£¬Ã»ÓĞ¶ÁÈ¡µ½ÔòµÈ´ı½ÓÊÕĞÅºÅÁ¿ */
             while (rt_device_read(serial, -1, &ch, 1) != 1)
             {
-                /* é˜»å¡ç­‰å¾…æ¥æ”¶ä¿¡å·é‡ï¼Œç­‰åˆ°ä¿¡å·é‡åå†æ¬¡è¯»å–æ•°æ® */
+                /* ×èÈûµÈ´ı½ÓÊÕĞÅºÅÁ¿£¬µÈµ½ĞÅºÅÁ¿ºóÔÙ´Î¶ÁÈ¡Êı¾İ */
                 rt_sem_take(&rx_sem, RT_WAITING_FOREVER);
             }
-            /* è¯»å–åˆ°çš„æ•°æ®é€šè¿‡ä¸²å£é”™ä½è¾“å‡º */
+            /* ¶ÁÈ¡µ½µÄÊı¾İÍ¨¹ı´®¿Ú´íÎ»Êä³ö */
             ch = ch + 1;
             rt_device_write(serial, 0, &ch, 1);
         }
@@ -80,13 +80,13 @@ static void uart_sample(int argc,char *argv[])
         rt_strncpy(uart_name, SAMPLE_UART_NAME, RT_NAME_MAX);
     }
 
-    /* åˆ›å»º serial çº¿ç¨‹ */
+    /* ´´½¨ serial Ïß³Ì */
     rt_thread_t thread = rt_thread_create("serial",serial_thread_entry, RT_NULL, 1024, 25, 10);
-    /* åˆ›å»ºæˆåŠŸåˆ™å¯åŠ¨çº¿ç¨‹ */
+    /* ´´½¨³É¹¦ÔòÆô¶¯Ïß³Ì */
     if (thread!= RT_NULL)
     {
         rt_thread_startup(thread);
     }
 }
-/* å¯¼å‡ºåˆ° msh å‘½ä»¤åˆ—è¡¨ä¸­ */
+/* µ¼³öµ½ msh ÃüÁîÁĞ±íÖĞ */
 MSH_CMD_EXPORT(uart_sample, uart device sample);

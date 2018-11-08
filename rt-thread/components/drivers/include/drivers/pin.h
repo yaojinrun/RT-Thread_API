@@ -68,7 +68,7 @@ struct rt_device_pin
 #define PIN_IRQ_PIN_NONE                -1		/**< @brief 引脚无中断 */
 
 /**
- * @brief 引脚模式配置结构体
+ * @brief 引脚模式信息
  */
 struct rt_device_pin_mode
 {
@@ -77,7 +77,7 @@ struct rt_device_pin_mode
 };
 
 /**
- * @brief 引脚状态结构体
+ * @brief 引脚状态信息
  */
 struct rt_device_pin_status
 {
@@ -86,7 +86,7 @@ struct rt_device_pin_status
 };
 
 /**
- * @brief 引脚中断配置结构体
+ * @brief 引脚中断信息
  */
 struct rt_pin_irq_hdr
 {
@@ -126,7 +126,7 @@ struct rt_pin_ops
 int rt_device_pin_register(const char *name, const struct rt_pin_ops *ops, void *user_data);
 
 /**
- * @brief 设置引脚设置
+ * @brief 设置引脚模式
  *
  * 此函数可以设定指定引脚的工作模式。
  *
@@ -155,7 +155,7 @@ void rt_pin_mode(rt_base_t pin, rt_base_t mode);
 void rt_pin_write(rt_base_t pin, rt_base_t value);
 
 /**
- * @brief 读引脚电平
+ * @brief 读取引脚电平
  *
  * 该函数可以读取指定引脚的当前电平。
  *

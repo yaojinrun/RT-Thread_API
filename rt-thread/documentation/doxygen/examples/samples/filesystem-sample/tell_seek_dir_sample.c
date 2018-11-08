@@ -8,17 +8,17 @@
  * 
  */
 /*
- * 程序清单：保存与设置读取目录位置
+ * �����嵥�����������ö�ȡĿ¼λ��
  *
- * 程序会创建一个操作文件的函数并导出到msh命令列表
- * 在函数中调用 telldir() 函数
- * off_t telldir(DIR *d); 获取目录流的读取位置
- * void seekdir(DIR *d, off_t offset); 设置下次读取目录的位置
+ * ����ᴴ��һ�������ļ��ĺ�����������msh�����б�
+ * �ں����е��� telldir() ����
+ * off_t telldir(DIR *d); ��ȡĿ¼���Ķ�ȡλ��
+ * void seekdir(DIR *d, off_t offset); �����´ζ�ȡĿ¼��λ��
 */
 #include <rtthread.h>
-#include <dfs_posix.h> /* 当需要使用文件操作时，需要包含这个头文件 */
+#include <dfs_posix.h> /* ����Ҫʹ���ļ�����ʱ����Ҫ�������ͷ�ļ� */
 
-/* 假设文件操作是在一个线程中完成 */
+/* �����ļ���������һ���߳������ */
 static void telldir_sample(void)
 {
     DIR *dirp;
@@ -27,13 +27,13 @@ static void telldir_sample(void)
     int i = 0;
     struct dirent *dp;
 
-    /* 打开根目录 */
+    /* �򿪸�Ŀ¼ */
     rt_kprintf("the directory is:\n");
     dirp = opendir("/");
     
     for (dp = readdir(dirp); dp != RT_NULL; dp = readdir(dirp))
     {
-        /* 保存第三个目录项的目录指针*/
+        /* ���������Ŀ¼���Ŀ¼ָ��*/
         i++;
         if (i == 3)
             save3 = telldir(dirp);
@@ -41,25 +41,25 @@ static void telldir_sample(void)
         rt_kprintf("%s\n", dp->d_name);
     }
 
-    /* 回到刚才保存的第三个目录项的目录指针*/
+    /* �ص��ղű���ĵ�����Ŀ¼���Ŀ¼ָ��*/
     seekdir(dirp, save3);
 
-    /* 检查当前目录指针是否等于保存过的第三个目录项的指针. */
+    /* ��鵱ǰĿ¼ָ���Ƿ���ڱ�����ĵ�����Ŀ¼���ָ��. */
     cur = telldir(dirp);
     if (cur != save3)
     {
         rt_kprintf("seekdir (d, %ld); telldir (d) == %ld\n", save3, cur);
     }
 
-    /* 从第三个目录项开始打印*/
+    /* �ӵ�����Ŀ¼�ʼ��ӡ*/
     rt_kprintf("the result of tell_seek_dir is:\n");
     for (dp = readdir(dirp); dp != NULL; dp = readdir(dirp))
     {
         rt_kprintf("%s\n", dp->d_name);
     }
 
-    /* 关闭目录*/
+    /* �ر�Ŀ¼*/
     closedir(dirp);
 }
-/* 导出到 msh 命令列表中 */
+/* ������ msh �����б��� */
 MSH_CMD_EXPORT(telldir_sample, telldir sample);

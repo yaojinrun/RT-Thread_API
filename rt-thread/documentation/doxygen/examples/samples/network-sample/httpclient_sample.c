@@ -11,19 +11,19 @@
  * 2018-09-05     flybreak     Upgrade API to webclient latest version
  */
 
-#include <webclient.h>  /* ä½¿ç”¨ HTTP åè®®ä¸æœåŠ¡å™¨é€šä¿¡éœ€è¦åŒ…å«æ­¤å¤´æ–‡ä»¶ */
-#include <sys/socket.h> /* ä½¿ç”¨BSD socketï¼Œéœ€è¦åŒ…å«socket.hå¤´æ–‡ä»¶ */
+#include <webclient.h>  /* Ê¹ÓÃ HTTP Ğ­ÒéÓë·şÎñÆ÷Í¨ĞÅĞèÒª°üº¬´ËÍ·ÎÄ¼ş */
+#include <sys/socket.h> /* Ê¹ÓÃBSD socket£¬ĞèÒª°üº¬socket.hÍ·ÎÄ¼ş */
 #include <netdb.h>
 #include <cJSON.h>
 #include <finsh.h>
 
-#define GET_HEADER_BUFSZ        1024        //å¤´éƒ¨å¤§å°
-#define GET_RESP_BUFSZ          1024        //å“åº”ç¼“å†²åŒºå¤§å°
-#define GET_URL_LEN_MAX         256         //ç½‘å€æœ€å¤§é•¿åº¦
-#define GET_URI                 "http://mobile.weather.com.cn/data/sk/%s.html" //è·å–å¤©æ°”çš„ API
-#define AREA_ID                 "101021300" //ä¸Šæµ·æµ¦ä¸œåœ°åŒº ID
+#define GET_HEADER_BUFSZ        1024        //Í·²¿´óĞ¡
+#define GET_RESP_BUFSZ          1024        //ÏìÓ¦»º³åÇø´óĞ¡
+#define GET_URL_LEN_MAX         256         //ÍøÖ·×î´ó³¤¶È
+#define GET_URI                 "http://mobile.weather.com.cn/data/sk/%s.html" //»ñÈ¡ÌìÆøµÄ API
+#define AREA_ID                 "101021300" //ÉÏº£ÆÖ¶«µØÇø ID
 
-/* å¤©æ°”æ•°æ®è§£æ */
+/* ÌìÆøÊı¾İ½âÎö */
 void weather_data_parse(rt_uint8_t *data)
 {
     cJSON *root = RT_NULL, *object = RT_NULL, *item = RT_NULL;
@@ -69,17 +69,17 @@ void weather(int argc, char **argv)
     int content_length = -1, bytes_read = 0;
     int content_pos = 0;
 
-    /* ä¸º weather_url åˆ†é…ç©ºé—´ */
+    /* Îª weather_url ·ÖÅä¿Õ¼ä */
     weather_url = rt_calloc(1, GET_URL_LEN_MAX);
     if (weather_url == RT_NULL)
     {
         rt_kprintf("No memory for weather_url!\n");
         goto __exit;
     }
-    /* æ‹¼æ¥ GET ç½‘å€ */
+    /* Æ´½Ó GET ÍøÖ· */
     rt_snprintf(weather_url, GET_URL_LEN_MAX, GET_URI, AREA_ID);
 
-    /* åˆ›å»ºä¼šè¯å¹¶ä¸”è®¾ç½®å“åº”çš„å¤§å° */
+    /* ´´½¨»á»°²¢ÇÒÉèÖÃÏìÓ¦µÄ´óĞ¡ */
     session = webclient_session_create(GET_HEADER_BUFSZ);
     if (session == RT_NULL)
     {
@@ -87,14 +87,14 @@ void weather(int argc, char **argv)
         goto __exit;
     }
 
-    /* å‘é€ GET è¯·æ±‚ä½¿ç”¨é»˜è®¤çš„å¤´éƒ¨ */
+    /* ·¢ËÍ GET ÇëÇóÊ¹ÓÃÄ¬ÈÏµÄÍ·²¿ */
     if ((resp_status = webclient_get(session, weather_url)) != 200)
     {
         rt_kprintf("webclient GET request failed, response(%d) error.\n", resp_status);
         goto __exit;
     }
 
-    /* åˆ†é…ç”¨äºå­˜æ”¾æ¥æ”¶æ•°æ®çš„ç¼“å†² */
+    /* ·ÖÅäÓÃÓÚ´æ·Å½ÓÊÕÊı¾İµÄ»º³å */
     buffer = rt_calloc(1, GET_RESP_BUFSZ);
     if(buffer == RT_NULL)
     {
@@ -105,7 +105,7 @@ void weather(int argc, char **argv)
     content_length = webclient_content_length_get(session);
     if (content_length < 0)
     {
-        /* è¿”å›çš„æ•°æ®æ˜¯åˆ†å—ä¼ è¾“çš„. */
+        /* ·µ»ØµÄÊı¾İÊÇ·Ö¿é´«ÊäµÄ. */
         do
         {
             bytes_read = webclient_read(session, buffer, GET_RESP_BUFSZ);
@@ -130,17 +130,17 @@ void weather(int argc, char **argv)
         } while (content_pos < content_length);
     }
 
-    /* å¤©æ°”æ•°æ®è§£æ */
+    /* ÌìÆøÊı¾İ½âÎö */
     weather_data_parse(buffer);
 
 __exit:
-    /* é‡Šæ”¾ç½‘å€ç©ºé—´ */
+    /* ÊÍ·ÅÍøÖ·¿Õ¼ä */
     if (weather_url != RT_NULL)
         rt_free(weather_url);
-    /* å…³é—­ä¼šè¯ */
+    /* ¹Ø±Õ»á»° */
     if (session != RT_NULL)
         webclient_close(session);
-    /* é‡Šæ”¾ç¼“å†²åŒºç©ºé—´ */
+    /* ÊÍ·Å»º³åÇø¿Õ¼ä */
     if (buffer != RT_NULL)
         rt_free(buffer);
 }

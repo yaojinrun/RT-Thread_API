@@ -155,7 +155,7 @@ struct rt_device_pm
 };
 
 /**
- * @brief 电源管理结构体
+ * @brief 电源管理控制块
  */
 struct rt_pm
 {

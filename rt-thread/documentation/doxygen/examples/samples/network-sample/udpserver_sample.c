@@ -8,16 +8,16 @@
  * 
  */
 /*
-* ç¨‹åºæ¸…å•ï¼šudp æœåŠ¡ç«¯
+* ³ÌĞòÇåµ¥£ºudp ·şÎñ¶Ë
  *
- * è¿™æ˜¯ä¸€ä¸ª udp æœåŠ¡ç«¯çš„ä¾‹ç¨‹
- * å¯¼å‡º udpserv å‘½ä»¤åˆ°æ§åˆ¶ç»ˆç«¯
- * å‘½ä»¤è°ƒç”¨æ ¼å¼ï¼šudpserv
- * æ— å‚æ•°
- * ç¨‹åºåŠŸèƒ½ï¼šä½œä¸ºä¸€ä¸ªæœåŠ¡ç«¯ï¼Œæ¥æ”¶å¹¶æ˜¾ç¤ºå®¢æˆ·ç«¯å‘æ¥çš„æ•°æ® ï¼Œæ¥æ”¶åˆ° exit é€€å‡ºç¨‹åº
+ * ÕâÊÇÒ»¸ö udp ·şÎñ¶ËµÄÀı³Ì
+ * µ¼³ö udpserv ÃüÁîµ½¿ØÖÆÖÕ¶Ë
+ * ÃüÁîµ÷ÓÃ¸ñÊ½£ºudpserv
+ * ÎŞ²ÎÊı
+ * ³ÌĞò¹¦ÄÜ£º×÷ÎªÒ»¸ö·şÎñ¶Ë£¬½ÓÊÕ²¢ÏÔÊ¾¿Í»§¶Ë·¢À´µÄÊı¾İ £¬½ÓÊÕµ½ exit ÍË³ö³ÌĞò
 */
 #include <rtthread.h>
-#include <sys/socket.h> /* ä½¿ç”¨BSD socketï¼Œéœ€è¦åŒ…å«socket.hå¤´æ–‡ä»¶ */
+#include <sys/socket.h> /* Ê¹ÓÃBSD socket£¬ĞèÒª°üº¬socket.hÍ·ÎÄ¼ş */
 #include <netdb.h>
 #include <string.h>
 #include <finsh.h>
@@ -32,39 +32,39 @@ static void udpserv(int argc, char **argv)
     socklen_t addr_len;
     struct sockaddr_in server_addr, client_addr;
 
-    /* åˆ†é…æ¥æ”¶ç”¨çš„æ•°æ®ç¼“å†² */
+    /* ·ÖÅä½ÓÊÕÓÃµÄÊı¾İ»º³å */
     recv_data = rt_malloc(BUFSZ);
     if (recv_data == RT_NULL)
     {
-        /* åˆ†é…å†…å­˜å¤±è´¥ï¼Œè¿”å› */
+        /* ·ÖÅäÄÚ´æÊ§°Ü£¬·µ»Ø */
         rt_kprintf("No memory\n");
         return;
     }
 
-    /* åˆ›å»ºä¸€ä¸ªsocketï¼Œç±»å‹æ˜¯SOCK_DGRAMï¼ŒUDPç±»å‹ */
+    /* ´´½¨Ò»¸ösocket£¬ÀàĞÍÊÇSOCK_DGRAM£¬UDPÀàĞÍ */
     if ((sock = socket(AF_INET, SOCK_DGRAM, 0)) == -1)
     {
         rt_kprintf("Socket error\n");
 
-        /* é‡Šæ”¾æ¥æ”¶ç”¨çš„æ•°æ®ç¼“å†² */
+        /* ÊÍ·Å½ÓÊÕÓÃµÄÊı¾İ»º³å */
         rt_free(recv_data);
         return;
     }
 
-    /* åˆå§‹åŒ–æœåŠ¡ç«¯åœ°å€ */
+    /* ³õÊ¼»¯·şÎñ¶ËµØÖ· */
     server_addr.sin_family = AF_INET;
     server_addr.sin_port = htons(5000);
     server_addr.sin_addr.s_addr = INADDR_ANY;
     rt_memset(&(server_addr.sin_zero), 0, sizeof(server_addr.sin_zero));
 
-    /* ç»‘å®šsocketåˆ°æœåŠ¡ç«¯åœ°å€ */
+    /* °ó¶¨socketµ½·şÎñ¶ËµØÖ· */
     if (bind(sock, (struct sockaddr *)&server_addr,
              sizeof(struct sockaddr)) == -1)
     {
-        /* ç»‘å®šåœ°å€å¤±è´¥ */
+        /* °ó¶¨µØÖ·Ê§°Ü */
         rt_kprintf("Bind error\n");
 
-        /* é‡Šæ”¾æ¥æ”¶ç”¨çš„æ•°æ®ç¼“å†² */
+        /* ÊÍ·Å½ÓÊÕÓÃµÄÊı¾İ»º³å */
         rt_free(recv_data);
         return;
     }
@@ -74,24 +74,24 @@ static void udpserv(int argc, char **argv)
 
     while (1)
     {
-        /* ä»sockä¸­æ”¶å–æœ€å¤§BUFSZ - 1å­—èŠ‚æ•°æ® */
+        /* ´ÓsockÖĞÊÕÈ¡×î´óBUFSZ - 1×Ö½ÚÊı¾İ */
         bytes_read = recvfrom(sock, recv_data, BUFSZ - 1, 0,
                               (struct sockaddr *)&client_addr, &addr_len);
-        /* UDPä¸åŒäºTCPï¼Œå®ƒåŸºæœ¬ä¸ä¼šå‡ºç°æ”¶å–çš„æ•°æ®å¤±è´¥çš„æƒ…å†µï¼Œé™¤éè®¾ç½®äº†è¶…æ—¶ç­‰å¾… */
+        /* UDP²»Í¬ÓÚTCP£¬Ëü»ù±¾²»»á³öÏÖÊÕÈ¡µÄÊı¾İÊ§°ÜµÄÇé¿ö£¬³ı·ÇÉèÖÃÁË³¬Ê±µÈ´ı */
 
-        recv_data[bytes_read] = '\0'; /* æŠŠæœ«ç«¯æ¸…é›¶ */
+        recv_data[bytes_read] = '\0'; /* °ÑÄ©¶ËÇåÁã */
 
-        /* è¾“å‡ºæ¥æ”¶çš„æ•°æ® */
+        /* Êä³ö½ÓÊÕµÄÊı¾İ */
         rt_kprintf("\n(%s , %d) said : ", inet_ntoa(client_addr.sin_addr),
                    ntohs(client_addr.sin_port));
         rt_kprintf("%s", recv_data);
 
-        /* å¦‚æœæ¥æ”¶æ•°æ®æ˜¯exitï¼Œé€€å‡º */
+        /* Èç¹û½ÓÊÕÊı¾İÊÇexit£¬ÍË³ö */
         if (strcmp(recv_data, "exit") == 0)
         {
             closesocket(sock);
 
-            /* é‡Šæ”¾æ¥æ”¶ç”¨çš„æ•°æ®ç¼“å†² */
+            /* ÊÍ·Å½ÓÊÕÓÃµÄÊı¾İ»º³å */
             rt_free(recv_data);
             break;
         }

@@ -8,26 +8,26 @@
  * 2018-08-15     misonyo      first implementation.
  */
 /* 
- * ç¨‹åºæ¸…å•ï¼šè¿™æ˜¯ä¸€ä¸ª I2C è®¾å¤‡ä½¿ç”¨ä¾‹ç¨‹
- * ä¾‹ç¨‹å¯¼å‡ºäº† i2c_aht10_sample å‘½ä»¤åˆ°æ§åˆ¶ç»ˆç«¯
- * å‘½ä»¤è°ƒç”¨æ ¼å¼ï¼ši2c_aht10_sample i2c1
- * å‘½ä»¤è§£é‡Šï¼šå‘½ä»¤ç¬¬äºŒä¸ªå‚æ•°æ˜¯è¦ä½¿ç”¨çš„I2Cæ€»çº¿è®¾å¤‡åç§°ï¼Œä¸ºç©ºåˆ™ä½¿ç”¨é»˜è®¤çš„I2Cæ€»çº¿è®¾å¤‡
- * ç¨‹åºåŠŸèƒ½ï¼šé€šè¿‡ I2C è®¾å¤‡è¯»å–æ¸©æ¹¿åº¦ä¼ æ„Ÿå™¨ aht10 çš„æ¸©æ¹¿åº¦æ•°æ®å¹¶æ‰“å°
+ * ³ÌĞòÇåµ¥£ºÕâÊÇÒ»¸ö I2C Éè±¸Ê¹ÓÃÀı³Ì
+ * Àı³Ìµ¼³öÁË i2c_aht10_sample ÃüÁîµ½¿ØÖÆÖÕ¶Ë
+ * ÃüÁîµ÷ÓÃ¸ñÊ½£ºi2c_aht10_sample i2c1
+ * ÃüÁî½âÊÍ£ºÃüÁîµÚ¶ş¸ö²ÎÊıÊÇÒªÊ¹ÓÃµÄI2C×ÜÏßÉè±¸Ãû³Æ£¬Îª¿ÕÔòÊ¹ÓÃÄ¬ÈÏµÄI2C×ÜÏßÉè±¸
+ * ³ÌĞò¹¦ÄÜ£ºÍ¨¹ı I2C Éè±¸¶ÁÈ¡ÎÂÊª¶È´«¸ĞÆ÷ aht10 µÄÎÂÊª¶ÈÊı¾İ²¢´òÓ¡
 */
 
 #include <rtthread.h>
 #include <rtdevice.h>
 
-#define AHT10_I2C_BUS_NAME          "i2c1"  /* ä¼ æ„Ÿå™¨è¿æ¥çš„I2Cæ€»çº¿è®¾å¤‡åç§° */
+#define AHT10_I2C_BUS_NAME          "i2c1"  /* ´«¸ĞÆ÷Á¬½ÓµÄI2C×ÜÏßÉè±¸Ãû³Æ */
 #define AHT10_ADDR                  0x38
-#define AHT10_CALIBRATION_CMD       0xE1    /* æ ¡å‡†å‘½ä»¤ */
-#define AHT10_NORMAL_CMD            0xA8    /* ä¸€èˆ¬å‘½ä»¤ */
-#define AHT10_GET_DATA              0xAC    /* è·å–æ•°æ®å‘½ä»¤ */
+#define AHT10_CALIBRATION_CMD       0xE1    /* Ğ£×¼ÃüÁî */
+#define AHT10_NORMAL_CMD            0xA8    /* Ò»°ãÃüÁî */
+#define AHT10_GET_DATA              0xAC    /* »ñÈ¡Êı¾İÃüÁî */
 
 static struct rt_i2c_bus_device *i2c_bus = RT_NULL;
-static rt_bool_t initialized = RT_FALSE;        /* ä¼ æ„Ÿå™¨åˆå§‹åŒ–çŠ¶æ€ */
+static rt_bool_t initialized = RT_FALSE;        /* ´«¸ĞÆ÷³õÊ¼»¯×´Ì¬ */
 
-/* å†™ä¼ æ„Ÿå™¨å¯„å­˜å™¨ */
+/* Ğ´´«¸ĞÆ÷¼Ä´æÆ÷ */
 static rt_err_t write_reg(struct rt_i2c_bus_device *bus, rt_uint8_t reg, rt_uint8_t *data)
 {
     rt_uint8_t buf[3];
@@ -42,14 +42,14 @@ static rt_err_t write_reg(struct rt_i2c_bus_device *bus, rt_uint8_t reg, rt_uint
     msgs.buf = buf;
     msgs.len = 3;
     
-    /* è°ƒç”¨I2Cè®¾å¤‡æ¥å£å‘é€æ•°æ® */
+    /* µ÷ÓÃI2CÉè±¸½Ó¿Ú·¢ËÍÊı¾İ */
     if (rt_i2c_transfer(bus, &msgs, 1) == 1)
         return RT_EOK;
     else
         return -RT_ERROR;
 }
 
-/* è¯»ä¼ æ„Ÿå™¨å¯„å­˜å™¨æ•°æ® */
+/* ¶Á´«¸ĞÆ÷¼Ä´æÆ÷Êı¾İ */
 static rt_err_t read_regs(struct rt_i2c_bus_device *bus, rt_uint8_t len, rt_uint8_t *buf)
 {
     struct rt_i2c_msg msgs;
@@ -59,7 +59,7 @@ static rt_err_t read_regs(struct rt_i2c_bus_device *bus, rt_uint8_t len, rt_uint
     msgs.buf = buf;
     msgs.len = len;
 
-    /* è°ƒç”¨I2Cè®¾å¤‡æ¥å£æ¥æ”¶æ•°æ® */
+    /* µ÷ÓÃI2CÉè±¸½Ó¿Ú½ÓÊÕÊı¾İ */
     if (rt_i2c_transfer(bus, &msgs, 1) == 1)
         return RT_EOK;
     else
@@ -70,12 +70,12 @@ static void read_temp_humi(float *cur_temp,float *cur_humi)
 {
     rt_uint8_t temp[6];
 
-    write_reg(i2c_bus, AHT10_GET_DATA, 0);      /* å‘é€å‘½ä»¤ */
-    read_regs(i2c_bus, 6, temp);                /* è·å–ä¼ æ„Ÿå™¨æ•°æ® */
+    write_reg(i2c_bus, AHT10_GET_DATA, 0);      /* ·¢ËÍÃüÁî */
+    read_regs(i2c_bus, 6, temp);                /* »ñÈ¡´«¸ĞÆ÷Êı¾İ */
 
-    /* æ¹¿åº¦æ•°æ®è½¬æ¢ */
+    /* Êª¶ÈÊı¾İ×ª»» */
     *cur_humi = (temp[1] << 12 | temp[2] << 4 | (temp[3] & 0xf0) >> 4) * 100.0 / (1 << 20);
-    /* æ¸©åº¦æ•°æ®è½¬æ¢ */
+    /* ÎÂ¶ÈÊı¾İ×ª»» */
     *cur_temp = ((temp[3] & 0xf) << 16 | temp[4] << 8 | temp[5]) * 200.0 / (1 << 20) - 50;
 }
 
@@ -83,7 +83,7 @@ static void aht10_init(const char *name)
 {
     rt_uint8_t temp[2] = {0, 0};
 
-    /* æŸ¥æ‰¾I2Cæ€»çº¿è®¾å¤‡ï¼Œè·å–I2Cæ€»çº¿è®¾å¤‡å¥æŸ„ */
+    /* ²éÕÒI2C×ÜÏßÉè±¸£¬»ñÈ¡I2C×ÜÏßÉè±¸¾ä±ú */
     i2c_bus = (struct rt_i2c_bus_device *)rt_device_find(name);
 
     if (i2c_bus == RT_NULL)
@@ -122,12 +122,12 @@ static void i2c_aht10_sample(int argc,char *argv[])
 
     if (!initialized)
     {
-        /* ä¼ æ„Ÿå™¨åˆå§‹åŒ– */
+        /* ´«¸ĞÆ÷³õÊ¼»¯ */
         aht10_init(name);
     }
     if (initialized)
     {
-        /* è¯»å–æ¸©æ¹¿åº¦æ•°æ® */
+        /* ¶ÁÈ¡ÎÂÊª¶ÈÊı¾İ */
         read_temp_humi(&temperature, &humidity);
 
         rt_kprintf("read aht10 sensor humidity   : %d.%d %%\n", (int)humidity, (int)(humidity * 10) % 10);
@@ -138,5 +138,5 @@ static void i2c_aht10_sample(int argc,char *argv[])
         rt_kprintf("initialize sensor failed!\n");
     }
 }
-/* å¯¼å‡ºåˆ° msh å‘½ä»¤åˆ—è¡¨ä¸­ */
+/* µ¼³öµ½ msh ÃüÁîÁĞ±íÖĞ */
 MSH_CMD_EXPORT(i2c_aht10_sample, i2c aht10 sample);

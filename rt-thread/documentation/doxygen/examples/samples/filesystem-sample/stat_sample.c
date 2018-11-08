@@ -8,16 +8,16 @@
  * 
  */
 /*
- * ç¨‹åºæ¸…å•ï¼šå–å¾—çŠ¶æ€
+ * ³ÌĞòÇåµ¥£ºÈ¡µÃ×´Ì¬
  *
- * ç¨‹åºä¼šåˆ›å»ºä¸€ä¸ªæ“ä½œæ–‡ä»¶çš„å‡½æ•°å¹¶å¯¼å‡ºåˆ°mshå‘½ä»¤åˆ—è¡¨
- * åœ¨å‡½æ•°ä¸­è°ƒç”¨ stat() å‡½æ•°
+ * ³ÌĞò»á´´½¨Ò»¸ö²Ù×÷ÎÄ¼şµÄº¯Êı²¢µ¼³öµ½mshÃüÁîÁĞ±í
+ * ÔÚº¯ÊıÖĞµ÷ÓÃ stat() º¯Êı
  * int stat(const char *file_name, struct stat *buf);
- * stat()å‡½æ•°ç”¨æ¥å°†å‚æ•°file_name æ‰€æŒ‡å‘çš„æ–‡ä»¶çŠ¶æ€ï¼Œ
- * å¤åˆ¶åˆ°buf æŒ‡é’ˆæ‰€æŒ‡çš„ç»“æ„ä¸­(struct stat)ã€‚
+ * stat()º¯ÊıÓÃÀ´½«²ÎÊıfile_name ËùÖ¸ÏòµÄÎÄ¼ş×´Ì¬£¬
+ * ¸´ÖÆµ½buf Ö¸ÕëËùÖ¸µÄ½á¹¹ÖĞ(struct stat)¡£
 */
 #include <rtthread.h>
-#include <dfs_posix.h> /* å½“éœ€è¦ä½¿ç”¨æ–‡ä»¶æ“ä½œæ—¶ï¼Œéœ€è¦åŒ…å«è¿™ä¸ªå¤´æ–‡ä»¶ */
+#include <dfs_posix.h> /* µ±ĞèÒªÊ¹ÓÃÎÄ¼ş²Ù×÷Ê±£¬ĞèÒª°üº¬Õâ¸öÍ·ÎÄ¼ş */
 
 static void stat_sample(void)
 {
@@ -29,5 +29,5 @@ static void stat_sample(void)
     else
         rt_kprintf("text.txt file not fonud\n");
 }
-/* å¯¼å‡ºåˆ° msh å‘½ä»¤åˆ—è¡¨ä¸­ */
+/* µ¼³öµ½ msh ÃüÁîÁĞ±íÖĞ */
 MSH_CMD_EXPORT(stat_sample, show text.txt stat sample);

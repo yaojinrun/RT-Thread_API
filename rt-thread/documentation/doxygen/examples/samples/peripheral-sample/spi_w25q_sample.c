@@ -8,11 +8,11 @@
  * 2018-08-15     misonyo      first implementation.
  */
 /* 
- * ç¨‹åºæ¸…å•ï¼šè¿™æ˜¯ä¸€ä¸ª SPI è®¾å¤‡ä½¿ç”¨ä¾‹ç¨‹
- * ä¾‹ç¨‹å¯¼å‡ºäº† spi_w25q_sample å‘½ä»¤åˆ°æ§åˆ¶ç»ˆç«¯
- * å‘½ä»¤è°ƒç”¨æ ¼å¼ï¼šspi_w25q_sample spi10
- * å‘½ä»¤è§£é‡Šï¼šå‘½ä»¤ç¬¬äºŒä¸ªå‚æ•°æ˜¯è¦ä½¿ç”¨çš„SPIè®¾å¤‡åç§°ï¼Œä¸ºç©ºåˆ™ä½¿ç”¨é»˜è®¤çš„SPIè®¾å¤‡
- * ç¨‹åºåŠŸèƒ½ï¼šé€šè¿‡SPIè®¾å¤‡è¯»å– w25q çš„ ID æ•°æ®
+ * ³ÌĞòÇåµ¥£ºÕâÊÇÒ»¸ö SPI Éè±¸Ê¹ÓÃÀı³Ì
+ * Àı³Ìµ¼³öÁË spi_w25q_sample ÃüÁîµ½¿ØÖÆÖÕ¶Ë
+ * ÃüÁîµ÷ÓÃ¸ñÊ½£ºspi_w25q_sample spi10
+ * ÃüÁî½âÊÍ£ºÃüÁîµÚ¶ş¸ö²ÎÊıÊÇÒªÊ¹ÓÃµÄSPIÉè±¸Ãû³Æ£¬Îª¿ÕÔòÊ¹ÓÃÄ¬ÈÏµÄSPIÉè±¸
+ * ³ÌĞò¹¦ÄÜ£ºÍ¨¹ıSPIÉè±¸¶ÁÈ¡ w25q µÄ ID Êı¾İ
 */
 
 #include <rtthread.h>
@@ -36,7 +36,7 @@ static void spi_w25q_sample(int argc,char *argv[])
         rt_strncpy(name, W25Q_SPI_DEVICE_NAME, RT_NAME_MAX);
     }
 
-    /* æŸ¥æ‰¾ spi è®¾å¤‡è·å–è®¾å¤‡å¥æŸ„ */
+    /* ²éÕÒ spi Éè±¸»ñÈ¡Éè±¸¾ä±ú */
     spi_dev_w25q = (struct rt_spi_device *)rt_device_find(name);
     if (!spi_dev_w25q)
     {
@@ -44,11 +44,11 @@ static void spi_w25q_sample(int argc,char *argv[])
     }
     else
     {
-        /* æ–¹å¼1ï¼šä½¿ç”¨ rt_spi_send_then_recv()å‘é€å‘½ä»¤è¯»å–ID */
+        /* ·½Ê½1£ºÊ¹ÓÃ rt_spi_send_then_recv()·¢ËÍÃüÁî¶ÁÈ¡ID */
         rt_spi_send_then_recv(spi_dev_w25q, &w25x_read_id, 1, id, 5);
         rt_kprintf("use rt_spi_send_then_recv() read w25q ID is:%x%x\n", id[3], id[4]);
 
-        /* æ–¹å¼2ï¼šä½¿ç”¨ rt_spi_transfer_message()å‘é€å‘½ä»¤è¯»å–ID */
+        /* ·½Ê½2£ºÊ¹ÓÃ rt_spi_transfer_message()·¢ËÍÃüÁî¶ÁÈ¡ID */
         struct rt_spi_message msg1,msg2;
 
         msg1.send_buf   = &w25x_read_id;
@@ -70,5 +70,5 @@ static void spi_w25q_sample(int argc,char *argv[])
 
     }
 }
-/* å¯¼å‡ºåˆ° msh å‘½ä»¤åˆ—è¡¨ä¸­ */
+/* µ¼³öµ½ msh ÃüÁîÁĞ±íÖĞ */
 MSH_CMD_EXPORT(spi_w25q_sample, spi w25q sample);

@@ -40,18 +40,7 @@ extern "C"{
 
 #define RT_SPI_CPHA     (1<<0)                             /**< @brief bit[0]:CPHA, 时钟极性 */
 #define RT_SPI_CPOL     (1<<1)                             /**< @brief bit[1]:CPOL, 时钟相位 */
-/**
- * At CPOL=0 the base value of the clock is zero
- *  - For CPHA=0, data are captured on the clock's rising edge (low→high transition)
- *    and data are propagated on a falling edge (high→low clock transition).
- *  - For CPHA=1, data are captured on the clock's falling edge and data are
- *    propagated on a rising edge.
- * At CPOL=1 the base value of the clock is one (inversion of CPOL=0)
- *  - For CPHA=0, data are captured on clock's falling edge and data are propagated
- *    on a rising edge.
- *  - For CPHA=1, data are captured on clock's rising edge and data are propagated
- *    on a falling edge.
- */
+
 #define RT_SPI_LSB      (0<<2)                             /**< @brief bit[2]: LSB位在前 */
 #define RT_SPI_MSB      (1<<2)                             /**< @brief bit[2]: MSB位在前 */
 
@@ -71,7 +60,7 @@ extern "C"{
 #define RT_SPI_READY    (1<<7)                             /**< @brief 从设备拉低暂停 */
 
 /**
- * @brief SPI消息结构体
+ * @brief SPI消息
  */
 struct rt_spi_message
 {
@@ -85,7 +74,7 @@ struct rt_spi_message
 };
 
 /**
- * @brief SPI配置参数结构体
+ * @brief SPI从设备的配置参数
  */
 struct rt_spi_configuration
 {
@@ -98,7 +87,7 @@ struct rt_spi_configuration
 
 struct rt_spi_ops;
 /**
- * @brief SPI总线结构体
+ * @brief SPI总线控制块
  */
 struct rt_spi_bus
 {

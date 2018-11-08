@@ -55,9 +55,9 @@ extern "C" {
 /*@{*/
 
 /* RT-Thread 版本信息 */
-#define RT_VERSION                      3L              /**< 主版本号 */
-#define RT_SUBVERSION                   1L              /**< 次版本号 */
-#define RT_REVISION                     0L              /**< 修订版本号 */
+#define RT_VERSION                      3L              /**< @brief 主版本号 */
+#define RT_SUBVERSION                   1L              /**< @brief 次版本号 */
+#define RT_REVISION                     0L              /**< @brief 修订版本号 */
 
 /* RT-Thread 版本 */
 #define RTTHREAD_VERSION                ((RT_VERSION * 10000) + \
@@ -88,13 +88,14 @@ typedef rt_base_t                       rt_off_t;       /**< @brief 输入偏移类型
 #define RT_TRUE                         1               /**< @brief 布尔值 真  */
 #define RT_FALSE                        0               /**< @brief 布尔值 假 */
 
-/*@}*/
 
 /* maximum value of base type */
 #define RT_UINT8_MAX                    0xff            /**< @brief UINT8 的最大值 */
 #define RT_UINT16_MAX                   0xffff          /**< @brief UINT16 的最大值 */
 #define RT_UINT32_MAX                   0xffffffff      /**< @brief UINT32 的最大值 */
 #define RT_TICK_MAX                     RT_UINT32_MAX   /**< @brief tick 的最大值 */
+
+/*@}*/
 
 /* Compiler Related Definitions */
 #ifdef __CC_ARM                         /* ARM Compiler */
@@ -181,7 +182,7 @@ typedef rt_base_t                       rt_off_t;       /**< @brief 输入偏移类型
 #ifdef RT_USING_COMPONENTS_INIT
 
 /**
- * @addtogroup component
+ * @addtogroup SystemInit
  */
 
 /**@{*/
@@ -210,68 +211,25 @@ typedef int (*init_fn_t)(void);
 #endif
 
 /* board init routines will be called in board_init() function */
-/**
- * @brief 板级驱动初始化
- *
- * rt_components_board_init()函数通常会运行板级驱动初始化函数，
- * 例如：串口、CAN接口的电路初始化配置配置和设备注册，...
- *
- * @param fn 函数指针
- *
- */
-#define INIT_BOARD_EXPORT(fn)           INIT_EXPORT(fn, "1")
+
+#define INIT_BOARD_EXPORT(fn)           INIT_EXPORT(fn, "1")	/**< @brief 板级驱动初始化，fn为函数指针 */
 
 /* pre/device/component/env/app init routines will be called in init_thread */
 /* components pre-initialization (pure software initilization) */
-/**
- * @brief 纯软件函数自动初始化
- *
- * 这里通常这里会运行一些预初始化函数。
- *
- * @param fn 函数指针
- *
- */
-#define INIT_PREV_EXPORT(fn)            INIT_EXPORT(fn, "2")
+
+#define INIT_PREV_EXPORT(fn)            INIT_EXPORT(fn, "2")	/**< @brief 纯软件函数自动初始化，fn为函数指针 */
 /* device initialization */
-/**
- * @brief 设备自动初始化
- *
- * 这里通常会运行一些设备相关的应用初始换函数，例如：串口通讯设置，...
- *
- * @param fn 函数指针
- *
- */
-#define INIT_DEVICE_EXPORT(fn)          INIT_EXPORT(fn, "3")
+
+#define INIT_DEVICE_EXPORT(fn)          INIT_EXPORT(fn, "3")	/**< @brief 设备自动初始化，fn为函数指针 */
 /* components initialization (dfs, lwip, ...) */
-/**
- * @brief 组件自动初始化
- *
- * 这里通常会自动初始化一些系统组件，例如：dfs文件系统，lwip协议等，...
- *
- * @param fn 函数指针
- *
- */
-#define INIT_COMPONENT_EXPORT(fn)       INIT_EXPORT(fn, "4")
+
+#define INIT_COMPONENT_EXPORT(fn)       INIT_EXPORT(fn, "4")	/**< @brief 组件自动初始化，fn为函数指针 */
 /* environment initialization (mount disk, ...) */
-/**
- * @brief 系统环境自动初始化
- *
- * 这里通常会初始化一些系统运行环境，如：mount disk, ..
- *
- * @param fn 函数指针
- *
- */
-#define INIT_ENV_EXPORT(fn)             INIT_EXPORT(fn, "5")
+
+#define INIT_ENV_EXPORT(fn)             INIT_EXPORT(fn, "5")	/**< @brief 系统环境自动初始化，fn为函数指针 */
 /* appliation initialization (rtgui application etc ...) */
-/**
- * @brief 应用自动初始化
- *
- * 这里通常会自动运行一些用户的应用线程，例如：LCD显示，...
- *
- * @param fn 函数指针
- *
- */
-#define INIT_APP_EXPORT(fn)             INIT_EXPORT(fn, "6")
+
+#define INIT_APP_EXPORT(fn)             INIT_EXPORT(fn, "6")	/**< @brief 应用自动初始化，fn为函数指针 */
 
 #if !defined(RT_USING_FINSH)
 /* define these to empty, even if not include finsh.h file */
@@ -331,35 +289,22 @@ typedef int (*init_fn_t)(void);
 /*@}*/
 
 /**
- * @ingroup BasicDef
- *
- * @def RT_ALIGN(size, align)
- * 返回以指定宽度对齐的最连续大小。例如 RT_ALIGN(13, 4)将返回16。
- * 
+ * @addtogroup BasicDef
  */
-#define RT_ALIGN(size, align)           (((size) + (align) - 1) & ~((align) - 1))
 
-/**
- * @ingroup BasicDef
- *
- * @def RT_ALIGN_DOWN(size, align)
- * 返回指定宽度对齐的向下数。例如 RT_ALIGN_DOWN(13, 4)将返回12。
- * 
- */
-#define RT_ALIGN_DOWN(size, align)      ((size) & ~((align) - 1))
+/*@{*/
+#define RT_ALIGN(size, align)           (((size) + (align) - 1) & ~((align) - 1)) /**< @brief 返回以指定宽度对齐的最连续大小。例如 RT_ALIGN(13, 4)将返回16 */
 
-/**
- * @ingroup BasicDef
- *
- * @def RT_NULL
- * 相当于C库中的 \c NULL。
- */
-#define RT_NULL                         (0)
+#define RT_ALIGN_DOWN(size, align)      ((size) & ~((align) - 1)) /**< @brief 返回指定宽度对齐的向下数。例如 RT_ALIGN_DOWN(13, 4)将返回12 */
+
+#define RT_NULL                         (0) /**< @brief 相当于C库中的NULL */
+
+/*@}*/
 
 /**
  * @ingroup list
  *
- * @brief 双向链表结构体
+ * @brief 双向链表节点
  */
 struct rt_list_node
 {
@@ -374,7 +319,7 @@ typedef struct rt_list_node rt_list_t;                  /**< @brief 双向链表类型
 /**
  * @ingroup slist
  *
- * @brief 单向链表结构体
+ * @brief 单向链表节点
  */
 struct rt_slist_node
 {
@@ -396,10 +341,10 @@ typedef struct rt_slist_node rt_slist_t;                /**< @brief 单向链表类型
 /*
  * kernel object macros
  */
-#define RT_OBJECT_FLAG_MODULE           0x80            /**< @brief 应用模块对象 */
+#define RT_OBJECT_FLAG_MODULE           0x80            /**< @brief 动态模块对象标志 */
 
 /**
- * @brief 内核对象控制块的数据结构
+ * @brief 内核对象基类控制块
  */
 struct rt_object
 {
@@ -412,46 +357,29 @@ struct rt_object
 #endif
     rt_list_t  list;                                    /**< @brief 内核对象管理链表 */
 };
-/**
- * @brief 内核对象类型指针定义
- */
-typedef struct rt_object *rt_object_t;                  /**< @brief 内核对象 */
 
-/**
- *  在启用了特定宏的情况下，对象类型可以是以下之一：
- *  - Thread
- *  - Semaphore
- *  - Mutex
- *  - Event
- *  - MailBox
- *  - MessageQueue
- *  - MemHeap
- *  - MemPool
- *  - Device
- *  - Timer
- *  - Module
- *  - Unknown
- *  - Static
- */
+typedef struct rt_object *rt_object_t;                  /**< @brief 内核对象类型指针定义 */
+
+
 enum rt_object_class_type
 {
-    RT_Object_Class_Thread = 0,                         /**< 线程对象. */
-    RT_Object_Class_Semaphore,                          /**< 信号量对象. */
-    RT_Object_Class_Mutex,                              /**< 互斥量对象. */
-    RT_Object_Class_Event,                              /**< 事件对象. */
-    RT_Object_Class_MailBox,                            /**< 邮箱对象. */
-    RT_Object_Class_MessageQueue,                       /**< 消息队列对象. */
-    RT_Object_Class_MemHeap,                            /**< 内存堆对象 */
-    RT_Object_Class_MemPool,                            /**< 内存池对象. */
-    RT_Object_Class_Device,                             /**< 设备对象 */
-    RT_Object_Class_Timer,                              /**< 定时器对象. */
-//    RT_Object_Class_Module,                             /**< 模块对象. */
-    RT_Object_Class_Unknown,                            /**< 位置对象. */
-    RT_Object_Class_Static = 0x80                       /**< 静态对象. */
+    RT_Object_Class_Thread = 0,                         /**< @brief 线程对象 */
+    RT_Object_Class_Semaphore,                          /**< @brief 信号量对象 */
+    RT_Object_Class_Mutex,                              /**< @brief 互斥量对象 */
+    RT_Object_Class_Event,                              /**< @brief 事件对象 */
+    RT_Object_Class_MailBox,                            /**< @brief 邮箱对象 */
+    RT_Object_Class_MessageQueue,                       /**< @brief 消息队列对象 */
+    RT_Object_Class_MemHeap,                            /**< @brief 内存堆对象 */
+    RT_Object_Class_MemPool,                            /**< @brief 内存池对象 */
+    RT_Object_Class_Device,                             /**< @brief 设备对象 */
+    RT_Object_Class_Timer,                              /**< @brief 定时器对象 */
+    RT_Object_Class_Module,                             /**< @brief 动态模块对象 */
+    RT_Object_Class_Unknown,                            /**< @brief 位置对象 */
+    RT_Object_Class_Static = 0x80                       /**< @brief 静态对象 */
 };
 
 /**
- * @brief 内核对象的数据结构
+ * @brief 内核对象信息
  */
 struct rt_object_information
 {
@@ -460,12 +388,17 @@ struct rt_object_information
     rt_size_t                 object_size;              /**< @brief 对象大小 */
 };
 
+/*@}*/
+
 /**
- * 钩子函数宏定义
+ * @addtogroup Hook
  */
+
+/**@{*/
+
 #ifdef RT_USING_HOOK
 #define RT_OBJECT_HOOK_CALL(func, argv) \
-    do { if ((func) != RT_NULL) func argv; } while (0)
+    do { if ((func) != RT_NULL) func argv; } while (0)	/**< @brief 内核对象钩子函数 */
 #else
 #define RT_OBJECT_HOOK_CALL(func, argv)
 #endif
@@ -482,17 +415,17 @@ struct rt_object_information
  * clock & timer macros
  */
 #define RT_TIMER_FLAG_DEACTIVATED       0x0             /**< @brief 定时器未激活 */
-#define RT_TIMER_FLAG_ACTIVATED         0x1             /**< @brief 定时器活动状态 */
+#define RT_TIMER_FLAG_ACTIVATED         0x1             /**< @brief 定时器已激活 */
 #define RT_TIMER_FLAG_ONE_SHOT          0x0             /**< @brief 一次性计时器 */
 #define RT_TIMER_FLAG_PERIODIC          0x2             /**< @brief 周期性定时器 */
 
-#define RT_TIMER_FLAG_HARD_TIMER        0x0             /**< @brief 硬定时器，定时器的回调函数将在tick isr中调用。 */
-#define RT_TIMER_FLAG_SOFT_TIMER        0x4             /**< @brief 软定时器，定时器的回调函数将在定时器线程中调用。 */
+#define RT_TIMER_FLAG_HARD_TIMER        0x0             /**< @brief 硬件定时器，定时器的回调函数将在系统时钟中断里调用。 */
+#define RT_TIMER_FLAG_SOFT_TIMER        0x4             /**< @brief 软件定时器，定时器的回调函数将在定时器线程中调用。 */
 
-#define RT_TIMER_CTRL_SET_TIME          0x0             /**< @brief 设置定时器控制命令 */
-#define RT_TIMER_CTRL_GET_TIME          0x1             /**< @brief 获取定时器控制命令 */
-#define RT_TIMER_CTRL_SET_ONESHOT       0x2             /**< @brief 将计时器更改为一次性定时 */
-#define RT_TIMER_CTRL_SET_PERIODIC      0x3             /**< @brief 将计时器更改为周期性定时 */
+#define RT_TIMER_CTRL_SET_TIME          0x0             /**< @brief 设置定时器时间 */
+#define RT_TIMER_CTRL_GET_TIME          0x1             /**< @brief 获取定时器时间 */
+#define RT_TIMER_CTRL_SET_ONESHOT       0x2             /**< @brief 将计时器更改为一次性定时器 */
+#define RT_TIMER_CTRL_SET_PERIODIC      0x3             /**< @brief 将计时器更改为周期性定时器 */
 
 #ifndef RT_TIMER_SKIP_LIST_LEVEL
 #define RT_TIMER_SKIP_LIST_LEVEL          1
@@ -504,7 +437,7 @@ struct rt_object_information
 #endif
 
 /**
- * @brief 定时器结构体
+ * @brief 定时器控制块
  */
 struct rt_timer
 {
@@ -573,7 +506,7 @@ typedef siginfo_t rt_siginfo_t;
 #define RT_THREAD_CTRL_INFO             0x03                /**< @brief 获取线程信息命令. */
 
 /**
- * @brief 线程对象控制块
+ * @brief 线程控制块
  */
 struct rt_thread
 {
@@ -583,7 +516,7 @@ struct rt_thread
     rt_uint8_t  flags;                                  /**< @brief 线程的参数 */
 
 #ifdef RT_USING_MODULE
-    void       *module_id;                              /**< @brief 应用模块的识别号 */
+    void       *module_id;                              /**< @brief 动态模块ID */
 #endif
 
     rt_list_t   list;                                   /**< @brief 链表对象 */
@@ -612,8 +545,8 @@ struct rt_thread
 
 #if defined(RT_USING_EVENT)
     /* thread event */
-    rt_uint32_t event_set;
-    rt_uint8_t  event_info;
+    rt_uint32_t event_set;								/**< @brief 线程等待的事件集 */
+    rt_uint8_t  event_info;								/**< @brief 线程等待的事件标志 and/or/clear */
 #endif
 
 #if defined(RT_USING_SIGNALS)
@@ -650,23 +583,23 @@ typedef struct rt_thread *rt_thread_t;
 /*
  * IPC标志和控制命令定义
  */
-#define RT_IPC_FLAG_FIFO                0x00            /**< @brief FIFO调度模式命令 @ref IPC. */
-#define RT_IPC_FLAG_PRIO                0x01            /**< @brief 优先级调度模式 @ref IPC. */
+#define RT_IPC_FLAG_FIFO                0x00            /**< @brief 先进先出模式*/
+#define RT_IPC_FLAG_PRIO                0x01            /**< @brief 优先级模式 */
 
 #define RT_IPC_CMD_UNKNOWN              0x00            /**< @brief 未知的 IPC 命令 */
 #define RT_IPC_CMD_RESET                0x01            /**< @brief 复位 IPC 对象命令 */
 
-#define RT_WAITING_FOREVER              -1              /**< @brief 永远阻塞直到获得资源。 */
-#define RT_WAITING_NO                   0               /**< @brief 无阻塞. */
+#define RT_WAITING_FOREVER              -1              /**< @brief 永远阻塞直到获得资源 */
+#define RT_WAITING_NO                   0               /**< @brief 无阻塞 */
 
 /**
- * @brief IPC对象的基础结构体
+ * @brief IPC基类控制块
  */
 struct rt_ipc_object
 {
     struct rt_object parent;                            /**< @brief 从 rt_object 继承 */
 
-    rt_list_t        suspend_thread;                    /**< @brief 现场挂起再该资源上 */
+    rt_list_t        suspend_thread;                    /**< @brief 挂起线程链表 */
 };
 
 /*@}*/
@@ -679,11 +612,11 @@ struct rt_ipc_object
 /**@{*/
 
 /**
- * @brief 信号量结构体
+ * @brief 信号量控制块
  */
 struct rt_semaphore
 {
-    struct rt_ipc_object parent;                        /**< @brief 继承自 ipc_object  */
+    struct rt_ipc_object parent;                        /**< @brief 继承自 rt_ipc_object */
 
     rt_uint16_t          value;                         /**< @brief 信号量的值 */
 };
@@ -704,11 +637,11 @@ typedef struct rt_semaphore *rt_sem_t;
 /**@{*/
 
 /**
- * @brief 互斥量结构体
+ * @brief 互斥量控制块
  */
 struct rt_mutex
 {
-    struct rt_ipc_object parent;                        /**< @brief 继承自 ipc_object */
+    struct rt_ipc_object parent;                        /**< @brief 继承自 rt_ipc_object */
 
     rt_uint16_t          value;                         /**< @brief 互斥量的值 */
 
@@ -740,11 +673,11 @@ typedef struct rt_mutex *rt_mutex_t;
 #define RT_EVENT_FLAG_CLEAR             0x04            /**< @brief 清除参数 */
 
 /**
- * @brief 事件结构体
+ * @brief 事件控制块
  */
 struct rt_event
 {
-    struct rt_ipc_object parent;                        /**< @brief 继承自 ipc_object */
+    struct rt_ipc_object parent;                        /**< @brief 继承自rt_ipc_object */
 
     rt_uint32_t          set;                           /**< @brief 时间集 */
 };
@@ -764,11 +697,11 @@ typedef struct rt_event *rt_event_t;
 /**@{*/
 
 /**
- * @brief 邮箱结构体
+ * @brief 邮箱控制块
  */
 struct rt_mailbox
 {
-    struct rt_ipc_object parent;                        /**< @brief 继承自 ipc_object */
+    struct rt_ipc_object parent;                        /**< @brief 继承自 rt_ipc_object */
 
     rt_uint32_t         *msg_pool;                      /**< @brief 消息缓冲区的起始地址 */
 
@@ -796,11 +729,11 @@ typedef struct rt_mailbox *rt_mailbox_t;
 /**@{*/
 
 /**
- * @brief 消息队列结构体
+ * @brief 消息队列控制块
  */
 struct rt_messagequeue
 {
-    struct rt_ipc_object parent;                        /**< @brief 继承自 ipc_object */
+    struct rt_ipc_object parent;                        /**< @brief 继承自rt_ipc_object */
 
     void                *msg_pool;                      /**< @brief 消息队列的起始地址 */
 
@@ -836,22 +769,22 @@ typedef struct rt_messagequeue *rt_mq_t;
 /*@{*/
 
 /**
- * @brief 内存堆的item
+ * @brief 内存堆管理控制块
  */
 struct rt_memheap_item
 {
     rt_uint32_t             magic;                      /**< @brief 内存堆的幻数 */
     struct rt_memheap      *pool_ptr;                   /**< @brief 内存池的指针 */
 
-    struct rt_memheap_item *next;                       /**< @brief 下一个内存块 */
-    struct rt_memheap_item *prev;                       /**< @brief 上一个内存块 */
+    struct rt_memheap_item *next;                       /**< @brief 下一个内存堆 */
+    struct rt_memheap_item *prev;                       /**< @brief 上一个内存堆 */
 
-    struct rt_memheap_item *next_free;                  /**< @brief 下一个空闲内存块 */
-    struct rt_memheap_item *prev_free;                  /**< @brief 上一个空闲内存块 */
+    struct rt_memheap_item *next_free;                  /**< @brief 下一个空闲内存堆 */
+    struct rt_memheap_item *prev_free;                  /**< @brief 上一个空闲内存堆 */
 };
 
 /**
- * @brief 内存堆对象的基本结构
+ * @brief 内存堆控制块
  */
 struct rt_memheap
 {
@@ -860,13 +793,13 @@ struct rt_memheap
     void                   *start_addr;                 /**< @brief 内存堆的起始地址 */
 
     rt_uint32_t             pool_size;                  /**< @brief 内存堆的大小 */
-    rt_uint32_t             available_size;             /**< @brief 可以用大小 */
+    rt_uint32_t             available_size;             /**< @brief 内存堆可用大小 */
     rt_uint32_t             max_used_size;              /**< @brief 最大可分配大小 */
 
     struct rt_memheap_item *block_list;                 /**< @brief 已使用的块链表*/
 
     struct rt_memheap_item *free_list;                  /**< @brief 未使用的块链表 */
-    struct rt_memheap_item  free_header;                /**< @brief 未使用的快链表表头 */
+    struct rt_memheap_item  free_header;                /**< @brief 未使用的块链表表头 */
 
     struct rt_semaphore     lock;                       /**< @brief 信号量锁 */
 };
@@ -883,7 +816,7 @@ struct rt_memheap
 
 #ifdef RT_USING_MEMPOOL
 /**
- * @brief 内存池对象的基础结构
+ * @brief 内存池控制块
  */
 struct rt_mempool
 {
@@ -933,7 +866,7 @@ enum rt_device_class_type
     RT_Device_Class_USBDevice,                          /**< USB从设备 */
     RT_Device_Class_USBHost,                            /**< USB主机总线 */
     RT_Device_Class_SPIBUS,                             /**< SPI总线设备 */
-    RT_Device_Class_SPIDevice,                          /**< SPI 设备 */
+    RT_Device_Class_SPIDevice,                          /**< SPI 从设备 */
     RT_Device_Class_SDIO,                               /**< SDIO 设备 */
     RT_Device_Class_PM,                                 /**< 电源管理设备 */
     RT_Device_Class_Pipe,                               /**< 管道设备 */
@@ -1014,21 +947,10 @@ struct rt_device_ops
     rt_err_t  (*control)(rt_device_t dev, int cmd, void *args);		/**< @brief 控制设备 */
 };
 
-/**
- * @brief 等待队列的结构体
- */
-struct rt_wqueue
-{
-    rt_uint32_t flag;			/**< @brief 等待队列的参数 */
-    rt_list_t waiting_list;		/**< @brief 等待队列的线程链表 */
-};
-/**
- * @brief 等待队列类型指针定义
- */
-typedef struct rt_wqueue rt_wqueue_t;
+
 
 /**
- * @brief设备结构体
+ * @brief设备基类控制块
  */
 struct rt_device
 {
@@ -1066,7 +988,7 @@ struct rt_device
 };
 
 /**
- * @brief 块设备扇区结构体
+ * @brief 块设备扇区信息
  */
 struct rt_device_blk_geometry
 {
@@ -1076,7 +998,7 @@ struct rt_device_blk_geometry
 };
 
 /**
- * @brief 块设备的扇区分布结构体
+ * @brief 块设备的扇区分布信息
  */
 struct rt_device_blk_sectors
 {

@@ -8,13 +8,13 @@
  *
  */
 /*
- * 代码清单：文件读写例子
+ * �����嵥���ļ���д����
  *
- * 这个例子演示了如何读写一个文件。
+ * ���������ʾ����ζ�дһ���ļ���
  */
 
 #include <rtthread.h>
-#include <dfs_posix.h> /* 当需要使用文件操作时，需要包含这个头文件 */
+#include <dfs_posix.h> /* ����Ҫʹ���ļ�����ʱ����Ҫ�������ͷ�ļ� */
 
 static void readwrite_sample(void)
 {
@@ -23,7 +23,7 @@ static void readwrite_sample(void)
 
     rt_kprintf("Write string %s to test.txt.\n", s);
 
-    /* 以创建和读写模式打开 /text.txt 文件，如果该文件不存在则创建该文件*/
+    /* �Դ����Ͷ�дģʽ�� /text.txt �ļ���������ļ��������򴴽����ļ�*/
     fd = open("/text.txt", O_WRONLY | O_CREAT);
     if (fd >= 0)
     {
@@ -32,7 +32,7 @@ static void readwrite_sample(void)
         rt_kprintf("Write done.\n");
     }
 
-    /* 以只读模式打开 /text.txt 文件 */
+    /* ��ֻ��ģʽ�� /text.txt �ļ� */
     fd = open("/text.txt", O_RDONLY);
     if (fd >= 0)
     {
@@ -43,5 +43,5 @@ static void readwrite_sample(void)
             return ;
     }
 }
-/* 导出到 msh 命令列表中 */
+/* ������ msh �����б��� */
 MSH_CMD_EXPORT(readwrite_sample, readwrite sample);

@@ -52,6 +52,8 @@ void rt_system_tick_init(void)
 /**@{*/
 
 /**
+ * @brief 获取系统时钟节拍值
+ *
  * 该函数将返回自操作系统启动以来到当前的系统时钟计数值
  *
  * @return 当前系统节拍计数值
@@ -64,6 +66,8 @@ rt_tick_t rt_tick_get(void)
 RTM_EXPORT(rt_tick_get);
 
 /**
+ * @brief 设置系统时钟节拍值
+ *
  * 该函数将设定当前的系统时钟节拍计数值。
  */
 void rt_tick_set(rt_tick_t tick)
@@ -76,7 +80,9 @@ void rt_tick_set(rt_tick_t tick)
 }
 
 /**
- * 该函数将通知内核经过了一个系统时钟的时间。通常该函数在时钟中断里调用。
+ * @brief 增加系统时钟节拍值
+ *
+ * 该函数将通知内核经过了一个系统时钟的时间，通常该函数在时钟中断里调用。
  */
 void rt_tick_increase(void)
 {

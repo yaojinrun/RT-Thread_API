@@ -9,19 +9,19 @@
  */ 
 
 /*
- * Г╗▀Е╨▐Ф╦┘Е█∙О╪ Д╨▓Ф√╔И┤▐Д╫©Г■╗Д╬▀Г╗▀
+ * ЁлпРгЕ╣╔ё╨╩╔ЁБа©й╧сцюЩЁл
  *
- * Х©≥Д╦╙Д╬▀Е╜░Е╟├Е┬⌡Е╩╨ 3 Д╦╙Е┼╗Ф─│Г╨©Г╗▀Д╩╔Фё─Ф÷╔Ф▄│Ф°┴Д╨▓Ф√╔И┤▐Ф≈╤О╪▄Ф▄│Ф°┴Г └Г╨©Г╗▀Д╪≤Е┘┬Г╨╖Ф≤╞Е░╕
- * Х╒╚Х╟┐Ф∙╢Е┬╟Г╜┴Е╬┘Г╨©Г╗▀Д╪≤Е┘┬Г╨╖Д╦╜Г └Ф°─И╚≤Д╪≤Е┘┬Г╨╖Ц─┌
+ * уБ╦ЖюЩвс╫╚╢╢╫╗ 3 ╦Ж╤╞л╛оъЁлрт╪Л╡ИЁжсп╩╔ЁБа©й╠ё╛Ёжсп╣доъЁлсеох╪╤йг╥Я
+ * ╠╩╣ВуШ╣╫╣х╢ЩоъЁлсеох╪╤жп╣двН╦ъсеох╪╤║ё
  *
- * Г╨©Г╗▀ 1О╪▄2О╪▄3 Г └Д╪≤Е┘┬Г╨╖Д╩▌И╚≤Е┬╟Д╫▌Е┬├Е┬╚Х╒╚Е┬⌡Е╩╨О╪▄
- * Г╨©Г╗▀ 3 Е┘┬Ф▄│Ф°┴Д╨▓Ф√╔И┤▐О╪▄Х─▄Е░▌Г╨©Г╗▀ 2 Х╞∙Е⌡╬Ф▄│Ф°┴Д╨▓Ф√╔И┤▐О╪▄Ф╜╓Ф≈╤Г╨©Г╗▀ 3 Г └Д╪≤Е┘┬Г╨╖Е╨■Х╞╔
- * Х╒╚Ф▐░Е█┤Д╦╨Е▓▄Г╨©Г╗▀ 2 Г └Д╪≤Е┘┬Г╨╖Г⌡╦Е░▄Ц─┌Г╨©Г╗▀ 1 Г■╗Д╨▌Фё─Ф÷╔Г╨©Г╗▀ 3 Г └Д╪≤Е┘┬Г╨╖Ф≤╞Е░╕Х╒╚Ф▐░Е█┤
- * Д╦╨Д╦▌Г╨©Г╗▀ 2Г └Д╪≤Е┘┬Г╨╖Г⌡╦Е░▄Ц─┌
+ * оъЁл 1ё╛2ё╛3 ╣дсеох╪╤╢с╦ъ╣╫╣м╥ж╠П╠╩╢╢╫╗ё╛
+ * оъЁл 3 охЁжсп╩╔ЁБа©ё╛╤Ь╨СоъЁл 2 йтм╪Ёжсп╩╔ЁБа©ё╛╢кй╠оъЁл 3 ╣дсеох╪╤с╕╦ц
+ * ╠╩лАиЩн╙╨моъЁл 2 ╣дсеох╪╤оЮм╛║ёоъЁл 1 сцсз╪Л╡ИоъЁл 3 ╣дсеох╪╤йг╥Я╠╩лАиЩ
+ * н╙сКоъЁл 2╣дсеох╪╤оЮм╛║ё
  */
 #include <rtthread.h>
 
-/* Ф▄┤Е░▒Г╨©Г╗▀Ф▌╖Е┬╤Е²≈Г └Ф▄┤И▓┬ */
+/* ж╦оРоъЁл©ьжф©И╣дж╦уК */
 static rt_thread_t tid1 = RT_NULL;
 static rt_thread_t tid2 = RT_NULL;
 static rt_thread_t tid3 = RT_NULL;
@@ -31,18 +31,18 @@ static rt_mutex_t mutex = RT_NULL;
 #define THREAD_STACK_SIZE     512
 #define THREAD_TIMESLICE      5
 
-/* Г╨©Г╗▀ 1 Е┘╔Е▐ё */
+/* оъЁл 1 хК©з */
 static void thread1_entry(void *parameter)
 {
-    /* Е┘┬Х╝╘Д╫▌Д╪≤Е┘┬Г╨╖Г╨©Г╗▀Х©░Х║▄ */
+    /* оххц╣мсеох╪╤оъЁлткпп */
     rt_thread_mdelay(100);
 
-    /* Ф╜╓Ф≈╤ thread3 Ф▄│Ф°┴ mutexО╪▄Е╧╤Д╦■ thread2 Г╜┴Е╬┘Ф▄│Ф°┴ mutex */
+    /* ╢кй╠ thread3 Ёжсп mutexё╛╡╒гр thread2 ╣х╢ЩЁжсп mutex */
 
-    /* Фё─Ф÷╔ rt_kprintf("the producer generates a number: %d\n", array[set%MAXSEM]); Д╦▌ thread3 Г └Д╪≤Е┘┬Г╨╖Ф┐┘Е├╣ */
+    /* ╪Л╡И rt_kprintf("the producer generates a number: %d\n", array[set%MAXSEM]); сК thread3 ╣дсеох╪╤гИ©Ж */
     if (tid2->current_priority != tid3->current_priority)
     {
-        /* Д╪≤Е┘┬Г╨╖Д╦█Г⌡╦Е░▄О╪▄Ф╣▀Х╞∙Е╓╠Х╢╔ */
+        /* сеох╪╤╡╩оЮм╛ё╛╡Бйтй╖╟э */
         rt_kprintf("the priority of thread2 is: %d\n", tid2->current_priority);
         rt_kprintf("the priority of thread3 is: %d\n", tid3->current_priority);
         rt_kprintf("test failed.\n");
@@ -56,30 +56,30 @@ static void thread1_entry(void *parameter)
     }
 }
 
-/* Г╨©Г╗▀ 2 Е┘╔Е▐ё */
+/* оъЁл 2 хК©з */
 static void thread2_entry(void *parameter)
 {
     rt_err_t result;
 
     rt_kprintf("the priority of thread2 is: %d\n", tid2->current_priority);
 
-    /* Е┘┬Х╝╘Д╫▌Д╪≤Е┘┬Г╨╖Г╨©Г╗▀Х©░Х║▄ */
+    /* оххц╣мсеох╪╤оъЁлткпп */
     rt_thread_mdelay(50);
 
     /*
-     * Х╞∙Е⌡╬Ф▄│Ф°┴Д╨▓Ф√╔И■│О╪▄Ф╜╓Ф≈╤ thread3 Ф▄│Ф°┴О╪▄Е╨■Ф┼┼ thread3 Г └Д╪≤Е┘┬Г╨╖Ф▐░Е█┤
-     * Е┬╟ thread2 Г⌡╦Е░▄Г └Д╪≤Е┘┬Г╨╖
+     * йтм╪Ёжсп╩╔ЁБкЬё╛╢кй╠ thread3 Ёжспё╛с╕╟я thread3 ╣дсеох╪╤лАиЩ
+     * ╣╫ thread2 оЮм╛╣дсеох╪╤
      */
     result = rt_mutex_take(mutex, RT_WAITING_FOREVER);
 
     if (result == RT_EOK)
     {
-        /* И┤┼Ф■╬Д╨▓Ф√╔И■│ */
+        /* йм╥е╩╔ЁБкЬ */
         rt_mutex_release(mutex);
     }
 }
 
-/* Г╨©Г╗▀ 3 Е┘╔Е▐ё */
+/* оъЁл 3 хК©з */
 static void thread3_entry(void *parameter)
 {
     rt_tick_t tick;
@@ -93,7 +93,7 @@ static void thread3_entry(void *parameter)
         rt_kprintf("thread3 take a mutex, failed.\n");
     }
 
-    /* Е│ Д╦─Д╦╙И∙©Ф≈╤И≈╢Г └Е╬╙Г▌╞О╪▄500ms */
+    /* вЖр╩╦ЖЁ╓й╠╪Д╣дя╜╩╥ё╛500ms */
     tick = rt_tick_get();
     while (rt_tick_get() - tick < (RT_TICK_PER_SECOND / 2)) ;
 
@@ -102,7 +102,7 @@ static void thread3_entry(void *parameter)
 
 int pri_inversion(void)
 {
-    /* Е┬⌡Е╩╨Д╨▓Ф√╔И■│ */
+    /* ╢╢╫╗╩╔ЁБкЬ */
     mutex = rt_mutex_create("mutex", RT_IPC_FLAG_FIFO);
     if (mutex == RT_NULL)
     {
@@ -110,7 +110,7 @@ int pri_inversion(void)
         return -1;
     }
 
-    /* Е┬⌡Е╩╨Г╨©Г╗▀ 1 */
+    /* ╢╢╫╗оъЁл 1 */
     tid1 = rt_thread_create("thread1",
                             thread1_entry, 
                             RT_NULL,
@@ -119,7 +119,7 @@ int pri_inversion(void)
     if (tid1 != RT_NULL)
          rt_thread_startup(tid1);
  
-    /* Е┬⌡Е╩╨Г╨©Г╗▀ 2 */
+    /* ╢╢╫╗оъЁл 2 */
     tid2 = rt_thread_create("thread2",
                             thread2_entry, 
                             RT_NULL, 
@@ -128,7 +128,7 @@ int pri_inversion(void)
     if (tid2 != RT_NULL)
         rt_thread_startup(tid2);
 
-    /* Е┬⌡Е╩╨Г╨©Г╗▀ 3 */
+    /* ╢╢╫╗оъЁл 3 */
     tid3 = rt_thread_create("thread3",
                             thread3_entry, 
                             RT_NULL, 
@@ -140,5 +140,5 @@ int pri_inversion(void)
     return 0;
 }
 
-/* Е╞╪Е┤╨Е┬╟ msh Е▒╫Д╩╓Е┬≈Х║╗Д╦╜ */
+/* ╣╪ЁЖ╣╫ msh цЭаНап╠Мжп */
 MSH_CMD_EXPORT(pri_inversion, pri_inversion sample);
