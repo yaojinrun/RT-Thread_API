@@ -13,7 +13,7 @@
 #define PIPE_BUFSZ    RT_PIPE_BUFSZ
 #endif
 /**
- * @brief 管道结构体定义
+ * @brief 管道控制块
  */
 struct rt_pipe_device
 {

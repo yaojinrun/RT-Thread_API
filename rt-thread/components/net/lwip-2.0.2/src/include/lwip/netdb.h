@@ -92,7 +92,7 @@ extern "C" {
 /**
  * @ingroup NET
  *
- * @brief 主机结构体
+ * @brief 主机信息
  */
 struct hostent {
     char  *h_name;      /**< @brief 主机名，即官方域名 */
@@ -106,7 +106,7 @@ struct hostent {
 /**
  * @ingroup NET
  *
- * @brief 地址信息结构体
+ * @brief 地址信息
  */
 struct addrinfo {
     int               ai_flags;      /**< @brief 输入标志 */

@@ -88,9 +88,10 @@ static int rti_end(void)
 INIT_EXPORT(rti_end, "6.end");
 
 /**
- * @brief 板级组件初始化
+ * @ingroup SystemInit
+ * @brief 板级硬件初始化
  *
- * RT-Thread 组件的板级初始化
+ * 初始化硬件相关功能
  */
 void rt_components_board_init(void)
 {
@@ -114,8 +115,10 @@ void rt_components_board_init(void)
 }
 
 /**
+ * @ingroup SystemInit
  * @brief 组件初始化
- * RT-Thread 组件初始化
+ *
+ * 组件初始化
  */
 void rt_components_init(void)
 {

@@ -22,7 +22,7 @@ struct rt_data_item;
 #define RT_DATAQUEUE_EMPTY(dq)       ((dq)->size - RT_DATAQUEUE_SIZE(dq))            	/**< @brief 数据队列空闲数量 */
 /* data queue implementation */
 /**
- * @brief data queue 结构体
+ * @brief 数据队列控制块
  */
 struct rt_data_queue
 {
@@ -86,7 +86,7 @@ rt_err_t rt_data_queue_push(struct rt_data_queue *queue,
  *
  * @param queue 数据队列句柄
  * @param data_ptr 待取出的数据指针
- * @param data_size 待取出数据的字节数
+ * @param size 待取出数据的字节数
  * @param timeout 指定超时时间
  *
  * @return -RT_ETIMEOUT 队列已空，等待超时；RT_EOK 取出成功
@@ -103,15 +103,14 @@ rt_err_t rt_data_queue_pop(struct rt_data_queue *queue,
  *
  * @param queue 数据队列句柄
  * @param data_ptr 待取出的数据指针
- * @param data_size 待取出数据的字节数
- * @param timeout 指定超时时间
+ * @param size 待取出数据的字节数
  *
  * @return --RT_EEMPTY 队列已空；RT_EOK 取出成功
  */
 rt_err_t rt_data_queue_peak(struct rt_data_queue *queue,
                             const void          **data_ptr,
                             rt_size_t            *size);
-							
+
 
 /**
  * @brief 重置数据队列

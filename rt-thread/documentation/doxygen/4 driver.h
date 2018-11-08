@@ -30,86 +30,86 @@
 /**
  * @defgroup ringbuffer 环形缓冲区
  *
- * @brief 环形缓冲区的API说明
+ * @brief 环形缓冲区接口
  */
 
 /**
  * @defgroup completion 完成信号量
  *
- * @brief 完成信号量的API说明
+ * @brief 完成信号量接口
  */
 
 /**
  * @defgroup pipe 管道
  *
- * @brief 管道的API说明
+ * @brief 管道接口
  */
 
 /**
  * @defgroup dataqueue 数据队列
  *
- * @brief 数据队列的API说明
+ * @brief 数据队列接口
  */
 
 /**
  * @defgroup workqueue 工作队列
  *
- * @brief 工作队列的API说明
+ * @brief 工作队列接口
  */
 
 /**
  * @defgroup waitqueue 等待队列
  *
- * @brief 等待队列的API说明
+ * @brief 等待队列接口
  */
 
 /**
  * @defgroup UART UART
  *
- * @brief UART设备的API说明
+ * @brief UART设备接口
  */
 
 
 /**
  * @defgroup pin PIN
  *
- * @brief PIN设备的API说明
+ * @brief PIN设备接口
  */
 
 /**
  * @defgroup i2c I2C
  *
- * @brief I2C相关的API说明
+ * @brief I2C设备接口
  */
 
 /**
  * @defgroup spi SPI
  *
- * @brief SPI相关的API说明
+ * @brief SPI设备接口
  */
 
 /**
  * @defgroup rtc RTC
  *
- * @brief RTC相关的API说明
+ * @brief RTC设备接口
  */
 
 /**
  * @defgroup alarm Alarm
  *
- * @brief Alarm相关的API说明
+ * @brief 闹钟设备接口
  */
 
 /**
  * @defgroup pwm PWM
  *
- * @brief PWM设备的API说明
+ * @brief PWM设备接口
  */
 
 /**
  * @defgroup PM 电源管理
  *
- * @brief 电源管理相关的API说明
+ * @brief 电源管理接口
  *
  * PM组件从层次上划分，可以分成用户层、PM 组件层和PM 驱动层。用户层包括了应用代码和驱动代码，它们
  * 通过 API 来决定芯片运行在什么模式。PM 驱动层主要是实现了 PM 驱动的支持以及与 PM 相关的外设功耗
@@ -117,9 +117,9 @@
  */
 
 /**
- * @defgroup WLAN WLAN 框架
+ * @defgroup WLAN WLAN框架
  *
- * @brief WLAN框架相关的API说明
+ * @brief WLAN框架接口
  *
  * WLAN框架是RT-Thread开发的一套用于管理WIFI的中间件。对下连接具体的WIFI驱动，控制WIFI的连接断开，
  * 扫描等操作。对上承载不同的应用，为应用提供WIFI控制，事件，数据导流等操作，为上层应用提供统一

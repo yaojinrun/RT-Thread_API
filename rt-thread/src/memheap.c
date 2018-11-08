@@ -66,12 +66,12 @@
 
 /**
  * @ingroup MM
- * @brief 初始化memheap
+ * @brief 初始化内存堆
  *
  * 在使用memheap堆内存时，必须要在系统初始化的时候进行堆内存的初始化，
  * 可以通过调用该函数完成内存堆的初始化。
  *
- * @param memheap memheap控制块
+ * @param memheap 内存堆句柄
  * @param name 内存堆的名称
  * @param start_addr 堆内存区域起始地址
  * @param size 堆内存大小

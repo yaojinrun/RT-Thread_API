@@ -190,7 +190,7 @@ struct finsh_parser
 };
 
 /**
- * @ingroup finsh
+ *
  *
  * finsh shell的基本数据类型
  */

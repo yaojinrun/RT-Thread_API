@@ -11,7 +11,7 @@
 /**@{*/
 
 /**
- * @brief Completion 结构体定义
+ * @brief completion控制块
  */
 
 struct rt_completion

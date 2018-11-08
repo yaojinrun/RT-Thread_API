@@ -16,7 +16,7 @@ extern "C" {
 
 /* ring buffer */
 /**
- * @brief 环形缓冲区结构体定义
+ * @brief 环形缓冲区控制块
  */
 struct rt_ringbuffer
 {
@@ -166,8 +166,7 @@ rt_size_t rt_ringbuffer_getchar(struct rt_ringbuffer *rb, rt_uint8_t *ch);
  *
  * 调用此函数可以获取环形缓冲区中已被使用的字节数。
  *
- * @param rb ringbuffer 环形缓冲区句柄
- * @param ch 存储待取出字节的变量
+ * @param rb 环形缓冲区句柄
  *
  * @return 已使用的大小；0 则表示环形缓冲区已空
  */

@@ -56,7 +56,7 @@ typedef void (*rt_alarm_callback_t)(rt_alarm_t alarm, time_t timestamp);
 
 /* used for low level RTC driver */
 /**
- * @brief 闹钟时间参数结构体
+ * @brief 闹钟时间参数
  */
 struct rt_rtc_wkalarm
 {
@@ -67,7 +67,7 @@ struct rt_rtc_wkalarm
 };
 
 /**
- * @brief 闹钟管理结构体
+ * @brief 闹钟管理控制块
  */
 struct rt_alarm
 {
@@ -78,7 +78,7 @@ struct rt_alarm
 };
 
 /**
- * @brief 闹钟设置结构体
+ * @brief 闹钟设置参数
  */
 struct rt_alarm_setup
 {
@@ -87,7 +87,7 @@ struct rt_alarm_setup
 };
 
 /**
- * @brief 闹钟管理容器结构体
+ * @brief 闹钟管理容器控制块
  */
 struct rt_alarm_container
 {

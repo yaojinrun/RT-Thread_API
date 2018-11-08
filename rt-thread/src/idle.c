@@ -87,9 +87,9 @@ rt_inline int _has_defunct_thread(void)
 
 /**
  * @ingroup Thread
- * @brief 系统空闲执行函数
+ * @brief 系统空闲线程执行函数
  *
- * 当系统空闲时将在后台执行该函数。
+ * 当系统空闲时将运行空闲线程并执行该函数。
  */
 void rt_thread_idle_excute(void)
 {

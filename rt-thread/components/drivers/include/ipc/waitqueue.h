@@ -37,6 +37,19 @@
 #define RT_WQ_FLAG_CLEAN    0x00	/**< @brief 等待队列清除 */
 #define RT_WQ_FLAG_WAKEUP   0x01	/**< @brief 等待队列唤醒 */
 
+/**
+ * @brief 等待队列控制块
+ */
+struct rt_wqueue
+{
+    rt_uint32_t flag;			/**< @brief 等待队列的参数 */
+    rt_list_t waiting_list;		/**< @brief 等待队列的线程链表 */
+};
+/**
+ * @brief 等待队列类型指针定义
+ */
+typedef struct rt_wqueue rt_wqueue_t;
+
 struct rt_wqueue_node;
 /**
  * @brief 等待队列回调函数类型定义
@@ -44,7 +57,7 @@ struct rt_wqueue_node;
 typedef int (*rt_wqueue_func_t)(struct rt_wqueue_node *wait, void *key);
 
 /**
- * @brief 等待队列节点结构体定义
+ * @brief 等待队列节点
  */
 struct rt_wqueue_node
 {
@@ -100,7 +113,7 @@ void rt_wqueue_wakeup(rt_wqueue_t *queue, void *key);
 /**
  * @brief 定义等待队列
  * 
- * @param name:    	等待队列控制块实体
+ * @param name:    	等待队列名称
  * @param function: 等待队列唤醒条件判断函数，由客户定义
  */
 #define DEFINE_WAIT_FUNC(name, function)                \

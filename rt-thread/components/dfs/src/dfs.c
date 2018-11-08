@@ -335,12 +335,13 @@ int fd_is_open(const char *pathname)
 }
 
 /**
- * this function will return a sub-path name under directory.
- * @brief
- * @param directory the parent directory.
- * @param filename the filename.
+ * @brief 获取子目录
  *
- * @return the subdir pointer in filename
+ * 此函数将根据指定的父目录和文件名返回子目录名称。
+ * @param directory 父目录路径
+ * @param filename 文件名
+ *
+ * @return 子目录名称
  */
 const char *dfs_subdir(const char *directory, const char *filename)
 {
