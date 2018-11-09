@@ -156,7 +156,7 @@ struct rt_device_pm_ops
  */
 struct rt_device_pm
 {
-    const struct rt_device* device;			/**< @brief 继承至设备基类 rt_device */
+    const struct rt_device* device;			/**< @brief 继承自设备基类 rt_device */
     const struct rt_device_pm_ops* ops;		/**< @brief 对电源管理模式敏感的设备的操作方法 */
 };
 

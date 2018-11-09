@@ -5,7 +5,7 @@
 /**
  * @mainpage RT-Thread介绍
  * @author RT-Thread Development Team
- * @version 3.1.0
+ * @version 3.1.1
  *
  * RT-Thread是一个来自中国的开源物联网操作系统，它提供了非常强的可伸缩能力：
  * 从一个可以运行在ARM Cortex-M0芯片上的极小内核，到中等的ARM Cortex-M3/4/7

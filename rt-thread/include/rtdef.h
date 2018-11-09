@@ -1090,7 +1090,7 @@ struct rt_device_graphic_ops
 #endif
 
 #ifdef RT_USING_MODULE
-/*
+/**
  * @addtogroup Module
  */
 
@@ -1100,43 +1100,45 @@ struct rt_device_graphic_ops
  * module system
  */
 
-#define RT_MODULE_FLAG_WITHENTRY        0x00            /**< with entry point */
-#define RT_MODULE_FLAG_WITHOUTENTRY     0x01            /**< without entry point */
+#define RT_MODULE_FLAG_WITHENTRY        0x00            /**< @brief 有入口点 */
+#define RT_MODULE_FLAG_WITHOUTENTRY     0x01            /**< @brief 无入口点 */
 
-/*
- * 动态模块结构
+/**
+ * @brief 动态模块控制块
  */
 struct rt_module
 {
-    struct rt_object             parent;                /**< inherit from object */
+    struct rt_object             parent;                /**< @brief 继承自 rt_object */
 
-    rt_uint32_t                  vstart_addr;           /**< VMA base address for the
-                                                          first LOAD segment. */
-    rt_uint8_t                  *module_space;          /**< module memory space */
+    rt_uint32_t                  vstart_addr;           /**< @brief 第一个LOAD段的VMA基址 */
+    rt_uint8_t                  *module_space;          /**< @brief 动态模块的内存空间 */
 
-    void                        *module_entry;          /**< the entry address of module */
-    rt_thread_t                  module_thread;         /**< the main thread of module */
+    void                        *module_entry;          /**< @brief 动态模块的入口地址 */
+    rt_thread_t                  module_thread;         /**< @brief 动态模块的主线程 */
 
-    rt_uint8_t                  *module_cmd_line;       /**< module command line */
-    rt_uint32_t                  module_cmd_size;       /**< the size of module command line */
+    rt_uint8_t                  *module_cmd_line;       /**< @brief 动态模块的命令行 */
+    rt_uint32_t                  module_cmd_size;       /**< @brief 动态模块命令行的大小 */
 
 #ifdef RT_USING_SLAB
     /* module memory allocator */
-    void                        *mem_list;              /**< module's free memory list */
-    void                        *page_array;            /**< module's using pages */
-    rt_uint32_t                  page_cnt;              /**< module's using pages count */
+    void                        *mem_list;              /**< @brief 动态模块的空闲内存列表 */
+    void                        *page_array;            /**< @brief 动态模块的使用页 */
+    rt_uint32_t                  page_cnt;              /**< @brief 动态模块的使用页数 */
 #endif
 
-    rt_uint16_t                  nref;                  /**< reference count */
+    rt_uint16_t                  nref;                  /**< @brief 引用次数 */
 
-    rt_uint16_t                  nsym;                  /**< number of symbol in the module */
-    struct rt_module_symtab     *symtab;                /**< module symbol table */
+    rt_uint16_t                  nsym;                  /**< @brief 动态模块的变量数 */
+    struct rt_module_symtab     *symtab;                /**< @brief 动态模块的变量表 */
 
-    rt_uint32_t                  user_data;             /**< arch data in the module */
+    rt_uint32_t                  user_data;             /**< @brief 动态模块的私有数据 */
 
-    void (*module_init)(void);
-    void (*module_cleanup)(void);
+    void (*module_init)(void);							/**< @brief 模块的初始化函数指针 */
+    void (*module_cleanup)(void);						/**< @brief 模块的清除函数指针 */
 };
+/**
+ * @brief 动态模块类型指针定义
+ */
 typedef struct rt_module *rt_module_t;
 
 /*@}*/
