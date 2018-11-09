@@ -353,14 +353,16 @@ struct rt_object
     rt_uint8_t flag;                                    /**< @brief 内核对象的参数 */
 
 #ifdef RT_USING_MODULE
-    void      *module_id;                               /**< @brief 应用模块的id */
+    void      *module_id;                               /**< @brief 动态模块的id */
 #endif
     rt_list_t  list;                                    /**< @brief 内核对象管理链表 */
 };
 
 typedef struct rt_object *rt_object_t;                  /**< @brief 内核对象类型指针定义 */
 
-
+/**
+ * @brief 内核对象类型
+ */
 enum rt_object_class_type
 {
     RT_Object_Class_Thread = 0,                         /**< @brief 线程对象 */
@@ -374,7 +376,7 @@ enum rt_object_class_type
     RT_Object_Class_Device,                             /**< @brief 设备对象 */
     RT_Object_Class_Timer,                              /**< @brief 定时器对象 */
     RT_Object_Class_Module,                             /**< @brief 动态模块对象 */
-    RT_Object_Class_Unknown,                            /**< @brief 位置对象 */
+    RT_Object_Class_Unknown,                            /**< @brief 未知对象 */
     RT_Object_Class_Static = 0x80                       /**< @brief 静态对象 */
 };
 

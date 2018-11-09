@@ -3,4 +3,5 @@ rt-thread/documentation/html
 .cproject
 .project
 .settings
+.tmp
 

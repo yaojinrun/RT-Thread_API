@@ -14,18 +14,30 @@
 
 #include <rtthread.h>
 
+
+/**
+ * @addtogroup PM
+ */
+
+/**@{*/
+
+
 #ifndef PM_HAS_CUSTOM_CONFIG
 
 /* All modes used for rt_pm_request() adn rt_pm_release() */
+
+/**
+ * @brief 运行的模式
+ */
 enum
 {
     /* run modes */
-    PM_RUN_MODE_NORMAL = 0,
+    PM_RUN_MODE_NORMAL = 0,		/**< @brief 运行模式 */
 
     /* sleep modes */
-    PM_SLEEP_MODE_SLEEP,
-    PM_SLEEP_MODE_TIMER,
-    PM_SLEEP_MODE_SHUTDOWN,
+    PM_SLEEP_MODE_SLEEP,		/**< @brief 休眠模式 */
+    PM_SLEEP_MODE_TIMER,		/**< @brief 休眠定时器模式 */
+    PM_SLEEP_MODE_SHUTDOWN,		/**< @brief 关闭模式 */
 };
 
 /* The name of all modes used in the msh command "pm_dump" */
@@ -101,12 +113,6 @@ enum
 #error "The number of modes cannot exceed 32"
 #endif
 
-/**
- * @addtogroup PM
- */
-
-/**@{*/
-
 /*
  * device control flag to request or release power
  */
@@ -116,33 +122,33 @@ enum
 struct rt_pm;
 
 /**
- * @brief 电源设备底层驱动函数集
+ * @brief 电源管理设备的操作方法
  */
 struct rt_pm_ops
 {
-    void (*enter)(struct rt_pm *pm);
-    void (*exit)(struct rt_pm *pm);
+    void (*enter)(struct rt_pm *pm);									/**< @brief 切换到新模式 */
+    void (*exit)(struct rt_pm *pm);										/**< @brief 退出当前模式 */
 
 #if PM_RUN_MODE_COUNT > 1
-    void (*frequency_change)(struct rt_pm *pm, rt_uint32_t frequency);
+    void (*frequency_change)(struct rt_pm *pm, rt_uint32_t frequency);  /**< @brief 切换到新模式 */
 #endif
 
-    void (*timer_start)(struct rt_pm *pm, rt_uint32_t timeout);
-    void (*timer_stop)(struct rt_pm *pm);
-    rt_tick_t (*timer_get_tick)(struct rt_pm *pm);
+    void (*timer_start)(struct rt_pm *pm, rt_uint32_t timeout);         /**< @brief 开启定时器 */
+    void (*timer_stop)(struct rt_pm *pm);								/**< @brief 停止定时器 */
+    rt_tick_t (*timer_get_tick)(struct rt_pm *pm);						/**< @brief 获取休眠时间 */
 };
 
 /**
- * @brief 电源管理设备的操作方法
+ * @brief  对电源管理模式敏感的设备的操作方法
  */
 struct rt_device_pm_ops
 {
 #if PM_RUN_MODE_COUNT > 1
-    void (*frequency_change)(const struct rt_device* device);
+    void (*frequency_change)(const struct rt_device* device);	/**< @brief 切换到新模式 */
 #endif
 
-    void (*suspend)(const struct rt_device* device);
-    void (*resume) (const struct rt_device* device);
+    void (*suspend)(const struct rt_device* device);			/**< @brief 进入休眠模式 */
+    void (*resume) (const struct rt_device* device);			/**< @brief 从休眠模式唤醒 */
 };
 
 /**
@@ -150,8 +156,8 @@ struct rt_device_pm_ops
  */
 struct rt_device_pm
 {
-    const struct rt_device* device;
-    const struct rt_device_pm_ops* ops;
+    const struct rt_device* device;			/**< @brief 继承至设备基类 rt_device */
+    const struct rt_device_pm_ops* ops;		/**< @brief 对电源管理模式敏感的设备的操作方法 */
 };
 
 /**
@@ -159,22 +165,22 @@ struct rt_device_pm
  */
 struct rt_pm
 {
-    struct rt_device parent;
+    struct rt_device parent;			/**< @brief 继承至设备基类 rt_device */
 
     /* modes */
-    rt_uint8_t modes[PM_MODE_COUNT];
-    rt_uint8_t current_mode;    /* current pm mode */
+    rt_uint8_t modes[PM_MODE_COUNT];	/**< @brief 运行模式 */
+    rt_uint8_t current_mode;    		/**< @brief 当前运行模式 */
     rt_uint8_t exit_count;
 
     /* the list of device, which has PM feature */
-    rt_uint8_t device_pm_number;
-    struct rt_device_pm* device_pm;
-    struct rt_semaphore  device_lock;
+    rt_uint8_t device_pm_number;		/**< @brief 有电源管理特性的设备计数 */
+    struct rt_device_pm* device_pm;		/**< @brief 电源管理设备句柄 */
+    struct rt_semaphore  device_lock;	/**< @brief 设备锁 */
 
     /* if the mode has timer, the corresponding bit is 1*/
-    rt_uint32_t timer_mask;
+    rt_uint32_t timer_mask;				/**< @brief 定时器标志 */
 
-    const struct rt_pm_ops *ops;
+    const struct rt_pm_ops *ops;		/**< @brief 电源管理设备的操作方法 */
 };
 
 /**
