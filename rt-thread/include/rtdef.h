@@ -1090,7 +1090,7 @@ struct rt_device_graphic_ops
 #endif
 
 #ifdef RT_USING_MODULE
-/**
+/*
  * @addtogroup Module
  */
 
@@ -1103,7 +1103,7 @@ struct rt_device_graphic_ops
 #define RT_MODULE_FLAG_WITHENTRY        0x00            /**< @brief 有入口点 */
 #define RT_MODULE_FLAG_WITHOUTENTRY     0x01            /**< @brief 无入口点 */
 
-/**
+/*
  * @brief 动态模块控制块
  */
 struct rt_module
@@ -1136,7 +1136,7 @@ struct rt_module
     void (*module_init)(void);							/**< @brief 模块的初始化函数指针 */
     void (*module_cleanup)(void);						/**< @brief 模块的清除函数指针 */
 };
-/**
+/*
  * @brief 动态模块类型指针定义
  */
 typedef struct rt_module *rt_module_t;
